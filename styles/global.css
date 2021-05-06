@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+
+/* Scrollbar */
+
+@media (min-width: 768px) {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #424242;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(85, 85, 85);
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+.sidebar-btn {
+  @apply flex flex-row w-full py-1 text-gray-300 text-lg rounded hover:bg-gray-800 hover:bg-opacity-60 text-left focus:outline-none;
+}
+
+.btn {
+  @apply px-2 py-1 rounded-md select-none cursor-pointer focus:outline-none text-gray-100;
+}
+
+.btn-lg {
+  @apply py-2 px-5;
+}
+
+.btn-blue {
+  @apply bg-blue-600 hover:opacity-70;
+}
+
+.btn-white {
+  @apply text-gray-200 font-semibold hover:bg-gray-100 focus:bg-gray-50 hover:text-black;
+}
+
+.expand {
+  @apply transition duration-200 ease-in-out transform hover:scale-105;
+}
