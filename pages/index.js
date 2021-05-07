@@ -1,5 +1,6 @@
 import Link from "next/link";
 import useSWR from "swr";
+import * as Heroicons from "@heroicons/react/outline";
 
 import JSboardNavbar from "../components/navbar";
 import JSboardFooter from "../components/footer";

@@ -185,7 +185,7 @@ function ListStuffz() {
           <DashBtn
             icon={<Heroicons.DocumentAddIcon className="h-6 w-6 mx-2" />}
             name="Custom Pages"
-            url="/pages"
+            url="pages"
             section="main"
           />
         </ul>

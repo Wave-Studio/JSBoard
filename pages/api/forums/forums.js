@@ -10,16 +10,16 @@ export default function handle(req, res) {
     configured: true,
     forums: [
       {
-        icon: "SpeakerphoneIcon",
+        icon: "Heroicons.SpeakerPhoneIcon",
         name: "Announcements",
         description: "see dem newz",
         redirect: "#",
-        color: "blue",
+        color: "blue", //won't work, purgecss needs to see full names
         topics: 10,
         posts: 10,
       },
       {
-        icon: "SpeakerphoneIcon",
+        icon: "Heroicons.SpeakerPhoneIcon",
         name: "Simp for bl0x",
         description: "Just do it lel",
         redirect: "#",
