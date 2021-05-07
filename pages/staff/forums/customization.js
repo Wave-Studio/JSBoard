@@ -138,26 +138,25 @@ export default class Dashboard extends React.PureComponent {
             <div className="p-4 rounded-lg shadow w-full bg-coolGray-800">
               <h1 className="text-2xl font-semibold text-gray-200">Sidebar</h1>
               <h2 className="text-lg font-medium text-gray-300 mb-2">Customize whats on the sidebar, or even create your own cutom sidebar boxes</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-xl place-items-center">
+              <form className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-xl place-items-center">
                 {/*Sidebar Things to click*/}
-                <div className="expand relative group select-none bg-gradient-to-br from-blue-500 to-green-600 hover:from-blue-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
-                  <StatusOnlineIcon className="w-10" />
-                  Online Users
-                  <form className="absolute top-[5px] right-[10px] text-sm">
-                    <label>
-                      <span className="hidden group-hover:block">Enabled?</span>
-                    </label>
-                  </form>
-                </div>
-                <div className="expand select-none bg-gradient-to-br from-red-500 to-yellow-600 hover:from-red-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
-                  <FireIcon className="w-10" />
-                  Hot Posts
-                </div>
-                <div className="expand select-none bg-coolGray-700 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
-                  <PlusSmIcon className="w-10" />
-                  Create a Tab
-                </div>
-              </div>
+                  <label className="expand relative select-none bg-gradient-to-br from-blue-500 to-green-600 hover:from-blue-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
+                    <StatusOnlineIcon className="w-10" />
+                    Online Users
+                    <input type="checkbox" className="rounded-full absolute bottom-[5px] right-[5px] border-none bg-gray-200 bg-opacity-50" />
+                  </label>
+
+                  <label className="expand relative select-none bg-gradient-to-br from-red-500 to-yellow-600 hover:from-red-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
+                    <FireIcon className="w-10" />
+                    Hot Posts
+                    <input type="checkbox" className="rounded-full absolute bottom-[5px] right-[5px] border-none bg-gray-200 bg-opacity-50" />
+                  </label>
+
+                  <label className="expand relative select-none bg-coolGray-700 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
+                    <PlusSmIcon className="w-10" />
+                    Create a Tab
+                  </label>
+              </form>
             </div>
             {/*Possible Footer/navbar area*/}
             <div className="p-4 rounded-lg shadow w-full bg-coolGray-800">
