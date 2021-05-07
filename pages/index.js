@@ -57,14 +57,10 @@ export default function Home() {
             <div className="mx-5 text-2xl text-gray-100">
               <h2 className="mb-4">Important Links:</h2>
               <Link href="/setup">
-                <a className="btn btn-lg btn-blue">
-                  Setup Page
-                </a>
+                <a className="btn btn-lg btn-blue">Setup Page</a>
               </Link>
               <Link href="/staff">
-                <a className="btn btn-lg btn-blue ml-4">
-                  Staff Dashboard
-                </a>
+                <a className="btn btn-lg btn-blue ml-4">Staff Dashboard</a>
               </Link>
             </div>
           </div>

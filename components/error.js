@@ -18,15 +18,13 @@ export default class PageError extends React.Component {
                 {this.props.code}
               </h2>
               <div className="text-xl">
-                <p className="mb-5">An error occured while preforming that action!</p>
-                
+                <p className="mb-5">
+                  An error occured while preforming that action!
+                </p>
+
                 <div className="flex justify-center items-center space-x-4">
                   <div
-                    className={
-                      this.props.back
-                        ? ""
-                        : "hidden"
-                    }
+                    className={this.props.back ? "" : "hidden"}
                     onClick={() => history.back()}
                   >
                     <a className="btn btn-lg btn-white ">Go back</a>

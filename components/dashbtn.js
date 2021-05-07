@@ -10,7 +10,12 @@ export default class DashButton extends React.Component {
       <>
         <li>
           <Link
-            href={"/staff/" + (this.props.section) + "/" + (this.props.url || this.props.name).toLowerCase()}
+            href={
+              "/staff/" +
+              this.props.section +
+              "/" +
+              (this.props.url || this.props.name).toLowerCase()
+            }
           >
             <button className="sidebar-btn">
               {this.props.icon}
