@@ -1,4 +1,4 @@
-import { ChevronDownIcon, ChevronRightIcon, PlusSmIcon, StatusOnlineIcon, FireIcon } from "@heroicons/react/outline";
+import { ChevronDownIcon, ChevronRightIcon, PlusSmIcon, StatusOnlineIcon, FireIcon, DocumentDuplicateIcon} from "@heroicons/react/outline";
 import React from "react";
 import StaffCore from "/components/core.js";
 import useSWR from "swr";
@@ -34,12 +34,12 @@ export default class Dashboard extends React.PureComponent {
             <div className="p-4 rounded-lg shadow w-full bg-coolGray-800">
               <h1 className="text-2xl font-semibold text-gray-200">Info</h1>
               <h2 className="text-lg font-medium text-gray-300 mb-2">The name and description of your forum, appearing on the homepage</h2>
-              <form className="flex flex-grow flex-col max-w-xl font-medium tracking-wide text-gray-300 space-y-4">
+              <form className="flex flex-grow flex-col max-w-xl font-medium tracking-wide text-gray-200 space-y-4">
                 <label>
                   Name
                   <input 
                     type="text" 
-                    className="bg-gray-800 rounded border-none w-full" 
+                    className="rounded border-none w-full bg-coolGray-700 bg-opacity-70" 
                     placeholder="Insert indelible name here"  
                     maxLength="30"
                   />
@@ -138,7 +138,7 @@ export default class Dashboard extends React.PureComponent {
             <div className="p-4 rounded-lg shadow w-full bg-coolGray-800">
               <h1 className="text-2xl font-semibold text-gray-200">Sidebar</h1>
               <h2 className="text-lg font-medium text-gray-300 mb-2">Customize whats on the sidebar, or even create your own cutom sidebar boxes</h2>
-              <form className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-xl place-items-center">
+              <form className="flex flex-wrap max-w-xl justify-center sm:justify-start items-center gap-10">
                 {/*Sidebar Things to click*/}
                   <label className="expand relative select-none bg-gradient-to-br from-blue-500 to-green-600 hover:from-blue-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
                     <StatusOnlineIcon className="w-10" />
@@ -149,6 +149,11 @@ export default class Dashboard extends React.PureComponent {
                   <label className="expand relative select-none bg-gradient-to-br from-red-500 to-yellow-600 hover:from-red-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
                     <FireIcon className="w-10" />
                     Hot Posts
+                    <input type="checkbox" className="rounded-full absolute bottom-[5px] right-[5px] border-none bg-gray-200 bg-opacity-50" />
+                  </label>
+                  <label className="expand relative select-none bg-gradient-to-br from-indigo-500 to-pink-600 hover:from-indigo-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
+                    <DocumentDuplicateIcon className="w-10" />
+                    New Posts
                     <input type="checkbox" className="rounded-full absolute bottom-[5px] right-[5px] border-none bg-gray-200 bg-opacity-50" />
                   </label>
 
