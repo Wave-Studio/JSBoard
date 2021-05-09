@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import * as Heroicons from "@heroicons/react/outline";
 
-import JSBoardFooter from "./footer.js";
-import DashBtn from "./dashbtn";
-import Loading from "./loading";
+import JSBoardFooter from "../misc/footer.js";
+import DashBtn from "./dashbutton";
+import Loading from "../misc/loading";
 import PageError from "./error";
 import Notification from "./notification";
 

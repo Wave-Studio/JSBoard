@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
 export default class PageError extends React.Component {
   constructor(props) {
