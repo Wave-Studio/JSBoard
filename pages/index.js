@@ -2,10 +2,10 @@ import Link from "next/link";
 import useSWR from "swr";
 import * as Heroicons from "@heroicons/react/outline";
 
-import JSboardNavbar from "../components/navbar";
-import JSboardFooter from "../components/footer";
-import PageError from "../components/error";
-import Loading from "../components/loading";
+import JSboardNavbar from "../components/misc/navbar";
+import JSboardFooter from "../components/misc/footer";
+import PageError from "../components/misc/error";
+import Loading from "../components/misc/loading";
 import Forums from "../components/forums/category";
 
 import fetcher from "../lib/fetcher";

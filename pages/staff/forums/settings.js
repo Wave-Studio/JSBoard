@@ -7,9 +7,9 @@ import {
   DocumentDuplicateIcon,
 } from "@heroicons/react/outline";
 import React from "react";
-import StaffCore from "/components/core.js";
+import StaffCore from "../../components/staff/core.js";
 import useSWR from "swr";
-import fetcher from "/lib/fetcher";
+import fetcher from "../../../lib/fetcher.js";
 
 export default class Dashboard extends React.PureComponent {
   constructor(props) {
@@ -37,12 +37,12 @@ export default class Dashboard extends React.PureComponent {
   render() {
     return (
       <>
-        <StaffCore page="Customization">
+        <StaffCore page="Settings">
           <h1 className="text-3xl font-bold text-gray-200 mb-1">
-            Customization
+            Settings
           </h1>
           <h2 className="text-xl font-medium text-gray-300 mb-2">
-            Customize the sidebar and main boxes
+            Configure the sidebar and main boxes
           </h2>
           <hr className="border-blue-600 border-t-2 bg-opacity-50 w-10" />
           <div className="space-y-8 mt-10">
@@ -215,7 +215,7 @@ export default class Dashboard extends React.PureComponent {
             <div className="p-4 rounded-lg shadow w-full bg-coolGray-800">
               <h1 className="text-2xl font-semibold text-gray-200">Sidebar</h1>
               <h2 className="text-lg font-medium text-gray-300 mb-2">
-                Customize whats on the sidebar, or even create your own cutom
+                Configure whats on the sidebar, or even create your own cutom
                 sidebar boxes
               </h2>
               <form className="flex flex-wrap max-w-xl justify-center sm:justify-start items-center gap-10">

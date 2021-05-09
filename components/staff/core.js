@@ -6,8 +6,8 @@ import * as Heroicons from "@heroicons/react/outline";
 import JSBoardFooter from "../misc/footer.js";
 import DashBtn from "./dashbutton";
 import Loading from "../misc/loading";
-import PageError from "./error";
-import Notification from "./notification";
+import PageError from "../misc/error";
+import Notification from "../misc/notification";
 
 export default class StaffCore extends React.Component {
   constructor(props) {

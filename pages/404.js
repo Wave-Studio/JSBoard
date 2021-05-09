@@ -1,4 +1,4 @@
-import PageError from "../components/error";
+import PageError from "../components/misc/error";
 
 export default function Custom404() {
   return (
