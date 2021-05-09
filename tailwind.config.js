@@ -15,15 +15,13 @@ module.exports = {
         },
       },
       screens: {
-        "xs": "362px",
-      }
+        xs: "362px",
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [require("@tailwindcss/forms")],
   colors: {},
 };

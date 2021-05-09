@@ -6,15 +6,15 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/staff',
-        destination: '/staff/main/dashboard',
+        source: "/staff",
+        destination: "/staff/main/dashboard",
         permanent: true,
       },
       {
-        source: '/home',
-        destination: '/',
+        source: "/home",
+        destination: "/",
         permanent: true,
       },
-    ]
+    ];
   },
 };

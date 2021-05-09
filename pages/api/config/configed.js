@@ -7,5 +7,5 @@ import checkConfig from "../../../lib/checkConfig";
  * @param {import("http").ServerResponse} res
  */
 export default function (req, res) {
-    return res.status(200).json({ configured: checkConfig() });
+  return res.status(200).json({ configured: checkConfig() });
 }
