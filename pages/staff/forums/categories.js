@@ -1,5 +1,5 @@
 import React from "react";
-import StaffCore from "../../components/staff/core.js";
+import StaffCore from "../../../components/staff/core.js";
 
 export default function Dashboard({ children }) {
   return (

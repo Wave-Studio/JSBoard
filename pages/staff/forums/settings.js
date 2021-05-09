@@ -7,7 +7,7 @@ import {
   DocumentDuplicateIcon,
 } from "@heroicons/react/outline";
 import React from "react";
-import StaffCore from "../../components/staff/core.js";
+import StaffCore from "../../../components/staff/core.js";
 import useSWR from "swr";
 import fetcher from "../../../lib/fetcher.js";
 
