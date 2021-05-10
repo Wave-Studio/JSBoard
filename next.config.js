@@ -7,12 +7,17 @@ module.exports = {
     return [
       {
         source: "/staff",
-        destination: "/staff/main/dashboard",
+        destination: "/staff/dashboard",
         permanent: true,
       },
       {
         source: "/home",
         destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/staff/main/dashboard",
+        destination: "/staff/dashboard",
         permanent: true,
       },
     ];

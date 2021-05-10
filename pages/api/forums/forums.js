@@ -5,6 +5,7 @@ export default function handle(req, res) {
     return res.status(500).json({
       error: 500,
       description: "JSBoard is currently not configured",
+      configured: false,
     });
   return res.status(200).json({
     configured: true,

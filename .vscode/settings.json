@@ -1,5 +1,6 @@
 {
   "css.validate": false,
+  "css.lint.unknownAtRules": "ignore",
   "editor.quickSuggestions": {
     "strings": true
   }

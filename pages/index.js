@@ -30,7 +30,6 @@ export default function Home() {
       </>
     );
   if (!data.configured)
-    // Add a ! before the data.configured to disable this
     return (
       <>
         <PageError
@@ -60,7 +59,7 @@ export default function Home() {
               <Link href="/setup">
                 <a className="btn btn-lg btn-blue">Setup Page</a>
               </Link>
-              <Link href="/staff">
+              <Link href="/staff/dashboard">
                 <a className="btn btn-lg btn-blue ml-4">Staff Dashboard</a>
               </Link>
             </div>
