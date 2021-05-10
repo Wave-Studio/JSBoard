@@ -38,9 +38,7 @@ export default class Dashboard extends React.PureComponent {
     return (
       <>
         <StaffCore page="Settings">
-          <h1 className="text-3xl font-bold text-gray-200 mb-1">
-            Settings
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-200 mb-1">Settings</h1>
           <h2 className="text-xl font-medium text-gray-300 mb-2">
             Configure the sidebar and main boxes
           </h2>
