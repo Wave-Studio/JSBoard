@@ -7,11 +7,12 @@ import JSboardFooter from "../components/misc/footer";
 import PageError from "../components/misc/error";
 import Loading from "../components/misc/loading";
 import Forums from "../components/forums/category";
+import Sidebar from "../components/forums/sidebar";
 
 import fetcher from "../lib/fetcher";
 
 export default function Home() {
-  const { data, error } = useSWR("/api/forums/forums", fetcher);
+  const { data, error } = useSWR("/api/forums/forums", "/api/forums/sidebar", fetcher);
   if (error)
     return (
       <>
@@ -45,7 +46,7 @@ export default function Home() {
   return (
     <>
       <div className="bg-coolGray-700 flex-grow">
-        <JSboardNavbar />
+        <JSboardNavbar name="Home" />
         <div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
           <h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
             Insert indelible name here
@@ -69,12 +70,7 @@ export default function Home() {
               <Forums categories={data.forums} />
             </div>
             <div className="lg:pl-5">
-              <div className="flex-none rounded-md shadow-md bg-coolGray-800 py-5 mb-10 lg:w-72">
-                <h2 className="text-4xl">sidebar thing 1</h2>
-              </div>
-              <div className="flex-none rounded-md shadow-md bg-coolGray-800 py-5 mb-10">
-                <h2 className="text-4xl">sidebar thing 2</h2>
-              </div>
+              <Sidebar categories={data.sidebar} />
             </div>
           </div>
         </div>
