@@ -12,7 +12,11 @@ import Sidebar from "../components/forums/sidebar";
 import fetcher from "../lib/fetcher";
 
 export default function Home() {
-  const { data, error } = useSWR("/api/forums/forums", "/api/forums/sidebar", fetcher);
+  const { data, error } = useSWR(
+    "/api/forums/forums",
+    "/api/forums/sidebar",
+    fetcher
+  );
   if (error)
     return (
       <>
