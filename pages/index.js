@@ -50,7 +50,11 @@ export default function Home() {
   return (
     <>
       <div className="bg-coolGray-700 flex-grow">
-        <JSboardNavbar name="Home" loading={true} loadingProgress={loadingProgress} />
+        <JSboardNavbar
+          name="Home"
+          loading={true}
+          loadingProgress={loadingProgress}
+        />
         <div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
           <h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
             Insert indelible name here
