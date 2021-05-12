@@ -12,19 +12,11 @@ export default function ViewUserProfile() {
   const router = useRouter();
   const { userID } = router.query;
 
-  if (!userID)
-    return (
-      <PageError
-        code={404}
-        text="Sorry but we couldn't find what you were looking for!"
-      />
-    );
-
   const { data, error } = useSWR(
-    "http://localhost:3000/api/user/data?id=" + userID.toString(),
+    "http://localhost:3000/api/user/data?id=" + (userID || "0").toString(),
     fetcher
   );
-  console.log(error);
+
   if (error)
     return (
       <>
@@ -35,6 +27,15 @@ export default function ViewUserProfile() {
           home={false}
         />
       </>
+    );
+  if (!userID)
+    return (
+      <PageError
+        code={404}
+        text="Sorry but we couldn't find what you were looking for!"
+        back={true}
+        home={true}
+      />
     );
 
   if (!data)
@@ -52,9 +53,14 @@ export default function ViewUserProfile() {
           text="JSBoard is not configured! Please configure it"
           redirect="/setup"
           redirectname="Configure JSBoard"
-          allowhome={false}
+          back={true}
+          home={true}
         />
       </>
+    );
+  if (data.error === 404)
+    return (
+      <PageError code={404} text="User not found!" back={true} home={true} />
     );
 
   return (

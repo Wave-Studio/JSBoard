@@ -24,7 +24,7 @@ export default function handle(req, res) {
         name: "Simp for bl0x",
         description: "Just do it lel",
         redirect: "#",
-        color: "green",
+        color: "bg-green-100",
         topics: 10,
         posts: 10,
       },

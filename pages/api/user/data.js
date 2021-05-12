@@ -11,6 +11,8 @@ export default function handle(req, res) {
   if (id !== "0")
     return res.status(404).json({
       error: 404,
+      configured: true,
+      description: "User not found!",
     });
   return res.status(200).json({
     username: "Admin",

@@ -25,13 +25,6 @@ export default class Dashboard extends React.PureComponent {
 
   handleChange(event) {
     this.setState({ mainDesc: event.target.mainDesc });
-    useSWR(
-      "/api/staff/save/" +
-        event.target.mainDesc +
-        "/?desc=" +
-        event.target.mainDesc,
-      fetcher
-    );
   }
 
   render() {

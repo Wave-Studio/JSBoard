@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { AnnotationIcon } from "@heroicons/react/outline";
+import { XIcon } from "@heroicons/react/outline";
 
 export default class category extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class category extends React.Component {
             <Link href="#">
               <div className="flex-grow flex flex-row rounded-md shadow-md bg-coolGray-800 py-2 mb-5 items-center">
                 <div className="grid place-items-center align-middle rounded-full p-2 md:p-3 bg-blue-600 mx-5">
-                  <AnnotationIcon />
+                  <XIcon />
                 </div>
                 <div className="flex-grow">
                   <h2 className="text-2xl text-gray-100">{data.name}</h2>

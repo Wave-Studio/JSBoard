@@ -12,29 +12,26 @@ import Sidebar from "../components/forums/sidebar";
 import fetcher from "../lib/fetcher";
 
 export default function Home() {
-  const { data, error } = useSWR(
-    "/api/forums/forums",
-    "/api/forums/sidebar",
-    fetcher
-  );
-  if (error)
+  const forumsdata = useSWR("/api/forums/forums", fetcher);
+  const sidebardata = useSWR("/api/forums/sidebar", fetcher);
+  if (forumsdata.error || sidebardata.error)
     return (
       <>
         <PageError
           code={500}
           text="An error occured while loading this!"
-          back={false}
-          home={false}
+          back={true}
+          home={true}
         />
       </>
     );
-  if (!data)
+  if (!sidebardata.data || !forumsdata.data)
     return (
       <>
         <Loading />
       </>
     );
-  if (!data.configured)
+  if (!forumsdata.data.configured)
     return (
       <>
         <PageError
@@ -71,10 +68,10 @@ export default function Home() {
           </div>
           <div className="lg:flex w-full lg:flex-row">
             <div className="lg:w-full">
-              <Forums categories={data.forums} />
+              <Forums categories={forumsdata.data.forums} />
             </div>
             <div className="lg:pl-5">
-              <Sidebar categories={data.sidebar} />
+              <Sidebar categories={sidebardata.data.sidebar} />
             </div>
           </div>
         </div>
