@@ -14,7 +14,7 @@ import fetcher from "../lib/fetcher";
 
 export default function Home() {
   const loading = true;
-  var loadingProgress = "700";
+  var loadingProgress = "701";
   const forumsdata = useSWR("/api/forums/forums", fetcher);
   const sidebardata = useSWR("/api/forums/sidebar", fetcher);
   if (forumsdata.error || sidebardata.error)

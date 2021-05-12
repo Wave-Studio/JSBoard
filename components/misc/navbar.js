@@ -63,7 +63,7 @@ export default class JSBoardNavbar extends React.Component {
           />
         </Head>
         <div className="h-1 bg-[#282a2e]">
-          <progress id="file" max="1000" value="1000" className={"w-full m-0 " + (this.props.loading ? "" : "hidden")} />
+          <progress id="file" max="1000" value={this.props.loadingProgress} className={"w-full m-0 " + (this.props.loading ? "" : "hidden")} />
         </div>
         <div className="w-full h-16 flex items-center text-gray-100 bg-coolGray-800 shadow-lg sticky top-[-1px] z-40">
           <div className="mx-auto max-w-screen-xl px-10 font-semibold flex flex-grow">
