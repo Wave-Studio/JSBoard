@@ -1,6 +1,7 @@
 import Link from "next/link";
 import useSWR from "swr";
 import * as Heroicons from "@heroicons/react/outline";
+import { useState } from "react";
 
 import JSboardNavbar from "../components/misc/navbar";
 import JSboardFooter from "../components/misc/footer";
@@ -12,6 +13,8 @@ import Sidebar from "../components/forums/sidebar";
 import fetcher from "../lib/fetcher";
 
 export default function Home() {
+  const loading = true;
+  var loadingProgress = "700";
   const forumsdata = useSWR("/api/forums/forums", fetcher);
   const sidebardata = useSWR("/api/forums/sidebar", fetcher);
   if (forumsdata.error || sidebardata.error)
@@ -47,11 +50,11 @@ export default function Home() {
   return (
     <>
       <div className="bg-coolGray-700 flex-grow">
-        <JSboardNavbar name="Home" />
+        <JSboardNavbar name="Home" loading={true} loadingProgress={loadingProgress} />
         <div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
           <h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
             Insert indelible name here
-          </h1>{" "}
+          </h1>
           {/*add smth to look at the background and see what color it is*/}
         </div>
         <div className="container max-w-screen-xl px-6 mx-auto text-gray-200 md:px-8 lg:px-10">

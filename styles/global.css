@@ -50,3 +50,34 @@
 .expand {
   @apply transition duration-200 ease-in-out transform hover:scale-105;
 }
+
+progress[value]::-webkit-progress-bar {
+  background-color: rgb(40, 42, 46);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  margin: 0px;
+  height: 0.25rem;
+}
+
+progress[value]::-webkit-progress-value {
+  background-image:
+    -webkit-linear-gradient(cyan, green, blue);
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+progress[value]::-moz-progress-bar { 
+  background-image: 
+    -moz-linear-gradient(cyan, green, blue);
+
+  background-size: 35px 20px, 100% 100%, 100% 100%; 
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  
+  /* Get rid of default border in Firefox. */
+  border: none;
+  
+}

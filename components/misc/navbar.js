@@ -16,6 +16,7 @@ export default class JSBoardNavbar extends React.Component {
       dropdownopen: false,
     };
   }
+
   render() {
     return (
       //need to add images later
@@ -61,6 +62,9 @@ export default class JSBoardNavbar extends React.Component {
             content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png"
           />
         </Head>
+        <div className="h-1 bg-[#282a2e]">
+          <progress id="file" max="1000" value="1000" className={"w-full m-0 " + (this.props.loading ? "" : "hidden")} />
+        </div>
         <div className="w-full h-16 flex items-center text-gray-100 bg-coolGray-800 shadow-lg sticky top-[-1px] z-40">
           <div className="mx-auto max-w-screen-xl px-10 font-semibold flex flex-grow">
             <Link href="/">

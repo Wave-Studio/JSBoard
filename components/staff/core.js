@@ -144,9 +144,9 @@ export default class StaffCore extends React.Component {
               <div className="h-full">
                 {" "}
                 {/*dont touch. it works*/}
-                <div className="flex flex-col min-h-full m-6">
+                <menu className="flex flex-col min-h-full m-6">
                   {this.props.children}
-                </div>
+                </menu>
                 <Footer />
               </div>
             </div>
