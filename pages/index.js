@@ -1,7 +1,6 @@
 import Link from "next/link";
 import useSWR from "swr";
 import * as Heroicons from "@heroicons/react/outline";
-import { useState } from "react";
 
 import JSboardNavbar from "../components/misc/navbar";
 import JSboardFooter from "../components/misc/footer";
@@ -13,8 +12,9 @@ import Sidebar from "../components/forums/sidebar";
 import fetcher from "../lib/fetcher";
 
 export default function Home() {
-  const loading = true;
+  var loading = false;
   var loadingProgress = "701";
+
   const forumsdata = useSWR("/api/forums/forums", fetcher);
   const sidebardata = useSWR("/api/forums/sidebar", fetcher);
   if (forumsdata.error || sidebardata.error)
@@ -52,7 +52,7 @@ export default function Home() {
       <div className="bg-coolGray-700 flex-grow">
         <JSboardNavbar
           name="Home"
-          loading={true}
+          loading={loading}
           loadingProgress={loadingProgress}
         />
         <div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
@@ -75,10 +75,10 @@ export default function Home() {
           </div>
           <div className="lg:flex w-full lg:flex-row">
             <div className="lg:w-full">
-              <Forums categories={forumsdata.data.forums} />
+              <Forums categories={forumsdata.data.forums} loading={loading} />
             </div>
             <div className="lg:pl-5">
-              <Sidebar categories={sidebardata.data.sidebar} />
+              <Sidebar categories={sidebardata.data.sidebar} loading={loading} />
             </div>
           </div>
         </div>

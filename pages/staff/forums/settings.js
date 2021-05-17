@@ -49,7 +49,7 @@ export default class Dashboard extends React.PureComponent {
                   Name
                   <input
                     type="text"
-                    className="rounded border-none w-full bg-coolGray-700 bg-opacity-70"
+                    className="rounded border-none w-full bg-coolGray-700 bg-opacity-70 placeholder-gray-200::placeholder"
                     placeholder="Insert indelible name here"
                     maxLength="30"
                   />

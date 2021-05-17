@@ -14,9 +14,44 @@ export default class JSBoardNavbar extends React.Component {
         sitename: this.props.sitename || "Azyn",
       },
       dropdownopen: false,
+      loading: true,
+      loadingProgress: 1,
+      fadeProgress: 100,
+      style: {},
     };
   }
+  animateBar() {
+    setTimeout(() => {
+      this.setState({
+        loadingProgress: this.state.loadingProgress + 1,
+      });
+    }, 1500);
 
+    setInterval(() => {
+      if (this.state.loading) {
+        this.setState({
+          loadingProgress:
+            this.state.loadingProgress < 700
+              ? this.state.loadingProgress + 1
+              : this.state.loadingProgress > 700
+              ? this.state.loadingProgress + 1
+              : 700,
+        });
+      }
+      if (this.state.loadingProgress >= 1000) {
+        this.setState({ loading: false });
+        //  setInterval(() => {
+        //    if (!this.state.loading && this.state.loading >= 1)
+        //     this.setState({
+        //        loadingProgress:
+        //          this.state.loadingProgress < 1
+        //            ? 0
+        //            : this.state.loadingProgress - 1,
+        //      });
+        //  }, 5);
+      }
+    }, 10);
+  }
   render() {
     return (
       //need to add images later
@@ -62,8 +97,19 @@ export default class JSBoardNavbar extends React.Component {
             content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png"
           />
         </Head>
-        <div className="h-1 bg-[#282a2e]">
-          <progress id="file" max="1000" value={this.props.loadingProgress} className={"w-full m-0 " + (this.props.loading ? "" : "hidden")} />
+        {
+          // I don't know why, I don't what to know why, I shouldn't
+          // have to wonder why, but for whatever reason this stupid
+          // progressbar doesn't layout out correctly unless we do this terribleness
+        }
+        <div className="h-1 bg-coolGray-800">
+          <progress
+            id="file"
+            max="1000"
+            value={this.props.loadingProgress}
+            onLoad={this.animateBar()}
+            className={"w-full m-0 " + (this.props.loading ? "" : "hidden")}
+          />
         </div>
         <div className="w-full h-16 flex items-center text-gray-100 bg-coolGray-800 shadow-lg sticky top-[-1px] z-40">
           <div className="mx-auto max-w-screen-xl px-10 font-semibold flex flex-grow">

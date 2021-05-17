@@ -14,8 +14,8 @@ export default class PageError extends React.Component {
           <Navbar name={this.props.code} />
           <div className="flex h-full justify-center items-center">
             <div className="bg-coolGray-800 text-gray-100 rounded-md shadow-lg p-10">
-              <h2 className="text-4xl font-semibold text-center">
-                {this.props.code}
+              <h2 className="text-4xl font-semibold text-center mb-1">
+                {this.props.code + " " + this.props.text}
               </h2>
               <div className="text-xl">
                 <p className="mb-5">

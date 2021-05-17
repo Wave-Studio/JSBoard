@@ -16,7 +16,7 @@ export default class JSBoardFooter extends React.Component {
                 <p>
                   Powered by{" "}
                   <a className="text-lg font-semibold rounded-lg focus:outline-none focus:shadow-outline">
-                    <Link href="/"> JSBoard</Link>{" "}
+                    <Link href="/"> JSBoard &#169; </Link>{" "}
                   </a>
                 </p>
               </div>
