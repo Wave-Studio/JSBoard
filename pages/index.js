@@ -78,7 +78,10 @@ export default function Home() {
               <Forums categories={forumsdata.data.forums} loading={loading} />
             </div>
             <div className="lg:pl-5">
-              <Sidebar categories={sidebardata.data.sidebar} loading={loading} />
+              <Sidebar
+                categories={sidebardata.data.sidebar}
+                loading={loading}
+              />
             </div>
           </div>
         </div>
