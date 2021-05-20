@@ -65,7 +65,7 @@ export default function Home() {
           <div className="flex-grow rounded-md shadow-md bg-coolGray-800 py-5 my-10">
             <div className="mx-5 text-2xl text-gray-100">
               <h2 className="mb-4">Important Links:</h2>
-              <Link href="/setup">
+              <Link href="/forums/setup">
                 <a className="btn btn-lg btn-blue">Setup Page</a>
               </Link>
               <Link href="/staff/dashboard">

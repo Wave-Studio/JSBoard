@@ -13,6 +13,9 @@ module.exports = {
           800: "#1f2124",
           900: "#121314",
         },
+        theme: {
+          primary: "#2563EB",
+        }
       },
       screens: {
         xs: "362px",

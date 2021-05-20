@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,7 +34,7 @@
 }
 
 .btn {
-  @apply px-2 py-1 rounded-md select-none cursor-pointer focus:outline-none text-gray-100;
+  @apply px-2 py-1 rounded-md select-none cursor-pointer focus:outline-none text-gray-100 transition;
 }
 
 .btn-lg {
@@ -82,4 +84,20 @@ progress[value] {
   /* Get rid of default border in Firefox. */
   border: none;
   
+}
+
+input[type=text], input[type=checkbox], textarea {
+  @apply bg-coolGray-900 bg-opacity-50 shadow placeholder-gray-200 placeholder-opacity-50;
+}
+
+input[type=checkbox] {
+  @apply border-gray-200 border-opacity-30;
+}
+
+.shadow-green {
+  box-shadow: rgb(0 0 0 / 20%) 0px 0px 0px 1px;
+}
+
+input[type='radio'].fill-black-yes {
+  background: #121314;
 }

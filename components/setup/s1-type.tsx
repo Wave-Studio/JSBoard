@@ -1,7 +1,7 @@
 
 
 export default function step1(props) {
-		if (props.page !== 0) {
+		if (props.page !== 1) {
 				return null
 		}
 	return (
@@ -21,6 +21,14 @@ export default function step1(props) {
 									</label>
 									<label className="expand relative select-none bg-gradient-to-br from-indigo-500 to-pink-600 hover:from-indigo-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
 										Game Forum
+											<input
+													type="radio"
+													name="forumType"
+													className="rounded-full absolute bottom-[5px] right-[5px] border-none bg-gray-200 bg-opacity-50"
+											/>
+									</label>
+									<label className="expand relative select-none bg-gradient-to-br from-yellow-500  to-green-600 hover:from-yellow-600  rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
+										Management Forum
 											<input
 													type="radio"
 													name="forumType"

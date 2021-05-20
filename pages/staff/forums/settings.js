@@ -49,7 +49,7 @@ export default class Dashboard extends React.PureComponent {
                   Name
                   <input
                     type="text"
-                    className="rounded border-none w-full bg-coolGray-700 bg-opacity-70 placeholder-gray-200::placeholder"
+                    className="rounded border-none w-full "
                     placeholder="Insert indelible name here"
                     maxLength="30"
                   />
@@ -57,7 +57,7 @@ export default class Dashboard extends React.PureComponent {
                 <label>
                   Description
                   <textarea
-                    className="bg-gray-800 rounded border-none w-full h-36"
+                    className="rounded border-none w-full h-36"
                     placeholder="Welcome to my lovely forum!"
                     maxLength="1200"
                     wrap="soft"
