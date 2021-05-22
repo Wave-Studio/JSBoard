@@ -13,9 +13,8 @@ export default class category extends React.Component {
           {loadingElement()}
           {loadingElement()}
         </>
-      )
-    }
-    else {
+      );
+    } else {
       return (
         <div>
           {this.props.categories.map((data) => (
@@ -41,7 +40,9 @@ export default class category extends React.Component {
                     </h4>
                   </div>
                   <div className="hidden lg:block ml-4 mr-12">
-                    <h2 className="text-gray-200 text-lg ml-1/2">{data.posts}</h2>
+                    <h2 className="text-gray-200 text-lg ml-1/2">
+                      {data.posts}
+                    </h2>
                     <h4 className="text-gray-400 text-sm uppercase font-roboto">
                       Posts
                     </h4>
@@ -59,28 +60,26 @@ export default class category extends React.Component {
 function loadingElement() {
   return (
     <div>
-        <div className="flex-grow flex flex-row rounded-md shadow-md bg-coolGray-800 py-2 mb-5 items-center cursor-not-allowed">
-           <div className="grid place-items-center align-middle rounded-full w-11 animate-pulse h-11 md:p-3 bg-blue-500 mx-5" />
-                  <div className="flex-grow">
-                    <div className="bg-blue-500 mb-2 animate-pulse rounded h-5 w-1/2" />
-                    <div className="bg-blue-500 animate-pulse rounded h-4" />
-                  </div>
-                  <div className="hidden lg:block">
-                    <div className="animate-pulse mx-4 border border-blue-500 h-12" />
-                  </div>
-                  <div className="hidden lg:block">
-                    <div className="bg-blue-500 mb-2 animate-pulse rounded h-4" />
-                    <h4 className="text-gray-400 text-sm uppercase font-roboto">
-                      Topics
-                    </h4>
-                  </div>
-                  <div className="hidden lg:block ml-4 mr-12">
-                  <div className="bg-blue-500 mb-2 animate-pulse rounded h-4" />
-                    <h4 className="text-gray-400 text-sm uppercase font-roboto">
-                      Posts
-                    </h4>
-                  </div>
-                </div>
-          </div>
-  )
+      <div className="flex-grow flex flex-row rounded-md shadow-md bg-coolGray-800 py-2 mb-5 items-center cursor-not-allowed">
+        <div className="grid place-items-center align-middle rounded-full w-11 animate-pulse h-11 md:p-3 bg-blue-500 mx-5" />
+        <div className="flex-grow">
+          <div className="bg-blue-500 mb-2 animate-pulse rounded h-5 w-1/2" />
+          <div className="bg-blue-500 animate-pulse rounded h-4" />
+        </div>
+        <div className="hidden lg:block">
+          <div className="animate-pulse mx-4 border border-blue-500 h-12" />
+        </div>
+        <div className="hidden lg:block">
+          <div className="bg-blue-500 mb-2 animate-pulse rounded h-4" />
+          <h4 className="text-gray-400 text-sm uppercase font-roboto">
+            Topics
+          </h4>
+        </div>
+        <div className="hidden lg:block ml-4 mr-12">
+          <div className="bg-blue-500 mb-2 animate-pulse rounded h-4" />
+          <h4 className="text-gray-400 text-sm uppercase font-roboto">Posts</h4>
+        </div>
+      </div>
+    </div>
+  );
 }

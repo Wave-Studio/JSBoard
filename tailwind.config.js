@@ -15,7 +15,7 @@ module.exports = {
         },
         theme: {
           primary: "#2563EB",
-        }
+        },
       },
       screens: {
         xs: "362px",

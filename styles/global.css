@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -63,34 +63,33 @@ progress[value]::-webkit-progress-bar {
 }
 
 progress[value]::-webkit-progress-value {
-  background-image:
-    -webkit-linear-gradient(cyan, green, blue);
+  background-image: -webkit-linear-gradient(cyan, green, blue);
   background-size: 35px 20px, 100% 100%, 100% 100%;
 }
 
-progress[value]::-moz-progress-bar { 
-  background-image: 
-    -moz-linear-gradient(cyan, green, blue);
+progress[value]::-moz-progress-bar {
+  background-image: -moz-linear-gradient(cyan, green, blue);
 
-  background-size: 35px 20px, 100% 100%, 100% 100%; 
+  background-size: 35px 20px, 100% 100%, 100% 100%;
 }
 
 progress[value] {
   /* Reset the default appearance */
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  
+  -moz-appearance: none;
+  appearance: none;
+
   /* Get rid of default border in Firefox. */
   border: none;
-  
 }
 
-input[type=text], input[type=checkbox], textarea {
+input[type="text"],
+input[type="checkbox"],
+textarea {
   @apply bg-coolGray-900 bg-opacity-50 shadow placeholder-gray-200 placeholder-opacity-50;
 }
 
-input[type=checkbox] {
+input[type="checkbox"] {
   @apply border-gray-200 border-opacity-30;
 }
 
@@ -98,6 +97,6 @@ input[type=checkbox] {
   box-shadow: rgb(0 0 0 / 20%) 0px 0px 0px 1px;
 }
 
-input[type='radio'].fill-black-yes {
+input[type="radio"].fill-black-yes {
   background: #121314;
 }
