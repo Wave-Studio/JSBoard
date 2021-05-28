@@ -6,202 +6,98 @@ import {
   FireIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/outline";
-import React from "react";
+import React, { useState } from "react";
 import StaffCore from "../../../components/staff/core.js";
+import Linkmaker from "../../../components/staff/linkmaker"
 import useSWR from "swr";
 import fetcher from "../../../lib/fetcher.js";
 
-export default class Dashboard extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { value: "" };
-    this.state = {
-      storeOpen: false,
-      websiteOpen: false,
-      linkOpen: false,
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
+export default function dashboard() {
 
-  handleChange(event) {
-    this.setState({ mainDesc: event.target.mainDesc });
-  }
-
-  render() {
     return (
       <>
-        <StaffCore page="Settings">
-          <h1 className="text-3xl font-bold text-gray-200 mb-1">Settings</h1>
+      <StaffCore page="Settings">
+      <h1 className="text-3xl font-bold text-gray-200 mb-1">Settings</h1>
           <h2 className="text-xl font-medium text-gray-300 mb-2">
             Configure the sidebar and main boxes
           </h2>
           <hr className="border-blue-600 border-t-2 bg-opacity-50 w-10" />
           <div className="space-y-8 mt-10">
-            {/*Server Info*/}
-            <div className="p-4 rounded-lg shadow w-full bg-coolGray-800">
-              <h1 className="text-2xl font-semibold text-gray-200">Info</h1>
-              <h2 className="text-lg font-medium text-gray-300 mb-2">
-                The name and description of your forum, appearing on the
-                homepage
-              </h2>
-              <form className="flex flex-grow flex-col max-w-xl font-medium tracking-wide text-gray-200 space-y-4">
-                <label>
-                  Name
-                  <input
-                    type="text"
-                    className="rounded border-none w-full "
-                    placeholder="Insert indelible name here"
-                    maxLength="30"
-                  />
-                </label>
-                <label>
-                  Description
-                  <textarea
-                    className="rounded border-none w-full h-36"
-                    placeholder="Welcome to my lovely forum!"
-                    maxLength="1200"
-                    wrap="soft"
-                    value={this.state.mainDesc}
-                    onChange={this.handleChange}
-                  />
-                </label>
-                {/*Links*/}
-                <div className="flex w-full select-none ">
-                  <label>
-                    Store
-                    <input
-                      type="checkbox"
-                      className="rounded-full bg-gray-800 ml-2"
-                    />
-                  </label>
-                  <div className="flex flex-grow"></div>
-                  <span
-                    onClick={() =>
-                      this.setState({
-                        storeOpen: !this.state.storeOpen,
-                        websiteOpen: false,
-                        linkOpen: false,
-                      })
-                    }
-                  >
-                    <ChevronRightIcon
-                      className={
-                        "w-6 h-auto hover:bg-coolGray-700 hover:cursor-pointer rounded mt-1 " +
-                        (this.state.storeOpen ? "hidden" : "")
-                      }
-                    />
-                    <ChevronDownIcon
-                      className={
-                        "w-6 h-auto hover:bg-coolGray-700 hover:cursor-pointer rounded mt-1 " +
-                        (this.state.storeOpen ? "" : "hidden")
-                      }
-                    />
-                  </span>
-                </div>
-                <label className={this.state.storeOpen ? "" : "hidden"}>
-                  Link
-                  <input
-                    type="text"
-                    className="bg-gray-800 rounded border-none w-full"
-                    placeholder="https://github.com/JsServices"
-                    maxLength="30"
-                  />
-                </label>
-
-                <div className="flex w-full select-none ">
-                  <label>
-                    Website
-                    <input
-                      type="checkbox"
-                      className="rounded-full bg-gray-800 ml-2"
-                    />
-                  </label>
-                  <div className="flex flex-grow"></div>
-                  <span
-                    onClick={() =>
-                      this.setState({
-                        storeOpen: false,
-                        websiteOpen: !this.state.websiteOpen,
-                        linkOpen: false,
-                      })
-                    }
-                  >
-                    <ChevronRightIcon
-                      className={
-                        "w-6 h-auto hover:bg-coolGray-700 hover:cursor-pointer rounded mt-1 " +
-                        (this.state.websiteOpen ? "hidden" : "")
-                      }
-                    />
-                    <ChevronDownIcon
-                      className={
-                        "w-6 h-auto hover:bg-coolGray-700 hover:cursor-pointer rounded mt-1 " +
-                        (this.state.websiteOpen ? "" : "hidden")
-                      }
-                    />
-                  </span>
-                </div>
-                <label className={this.state.websiteOpen ? "" : "hidden"}>
-                  Link
-                  <input
-                    type="text"
-                    className="bg-gray-800 rounded border-none w-full"
-                    placeholder="https://github.com/JsServices/homepage"
-                    maxLength="30"
-                  />
-                </label>
-
-                <div className="flex w-full select-none ">
-                  <label>
-                    Custom Link
-                    <input
-                      type="checkbox"
-                      className="rounded-full bg-gray-800 ml-2"
-                    />
-                  </label>
-                  <div className="flex flex-grow"></div>
-                  <span
-                    onClick={() =>
-                      this.setState({
-                        storeOpen: false,
-                        websiteOpen: false,
-                        linkOpen: !this.state.linkOpen,
-                      })
-                    }
-                  >
-                    <ChevronRightIcon
-                      className={
-                        "w-6 h-auto hover:bg-coolGray-700 hover:cursor-pointer rounded mt-1 " +
-                        (this.state.linkOpen ? "hidden" : "")
-                      }
-                    />
-                    <ChevronDownIcon
-                      className={
-                        "w-6 h-auto hover:bg-coolGray-700 hover:cursor-pointer rounded mt-1 " +
-                        (this.state.linkOpen ? "" : "hidden")
-                      }
-                    />
-                  </span>
-                </div>
-                <label className={this.state.linkOpen ? "" : "hidden"}>
-                  Link
-                  <input
-                    type="text"
-                    className="bg-gray-800 rounded border-none w-full"
-                    placeholder="https://nohello.net"
-                    maxLength="50"
-                  />
-                </label>
-                <label className={this.state.linkOpen ? "" : "hidden"}>
-                  Name
-                  <input
-                    type="text"
-                    className="bg-gray-800 rounded border-none w-full"
-                    placeholder="My cool link!"
-                    maxLength="16"
-                  />
-                </label>
-              </form>
-            </div>
+      <div className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 text-gray-200">
+        {/*Section 1*/}
+        <h2 className="text-lg font-semibold text-gray-300 mb-8">
+          Let's learn some more about you
+          {/*<hr className="border-t-2 border-gray-200 border-opacity-50 " />*/}
+        </h2>
+        <div className="flex flex-col max-w-xl space-y-3 font-medium">
+          {/*Make basic info adrea for main page*/}
+          <label>
+            Name
+            <input
+              type="text"
+              className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
+              placeholder="Insert indelible name here"
+              maxLength={30}
+              autoComplete="off"
+              autoCapitalize="on"
+            />
+          </label>
+          <label>
+            Description
+            <textarea
+              className="shadow rounded border-none w-full h-36 placeholder-gray-200 placeholder-opacity-50"
+              placeholder="Welcome to my lovely forum!"
+              maxLength={1200}
+              wrap="soft"
+              autoComplete="on"
+            />
+          </label>
+          {/*Links*/}
+          <Linkmaker name="Store">
+          <label>
+            Link
+            <input
+              type="text"
+              className="bg-coolGray-700 bg-opacity-70 rounded border-none w-full placeholder-gray-200 placeholder-opacity-50"
+              placeholder="https://github.com/JsServices"
+              maxLength={30}
+              autoComplete="url"
+            />
+          </label>
+          </Linkmaker>
+          <Linkmaker name="Website">
+          <label>
+            Link
+            <input
+              type="text"
+              className="bg-coolGray-700 bg-opacity-70 rounded border-none w-full placeholder-gray-200 placeholder-opacity-50"
+              placeholder="https://github.com/JsServices/homepage"
+              maxLength={30}
+            />
+          </label>
+          </Linkmaker>
+          <Linkmaker name="Custom Link">
+          <label>
+            Link
+            <input
+              type="text"
+              className="bg-coolGray-700 bg-opacity-70 rounded border-none w-full placeholder-gray-200 placeholder-opacity-50"
+              placeholder="https://nohello.net"
+              maxLength={50}
+            />
+          </label>
+          <label>
+            Name
+            <input
+              type="text"
+              className="bg-coolGray-700 bg-opacity-70 rounded border-none w-full placeholder-gray-200 placeholder-opacity-50"
+              placeholder="My cool link!"
+              maxLength={16}
+            />
+          </label>
+          </Linkmaker>
+        </div>
+      </div>
             {/*Sidebar Options*/}
             <div className="p-4 rounded-lg shadow w-full bg-coolGray-800">
               <h1 className="text-2xl font-semibold text-gray-200">Sidebar</h1>
@@ -254,8 +150,96 @@ export default class Dashboard extends React.PureComponent {
               </h2>
             </div>
           </div>
+          <div className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 my-10 text-gray-200">
+            <h2 className="text-lg font-semibold text-gray-300 mb-4">
+              Create a theme for your forums
+              {/*<hr className="border-t-2 border-gray-200 border-opacity-50 " />*/}
+            </h2>
+            <h3 className="text-gray-200 font-medium">
+              Select one of our beautifuly handcrafted default user themes{" "}
+              <span className="font-extralight">(we reccomend dark!)</span>
+            </h3>
+            <div className="flex py-4 space-x-4">
+              <input
+                type="radio"
+                name="theme"
+                className="appearance-none transition bg-coolGray-900 text-coolGray-900 p-4 border-none focus:border-none hover:ring checked:ring cursor-pointer ring-blue-600 focus:checked:border-none focus:checked:ring-offset-coolGray-800 focus:checked:ring-black focus:checked:ring-opacity-50 ring-opacity-50 fill-black-yes"
+                defaultChecked
+              />
+              <input
+                type="radio"
+                name="theme"
+                className="appearance-none transition bg-white text-white p-4 border-none focus:border-none hover:ring checked:ring cursor-pointer ring-blue-600 focus:checked:border-none focus:checked:ring-offset-coolGray-800 focus:checked:ring-white focus:checked:ring-opacity-50 ring-opacity-50"
+              />
+            </div>
+            <h3 className="text-gray-200 font-medium">
+              Choose a luxurious accent color from our expertly-crafted color
+              palette by the makers of TailwindCSS
+            </h3>
+            <div className="flex py-4 space-x-4">
+              <input
+                type="radio"
+                name="colors"
+                className="appearance-none transition bg-blue-600 text-blue-600 p-4 border-none focus:border-none hover:ring checked:ring cursor-pointer ring-blue-600 focus:checked:border-none focus:checked:ring-offset-coolGray-800  focus:checked:ring-blue-600 focus:checked:ring-opacity-50 ring-opacity-50"
+                defaultChecked
+              />
+              <input
+                type="radio"
+                name="colors"
+                className="appearance-none transition bg-green-600 text-green-600 p-4 border-none focus:border-none hover:ring checked:ring cursor-pointer ring-green-600 focus:checked:border-none focus:checked:ring-offset-coolGray-800  focus:checked:ring-green-600 focus:checked:ring-opacity-50 ring-opacity-50"
+              />
+              <input
+                type="radio"
+                name="colors"
+                className="appearance-none transition bg-red-600 text-red-600 p-4 border-none focus:border-none hover:ring checked:ring cursor-pointer ring-red-600 focus:checked:border-none focus:checked:ring-offset-coolGray-800  focus:checked:ring-red-600 focus:checked:ring-opacity-50 ring-opacity-50"
+              />
+              <input
+                type="radio"
+                name="colors"
+                className="appearance-none transition bg-purple-600 text-purple-600 p-4 border-none focus:border-none hover:ring checked:ring cursor-pointer ring-purple-600 focus:checked:border-none focus:checked:ring-offset-coolGray-800  focus:checked:ring-purple-600 focus:checked:ring-opacity-50 ring-opacity-50"
+              />
+              <input
+                type="radio"
+                name="colors"
+                className="appearance-none transition bg-yellow-600 text-yellow-600 p-4 border-none focus:border-none hover:ring checked:ring cursor-pointer ring-yellow-600 focus:checked:border-none focus:checked:ring-offset-coolGray-800  focus:checked:ring-yellow-600 focus:checked:ring-opacity-50 ring-opacity-50"
+              />
+            </div>
+            <h3 className="text-gray-200 font-medium">
+              Pick an image or color gradient that represents your community
+            </h3>
+            <div className="border-2 border-gray-300 border-opacity-25 rounded-lg max-w-xl mt-3 p-4">
+              <div className="bg-gradient-to-r from-green-400 to-blue-600 h-12 rounded-lg relative">
+                <span className="absolute bottom-0 right-1 text-gray-400 italic flex">
+                  Preview
+                </span>
+              </div>
+              <fieldset className="border-2 border-gray-300 border-opacity-25 rounded-lg mt-3 flex justify-center">
+                <legend className="text-center px-1 font-medium">
+                  Starting Gradient
+                </legend>
+                <input
+                  type="text"
+                  className="border-none !bg-opacity-0 focus:ring-0 text-center w-full"
+                  defaultValue="#34D399"
+                  maxLength={7}
+                />
+              </fieldset>
+              <fieldset className="border-2 border-gray-300 border-opacity-25 rounded-lg mt-3 flex justify-center">
+                <legend className="text-center px-1 font-medium">
+                  Ending Gradient
+                </legend>
+                <input
+                  type="text"
+                  className="border-none !bg-opacity-0 focus:ring-0 text-center w-full"
+                  defaultValue="#2563EB"
+                  maxLength={7}
+                />
+              </fieldset>
+            </div>
+            //color picker here?
+          </div>
         </StaffCore>
       </>
     );
   }
-}
+
