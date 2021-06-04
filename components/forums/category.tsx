@@ -7,15 +7,15 @@ export default function catagory(props) {
   constructor(props) {
     super(props);
   }
-  render() {
-    if (this.props.loading == true) {
+  render() {*/
+    if (props.loading == true) {
       return (
         <>
           {loadingElement()}
           {loadingElement()}
         </>
       );
-    } else {*/
+    } else {
       return (
         <div>
           {props.categories.map((data) => (
@@ -55,7 +55,7 @@ export default function catagory(props) {
         </div>
       );
     }
-  //}
+  }
 //}
 
 function loadingElement() {

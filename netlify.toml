@@ -1,0 +1,8 @@
+[build]
+  base    = ""
+  publish = "fixtures/dom/build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

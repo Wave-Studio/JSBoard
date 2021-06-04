@@ -1,5 +1,5 @@
 module.exports = {
-  target: "serverless",
+  target: "server",
   throwIfNamespace: false,
   future: {
     webpack5: true,

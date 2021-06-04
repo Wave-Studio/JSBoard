@@ -31,28 +31,10 @@ export default function Home() {
   if (!sidebardata.data || !forumsdata.data)
     return (
       <>
-        <Loading />
-      </>
-    );
-  if (!forumsdata.data.configured)
-    return (
-      <>
-        <PageError
-          code={500}
-          text="JSBoard is not configured! Please configure it"
-          redirect="/setup"
-          redirectname="Configure JSBoard"
-          allowhome={false}
-        />
-      </>
-    );
-
-  return (
-    <>
-      <div className="bg-coolGray-700 flex-grow">
+        <div className="bg-coolGray-700 flex-grow">
         <JSboardNavbar
           name="Home"
-          loading={loading}
+          loading={true}
           loadingProgress={loadingProgress}
         />
         <div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
@@ -75,12 +57,67 @@ export default function Home() {
           </div>
           <div className="lg:flex w-full lg:flex-row">
             <div className="lg:w-full">
-              <Forums categories={forumsdata.data.forums} loading={loading} />
+              <Forums loading={true} />
+            </div>
+            <div className="lg:pl-5">
+              <Sidebar
+                
+                loading={true}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <JSboardFooter />
+      </>
+    );
+  if (!forumsdata.data.configured)
+    return (
+      <>
+        <PageError
+          code={500}
+          text="JSBoard is not configured! Please configure it"
+          redirect="/forums/setup"
+          redirectname="Configure JSBoard"
+          allowhome={false}
+        />
+      </>
+    );
+
+  return (
+    <>
+      <div className="bg-coolGray-700 flex-grow">
+        <JSboardNavbar
+          name="Home"
+          loading={false}
+          loadingProgress={loadingProgress}
+        />
+        <div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
+          <h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
+            Insert indelible name here
+          </h1>
+          {/*add smth to look at the background and see what color it is*/}
+        </div>
+        <div className="container max-w-screen-xl px-6 mx-auto text-gray-200 md:px-8 lg:px-10">
+          <div className="flex-grow rounded-md shadow-md bg-coolGray-800 py-5 my-10">
+            <div className="mx-5 text-2xl text-gray-100">
+              <h2 className="mb-4">Important Links:</h2>
+              <Link href="/forums/setup">
+                <a className="btn btn-lg btn-blue">Setup Page</a>
+              </Link>
+              <Link href="/staff/dashboard">
+                <a className="btn btn-lg btn-blue ml-4">Staff Dashboard</a>
+              </Link>
+            </div>
+          </div>
+          <div className="lg:flex w-full lg:flex-row">
+            <div className="lg:w-full">
+              <Forums categories={forumsdata.data.forums} loading={false} />
             </div>
             <div className="lg:pl-5">
               <Sidebar
                 categories={sidebardata.data.sidebar}
-                loading={loading}
+                loading={false}
               />
             </div>
           </div>
