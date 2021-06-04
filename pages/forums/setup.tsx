@@ -115,7 +115,7 @@ export default function setup(props) {
                   "btn btn-lg btn-blue mr-4 font-semibold mb-10 " +
                   ([4].includes(page) ? "" : "hidden")
                 }
-                onClick={() => saveAnswers(event)}
+                onClick={() => saveAnswers}
               />
             </form>
           </div>

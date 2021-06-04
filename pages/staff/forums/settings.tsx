@@ -139,16 +139,7 @@ export default function dashboard() {
                 </label>
               </form>
             </div>
-            {/*Possible Footer/navbar area*/}
-            <div className="p-4 rounded-lg shadow w-full bg-coolGray-800">
-              <h1 className="text-2xl font-semibold text-gray-200">
-                Something else
-              </h1>
-              <h2 className="text-lg font-medium text-gray-300 mb-2">
-                TBH idk what to put here, maybe like some sort of navbar/footer
-                thing?
-              </h2>
-            </div>
+            
           </div>
           <div className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 my-10 text-gray-200">
             <h2 className="text-lg font-semibold text-gray-300 mb-4">
@@ -238,6 +229,16 @@ export default function dashboard() {
             </div>
             //color picker here?
           </div>
+          {/*Possible Footer/navbar area*/}
+          <div className="p-4 rounded-lg shadow w-full bg-coolGray-800">
+              <h1 className="text-2xl font-semibold text-gray-200">
+                Something else
+              </h1>
+              <h2 className="text-lg font-medium text-gray-300 mb-2">
+                TBH idk what to put here, maybe like some sort of navbar/footer
+                thing?
+              </h2>
+            </div>
         </StaffCore>
       </>
     );
