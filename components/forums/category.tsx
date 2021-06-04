@@ -2,7 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { XIcon } from "@heroicons/react/outline";
 
-export default class category extends React.Component {
+export default function catagory(props) {
+/*export default class category extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -14,7 +15,7 @@ export default class category extends React.Component {
           {loadingElement()}
         </>
       );
-    } else {
+    } else {*/
       return (
         <div>
           {this.props.categories.map((data) => (
@@ -54,8 +55,8 @@ export default class category extends React.Component {
         </div>
       );
     }
-  }
-}
+  //}
+//}
 
 function loadingElement() {
   return (

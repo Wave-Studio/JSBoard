@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
-export default class sidebar extends React.Component {
+
+export default function sidebar(props) {
+/*export default class sidebar extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -28,7 +30,7 @@ export default class sidebar extends React.Component {
           </div>
         </>
       );
-    } else {
+    } else {*/
       return (
         <>
           {this.props.categories.map((data) => (
@@ -53,5 +55,5 @@ export default class sidebar extends React.Component {
         </>
       );
     }
-  }
-}
+  //}
+//}
