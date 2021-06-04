@@ -7,7 +7,7 @@ export default function sidebar(props) {
   constructor(props) {
     super(props);
   }
-  render() {
+  render() {*/
     if (this.props.loading == true) {
       return (
         <>
@@ -30,7 +30,7 @@ export default function sidebar(props) {
           </div>
         </>
       );
-    } else {*/
+    } else {
       return (
         <>
           {this.props.categories.map((data) => (
@@ -55,5 +55,5 @@ export default function sidebar(props) {
         </>
       );
     }
-  //}
+  }
 //}
