@@ -130,7 +130,7 @@ export default function setup(props) {
           code={418}
           text="I'm a teapot" // no one should actually see this page, if they did then I messed up
           back={true}
-          home={true}
+          home={false}
         />
       </>
     );

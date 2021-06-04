@@ -1,5 +1,6 @@
 import checkConfig from "../../../lib/checkConfig";
 
+
 export default function handle(req, res) {
   if (!checkConfig())
     return res.status(500).json({
@@ -15,9 +16,18 @@ export default function handle(req, res) {
       description: "User not found!",
     });
   return res.status(200).json({
-    username: "Admin",
-    pfp: "/ProfilePicture.png",
-    nickname: "Blocks",
+    username: "Blocksnmore",
+    rank: "Admin",
+    pfp: "/examplepfp.gif",
     configured: true,
+    title: "Amongus",
+    description: "works",
+    activity: {
+      seen: "10 mins ago",
+      msgs: 69,
+      posts: 1000,
+      likes: 31,
+      joined: "2021-06-02T11:04:37", //need to convert, idk how though
+    },
   });
 }

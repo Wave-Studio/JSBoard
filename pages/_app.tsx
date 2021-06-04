@@ -2,7 +2,7 @@ import "../styles/global.css";
 
 function JSboard({ Component, pageProps }) {
   return (
-    <div className="flex flex-col h-screen bg-coolGray-700">
+    <div className="flex flex-col min-h-screen bg-coolGray-700">
       <Component {...pageProps} />
     </div>
   );
