@@ -8,7 +8,7 @@ export default function sidebar(props) {
     super(props);
   }
   render() {*/
-    if (this.props.loading == true) {
+    if (props.loading == true) {
       return (
         <>
           <div>
@@ -33,7 +33,7 @@ export default function sidebar(props) {
     } else {
       return (
         <>
-          {this.props.categories.map((data) => (
+          {props.categories.map((data) => (
             <div>
               <div className="flex-none rounded-md shadow-md bg-coolGray-800 mb-10 lg:w-72 p-3 text-center">
                 <div

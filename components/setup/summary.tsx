@@ -1,5 +1,5 @@
 export default function summery(props) {
-  if (props.page !== 1) {
+  if (props.page !== 4) {
     return null;
   }
   return (

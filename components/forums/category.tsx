@@ -18,7 +18,7 @@ export default function catagory(props) {
     } else {*/
       return (
         <div>
-          {this.props.categories.map((data) => (
+          {props.categories.map((data) => (
             <div>
               <Link href="#">
                 <div className="flex-grow flex flex-row rounded-md shadow-md bg-coolGray-800 py-2 mb-5 items-center cursor-pointer">

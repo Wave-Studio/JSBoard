@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import * as Heroicons from "@heroicons/react/outline";
 
-import JSBoardFooter from "../misc/footer.js";
+import JSBoardFooter from "../misc/footer.jsx";
 import DashBtn from "./dashbutton";
 import Loading from "../misc/loading";
 import PageError from "../misc/error";

@@ -9,7 +9,7 @@ export default function step2(props) {
   const [linkOpen, setLinkOpen] = useState(false);
   const [link, setLink] = useState(false);
 
-  if (props.page !== 1) {
+  if (props.page !== 2) {
     return null;
   }
   return (

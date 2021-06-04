@@ -1,5 +1,5 @@
 export default function step3(props) {
-  if (props.page !== 1) {
+  if (props.page !== 3) {
     return null;
   }
   return (
