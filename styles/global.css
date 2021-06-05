@@ -64,7 +64,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 }
 
 .btn-white {
-  @apply text-gray-200 font-semibold hover:bg-gray-100 focus:bg-gray-50 hover:text-black;
+  @apply text-gray-200 font-semibold hover:bg-gray-100 focus:bg-opacity-50 hover:text-black;
 }
 
 .expand {
@@ -117,4 +117,8 @@ input[type="checkbox"] {
 
 input[type="radio"].fill-black-yes {
   background: #121314;
+}
+
+.link {
+  @apply text-blue-500 hover:underline
 }

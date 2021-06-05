@@ -1,7 +1,8 @@
 import checkConfig from "../../../lib/checkConfig";
-
+import { users } from "./users";
 
 export default function handle(req, res) {
+  const date = 1622832731224;
   if (!checkConfig())
     return res.status(500).json({
       error: 500,
@@ -9,25 +10,13 @@ export default function handle(req, res) {
       configured: false,
     });
   const { id } = req.query;
-  if (id !== "0")
+  if (![0, 1, 2].includes(parseInt(id)))
     return res.status(404).json({
       error: 404,
       configured: true,
       description: "User not found!",
-    });
-  return res.status(200).json({
-    username: "Blocksnmore",
-    rank: "Admin",
-    pfp: "/examplepfp.gif",
-    configured: true,
-    title: "Amongus",
-    description: "works",
-    activity: {
-      seen: "10 mins ago",
-      msgs: 69,
-      posts: 1000,
-      likes: 31,
-      joined: "2021-06-02T11:04:37", //need to convert, idk how though
-    },
-  });
+    }); 
+  return res.status(200).json(
+    users[parseInt(id)]
+  );
 }

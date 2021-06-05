@@ -21,6 +21,11 @@ module.exports = {
         destination: "/staff/dashboard",
         permanent: true,
       },
+      {
+        source: "/profile",
+        destination: "/profiles",
+        permanent: false,
+      },
     ];
   },
 };

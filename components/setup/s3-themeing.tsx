@@ -67,7 +67,7 @@ export default function step3(props) {
         </h3>
         <div className="border-2 border-gray-300 border-opacity-25 rounded-lg max-w-xl mt-3 p-4">
           <div className="bg-gradient-to-r from-green-400 to-blue-600 h-12 rounded-lg relative">
-            <span className="absolute bottom-0 right-1 text-gray-400 italic flex">
+            <span className="absolute bottom-0 right-2 text-gray-400 italic flex">
               Preview
             </span>
           </div>
