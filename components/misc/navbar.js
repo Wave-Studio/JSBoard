@@ -68,10 +68,7 @@ export default class JSBoardNavbar extends React.Component {
           {/*Open Graph / Facebook*/}
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://metatags.io/" />
-          <meta
-            property="og:title"
-            content={this.props.name + " | JSBoard"}
-          />
+          <meta property="og:title" content={this.props.name + " | JSBoard"} />
           <meta
             property="og:description"
             content="Placeholder until we add moving saving descs"
