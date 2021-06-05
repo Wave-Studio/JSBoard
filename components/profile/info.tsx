@@ -1,6 +1,6 @@
 
 
-export default function info(props: { page: number; }) {
+export default function Info(props: { page: number; }) {
 	if (props.page !== 3) {
 		return null;
 	}

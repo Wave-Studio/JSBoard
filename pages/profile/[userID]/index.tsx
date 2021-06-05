@@ -11,6 +11,8 @@ import PageError from "../../../components/misc/error";
 import fetcher from "../../../lib/fetcher";
 import Edit from "../../../components/profile/edit";
 import PP from "../../../components/profile/pp";
+import Activity from './../../../components/profile/activity';
+import Info from "../../../components/profile/info";
 
 
 
@@ -45,7 +47,7 @@ export default function ViewUserProfile() {
         <div className="flex-grow bg-coolGray-700">
           <Navbar name="Loading..." />
           <div className="max-w-screen-xl mx-auto">
-            <div className="flex flex-col md:flex-row rounded-md shadow-md flex-shrink bg-coolGray-800 p-5 my-10 text-gray-200 space-y-4 md:space-x-4 md:space-y-0">
+            <div className="flex flex-col md:flex-row rounded-md shadow-md flex-grow bg-coolGray-800 p-5 my-10 text-gray-200 space-y-4 md:space-x-4 md:space-y-0">
               <div className="flex flex-col items-center space-y-4 bg-coolGray-900 p-4 rounded-md shadow hover:shadow-xl bg-opacity-70 text-gray-200">
                 <Image
                   src="/ProfilePicture.png"
@@ -258,7 +260,7 @@ export default function ViewUserProfile() {
                 <div className="flex-none rounded-md shadow-md bg-coolGray-800 p-3 text-center">
                   <div className="from-red-600 to-yellow-600 mb-4 rounded py-2 bg-gradient-to-r opacity-90">
                     <h2 className="text-2xl opacity-100 break-words">
-                      Followers {data.followers.length}
+                      Followers ({data.followers.length})
                     </h2>
                   </div>
                   {/*Mapping*/}
@@ -288,7 +290,7 @@ export default function ViewUserProfile() {
                 <div className="flex-none rounded-md shadow-md bg-coolGray-800 p-3 text-center">
                   <div className="from-indigo-600 to-pink-600 mb-4 rounded py-2 bg-gradient-to-r opacity-90">
                     <h2 className="text-2xl opacity-100 break-words">
-                      Following {data.following.length}
+                      Following ({data.following.length})
                     </h2>
                   </div>
                   {/*Mapping*/}
@@ -357,9 +359,10 @@ export default function ViewUserProfile() {
                 </h1>
                 {editProfBtn()}
               </div>
-              <div className="flex flex-grow rounded-md bg-coolGray-800 mt-2 p-3">
+              <div className="w-full rounded-md bg-coolGray-800 mt-2 p-3">
                 <PP page={menuSel} /> 
-
+                <Activity page={menuSel} />
+                <Info page={menuSel} />
                 <Edit page={menuSel} />
               </div>
             </div>
