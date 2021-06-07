@@ -19,6 +19,12 @@ export const users = [
             configured: true,
             title: "Amongus",
             description: "works",
+            account: {
+              email: "dan-schofenhagor@gmail.com",
+              phone: null, //returning null will allow you to add a phone later
+              password: "red-sus!", //wont be stored in plaintext later, this is just for testing
+              twofa: false, //for some reason it won't let my type "2fa", idk why
+            },
             activity: {
               seen: "10 mins ago",
               msgs: 420,
@@ -59,6 +65,12 @@ export const users = [
             configured: true,
             title: "Amongus",
             description: "works",
+            account: {
+              email: "blocksnmore@yahoo.com",
+              phone: null, //returning null will allow you to add a phone later
+              password: "red-sus!", //wont be stored in plaintext later, this is just for testing
+              twofa: false, //for some reason it won't let my type "2fa", idk why
+            },
             activity: {
               seen: "10 mins ago",
               msgs: 420,
@@ -99,6 +111,12 @@ export const users = [
             configured: true,
             title: "Amongus",
             description: "works",
+            account: {
+              email: "verycool@among.us",
+              phone: null, //returning null will allow you to add a phone later
+              password: "red-sus!", //wont be stored in plaintext later, this is just for testing
+              twofa: false, //for some reason it won't let my type "2fa", idk why
+            },
             activity: {
               seen: "10 mins ago",
               msgs: 420,
@@ -120,7 +138,7 @@ export const users = [
               },
               {
                 username: 'Test Account',
-                id: 2,
+                id: 0,
                 image: '/ProfilePicture.png'
               }
             ],
@@ -138,3 +156,5 @@ export const users = [
             ]
         }
     ]
+
+

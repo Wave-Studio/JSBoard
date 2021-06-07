@@ -17,7 +17,7 @@ import Info from "../../../components/profile/info";
 
 
 export default function ViewUserProfile() {
-  const currentUser = "0";
+  const currentUser = "2"; //set what user number you are
   const router = useRouter();
   const { userID } = router.query;
   const [menuSel, setMenuSel] = useState(1);
@@ -205,7 +205,7 @@ export default function ViewUserProfile() {
       <div className="flex-grow bg-coolGray-700">
         <Navbar name={data.username + "'s Profile"} />
         <div className="max-w-screen-xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-start rounded-md shadow-md flex-shrink bg-coolGray-800 p-5 my-10 text-gray-200 space-y-4 md:space-x-4 md:space-y-0">
+          <div className="flex flex-col lg:flex-row lg:items-start rounded-md shadow-md flex-shrink bg-coolGray-800 p-5 my-10 text-gray-200 space-y-4 lg:space-x-4 lg:space-y-0">
             {/*Left Colloum */}
             <div className="flex flex-col items-center space-y-4 bg-coolGray-900 transition p-4 rounded-md shadow md:hover:shadow-xl bg-opacity-70 text-gray-200 sticky">
               <Image
@@ -362,8 +362,8 @@ export default function ViewUserProfile() {
               <div className="w-full rounded-md bg-coolGray-800 mt-2 p-3">
                 <PP page={menuSel} /> 
                 <Activity page={menuSel} />
-                <Info page={menuSel} />
-                <Edit page={menuSel} />
+                <Info page={menuSel} rank={data.rank} />
+                <Edit page={menuSel} user={data.username} email={data.account.email} phone={data.account.phone} pass={data.account.password} twofa/*2fa*/={data.account.twofa} />
               </div>
             </div>
           </div>
