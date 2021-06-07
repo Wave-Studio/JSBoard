@@ -12,6 +12,7 @@
     "@tailwindcss/forms": "^0.3.2",
     "next": "^10.2.2",
     "next-iron-session": "^4.1.13",
+    "nightwind": "^1.1.11",
     "node-fetch": "^2.6.1",
     "quick-mysql": "^1.0.2",
     "quick.db": "^7.1.3",

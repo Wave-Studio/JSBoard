@@ -1,21 +1,26 @@
 import Link from "next/link";
 import useSWR from "swr";
 import * as Heroicons from "@heroicons/react/outline";
+import nightwind from "nightwind/helper"
+import React from "react";
+import Head from "next/head"
 
-import JSboardNavbar from "../components/misc/navbar";
+
+import Navbar from "../components/misc/navbar";
 import JSboardFooter from "../components/misc/footer";
 import PageError from "../components/misc/error";
 import Loading from "../components/misc/loading";
 import Forums from "../components/forums/category";
 import Sidebar from "../components/forums/sidebar";
-
 import fetcher from "../lib/fetcher";
+
+
 
 export default function Home() {
   var loading = false;
   var loadingProgress = "701";
 
-  const forumsdata = useSWR("/api/forums/forums", fetcher);
+  const forumsdata = useSWR("/api/forums/homepage", fetcher);
   const sidebardata = useSWR("/api/forums/sidebar", fetcher);
   if (forumsdata.error || sidebardata.error)
     return (
@@ -32,8 +37,8 @@ export default function Home() {
     return (
       <>
         <div className="bg-coolGray-700 flex-grow">
-        <JSboardNavbar
-          name="Home"
+        <Navbar
+          name="Loading..."
           loading={true}
           loadingProgress={loadingProgress}
         />
@@ -61,7 +66,6 @@ export default function Home() {
             </div>
             <div className="lg:pl-5">
               <Sidebar
-                
                 loading={true}
               />
             </div>
@@ -86,8 +90,11 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <script dangerouslySetInnerHTML={{ __html: nightwind.init() }} />
+      </Head>
       <div className="bg-coolGray-700 flex-grow">
-        <JSboardNavbar
+        <Navbar
           name="Home"
           loading={false}
           loadingProgress={loadingProgress}
@@ -108,6 +115,7 @@ export default function Home() {
               <Link href="/staff/dashboard">
                 <a className="btn btn-lg btn-blue ml-4">Staff Dashboard</a>
               </Link>
+              <button onClick={() => nightwind.toggle()} className="btn btn-lg btn-blue ml-4">Light mode</button>
             </div>
           </div>
           <div className="lg:flex w-full lg:flex-row">

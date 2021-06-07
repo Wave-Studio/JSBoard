@@ -1,7 +1,7 @@
 module.exports = {
   mode: "jit",
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
       fontFamily: {
@@ -9,6 +9,9 @@ module.exports = {
       },
       colors: {
         coolGray: {
+          50: "#bac8d6",
+          100: "#d3dded",
+          200: "e6eefc",
           700: "#2C2F33",
           800: "#1f2124",
           900: "#121314",
@@ -25,6 +28,6 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [require("@tailwindcss/forms", "nightwind")],
   colors: {},
 };
