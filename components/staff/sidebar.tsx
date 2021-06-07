@@ -17,11 +17,8 @@ import {
 
 import DashButton from "./dashbutton";
 
-export default class StaffSidebar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sidebar: [
+export default function StaffSidebar() {
+      const sidebar = [
         {
           category: "Main",
           items: [
@@ -102,14 +99,12 @@ export default class StaffSidebar extends React.Component {
             />,
           ],
         },
-      ],
-    };
-  }
-  render() {
+      ]
+    
     return (
       <>
         <ul className="mx-6">
-          {this.state.sidebar.map((data) => (
+          {sidebar.map((data) => (
             <>
               <li className="mb-6">
                 <h2 className="uppercase my-2 tracking-wide font-semibold text-gray-200">
@@ -127,4 +122,3 @@ export default class StaffSidebar extends React.Component {
       </>
     );
   }
-}

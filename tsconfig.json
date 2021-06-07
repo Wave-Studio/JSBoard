@@ -19,6 +19,6 @@
     "**/*.ts",
     "**/*.tsx",
     "components/setup/s2-details.tsx"
-, "components/staff/sidebar.js", "components/staff/old%20core.js", "components/staff/core.js"  ],
+, "components/staff/sidebar.tsx", "components/staff/old%20core.js", "components/staff/core.tsx"  ],
   "exclude": ["node_modules"]
 }
