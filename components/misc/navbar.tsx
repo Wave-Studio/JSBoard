@@ -16,7 +16,7 @@ export default function Navbar(props) {
   const sitename = props.sitename || "Azyn"
 
   return (
-    //need to add images later
+    //need to add images later 
     <>
       <Head>
         <script dangerouslySetInnerHTML={{ __html: nightwind.init() }} />
