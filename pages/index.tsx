@@ -20,9 +20,9 @@ export default function Home() {
   var loading = false;
   var loadingProgress = "701";
 
-  const forumsdata = useSWR("/api/forums/homepage", fetcher);
-  const sidebardata = useSWR("/api/forums/sidebar", fetcher);
-  if (forumsdata.error || sidebardata.error)
+  const forums = useSWR("/api/forums/homepage", fetcher);
+  const sidebar = useSWR("/api/forums/sidebar", fetcher);
+  if (forums.error || sidebar.error)
     return (
       <>
         <PageError
@@ -33,7 +33,7 @@ export default function Home() {
         />
       </>
     );
-  if (!sidebardata.data || !forumsdata.data)
+  if (!sidebar.data || !forums.data)
     return (
       <>
         <div className="bg-coolGray-700 flex-grow">
@@ -75,7 +75,7 @@ export default function Home() {
       <JSboardFooter />
       </>
     );
-  if (!forumsdata.data.configured)
+  if (!forums.data.configured)
     return (
       <>
         <PageError
@@ -106,25 +106,22 @@ export default function Home() {
           {/*add smth to look at the background and see what color it is*/}
         </div>
         <div className="container max-w-screen-xl px-6 mx-auto text-gray-200 md:px-8 lg:px-10">
-          <div className="flex-grow rounded-md shadow-md bg-coolGray-800 py-5 my-10">
-            <div className="mx-5 text-2xl text-gray-100">
-              <h2 className="mb-4">Important Links:</h2>
-              <Link href="/forums/setup">
-                <a className="btn btn-lg btn-blue">Setup Page</a>
-              </Link>
-              <Link href="/staff/dashboard">
-                <a className="btn btn-lg btn-blue ml-4">Staff Dashboard</a>
-              </Link>
-              <button onClick={() => nightwind.toggle()} className="btn btn-lg btn-blue ml-4">Light mode</button>
-            </div>
+          <div className="rounded-md shadow-md bg-coolGray-800 p-5 my-10 space-x-3">
+            <p>
+              <span className="font-bold">this would be replaced with markdown for whatever the server wanted here </span>
+              {forums.data.description}
+            </p>
+            {forums.data.store ? <a href={forums.data.storeLink} className="text-gray-200 px-3 py-0.5 bg-red-500 inline-flex mt-3 items-center rounded-full font-medium"><Heroicons.ShoppingCartIcon className="h-5 w-5 mr-1" />Store</a> : ""}
+            {forums.data.website ? <a href={forums.data.websiteLink} className="text-gray-200 px-3 py-0.5 bg-theme-primary inline-flex mt-3 items-center rounded-full font-medium"><Heroicons.GlobeAltIcon className="h-5 w-5 mr-1" />Website</a> : ""}
+            {forums.data.custom ? <a href={forums.data.customLink} className="text-gray-200 px-3 py-0.5 bg-green-700 inline-flex mt-3 items-center rounded-full font-medium"><Heroicons.BeakerIcon className="h-5 w-5 mr-1" />{forums.data.customName}</a> : ""}
           </div>
           <div className="lg:flex w-full lg:flex-row">
             <div className="lg:w-full">
-              <Forums categories={forumsdata.data.forums} loading={false} />
+              <Forums categories={forums.data.forums} loading={false} />
             </div>
             <div className="lg:pl-5">
               <Sidebar
-                categories={sidebardata.data.sidebar}
+                categories={sidebar.data.sidebar}
                 loading={false}
               />
             </div>
