@@ -116,6 +116,7 @@ export default function Navbar(props) {
                 </span>
               </Link>
             </div>
+            <button onClick={() => nightwind.toggle()}>light mode</button>
           </div>
         </div>
       </div>

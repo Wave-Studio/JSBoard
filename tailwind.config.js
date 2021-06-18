@@ -28,6 +28,6 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/forms", "nightwind")],
+  plugins: [require("@tailwindcss/forms"),require("nightwind")],
   colors: {},
 };
