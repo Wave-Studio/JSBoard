@@ -40,20 +40,22 @@ export default function Home() {
           />
           <div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
             <h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
-              Insert indelible name here
+              <div className="animate-pulse mx-4 bg-blue-500 h-12 w-2/5 rounded" />
             </h1>
             {/*add smth to look at the background and see what color it is*/}
           </div>
           <div className="container max-w-screen-xl px-6 mx-auto text-gray-200 md:px-8 lg:px-10">
             <div className="flex-grow rounded-md shadow-md bg-coolGray-800 py-5 my-10">
-              <div className="mx-5 text-2xl text-gray-100">
-                <h2 className="mb-4">Important Links:</h2>
-                <Link href="/forums/setup">
-                  <a className="btn btn-lg btn-blue">Setup Page</a>
-                </Link>
-                <Link href="/staff/dashboard">
-                  <a className="btn btn-lg btn-blue ml-4">Staff Dashboard</a>
-                </Link>
+              <div className="space-y-2">
+                <div className="animate-pulse mx-4 bg-blue-500 h-10 w-2/5 rounded mb-4" />
+                <div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
+                <div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
+                <div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
+                <div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
+                <div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
+                <div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
+                <div className="animate-pulse mx-4 bg-blue-500 h-4 w-3/5 rounded" />
+                
               </div>
             </div>
             <div className="lg:flex w-full lg:flex-row">
