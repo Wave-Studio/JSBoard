@@ -19,7 +19,7 @@ export default function Navbar(props) {
     //need to add images later 
     <>
       <Head>
-        <script dangerouslySetInnerHTML={{ __html: nightwind.init() }} />
+        
         {/*Primary Meta Tags*/}
         <title>{props.name + " | JSBoard"}</title>
         <meta name="title" content={props.name + " | JSBoard"} />
