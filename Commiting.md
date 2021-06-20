@@ -2,7 +2,7 @@
 
 ## Formats:
 
-```Please select one of the following formats when creating an issue
+````Please select one of the following formats when creating an issue
 
 - New feature [Tested]
 - Bug fix - New feature [Untested]```
@@ -30,4 +30,4 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
-```
+````

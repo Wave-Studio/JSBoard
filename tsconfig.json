@@ -18,7 +18,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/setup/s2-details.tsx"
-, "components/staff/sidebar.tsx", "components/staff/old%20core.js", "components/staff/core.tsx"  ],
+    "components/setup/s2-details.tsx",
+    "components/staff/sidebar.tsx",
+    "components/staff/old%20core.js",
+    "components/staff/core.tsx"
+  ],
   "exclude": ["node_modules"]
 }

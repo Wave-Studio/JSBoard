@@ -11,10 +11,8 @@ import PageError from "../../../components/misc/error";
 import fetcher from "../../../lib/fetcher";
 import Edit from "../../../components/profile/edit";
 import PP from "../../../components/profile/pp";
-import Activity from './../../../components/profile/activity';
+import Activity from "./../../../components/profile/activity";
 import Info from "../../../components/profile/info";
-
-
 
 export default function ViewUserProfile() {
   const currentUser = "2"; //set what user number you are
@@ -125,11 +123,7 @@ export default function ViewUserProfile() {
               </div>
               {/*Right Colloum */}
               <div className="flex flex-col items-center flex-grow space-y-4 bg-coolGray-900 transition p-4 rounded-md shadow md:hover:shadow-xl bg-opacity-70">
-                <div
-                  className=
-                    "w-full rounded-md h-48 bg-gradient-to-br from-theme-primary to-green-500 relative "
-                  
-                />
+                <div className="w-full rounded-md h-48 bg-gradient-to-br from-theme-primary to-green-500 relative " />
                 {/*selector */}
                 <div className="rounded-md flex flex-wrap p-1.5 bg-coolGray-800 gap-2 font-semibold">
                   <h1
@@ -159,11 +153,8 @@ export default function ViewUserProfile() {
                   >
                     Information
                   </h1>
-                  
                 </div>
-                <div className="flex w-full rounded-md bg-coolGray-800 mt-2">
-                  
-                </div>
+                <div className="flex w-full rounded-md bg-coolGray-800 mt-2"></div>
               </div>
             </div>
           </div>
@@ -360,10 +351,17 @@ export default function ViewUserProfile() {
                 {editProfBtn()}
               </div>
               <div className="w-full rounded-md bg-coolGray-800 mt-2 p-3">
-                <PP page={menuSel} /> 
+                <PP page={menuSel} />
                 <Activity page={menuSel} />
                 <Info page={menuSel} rank={data.rank} />
-                <Edit page={menuSel} user={data.username} email={data.account.email} phone={data.account.phone} pass={data.account.password} twofa/*2fa*/={data.account.twofa} />
+                <Edit
+                  page={menuSel}
+                  user={data.username}
+                  email={data.account.email}
+                  phone={data.account.phone}
+                  pass={data.account.password}
+                  twofa /*2fa*/={data.account.twofa}
+                />
               </div>
             </div>
           </div>
@@ -375,20 +373,19 @@ export default function ViewUserProfile() {
 
   function editProfBtn() {
     if (userID !== currentUser) {
-      return null
+      return null;
     } else {
       return (
         <h1
-        className={
+          className={
             "cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
-                    ([4].includes(menuSel) ? "bg-coolGray-900 " : "")}
-                  onClick={() => setMenuSel(4)}
-                >
-                  Edit Profile
-                </h1>
-      )
-      }
+            ([4].includes(menuSel) ? "bg-coolGray-900 " : "")
+          }
+          onClick={() => setMenuSel(4)}
+        >
+          Edit Profile
+        </h1>
+      );
+    }
   }
 }
-
-

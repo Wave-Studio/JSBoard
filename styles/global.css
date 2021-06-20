@@ -120,5 +120,5 @@ input[type="radio"].fill-black-yes {
 }
 
 .link {
-  @apply text-blue-500 hover:underline
+  @apply text-blue-500 hover:underline;
 }

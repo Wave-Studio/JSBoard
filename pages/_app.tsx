@@ -1,6 +1,6 @@
 import "../styles/global.css";
 import nightwind from "nightwind/helper";
-import Head from "next/head"
+import Head from "next/head";
 
 function JSboard({ Component, pageProps }) {
   return (

@@ -55,7 +55,6 @@ export default function Home() {
                 <div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
                 <div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
                 <div className="animate-pulse mx-4 bg-blue-500 h-4 w-3/5 rounded" />
-                
               </div>
             </div>
             <div className="lg:flex w-full lg:flex-row">
@@ -151,5 +150,3 @@ export default function Home() {
     </>
   );
 }
-
-

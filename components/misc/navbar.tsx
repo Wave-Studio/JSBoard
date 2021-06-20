@@ -2,24 +2,21 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { XIcon, MenuAlt3Icon } from "@heroicons/react/outline";
 import Head from "next/head";
-import nightwind from "nightwind/helper"
-
-
+import nightwind from "nightwind/helper";
 
 export default function Navbar(props) {
-  const [dropDownOpen, setDropDownOpen] = useState(false)
-  const loading = false
-  const [loadingProgress, setLoadingProgress] = useState(1)
-  const username = props.username || "Guest"
-  const loggedin = props.loggedin || false
-  const admin = props.admin || false
-  const sitename = props.sitename || "Azyn"
+  const [dropDownOpen, setDropDownOpen] = useState(false);
+  const loading = false;
+  const [loadingProgress, setLoadingProgress] = useState(1);
+  const username = props.username || "Guest";
+  const loggedin = props.loggedin || false;
+  const admin = props.admin || false;
+  const sitename = props.sitename || "Azyn";
 
   return (
-    //need to add images later 
+    //need to add images later
     <>
       <Head>
-        
         {/*Primary Meta Tags*/}
         <title>{props.name + " | JSBoard"}</title>
         <meta name="title" content={props.name + " | JSBoard"} />
@@ -43,10 +40,7 @@ export default function Navbar(props) {
 
         {/*Twitter*/}
         <meta property="twitter:url" content="https://metatags.io/" />
-        <meta
-          property="twitter:title"
-          content={props.name + " | JSBoard"}
-        />
+        <meta property="twitter:title" content={props.name + " | JSBoard"} />
         <meta
           property="twitter:description"
           content="Placeholder until we add moving saving descriptions"
@@ -70,7 +64,7 @@ export default function Navbar(props) {
           className={"w-full m-0 " + (props.loading ? "" : "hidden")}
         />
       </div>
-      { /*Actual Navbar start here */}
+      {/*Actual Navbar start here */}
       <div className="w-full h-16 flex items-center text-gray-100 bg-coolGray-800 shadow-lg sticky top-[-1px] z-40">
         <div className="mx-auto max-w-screen-xl px-10 font-semibold flex flex-grow">
           <Link href="/">
@@ -79,8 +73,8 @@ export default function Navbar(props) {
           <div className="flex flex-grow flex-row-reverse">
             <div
               className="text-gray-200 md:hidden bg-coolGray-700 p-2 rounded-full hover:opacity-70"
-              onClick={() =>
-                setDropDownOpen(!dropDownOpen) //mobile nav is unfinished
+              onClick={
+                () => setDropDownOpen(!dropDownOpen) //mobile nav is unfinished
               }
             >
               <span className={dropDownOpen ? "hidden" : ""}>
@@ -92,28 +86,18 @@ export default function Navbar(props) {
             </div>
             <div className="btn btn-white">
               <Link href="/signup">
-                <span
-                  className={
-                    "bg-coolGray-700" + !loggedin ? "" : "hidden"
-                  }
-                >
+                <span className={"bg-coolGray-700" + !loggedin ? "" : "hidden"}>
                   Sign Up
                 </span>
               </Link>
 
               <Link href={"/profiles/" + username}>
-                <span
-                  className={
-                    loggedin && !admin ? "" : "hidden"
-                  }
-                >
+                <span className={loggedin && !admin ? "" : "hidden"}>
                   Profile
                 </span>
               </Link>
               <Link href="/staff/dashboard">
-                <span className={admin ? "" : "hidden"}>
-                  Dashboard
-                </span>
+                <span className={admin ? "" : "hidden"}>Dashboard</span>
               </Link>
             </div>
             <button onClick={() => nightwind.toggle()}></button>
@@ -122,5 +106,4 @@ export default function Navbar(props) {
       </div>
     </>
   );
-
- }
+}

@@ -3,59 +3,57 @@ import Link from "next/link";
 import { XIcon } from "@heroicons/react/outline";
 
 export default function catagory(props) {
-/*export default class category extends React.Component {
+  /*export default class category extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {*/
-    if (props.loading == true) {
-      return (
-        <>
-          {loadingElement()}
-          {loadingElement()}
-        </>
-      );
-    } else {
-      return (
-        <div>
-          {props.categories.map((data) => (
-            <div>
-              <Link href="#">
-                <div className="flex-grow flex flex-row rounded-md shadow-md bg-coolGray-800 py-2 mb-5 items-center cursor-pointer">
-                  <div className="grid place-items-center align-middle rounded-full p-2 md:p-3 bg-blue-600 mx-5">
-                    <XIcon />
-                  </div>
-                  <div className="flex-grow">
-                    <h2 className="text-2xl text-gray-100">{data.name}</h2>
-                    <p className="text-gray-300 ">{data.description}</p>
-                  </div>
-                  <div className="hidden lg:block">
-                    <div className="mx-4 border border-blue-600 h-12" />
-                  </div>
-                  <div className="hidden lg:block">
-                    <h2 className="text-gray-200 text-lg ml-1/2">
-                      {data.topics}
-                    </h2>
-                    <h4 className="text-gray-400 text-sm uppercase font-roboto">
-                      Topics
-                    </h4>
-                  </div>
-                  <div className="hidden lg:block ml-4 mr-12">
-                    <h2 className="text-gray-200 text-lg ml-1/2">
-                      {data.posts}
-                    </h2>
-                    <h4 className="text-gray-400 text-sm uppercase font-roboto">
-                      Posts
-                    </h4>
-                  </div>
+  if (props.loading == true) {
+    return (
+      <>
+        {loadingElement()}
+        {loadingElement()}
+      </>
+    );
+  } else {
+    return (
+      <div>
+        {props.categories.map((data) => (
+          <div>
+            <Link href="#">
+              <div className="flex-grow flex flex-row rounded-md shadow-md bg-coolGray-800 py-2 mb-5 items-center cursor-pointer">
+                <div className="grid place-items-center align-middle rounded-full p-2 md:p-3 bg-blue-600 mx-5">
+                  <XIcon />
                 </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-      );
-    }
+                <div className="flex-grow">
+                  <h2 className="text-2xl text-gray-100">{data.name}</h2>
+                  <p className="text-gray-300 ">{data.description}</p>
+                </div>
+                <div className="hidden lg:block">
+                  <div className="mx-4 border border-blue-600 h-12" />
+                </div>
+                <div className="hidden lg:block">
+                  <h2 className="text-gray-200 text-lg ml-1/2">
+                    {data.topics}
+                  </h2>
+                  <h4 className="text-gray-400 text-sm uppercase font-roboto">
+                    Topics
+                  </h4>
+                </div>
+                <div className="hidden lg:block ml-4 mr-12">
+                  <h2 className="text-gray-200 text-lg ml-1/2">{data.posts}</h2>
+                  <h4 className="text-gray-400 text-sm uppercase font-roboto">
+                    Posts
+                  </h4>
+                </div>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+    );
   }
+}
 //}
 
 function loadingElement() {

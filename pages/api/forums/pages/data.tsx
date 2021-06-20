@@ -15,8 +15,6 @@ export default function handle(req, res) {
       error: 404,
       configured: true,
       description: "User not found!",
-    }); 
-  return res.status(200).json(
-    forums[parseInt(id)]
-  );
+    });
+  return res.status(200).json(forums[parseInt(id)]);
 }
