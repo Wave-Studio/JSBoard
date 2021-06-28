@@ -1,9 +1,6 @@
 module.exports = {
   target: "serverless",
   throwIfNamespace: false,
-  future: {
-    webpack5: true,
-  },
   async redirects() {
     return [
       {
