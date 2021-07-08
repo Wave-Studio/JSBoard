@@ -6,7 +6,7 @@ import React from "react";
 import Head from "next/head";
 
 import Navbar from "../components/misc/navbar";
-import JSboardFooter from "../components/misc/footer";
+import Footer from "../components/misc/footer";
 import PageError from "../components/misc/error";
 import Forums from "../components/forums/category";
 import Sidebar from "../components/forums/sidebar";
@@ -67,7 +67,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <JSboardFooter />
+        <Footer />
       </>
     );
   if (!forums.data.configured)
@@ -146,7 +146,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <JSboardFooter />
+      <Footer />
     </>
   );
 }

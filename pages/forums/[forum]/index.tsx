@@ -14,4 +14,13 @@ export default function ViewUserProfile() {
     "/api/user/data?id=" + (userID || "0").toString(),
     fetcher
   );
+  return (
+    <>
+    <div className="bg-coolGray-700 flex-grow">
+      <Navbar name="Loading..."/>
+        <a>beans</a>
+      <Footer />
+      </div>
+    </>
+  )
 }

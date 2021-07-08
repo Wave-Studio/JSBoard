@@ -3,11 +3,7 @@ import Link from "next/link";
 import { XIcon } from "@heroicons/react/outline";
 
 export default function catagory(props) {
-  /*export default class category extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {*/
+  
   if (props.loading == true) {
     return (
       <>
@@ -54,7 +50,6 @@ export default function catagory(props) {
     );
   }
 }
-//}
 
 function loadingElement() {
   return (
