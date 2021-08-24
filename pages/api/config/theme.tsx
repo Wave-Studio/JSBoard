@@ -1,17 +1,14 @@
-import fs from 'fs';
-import checkConfig from '../../../lib/checkConfig';
+import fs from "fs";
+import checkConfig from "../../../lib/checkConfig";
 
 export default function (req, res) {
-	if (!checkConfig()) {
-		return res.status(200).json({ configured: false });
-	} else {
-		return res
-			.status(200)
-			.json({
-				configured: true,
-				theme: JSON.parse(
-					fs.readFileSync('./.jsboard/config.json', 'utf-8')
-				).theme,
-			});
-	}
+  if (!checkConfig()) {
+    return res.status(200).json({ configured: false });
+  } else {
+    return res.status(200).json({
+      configured: true,
+      theme: JSON.parse(fs.readFileSync("./.jsboard/config.json", "utf-8"))
+        .theme,
+    });
+  }
 }

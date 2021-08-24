@@ -1,6 +1,11 @@
-module.exports = {
+const withPWA = require("next-pwa");
+
+module.exports = withPWA({
   target: "serverless",
   throwIfNamespace: false,
+  pwa: {
+    dest: "public",
+  },
   async redirects() {
     return [
       {
@@ -25,4 +30,4 @@ module.exports = {
       },
     ];
   },
-};
+});

@@ -1,0 +1,35 @@
+{
+  "name": "JSBoard - Next generation forums software",
+  "short_name": "JSBoard",
+  "icons": [
+    {
+      "src": "/ProfilePicture.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/ProfilePicture.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "short_name": "Profile",
+      "description": "View Your Profile",
+      "url": "/profile/",
+      "icons": [{ "src": "/ProfilePicture.png", "sizes": "192x192" }]
+    }
+  ],
+  "theme_color": "#2563EB",
+  "background_color": "#121314",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}

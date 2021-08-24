@@ -3,7 +3,6 @@ import Link from "next/link";
 import { XIcon } from "@heroicons/react/outline";
 
 export default function catagory(props) {
-  
   if (props.loading == true) {
     return (
       <>

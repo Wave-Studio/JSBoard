@@ -19,7 +19,9 @@ export default class JSBoardFooter extends React.Component {
                   <a className="text-lg font-semibold rounded-lg focus:outline-none focus:shadow-outline">
                     <Link href="/"> JSBoard &#169; </Link>{" "}
                   </a>
-                  <button className='btn' onClick={() => nightwind.toggle()}><p>Toggle Theme</p></button>
+                  <button className="btn" onClick={() => nightwind.toggle()}>
+                    <p>Toggle Theme</p>
+                  </button>
                 </p>
               </div>
             </div>

@@ -16,11 +16,11 @@ export default function ViewUserProfile() {
   );
   return (
     <>
-    <div className="bg-coolGray-700 flex-grow">
-      <Navbar name="Loading..."/>
+      <div className="bg-coolGray-700 flex-grow">
+        <Navbar name="Loading..." />
         <a>beans</a>
-      <Footer />
+        <Footer />
       </div>
     </>
-  )
+  );
 }

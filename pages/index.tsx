@@ -1,7 +1,7 @@
 import Link from "next/link";
 import useSWR from "swr";
 import * as Heroicons from "@heroicons/react/outline";
-import nightwind from "nightwind/helper";
+
 import React from "react";
 import Head from "next/head";
 
