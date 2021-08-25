@@ -14,7 +14,7 @@
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=for-the-badge)](https://github.com/RichardLitt/standard-readme)
 
 
-JSBoard is a next-generation, community-first forum software written using Nextjs. Currently JSBoard is in development and **NOT** stable for production. It's designed to be simple to use while also offering extensive configuration and management to fit perfectly within any community of any scale.
+JSBoard is a next-generation, community-first forum software written using Nextjs. Currently JSBoard is in development and **NOT** stable for production. It's designed to be simple to use while also offering extensive configuration and management to fit perfectly within any community of any scale. For support please visit [**our discord**](https://discord.gg/jV5Jvt7z)
 
 ## Table of Contents
 
