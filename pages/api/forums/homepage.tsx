@@ -1,6 +1,12 @@
 import checkConfig from "../../../lib/checkConfig";
+import { Database } from "quickmongo";
+const db = new Database("todo: add url");
 
 export default function handle(req, res) {
+  // We do immense amounts of targeted tomfoolery
+  db.set("foo", "bar");
+  const foo = db.get("foo");
+  db.disconnect(); 
   if (!checkConfig())
     return res.status(500).json({
       error: 500,
