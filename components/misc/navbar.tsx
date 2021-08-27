@@ -20,7 +20,7 @@ export default function Navbar(props) {
         {/*Primary Meta Tags*/}
         <title>{props.name + " | JSBoard"}</title>
         <meta name="title" content={props.name + " | JSBoard"} />
-        
+
         <meta
           name="description"
           content="Placeholder until we add moving saving descriptions"

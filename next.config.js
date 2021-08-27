@@ -5,7 +5,7 @@ module.exports = withPWA({
   throwIfNamespace: false,
   pwa: {
     dest: "public",
-    disable: process.env.NODE_ENV === 'development',
+    disable: process.env.NODE_ENV === "development",
   },
   async redirects() {
     return [

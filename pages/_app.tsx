@@ -1,5 +1,5 @@
 import "../styles/global.css";
-import nightwind from 'nightwind/helper';
+import nightwind from "nightwind/helper";
 import Head from "next/head";
 
 export default function JSboard({ Component, pageProps }) {

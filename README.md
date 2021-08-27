@@ -13,7 +13,6 @@
 [![forthebadge](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)](https://forthebadge.com)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=for-the-badge)](https://github.com/RichardLitt/standard-readme)
 
-
 JSBoard is a next-generation, community-first forum software written using Nextjs. Currently JSBoard is in development and **NOT** stable for production. It's designed to be simple to use while also offering extensive configuration and management to fit perfectly within any community of any scale. For support please visit [**our discord**](https://discord.gg/jV5Jvt7z)
 
 ## Table of Contents
@@ -31,9 +30,10 @@ See [the contributing file](Commiting.md)! We love more people to help with this
 
 ## Bugs
 
-If you belive you have found a bug then do the following: 
+If you belive you have found a bug then do the following:
+
 1. Create a **clean** install of JSBoard.
-2. Attempt to reproduce the bug. Confirm its *actually* a bug and not user error.
+2. Attempt to reproduce the bug. Confirm its _actually_ a bug and not user error.
 3. If you can reproduce it, then file a bug report [here](https://github.com/wave-studio/JSBoard/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBug%5D+%3CInsert+your+title+here%3E). In some cases you may need to keep the repo and publish it to github so we can see the issue for ourselves.
 
 ## Feature Requests
@@ -57,13 +57,9 @@ Next up, we have the "jsboard-frontend" written in plain html with ejs (which is
 
 Today of course we have the look of todays JSBoard. Honestly theres a lot of new design stuff I'd (quick007) love to throw at it someday, but for now your going to have to like the playful stacked boxes theme I've created.
 
-
-
 ## Addon-API
 
 Learn how to create an addon [here](https://github.com/wave-studio/JSBoard/wiki/Creating-an-Addon)
-
-
 
 PRs accepted (read the [contributing section](#contributing)!1!1)
 
