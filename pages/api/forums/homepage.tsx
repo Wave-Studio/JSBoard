@@ -1,14 +1,24 @@
 import checkConfig from "../../../lib/checkConfig";
 import { Database } from "quickmongo";
-//const db = new Database("");
+const db = new Database(process.env.DB_LINK);
 
-export default function handle(req, res) {
+export default async function handle(req, res) {
   // We do immense amounts of targeted tomfoolery
   
-  /*db.on("ready", () => {
+  db.on("ready", () => {
     console.log("Database connected!");
   });
-  db.disconnect(); */
+  //db.set("org-name", "bar");
+
+  var name = await db.get("org-name");
+  if (name == null) {
+    db.set("org-name", "Insert indelible name here");
+    name = "Insert indelible name here"
+  }
+
+  var info = await db.get("main-page-info");
+  
+  //db.disconnect(); 
   if (!checkConfig())
     return res.status(500).json({
       error: 500,
@@ -47,5 +57,8 @@ export default function handle(req, res) {
     custom: true,
     customName: "Among", //custom link also gets a name
     customLink: "https://example.com",
+    name: name
+    
   });
+  
 }

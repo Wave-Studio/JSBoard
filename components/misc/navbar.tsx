@@ -20,7 +20,7 @@ export default function Navbar(props) {
         {/*Primary Meta Tags*/}
         <title>{props.name + " | JSBoard"}</title>
         <meta name="title" content={props.name + " | JSBoard"} />
-        <meta name="theme_color" content="2563EB" />
+        
         <meta
           name="description"
           content="Placeholder until we add moving saving descriptions"
@@ -65,7 +65,7 @@ export default function Navbar(props) {
           className={"w-full m-0 " + (props.loading ? "" : "hidden")}
         />
       </div>
-      {/*Actual Navbar start here */}
+      {/*Actual Navbar starts here */}
       <div className="w-full h-16 flex items-center text-gray-100 bg-coolGray-800 shadow-lg sticky top-[-1px] z-40">
         <div className="mx-auto max-w-screen-xl px-10 font-semibold flex flex-grow">
           <Link href="/">
