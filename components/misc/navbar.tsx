@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { XIcon, MenuAlt3Icon } from "@heroicons/react/outline";
+import { XIcon, MenuAlt3Icon, SparklesIcon, SunIcon } from "@heroicons/react/outline";
 import Head from "next/head";
 import nightwind from "nightwind/helper";
+
 
 export default function Navbar(props) {
   const [dropDownOpen, setDropDownOpen] = useState(false);
@@ -12,8 +13,11 @@ export default function Navbar(props) {
   const loggedin = props.loggedin || false;
   const admin = props.admin || false;
   const sitename = props.sitename || "Azyn";
-
+  const [darkModeLoc, setDarkModeLoc] = useState(true);
+  
   return (
+    
+    
     //need to add images later
     <>
       <Head>
@@ -101,10 +105,20 @@ export default function Navbar(props) {
                 <span className={admin ? "" : "hidden"}>Dashboard</span>
               </Link>
             </div>
-            <button onClick={() => nightwind.toggle()}></button>
+            <button onClick={() => nightwind.enable(darkModeLoc)}></button>
+          </div>
+          
+          <div className="has-tooltip relative nightwind-prevent" onClick={() => nightwind.enable(darkModeLoc)}>
+            <button className={"p-4 nightwind-prevent relative rounded-full ml-2 transition cursor-pointer duration-700 hover:duration-500 " + (darkModeLoc ? "bg-blue-800 hover:rotate-12" : "bg-yellow-400 rotate-180 hover:rotate-90")} onClick={() => setDarkModeLoc(!darkModeLoc)} aria-label="Switch to dark theme">  
+              <SparklesIcon className={"w-6 h-6 nightwind-prevent absolute bottom-1 right-1 transition duration-700 " + (darkModeLoc ? "" : "hidden")}  />
+              <SunIcon className={"w-6 h-6 nightwind-prevent absolute bottom-1 right-1 transition duration-700 text-gray-900 " + (darkModeLoc ? "hidden" : "")}  />
+              
+            </button>
+            <span className="tooltip nightwind-prevent rounded shadow-lg p-1 bg-gray-200 bg-opacity-30 backdrop-filter backdrop-blur-3xl backdrop-saturate-150 text-gray-100 mt-14 whitespace-nowrap -left-14">Switch to {darkModeLoc ? "light" : "dark"} mode</span>
           </div>
         </div>
       </div>
     </>
   );
 }
+
