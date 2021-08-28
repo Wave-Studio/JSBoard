@@ -105,7 +105,7 @@ export default function Navbar(props) {
                 <span className={admin ? "" : "hidden"}>Dashboard</span>
               </Link>
             </div>
-            <button onClick={() => nightwind.enable(darkModeLoc)}></button>
+            
           </div>
           
           <div className="has-tooltip relative nightwind-prevent" onClick={() => nightwind.enable(darkModeLoc)}>

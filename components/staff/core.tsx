@@ -58,7 +58,7 @@ export default function StaffCore(props) {
           </div>
           {/*Profile popup*/}
           <div className={profileOpen ? "" : "hidden"}>
-            <div className="flex flex-col py-1 text-gray-300 text-lg rounded bg-coolGray-800 bg-opacity-30 mx-2 space-y-2">
+            <div className="flex flex-col py-1 text-gray-300 text-lg rounded bg-coolGray-800 bg-opacity-30 backdrop-filter backdrop-blur-3xl backdrop-saturate-150 text-gray-100 mx-2 space-y-2">
               <Link href="/">
                 <button className="btn flex flex-row flex-grow hover:bg-gray-800">
                   <HomeIcon className="h-6 w-6 mx-2" />
