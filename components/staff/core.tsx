@@ -12,8 +12,10 @@ import Notification from "../misc/notification";
 import PageError from "../misc/error";
 import Loading from "../misc/loading";
 import Sidebar from "./sidebar";
+import Switcher from "../misc/mode-switcher"
 
 import Shorten from "../../lib/shorten";
+import dashboard from './../../pages/staff/forums/settings';
 
 export default function StaffCore(props) {
   const [profileOpen, setProfileOpen] = useState(false);
@@ -48,7 +50,7 @@ export default function StaffCore(props) {
                 className="h-6 w-6 ml-2 mr-4 mt-[0.20rem] md:hidden"
                 onClick={() => setSideBarOpen(!sideBarOpen)}
               />
-              <Link href="/staff">DashJSBoard</Link>
+              <Link href="/staff/dashboard">DashJSBoard</Link>
             </h2>
           </div>
           <hr className="mx-6 mb-4 bg-coolGray-800 border-none h-px flex-none" />
@@ -116,12 +118,15 @@ export default function StaffCore(props) {
               >
                 <MenuAlt2Icon className="h-6 w-6 mx-2 text-gray-200 hover:text-gray-400" />
               </div>
-              <form className="flex flex-grow max-w-md">
+              <form className="flex flex-grow max-w-md ml-10">
                 <input
                   type="search"
                   className="bg-gray-800 rounded-lg border-none w-full"
                 />
               </form>
+              <div className="absolute right-16">
+                <Switcher darkTextOnLight={true} className="" />
+              </div>
             </nav>
             <div className="h-full">
               {" "}
