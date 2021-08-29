@@ -34,7 +34,7 @@ export default function Home() {
         <div className="bg-coolGray-700 flex-grow">
           <Navbar
             name="Loading..."
-            loading={true}
+            loading={false}
             loadingProgress={loadingProgress}
           />
           <div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
@@ -63,6 +63,7 @@ export default function Home() {
               <div className="lg:pl-5">
                 <Sidebar loading={true} />
               </div>
+              
             </div>
           </div>
         </div>
@@ -85,7 +86,7 @@ export default function Home() {
   return (
     <>
       <div className="bg-coolGray-700 flex-grow">
-        <Navbar name="Home" loading={false} loadingProgress={loadingProgress} />
+        <Navbar name="Home" loading={false} loadingProgress={loadingProgress} noDarkTextOnLight={true} />
         <div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
           <h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
             {forums.data.name}
@@ -142,6 +143,7 @@ export default function Home() {
             <div className="lg:pl-5">
               <Sidebar categories={sidebar.data.sidebar} loading={false} />
             </div>
+            
           </div>
         </div>
       </div>

@@ -62,7 +62,7 @@ export default function Navbar(props) {
         // have to wonder why, but for whatever reason this stupid
         // progressbar doesn't layout out correctly unless we do this terribleness
       }
-      <div className="h-1 bg-coolGray-800">
+      {/*<div className="h-1 bg-coolGray-800">
         <progress
           id="file"
           max="1000"
@@ -70,16 +70,17 @@ export default function Navbar(props) {
           //onLoad={animateBar()}
           className={"w-full m-0 " + (props.loading ? "" : "hidden")}
         />
-      </div>
+      </div>*/}
       {/*Actual Navbar starts here */}
-      <div className="w-full h-16 flex items-center text-gray-100 bg-coolGray-800 shadow-lg sticky top-[-1px] z-40">
+      
+      <div className="w-full h-16 flex items-center text-gray-100 bg-coolGray-800 bg-opacity-70 backdrop-filter backdrop-blur-3xl backdrop-saturate-150 shadow-lg sticky top-0 z-40">
         <div className="mx-auto max-w-screen-xl px-10 font-semibold flex flex-grow">
           <Link href="/">
             <a className="my-auto">JSBoard</a>
           </Link>
           <div className="flex flex-grow flex-row-reverse">
             <div
-              className="text-gray-200 md:hidden bg-coolGray-700 p-2 rounded-full hover:opacity-70"
+              className="text-gray-200 lg:hidden bg-coolGray-700 p-2 rounded-full hover:opacity-70"
               onClick={
                 () => setDropDownOpen(!dropDownOpen) //mobile nav is unfinished
               }
@@ -88,10 +89,10 @@ export default function Navbar(props) {
                 <MenuAlt3Icon className="h-5 w-auto" />
               </span>
               <span className={dropDownOpen ? "" : "hidden"}>
-                <XIcon className="h-5 w-auto" />
+                <XIcon className="h-5 w-auto" /> 
               </span>
             </div>
-            <div className="btn btn-white">
+            <div className="btn btn-white hidden md:block">
               <Link href="/signup">
                 <span className={"bg-coolGray-700" + !loggedin ? "" : "hidden"}>
                   Sign Up
@@ -109,10 +110,12 @@ export default function Navbar(props) {
             </div>
             
           </div>
-          
-          <Switcher />
+          <div className="hidden lg:block">
+            <Switcher />
+          </div>
         </div>
       </div>
+      
     </>
   );
 }

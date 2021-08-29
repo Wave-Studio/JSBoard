@@ -13,10 +13,10 @@ export default function catagory(props) {
   } else {
     return (
       <div>
-        {props.categories.map((data) => (
+        {props.categories.map((data: { name: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal; description: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal; topics: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal; posts: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal; }) => (
           <div>
             <Link href="#">
-              <div className="flex-grow flex flex-row rounded-md shadow-md bg-coolGray-800 py-2 mb-5 items-center cursor-pointer">
+              <div className="flex-grow flex flex-row rounded-md shadow-md hover:shadow-xl bg-coolGray-800 py-2 mb-5 items-center cursor-pointer">
                 <div className="grid place-items-center align-middle rounded-full p-2 md:p-3 bg-blue-600 mx-5">
                   <XIcon />
                 </div>

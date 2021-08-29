@@ -4,9 +4,11 @@ const db = new Database(process.env.DB_LINK);
 
 export default async function handle(req, res) {
 	// TODO: make the site re-connect to the db every time to cause less issues n stuff
-	db.on("ready", ()=>{
-		console.log("Database connected");
-	});
+	if (!db.connection) {
+		db.on("ready", ()=>{
+			console.log("Database connected");
+		});
+	} //30% chance in 100% chance this fix actually works
 	var name = await db.get('org-name');
 	if (name == null) {
 		db.set('org-name', 'Insert indelible name here');
@@ -20,6 +22,7 @@ export default async function handle(req, res) {
 			description: 'JSBoard is currently not configured',
 			configured: false,
 		});
+	
 	return res.status(200).json({
 		configured: true,
 		forums: [
