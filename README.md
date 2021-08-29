@@ -46,7 +46,7 @@ Installing is pretty simple, all you need to do is download the ZIP and open it 
 
 ## Background
 
-JSBoard wasen't always this clean and polished. Its first version looked a little something like this:
+JSBoard wasn't always this clean and polished. Its first version looked a little something like this:
 
 [![image](https://user-images.githubusercontent.com/69743171/130735959-dbd19c99-a094-43bc-ac6e-5d19be90212e.png)](https://jsboard.blocksnmore.repl.co/forums/)
 Yea, those were some dark days...
