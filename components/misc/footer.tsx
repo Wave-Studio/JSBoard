@@ -1,12 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import nightwind from "nightwind/helper";
 
-export default class JSBoardFooter extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
+export default function JSBoardFooter(props)  {
     return (
       <>
         
@@ -52,4 +47,4 @@ export default class JSBoardFooter extends React.Component {
       </>
     );
   }
-}
+

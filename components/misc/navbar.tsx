@@ -2,6 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { XIcon, MenuAlt3Icon } from "@heroicons/react/outline";
 import Head from "next/head";
+import nightwind from "nightwind/helper";
 
 import Switcher from "./mode-switcher";
 

@@ -8,6 +8,8 @@ export default function Switcher(props) {
 	const [darkModeLoc, setDarkModeLoc] = useState(true);
 	return (
 		<>
+		{//console.log(nightwind.checkNightMode())
+		}
 			<div className={"has-tooltip relative nightwind-prevent " + props.className} onClick={() => nightwind.enable(darkModeLoc)}>
 				<button className={"p-4 nightwind-prevent relative rounded-full ml-2 transition cursor-pointer duration-700 hover:duration-500 " + (darkModeLoc ? "bg-blue-800 hover:rotate-12" : "bg-yellow-400 rotate-180 hover:rotate-90")} onClick={() => setDarkModeLoc(!darkModeLoc)}>  
 					<SparklesIcon className={"w-6 h-6 nightwind-prevent absolute bottom-1 right-1 transition duration-700 " + (darkModeLoc ? "" : "hidden")}  />
