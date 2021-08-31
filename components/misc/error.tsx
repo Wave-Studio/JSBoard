@@ -16,7 +16,7 @@ export default function PageError({
     <>
       <div className="flex flex-col h-screen">
         <Navbar name={code + " | " + text} />
-        <div className="flex h-full justify-center items-center">
+        <div className="flex flex-grow justify-center items-center">
           <div className="bg-coolGray-800 text-gray-100 rounded-md shadow-lg p-10">
             <h2 className="text-4xl font-semibold text-center mb-1">
               {code + " " + text}

@@ -74,7 +74,7 @@ export default function Navbar(props) {
       </div>*/}
       {/*Actual Navbar starts here */}
       
-      <div className="w-full h-16 flex items-center text-gray-100 bg-coolGray-800 bg-opacity-70 backdrop-filter backdrop-blur-3xl backdrop-saturate-150 shadow-lg sticky top-0 z-40">
+      <div className={"w-full h-16 flex items-center text-gray-100 bg-coolGray-800 bg-opacity-70 backdrop-filter backdrop-blur-3xl backdrop-saturate-150 shadow-lg sticky top-0 z-40 " + props.className}>
         <div className="mx-auto max-w-screen-xl px-10 font-semibold flex flex-grow">
           <Link href="/">
             <a className="my-auto">JSBoard</a>
