@@ -2,8 +2,8 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-import { CameraIcon } from "@heroicons/react/outline";
+import { useState } from "react";
+import { CameraIcon, ChevronLeftIcon } from "@heroicons/react/outline";
 
 import Navbar from "../../../components/misc/navbar";
 import Footer from "../../../components/misc/footer";
@@ -196,7 +196,15 @@ export default function ViewUserProfile() {
       <div className="flex-grow bg-coolGray-700">
         <Navbar name={data.username + "'s Profile"} />
         <div className="max-w-screen-xl mx-auto">
-          <div className="flex flex-col lg:flex-row lg:items-start rounded-md shadow-md flex-shrink bg-coolGray-800 p-5 my-10 text-gray-200 space-y-4 lg:space-x-4 lg:space-y-0">
+          <Link href="/profiles">
+            <a>
+              <button className="btn btn-white mb-2 mt-10 group flex items-center">
+                <ChevronLeftIcon className="scale-0 text-gray-200 group-hover:text-gray-800 group-hover:scale-100 w-4 h-4 transition duration-500" />{" "}
+                Back to Profiles
+              </button>
+            </a>
+          </Link>
+          <div className="flex flex-col lg:flex-row lg:items-start rounded-md shadow-md flex-shrink bg-coolGray-800 p-5 mb-10 text-gray-200 space-y-4 lg:space-x-4 lg:space-y-0">
             {/*Left Colloum */}
             <div className="flex flex-col items-center space-y-4 bg-coolGray-900 transition p-4 rounded-md shadow md:hover:shadow-xl bg-opacity-70 text-gray-200 sticky">
               <Image

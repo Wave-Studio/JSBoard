@@ -103,7 +103,7 @@ progress[value] {
 
 input[type="text"],
 input[type="checkbox"],
-textarea {
+textarea, .text-box-form {
   @apply bg-coolGray-900 bg-opacity-50 shadow placeholder-gray-200 placeholder-opacity-50;
 }
 

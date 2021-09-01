@@ -12,10 +12,10 @@ import Notification from "../misc/notification";
 import PageError from "../misc/error";
 import Loading from "../misc/loading";
 import Sidebar from "./sidebar";
-import Switcher from "../misc/mode-switcher"
+import Switcher from "../misc/mode-switcher";
 
 import Shorten from "../../lib/shorten";
-import dashboard from './../../pages/staff/forums/settings';
+import dashboard from "./../../pages/staff/forums/settings";
 
 export default function StaffCore(props) {
   const [profileOpen, setProfileOpen] = useState(false);

@@ -6,8 +6,6 @@ import nightwind from "nightwind/helper";
 
 import Switcher from "./mode-switcher";
 
-
-
 export default function Navbar(props) {
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const loading = false;
@@ -16,11 +14,8 @@ export default function Navbar(props) {
   const loggedin = props.loggedin || false;
   const admin = props.admin || false;
   const sitename = props.sitename || "Azyn";
-  
-  
+
   return (
-    
-    
     //need to add images later
     <>
       <Head>
@@ -73,8 +68,13 @@ export default function Navbar(props) {
         />
       </div>*/}
       {/*Actual Navbar starts here */}
-      
-      <div className={"w-full h-16 flex items-center text-gray-100 bg-coolGray-800 bg-opacity-70 backdrop-filter backdrop-blur-3xl backdrop-saturate-150 shadow-lg sticky top-0 z-40 " + props.className}>
+
+      <div
+        className={
+          "w-full h-16 flex items-center text-gray-100 bg-coolGray-800 bg-opacity-70 backdrop-filter backdrop-blur-3xl backdrop-saturate-150 shadow-lg sticky top-0 z-40 " +
+          props.className
+        }
+      >
         <div className="mx-auto max-w-screen-xl px-10 font-semibold flex flex-grow">
           <Link href="/">
             <a className="my-auto">JSBoard</a>
@@ -90,7 +90,7 @@ export default function Navbar(props) {
                 <MenuAlt3Icon className="h-5 w-auto" />
               </span>
               <span className={dropDownOpen ? "" : "hidden"}>
-                <XIcon className="h-5 w-auto" /> 
+                <XIcon className="h-5 w-auto" />
               </span>
             </div>
             <div className="btn btn-white hidden md:block">
@@ -109,15 +109,12 @@ export default function Navbar(props) {
                 <span className={admin ? "" : "hidden"}>Dashboard</span>
               </Link>
             </div>
-            
           </div>
           <div className="hidden lg:block">
             <Switcher />
           </div>
         </div>
       </div>
-      
     </>
   );
 }
-

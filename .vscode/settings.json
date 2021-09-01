@@ -7,6 +7,6 @@
   },
   //for the ENV plugin by Jakka Prihatna
   "files.associations": {
-    ".env.local": "env",
+    ".env.local": "env"
   }
 }
