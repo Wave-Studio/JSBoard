@@ -1,14 +1,19 @@
 import { SparklesIcon, SunIcon } from "@heroicons/react/outline";
 import nightwind from "nightwind/helper";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Switcher(props) {
   const [darkModeLoc, setDarkModeLoc] = useState(true);
+  
+  useEffect(function () {
+		setDarkModeLoc(
+			(window.localStorage.getItem('nightwind-mode') ?? 'light') ==
+				'light'
+		);
+	}, []);
+
   return (
     <>
-      {
-        //console.log(nightwind.checkNightMode())
-      }
       <div
         className={"has-tooltip relative nightwind-prevent " + props.className}
         onClick={() => nightwind.enable(darkModeLoc)}
