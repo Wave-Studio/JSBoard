@@ -1,7 +1,28 @@
+import fetcher from "../lib/fetcher";
+import useSWR from "swr";
+import PageError from "../components/misc/error";
+
 import Navbar from "../components/misc/navbar";
 import Footer from "../components/misc/footer";
 
 export default function wrapper(props) {
+  const { data, error } = useSWR("/api/user/userList", fetcher);
+  if (error)
+    return (
+      <>
+        <PageError
+          code={500}
+          text="An error occured while loading this!"
+          back={false}
+          home={false}
+        />
+      </>
+    );
+
+  if (!data)
+    return (
+      <div>lajhg</div>
+    )
   return (
     <>
       <div className="flex flex-col min-h-screen bg-coolGray-700">

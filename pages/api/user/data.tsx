@@ -1,7 +1,7 @@
 import checkConfig from "../../../lib/checkConfig";
 import { users } from "./users";
 
-export default function handle(req, res) {
+export default function handle(req: any, res: any) {
   const date = 1622832731224;
   if (!checkConfig())
     return res.status(500).json({
@@ -17,4 +17,5 @@ export default function handle(req, res) {
       description: "User not found!",
     });
   return res.status(200).json(users[parseInt(id)]);
+  
 }

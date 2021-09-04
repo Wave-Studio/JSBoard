@@ -9,6 +9,7 @@ import Navbar from "../../../components/misc/navbar";
 import Footer from "../../../components/misc/footer";
 import PageError from "../../../components/misc/error";
 import fetcher from "../../../lib/fetcher";
+
 import Edit from "../../../components/profile/edit";
 import PP from "../../../components/profile/pp";
 import Activity from "./../../../components/profile/activity";
