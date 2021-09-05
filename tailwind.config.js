@@ -10,12 +10,12 @@ module.exports = {
       colors: {
         coolGray: {
           50: "#bac8d6",
-          75: "#FFFFFF",
+          75: "#bdc9db",
           100: "#d3dded",
           200: "e6eefc",
           700: "#2C2F33",
           800: "#1f2124",
-          850: "#1f2124",
+          850: "#141517",
           900: "#121314",
         },
         theme: {

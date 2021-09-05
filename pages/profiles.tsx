@@ -4,10 +4,12 @@ import PageError from "../components/misc/error";
 
 import Navbar from "../components/misc/navbar";
 import Footer from "../components/misc/footer";
+import { useEffect, useState } from "react";
 
-export default function wrapper(props) {
-  const { data, error } = useSWR("/api/user/userList", fetcher);
-  if (error)
+export default function profiles(props) {
+  const [menuSel, setMenuSel] = useState(1);
+  const users = useSWR("/api/user/userList", fetcher);
+  if (users.error)
     return (
       <>
         <PageError
@@ -19,7 +21,7 @@ export default function wrapper(props) {
       </>
     );
 
-  if (!data)
+  if (!users.data)
     return (
       <div>lajhg</div>
     )
@@ -37,12 +39,49 @@ export default function wrapper(props) {
             </div>
             <div>
               <h2 className="text-2xl font-medium">Sort</h2>
-              
+              <div className="rounded-md flex flex-wrap p-1.5 dark:bg-coolGray-75 bg-coolGray-850 gap-2 font-semibold mt-4">
+                <h1
+                  className={
+                    "cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+                    ([1].includes(menuSel) ? "bg-black dark:bg-opacity-50 backdrop-filter backdrop-blur-3xl backdrop-saturate-150" : "")
+                  }
+                  onClick={() => setMenuSel(1)}
+                >
+                  A - Z
+                </h1>
+                <h1
+                  className={
+                    "cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+                    ([2].includes(menuSel) ? "bg-black dark:bg-opacity-50 backdrop-filter backdrop-blur-3xl backdrop-saturate-150" : "")
+                  }
+                  onClick={() => setMenuSel(2)}
+                >
+                  User ID
+                </h1>
+              </div>
             </div>
           </div>
+          <div className="max-w-screen-xl mx-auto text-gray-200">
+            {usersList()
+            }
+          </div>
+          
         </div>
         <Footer />
       </div>
     </>
   );
+  function usersList() {
+    var rt = []
+    
+    if (users.data) {
+      users.data.users.forEach(id => {
+        rt.push(<div className="bg-coolGray-800 p-5 mt-3 rounded-md flex justify-between" />)
+        //const profiles = useSWR("/api/user/data?id=" + id.toString(), fetcher);
+        //profiles.data.username
+        
+    })
+    }
+    return (rt);
+  }
 }

@@ -16,7 +16,7 @@ export default function handle(req: any, res: any) {
 	});
 	return res.status(200).json({
 		configured: true,
-		test: "poggers0",
+		users: [0, 1, 2],
 	  });
 }
 
