@@ -14,7 +14,7 @@ function formatDate(date: number) {
 export const users = [
   {
     username: "TestAccount",
-    rank: "Admin",
+    rank: ["Admin"],
     pfp: "/ProfilePicture.png",
     configured: true,
     title: "Amongus",
@@ -60,7 +60,7 @@ export const users = [
   },
   {
     username: "Blocks",
-    rank: "Admin",
+    rank: ["Admin"],
     pfp: "/blox.png",
     configured: true,
     title: "Amongus",
@@ -106,7 +106,7 @@ export const users = [
   },
   {
     username: "Quick",
-    rank: "Admin",
+    rank: ["Admin", "EpicDev"],
     pfp: "/examplepfp.gif",
     configured: true,
     title: "Amongus",

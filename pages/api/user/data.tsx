@@ -11,8 +11,7 @@ export default function handle(req: any, res: any) {
     });
   const { id } = req.query;
   if (![0, 1, 2].includes(parseInt(id))) {
-    return res.status(200).json(users)
+    return res.status(200).json(users);
   }
   return res.status(200).json(users[parseInt(id)]);
-  
 }

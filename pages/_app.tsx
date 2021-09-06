@@ -61,11 +61,7 @@ export default function JSboard({ Component, pageProps }) {
           href="/ProfilePicture.png"
         />
         <link rel="manifest" href="/manifest.json" />
-        <link
-          rel="mask-icon"
-          href="/ProfilePicture.png"
-          color="#5bbad5"
-        />
+        <link rel="mask-icon" href="/ProfilePicture.png" color="#5bbad5" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link
           rel="stylesheet"

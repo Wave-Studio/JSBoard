@@ -16,8 +16,8 @@ export default function Home() {
   var loadingProgress = "701";
 
   const forums = useSWR("/api/forums/homepage", fetcher);
-  //const sidebar = useSWR("/api/forums/sidebar", fetcher);
-  if (forums.error /*|| sidebar.error*/)
+  const sidebar = useSWR("/api/forums/sidebar", fetcher);
+  if (forums.error || sidebar.error)
     return (
       <>
         <PageError
@@ -28,7 +28,7 @@ export default function Home() {
         />
       </>
     );
-  if (/*!sidebar.data ||*/ !forums.data)
+  if (!sidebar.data || !forums.data)
     return (
       <>
         <div className="bg-coolGray-700 flex-grow">
@@ -148,9 +148,9 @@ export default function Home() {
             <div className="lg:w-full">
               <Forums categories={forums.data.forums} loading={false} />
             </div>
-            {/*<div className="lg:pl-5">
+            <div className="lg:pl-5">
               <Sidebar categories={sidebar.data.sidebar} loading={false} />
-            </div>*/}
+            </div>
           </div>
         </div>
       </div>
