@@ -139,7 +139,6 @@ export default function StaffCore(props) {
           </div>
         </div>
       </div>
-      <Notification msg="✓ Saved!" color="bg-green-600" />
     </>
   );
 }

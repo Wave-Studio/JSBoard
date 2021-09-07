@@ -6,11 +6,12 @@ export default function Notification(props) {
     <>
       <div
         className={
-          "flex rounded px-4 py-2 z-30 absolute bottom-[20px] right-[30px] text-center text-white font-semibold shadow-xl select-none " +
+          "flex rounded-md py-2 px-4 z-30 absolute bottom-[20px] right-[30px] text-center text-white font-semibold shadow-xl select-none " +
           props.color
         }
       >
         {props.msg}
+        {props.children}
       </div>
     </>
   );

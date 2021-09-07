@@ -3,19 +3,15 @@ import React, { useState } from "react";
 
 export default function Linkmaker(props) {
   const [open, setOpen] = useState(false);
-  const [visable, setVisable] = useState(false);
   return (
     <>
       <div className="flex w-full select-none ">
-        <label onChange={() => (setVisable(!visable), setOpen(false))}>
+        <label>
           {props.name}
-          <input type="checkbox" className="rounded-full ml-2" />
+          {props.input}
         </label>
         <div className="flex flex-grow"></div>
-        <span
-          className={visable ? "" : "invisible"}
-          onClick={() => setOpen(!open)}
-        >
+        <span onClick={() => setOpen(!open)}>
           <ChevronRightIcon
             className={
               "w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +

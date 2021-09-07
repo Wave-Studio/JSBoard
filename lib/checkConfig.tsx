@@ -13,5 +13,5 @@ export default async function () {
     await db.set("configed", true)
     
   }; */
-  return true
+  return true;
 }

@@ -5,14 +5,94 @@ import {
   StatusOnlineIcon,
   FireIcon,
   DocumentDuplicateIcon,
+  ExclamationCircleIcon,
 } from "@heroicons/react/outline";
+import { Formik, Form, ErrorMessage, Field } from "formik";
 import React, { useState } from "react";
+
 import StaffCore from "../../../components/staff/core";
+import Notification from "../../../components/misc/notification";
 import Linkmaker from "../../../components/staff/linkmaker";
 import useSWR from "swr";
 import fetcher from "../../../lib/fetcher";
 
 export default function dashboard() {
+  const { data, error } = useSWR("/api/forums/homepage", fetcher);
+  if (!data) {
+    return (
+      <StaffCore page="Settings">
+        <h1 className="text-3xl font-bold text-gray-200 mb-1">Settings</h1>
+        <h2 className="text-xl font-medium text-gray-300 mb-2">
+          Configure the sidebar and main boxes
+        </h2>
+        <hr className="border-blue-600 border-t-2 bg-opacity-50 w-10" />
+        <Notification color="bg-theme-primary">
+          <div className=" inline-flex rounded-md font-medium items-center nightwind-prevent text-white">
+            <svg
+              className="animate-spin mr-2 h-5 w-5 text-white nightwind-prevent "
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            Loading...
+          </div>
+        </Notification>
+      </StaffCore>
+    );
+  }
+  if (error) {
+    return (
+      <StaffCore page="Settings">
+        <h1 className="text-3xl font-bold text-gray-200 mb-1">Settings</h1>
+        <h2 className="text-xl font-medium text-gray-300 mb-2">
+          Configure the sidebar and main boxes
+        </h2>
+        <hr className="border-blue-600 border-t-2 bg-opacity-50 w-10" />
+        <Notification color="bg-red-500">
+          <div className=" inline-flex rounded-md font-medium items-center mr-auto text-white nightwind-prevent">
+            <ExclamationCircleIcon className="h-5 w-5 mr-2" />
+            Error...
+          </div>
+        </Notification>
+        <p className="mt-4 font-medium">
+          We ran into an error loading this page! Lets try a few things...
+          <ul className="list-decimal list-inside ml-2 font-normal">
+            <li>Reload the page</li>
+            <li>
+              Check the{" "}
+              <span className="px-1 rounded bg-gray-200 bg-opacity-10">
+                Network
+              </span>{" "}
+              tab in the browser console for any errors
+            </li>
+            <li>
+              Check the database itself and make sure everything is intact
+            </li>
+            <li>
+              Create an issue{" "}
+              <a href="https://github.com/wave-studio/JSBoard" className="link">
+                here
+              </a>
+            </li>
+          </ul>
+        </p>
+      </StaffCore>
+    );
+  }
   return (
     <>
       <StaffCore page="Settings">
@@ -22,81 +102,145 @@ export default function dashboard() {
         </h2>
         <hr className="border-blue-600 border-t-2 bg-opacity-50 w-10" />
         <div className="space-y-8 mt-10">
-          <div className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 text-gray-200">
-            {/*Section 1*/}
-            <h2 className="text-lg font-semibold text-gray-300 mb-8">
-              Let's learn some more about you
-              {/*<hr className="border-t-2 border-gray-200 border-opacity-50 " />*/}
-            </h2>
-            <div className="flex flex-col max-w-xl space-y-3 font-medium">
-              {/*Make basic info adrea for main page*/}
-              <label>
-                Name
-                <input
-                  type="text"
-                  className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
-                  placeholder="Insert indelible name here"
-                  maxLength={30}
-                  autoComplete="off"
-                  autoCapitalize="on"
-                />
-              </label>
-              <label>
-                Description
-                <textarea
-                  className="shadow rounded border-none w-full h-36 placeholder-gray-200 placeholder-opacity-50"
-                  placeholder="Welcome to my lovely forum!"
-                  maxLength={1200}
-                  wrap="soft"
-                  autoComplete="on"
-                />
-              </label>
-              {/*Links*/}
-              <Linkmaker name="Store">
-                <label>
-                  Link
-                  <input
-                    type="text"
-                    className="bg-coolGray-700 bg-opacity-70 rounded border-none w-full placeholder-gray-200 placeholder-opacity-50"
-                    placeholder="https://github.com/JsServices"
-                    maxLength={30}
-                    autoComplete="url"
-                  />
-                </label>
-              </Linkmaker>
-              <Linkmaker name="Website">
-                <label>
-                  Link
-                  <input
-                    type="text"
-                    className="bg-coolGray-700 bg-opacity-70 rounded border-none w-full placeholder-gray-200 placeholder-opacity-50"
-                    placeholder="https://github.com/JsServices/homepage"
-                    maxLength={30}
-                  />
-                </label>
-              </Linkmaker>
-              <Linkmaker name="Custom Link">
-                <label>
-                  Link
-                  <input
-                    type="text"
-                    className="bg-coolGray-700 bg-opacity-70 rounded border-none w-full placeholder-gray-200 placeholder-opacity-50"
-                    placeholder="https://nohello.net"
-                    maxLength={50}
-                  />
-                </label>
-                <label>
-                  Name
-                  <input
-                    type="text"
-                    className="bg-coolGray-700 bg-opacity-70 rounded border-none w-full placeholder-gray-200 placeholder-opacity-50"
-                    placeholder="My cool link!"
-                    maxLength={16}
-                  />
-                </label>
-              </Linkmaker>
-            </div>
-          </div>
+          <Formik
+            initialValues={{
+              orgName: data.orgName,
+              description: data.description,
+              store: data.store,
+              storeLink: data.storeLink,
+              website: data.website,
+              websiteLink: data.websiteLink,
+              custom: data.custom,
+              customName: data.customName,
+              customLink: data.customLink,
+            }}
+            onSubmit={(values, { setSubmitting }) => {
+              setTimeout(() => {
+                alert(JSON.stringify(values, null, 2));
+                setSubmitting(false);
+              }, 400);
+            }}
+          >
+            <Form>
+              <div className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 text-gray-200">
+                {/*Section 1*/}
+                <h2 className="text-lg font-semibold text-gray-300 mb-8">
+                  Let's learn some more about you
+                  {/*<hr className="border-t-2 border-gray-200 border-opacity-50 " />*/}
+                </h2>
+                <div className="flex flex-col max-w-xl space-y-3 font-medium">
+                  {/*Make basic info adrea for main page*/}
+                  <div>
+                    <label htmlFor="orgName">Name</label>
+                    <Field
+                      type="text"
+                      name="orgName"
+                      className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
+                      placeholder="Insert indelible name here"
+                      maxLength={30}
+                      autoComplete="off"
+                      autoCapitalize="on"
+                    />
+                    <ErrorMessage name="name" />
+                  </div>
+                  <div>
+                    <label htmlFor="description">Description</label>
+                    <Field
+                      component="textarea"
+                      className="shadow rounded border-none w-full h-36 placeholder-gray-200 placeholder-opacity-50"
+                      placeholder="Welcome to my lovely forum!"
+                      maxLength={1200}
+                      name="description"
+                      wrap="soft"
+                      autoComplete="on"
+                    />
+                  </div>
+                  {/*Links*/}
+                  <Linkmaker
+                    name="Store"
+                    input={
+                      <Field
+                        type="checkbox"
+                        className="rounded-full ml-2 nightwind-prevent"
+                        name="store"
+                      />
+                    }
+                  >
+                    <label>
+                      Link
+                      <Field
+                        name="storeLink"
+                        type="text"
+                        className="bg-coolGray-700 bg-opacity-70 rounded border-none w-full placeholder-gray-200 placeholder-opacity-50"
+                        placeholder="https://github.com/JsServices"
+                        maxLength={30}
+                        autoComplete="url"
+                      />
+                    </label>
+                  </Linkmaker>
+                  <Linkmaker
+                    name="Website"
+                    input={
+                      <Field
+                        type="checkbox"
+                        className="rounded-full ml-2 nightwind-prevent"
+                        name="website"
+                      />
+                    }
+                  >
+                    <label>
+                      Link
+                      <Field
+                        name="websiteLink"
+                        type="text"
+                        className="bg-coolGray-700 bg-opacity-70 rounded border-none w-full placeholder-gray-200 placeholder-opacity-50"
+                        placeholder="https://github.com/JsServices/homepage"
+                        maxLength={30}
+                      />
+                    </label>
+                  </Linkmaker>
+                  <Linkmaker
+                    name="Custom Link"
+                    input={
+                      <Field
+                        type="checkbox"
+                        className="rounded-full ml-2 nightwind-prevent"
+                        name="custom"
+                      />
+                    }
+                  >
+                    <label>
+                      Link
+                      <Field
+                        name="customName"
+                        type="text"
+                        className="bg-coolGray-700 bg-opacity-70 rounded border-none w-full placeholder-gray-200 placeholder-opacity-50"
+                        placeholder="https://nohello.net"
+                        maxLength={50}
+                      />
+                    </label>
+                    <label>
+                      Name
+                      <Field
+                        name="customLink"
+                        type="text"
+                        className="bg-coolGray-700 bg-opacity-70 rounded border-none w-full placeholder-gray-200 placeholder-opacity-50"
+                        placeholder="My cool link!"
+                        maxLength={16}
+                      />
+                    </label>
+                  </Linkmaker>
+                </div>
+                <button
+                  type="submit"
+                  value="Save"
+                  className="bg-green-700 btn btn-lg  hover:opacity-70 font-semibold mt-5"
+                >
+                  Submit
+                </button>
+              </div>
+            </Form>
+          </Formik>
           {/*Sidebar Options*/}
           <div className="p-4 rounded-lg shadow w-full bg-coolGray-800">
             <h1 className="text-2xl font-semibold text-gray-200">Sidebar</h1>

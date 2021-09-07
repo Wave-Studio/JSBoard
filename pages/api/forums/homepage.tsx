@@ -1,5 +1,5 @@
 import checkConfig from "../../../lib/checkConfig";
-import { Database } from "quickmongo";
+const { Database } = require("quickmongo");
 const db = new Database(process.env.DB_LINK);
 
 export default async function handle(req, res) {

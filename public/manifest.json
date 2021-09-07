@@ -21,7 +21,8 @@
   ],
   "shortcuts": [
     {
-      "short_name": "Profile",
+      "name": "Profile List",
+      "short_name": "Profiles",
       "description": "View Your Profile",
       "url": "/profile/",
       "icons": [{ "src": "/ProfilePicture.png", "sizes": "192x192" }]
