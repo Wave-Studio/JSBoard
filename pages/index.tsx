@@ -94,10 +94,6 @@ export default function Home() {
         <div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
           <h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
             {forums.data.orgName}
-            <form>
-              <input type="text" />
-              <input type="submit" />
-            </form>
           </h1>
           {/*add smth to look at the background and see what color it is*/}
         </div>
