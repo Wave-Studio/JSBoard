@@ -1,5 +1,5 @@
-import { Database } from "quickmongo";
-const db = new Database(process.env.DB_LINK);
+//import { Database } from "quickmongo";
+//const db = new Database(process.env.DB_LINK);
 
 export default async function () {
   /*if (!db.connection) {
