@@ -1,8 +1,6 @@
-import Link from "next/link";
 import useSWR from "swr";
 import * as Heroicons from "@heroicons/react/outline";
 import React from "react";
-import Head from "next/head";
 
 import Navbar from "../components/misc/navbar";
 import Footer from "../components/misc/footer";
@@ -12,8 +10,6 @@ import Sidebar from "../components/forums/sidebar";
 import fetcher from "../lib/fetcher";
 
 export default function Home() {
-  var loading = false;
-  var loadingProgress = "701";
 
   const forums = useSWR("/api/forums/homepage", fetcher);
   const sidebar = useSWR("/api/forums/sidebar", fetcher);
@@ -34,8 +30,6 @@ export default function Home() {
         <div className="bg-coolGray-700 flex-grow">
           <Navbar
             name="Loading..."
-            loading={false}
-            loadingProgress={loadingProgress}
           />
           <div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
             <h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
@@ -87,9 +81,6 @@ export default function Home() {
       <div className="bg-coolGray-700 flex-grow">
         <Navbar
           name="Home"
-          loading={false}
-          loadingProgress={loadingProgress}
-          noDarkTextOnLight={true}
         />
         <div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
           <h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
@@ -142,10 +133,10 @@ export default function Home() {
           </div>
           <div className="lg:flex w-full lg:flex-row">
             <div className="lg:w-full">
-              <Forums categories={forums.data.forums} loading={false} />
+              <Forums categories={forums.data.forums} />
             </div>
             <div className="lg:pl-5">
-              <Sidebar categories={sidebar.data.sidebar} loading={false} />
+              <Sidebar categories={sidebar.data.sidebar} b/>
             </div>
           </div>
         </div>
