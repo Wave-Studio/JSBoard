@@ -1,13 +1,8 @@
 import checkConfig from "../../../lib/checkConfig";
-const { Database } = require("quickmongo");
-const db = new Database(process.env.DB_LINK);
+//const { Database } = require("quickmongo");
+//const db = new Database(process.env.DB_LINK);
 
 export default function handle(req: any, res: any) {
-  if (!db.connection) {
-    db.on("ready", () => {
-      console.log("Database connected");
-    });
-  } //30% chance in 100% chance this fix actually works
   if (!checkConfig())
     return res.status(500).json({
       error: 500,

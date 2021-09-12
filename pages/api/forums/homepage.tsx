@@ -1,8 +1,37 @@
 import checkConfig from "../../../lib/checkConfig";
-const { Database } = require("quickmongo");
-const db = new Database(process.env.DB_LINK);
+import { Database } from "quickmongo";
+import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-export default async function handle(req, res) {
+import connectDB from "../../../lib/mongodb"
+//const db = new Database(process.env.DB_LINK);
+
+//handle().catch(err => console.log(err));
+
+async function handle(req, res) {
+  
+  const homepageSchema = new Schema({
+    configured: Boolean,
+      forums: {
+        type: Map,
+        of: Object
+      },
+      description: String,
+      // svgs and json are kinda 🤡, so I had to do what I did below to make this work
+      store: Boolean, //true = enabled, false = not enabled
+      storeLink: String, //uses camelCase cause why not
+      website: Boolean,
+      websiteLink: String,
+      custom: Boolean,
+      customName: String, //custom link also gets a name
+      customLink: String, 
+      orgName: String
+  })
+  const Homepage = mongoose.model('Homepage', homepageSchema);
+  const orgName = new Homepage({ orgName: 'Azynnet' });
+  await orgName.save()
+
+  /*
   // TODO: make the site re-connect to the db every time to cause less issues n stuff
   if (!db.connection) {
     db.on("ready", () => {
@@ -52,8 +81,11 @@ export default async function handle(req, res) {
 			error: 500,
 			description: 'JSBoard is currently not configured',
 			configured: false,
-		});*/
+		});
   //temp disabled for testing ^^^
 
-  return res.status(200).json(await db.get("homepage"));
+  return res.status(200).json(await db.get("homepage"));*/
+
 }
+
+export default connectDB(handle)

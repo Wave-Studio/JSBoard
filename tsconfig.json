@@ -22,6 +22,6 @@
     "components/staff/sidebar.tsx",
     "components/staff/old%20core.js",
     "components/staff/core.tsx"
-  ],
+, "pages/api/forums/homepage.tsx"  ],
   "exclude": ["node_modules"]
 }

@@ -20,7 +20,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-recaptcha": "^2.3.10",
-    "swr": "^1.0.0"
+    "swr": "^1.0.0",
+    "quickmongo": "^3.0.2"
   },
   "author": "Blocks_n_more - Backend, quick007 - Frontend",
   "devDependencies": {
