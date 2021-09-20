@@ -1,4 +1,13 @@
-# JSBoard
+
+
+<p align="center">
+  <a href="https://vercel.com">
+    <img src="https://js-board.netlify.app/ProfilePicture.png" height="96" class="rounded">
+    <h2 align="center" class="size">JSBoard</h3>
+  </a>
+  <p align="center">Next-generation forums software</p>
+  <br> </br>
+</p>
 
 [![forthebadge](https://forthebadge.com/images/badges/not-a-bug-a-feature.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](https://forthebadge.com)
@@ -13,7 +22,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)](https://forthebadge.com)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=for-the-badge)](https://github.com/RichardLitt/standard-readme)
 
-JSBoard is a next-generation, community-first forum software written using Nextjs. Currently, JSBoard is in development and **NOT** stable for production. It's designed to be simple to use while also offering extensive configuration and management to fit perfectly within any community of any scale. For support please visit [**our discord**](https://discord.gg/jV5Jvt7z)
+JSBoard is a next-generation, community-first forum software written using Nextjs and Mongodb. Currently, JSBoard is in development and **NOT** stable for production. It's designed to be simple to use while also offering extensive configuration and management to fit perfectly within any community of any scale. For support please visit [**our discord**](https://discord.gg/jV5Jvt7z)
 
 ## Table of Contents
 
