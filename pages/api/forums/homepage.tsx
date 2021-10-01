@@ -52,10 +52,10 @@ export default async function handle(req, res) {
     
   }
   Homepage = mongoose.model('Homepage', homepageSchema)
-  const orgName = new Homepage({ configured: false });
+  const orgName = new Homepage({ configured: true });
   await orgName.save()
   
-  return res.status(200).json(await mongoose.get('Homepage'))
+  return res.status(200).json(await Homepage.findById(orgName))
 
 
   /*
