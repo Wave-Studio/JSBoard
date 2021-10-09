@@ -1,15 +1,34 @@
 import checkConfig from "../../../lib/checkConfig";
-import { Database } from "quickmongo";
-import clientPromise from '../../../lib/mongodb';
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
-let Homepage: mongoose.Model<mongoose.Document<any>>;
+import { Model, Document, Schema, connections, model, connect } from 'mongoose';
 
-//const db = new Database(process.env.DB_LINK);
+const homepageSchema = new Schema({
+	configured: Boolean,
+	description: String,
+	store: String,
+	website: String
+});
+
+// THIS SHIT DOESN'T WORK!
+// WHY? HAS I EVER?
+const homepage = model('homepage', homepageSchema);
 
 export default async function handle(req, res) {
-  await clientPromise;
-  await mongoose.connections[0].readyState;
+
+	await connect(process.env.DB_LINK, {
+		serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
+  		socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+	})
+
+	const pageData = new homepage({ configured: true });
+
+	pageData.save();
+
+	return res.status(200).json(await pageData.get('homepage'));
+}
+
+export async function oldhandle(req, res) {
+//   await clientPromise;
+//   await connections[0].readyState;
   /*if (mongoose.connections[0].readyState) {
     // Use current db connection
     return handle(req, res);
@@ -26,36 +45,36 @@ export default async function handle(req, res) {
   // Use new db connection
   await mongoose.connect(process.env.DB_LINK, options);
   return handle(req, res);*/
-  if (!mongoose.models.Homepage) {
-    var homepageSchema = new Schema({
-      configured: Boolean,
-        forums: [{
-          icon: String,
-          name: String,
-          description: String,
-          redirect: String,
-          color: String, //won't work, purgecss needs to see full names
-          topics: Number,
-          posts: Number,
-        }],
-        description: String,
-        // svgs and json are kinda 🤡, so I had to do what I did below to make this work
-        store: Boolean, //true = enabled, false = not enabled
-        storeLink: String,
-        website: Boolean,
-        websiteLink: String,
-        custom: Boolean,
-        customName: String, //custom link also gets a name
-        customLink: String, 
-        orgName: String
-    })
+  // if (!models.Homepage) {
+  //   var homepageSchema = new Schema({
+  //     configured: Boolean,
+  //       forums: [{
+  //         icon: String,
+  //         name: String,
+  //         description: String,
+  //         redirect: String,
+  //         color: String, //won't work, purgecss needs to see full names
+  //         topics: Number,
+  //         posts: Number,
+  //       }],
+  //       description: String,
+  //       // svgs and json are kinda 🤡, so I had to do what I did below to make this work
+  //       store: Boolean, //true = enabled, false = not enabled
+  //       storeLink: String,
+  //       website: Boolean,
+  //       websiteLink: String,
+  //       custom: Boolean,
+  //       customName: String, //custom link also gets a name
+  //       customLink: String, 
+  //       orgName: String
+  //   })
     
-  }
-  Homepage = mongoose.model('Homepage', homepageSchema)
-  const orgName = new Homepage({ configured: false });
-  await orgName.save()
+  // }
+  // Homepage = model('Homepage', homepageSchema)
+  // const orgName = new Homepage({ configured: false });
+  // await orgName.save()
   
-  return res.status(200).json(await mongoose.get('Homepage'))
+  // return res.status(200).json(await get('Homepage'))
 
 
   /*
