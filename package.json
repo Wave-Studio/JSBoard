@@ -10,6 +10,7 @@
   "dependencies": {
     "@heroicons/react": "^1.0.4",
     "@tailwindcss/forms": "^0.3.4",
+    "@typegoose/typegoose": "^9.1.0",
     "formik": "^2.2.9",
     "mongoose": "^6.0.10",
     "next": "^11.1.2",
@@ -20,6 +21,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-recaptcha": "^2.3.10",
+    "socket.io": "^4.2.0",
+    "socket.io-client": "^4.2.0",
     "swr": "^1.0.1"
   },
   "author": "Blocks_n_more - Backend, quick007 - Frontend",
