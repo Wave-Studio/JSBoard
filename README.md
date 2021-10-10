@@ -58,6 +58,7 @@ Installing is pretty simple, all you need to do is download the ZIP and open it 
 JSBoard wasn't always this clean and polished. Its first version looked a little something like this:
 
 [![image](https://user-images.githubusercontent.com/69743171/130735959-dbd19c99-a094-43bc-ac6e-5d19be90212e.png)](https://jsboard.blocksnmore.repl.co/forums/)
+
 Yea, those were some dark days...
 
 Next up, we have the "jsboard-frontend" written in plain html with ejs (which is not a framework, by the way, it's sort of like a budget components implementation. I'm sad to say I (quick007) was impressed when I first saw this...). It also has express and tailwind, which I used their [components page](https://tailwindcomponents.com) and some "css action" to create this absolute masterpiece:
