@@ -63,7 +63,7 @@ export default function Home() {
         <Footer />
       </>
     );
-  if (!forums.data.configured)
+  if (!forums.data.configured || process.env.NODE_ENV !== "development")
     return (
       <>
         <PageError
