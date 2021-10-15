@@ -63,7 +63,7 @@ export default function Home() {
         <Footer />
       </>
     );
-  if (!forums.data.configured || process.env.NODE_ENV !== "development")
+  if (!forums.data.configured && process.env.NODE_ENV !== "development") {
     return (
       <>
         <PageError
@@ -75,7 +75,7 @@ export default function Home() {
         />
       </>
     );
-
+  }
   return (
     <>
       <div className="bg-coolGray-700 flex-grow">
