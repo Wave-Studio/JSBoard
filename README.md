@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://vercel.com">
-    <img src="https://js-board.netlify.app/ProfilePicture.png" height="96" class="rounded">
+    <img src="https://wave-studios.netlify.app/logos/jsboard-small.png" height="96" class="rounded">
     <h2 align="center" class="size">JSBoard</h3>
   </a>
   <p align="center">Next-generation forums software</p>
