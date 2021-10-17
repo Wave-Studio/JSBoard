@@ -1,6 +1,7 @@
 const withPWA = require("next-pwa");
 
 module.exports = withPWA({
+  generateBuildId: () => 'build',
   target: "serverless",
   throwIfNamespace: false,
   pwa: {

@@ -24,7 +24,7 @@ export default function Home() {
         />
       </>
     );
-  if (!sidebar.data || !forums.data)
+  if (!sidebar.data || !forums.data || true) 
     return (
       <>
         <div className="bg-coolGray-700 flex-grow">
