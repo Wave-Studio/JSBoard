@@ -1,7 +1,7 @@
 
 
 <p align="center">
-  <a href="https://vercel.com">
+  <a href="https://wave-studios.netlify.app/jsboard">
     <img src="https://wave-studios.netlify.app/logos/jsboard-small.png" height="96" class="rounded">
     <h2 align="center" class="size">JSBoard</h3>
   </a>
