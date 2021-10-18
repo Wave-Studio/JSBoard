@@ -19,7 +19,7 @@ module.exports = {
           900: "#121314",
         },
         theme: {
-          primary: "#2563EB",
+          primary: "#1757e3",
         },
         branding: {
           50: "#baf5eb", //for light theme
