@@ -1,10 +1,10 @@
-import fs from "fs";
-var db;
+import mongoose from 'mongoose';
 
-class dbManager {
-  constructor() {}
-  createDB() {
-    if (!fs.existsSync("./.jsboard/config.json"))
-      throw new Error("Database is not configured!");
+export default async function dbconnect() {
+  if (mongoose.connection.readyState !== 1) {
+    await mongoose.connect(process.env.DB_LINK, {
+      serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
+      socketTimeoutMS: 10000, // Close sockets after 10 seconds of inactivity
+    })
   }
 }

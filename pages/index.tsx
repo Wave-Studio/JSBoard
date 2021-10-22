@@ -136,7 +136,7 @@ export default function Home() {
               <Forums categories={forums.data.forums} />
             </div>
             <div className="lg:pl-5">
-              <Sidebar categories={sidebar.data.sidebar} b/>
+              <Sidebar categories={sidebar.data.sidebar} />
             </div>
           </div>
         </div>
