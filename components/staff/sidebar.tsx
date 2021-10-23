@@ -24,7 +24,7 @@ export default function StaffSidebar() {
       items: [
         <DashButton
           icon={<HomeIcon className="h-6 w-6 mx-2" />}
-          name="Dashboard"
+          name="Home"
         />,
         <DashButton
           icon={<CogIcon className="h-6 w-6 mx-2" />}

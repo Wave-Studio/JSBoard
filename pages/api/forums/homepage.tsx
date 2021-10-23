@@ -13,17 +13,15 @@ import mongoose from 'mongoose';
 // THIS DOESN'T WORK!
 // WHY? HAS I EVER?
 
-
-export default async function handle(req, res) {
-  connect();
-  
+export default async function handle(req: any, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: any): any; new(): any; }; }; }) {
+  await connect();
+  const Homepage = mongoose.models.homepage || mongoose.model('homepage', homepageSchema);
   //delete mongoose.connection.models['homepage'];
-  const Homepage = mongoose.models.homepage || mongoose.model('homepage', homepageSchema) ;
+  
   
   if (await Homepage.find().count() == 0) {
 	  const pageData = new Homepage({
       configured: true,
-      main: true,
       forums: [
         {
           icon: "Heroicons.SpeakerPhoneIcon",
@@ -54,11 +52,11 @@ export default async function handle(req, res) {
       custom: true,
       customName: "Among", //custom link also gets a name
       customLink: "https://example.com",
-      orgName: "Insert indelible name here",});
+      orgName: "Insert indelible name here",
+    });
 	  await pageData.save();
   }
-  console.log(await Homepage.find()); //this is the data
-	return res.status(200).json(await Homepage.find({})[0]);
+	return res.status(200).json(await Homepage.findOne());
 
 }
 
@@ -172,7 +170,6 @@ export default async function handle(req, res) {
 
 const homepageSchema = new mongoose.Schema({
   configured: Boolean,
-  main: Boolean,
   forums: [{
     icon: String,
     name: String,
@@ -193,3 +190,9 @@ const homepageSchema = new mongoose.Schema({
   customLink: String, 
   orgName: String
 });
+
+
+
+
+
+

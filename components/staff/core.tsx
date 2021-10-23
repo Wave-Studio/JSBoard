@@ -15,7 +15,7 @@ import Sidebar from "./sidebar";
 import Switcher from "../misc/mode-switcher";
 
 import Shorten from "../../lib/shorten";
-import dashboard from "./../../pages/staff/forums/settings";
+import dashboard from "./../../pages/dashboard/forums/settings";
 
 export default function StaffCore(props) {
   const [profileOpen, setProfileOpen] = useState(false);

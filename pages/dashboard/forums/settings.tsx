@@ -16,6 +16,8 @@ import Linkmaker from "../../../components/staff/linkmaker";
 import useSWR from "swr";
 import fetcher from "../../../lib/fetcher";
 
+
+
 export default function dashboard() {
   const { data, error } = useSWR("/api/forums/homepage", fetcher);
   if (!data) {
@@ -25,7 +27,7 @@ export default function dashboard() {
         <h2 className="text-xl font-medium text-gray-300 mb-2">
           Configure the sidebar and main boxes
         </h2>
-        <hr className="border-blue-600 border-t-2 bg-opacity-50 w-10" />
+        <hr className="border-theme-primary border-t-2 bg-opacity-50 w-10" />
         <Notification color="bg-theme-primary">
           <div className=" inline-flex rounded-md font-medium items-center nightwind-prevent text-white">
             <svg
@@ -61,7 +63,7 @@ export default function dashboard() {
         <h2 className="text-xl font-medium text-gray-300 mb-2">
           Configure the sidebar and main boxes
         </h2>
-        <hr className="border-blue-600 border-t-2 bg-opacity-50 w-10" />
+        <hr className="border-theme-primary border-t-2 bg-opacity-50 w-10" />
         <Notification color="bg-red-500">
           <div className=" inline-flex rounded-md font-medium items-center mr-auto text-white nightwind-prevent">
             <ExclamationCircleIcon className="h-5 w-5 mr-2" />
@@ -100,7 +102,7 @@ export default function dashboard() {
         <h2 className="text-xl font-medium text-gray-300 mb-2">
           Configure the sidebar and main boxes
         </h2>
-        <hr className="border-blue-600 border-t-2 bg-opacity-50 w-10" />
+        <hr className="border-theme-primary border-t-2 bg-opacity-50 w-10" />
         <div className="space-y-8 mt-10">
           <Formik
             initialValues={{
@@ -116,6 +118,8 @@ export default function dashboard() {
             }}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
+                //update(values);
+                //console.log(values);
                 alert(JSON.stringify(values, null, 2));
                 setSubmitting(false);
               }, 400);
@@ -236,7 +240,7 @@ export default function dashboard() {
                   value="Save"
                   className="bg-green-700 btn btn-lg  hover:opacity-70 font-semibold mt-5"
                 >
-                  Submit
+                  Save
                 </button>
               </div>
             </Form>

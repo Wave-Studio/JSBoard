@@ -11,8 +11,8 @@ module.exports = withPWA({
   async redirects() {
     return [
       {
-        source: "/staff",
-        destination: "/staff/dashboard",
+        source: "/dashboard",
+        destination: "/dashboard/home",
         permanent: true,
       },
       {
@@ -21,8 +21,8 @@ module.exports = withPWA({
         permanent: true,
       },
       {
-        source: "/staff/main/dashboard",
-        destination: "/staff/dashboard",
+        source: "/dashboard/main/dashboard",
+        destination: "/dashboard/home",
         permanent: true,
       },
       {

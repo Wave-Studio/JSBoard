@@ -8,7 +8,7 @@ export default function DashButton(props) {
   }
   render() {*/
   const url =
-    "/staff/" +
+    "/dashboard/" +
     (props.section ? props.section.toLowerCase() + "/" : "") +
     (props.url || props.name).toLowerCase();
 
