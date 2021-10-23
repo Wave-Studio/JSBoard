@@ -35,7 +35,6 @@ export default function StaffCore(props) {
 
   return (
     <>
-      <title>JSboard Staff Dashboard</title>
       <div className="overflow-hidden flex bg-coolGray-700 text-gray-200 h-screen">
         {/*Side panel*/}
         <div
@@ -50,7 +49,7 @@ export default function StaffCore(props) {
                 className="h-6 w-6 ml-2 mr-4 mt-[0.20rem] md:hidden"
                 onClick={() => setSideBarOpen(!sideBarOpen)}
               />
-              <Link href="/staff/dashboard">DashJSBoard</Link>
+              <Link href="/dashboard/home">DashJSBoard</Link>
             </h2>
           </div>
           <hr className="mx-6 mb-4 bg-coolGray-800 border-none h-px flex-none" />
