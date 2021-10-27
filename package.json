@@ -5,33 +5,39 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --write . !.next"
+    "format": "prettier --write . !.next",
+    "update": "yarn yarn-upgrade-all"
   },
   "dependencies": {
-    "@heroicons/react": "^1.0.4",
+    "@heroicons/react": "^1.0.5",
     "@tailwindcss/forms": "^0.3.4",
     "formik": "^2.2.9",
-    "mongoose": "^6.0.10",
-    "next": "^11.1.2",
+    "mongoose": "^6.0.12",
+    "next": "^12.0.1",
     "next-iron-session": "^4.2.0",
-    "next-pwa": "^5.3.1",
+    "next-pwa": "^5.4.0",
     "nightwind": "^1.1.12",
     "node-fetch": "^2.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-recaptcha": "^2.3.10",
-    "socket.io": "^4.2.0",
-    "socket.io-client": "^4.2.0",
+    "socket.io": "^4.3.1",
+    "socket.io-client": "^4.3.2",
     "swr": "^1.0.1"
   },
   "author": "Blocks_n_more - Backend, quick007 - Frontend",
   "devDependencies": {
-    "@types/react": "^17.0.27",
+    "@types/react": "^17.0.33",
     "autoprefixer": "^10.3.7",
-    "postcss": "^8.3.9",
+    "postcss": "^8.3.11",
     "prettier": "^2.4.1",
-    "tailwindcss": "^2.2.16",
-    "typescript": "^4.4.3",
+    "tailwindcss": "^2.2.17",
+    "typescript": "^4.4.4",
     "yarn-upgrade-all": "^0.5.4"
+  },
+  "yarn-upgrade-all": {
+    "ignore": [
+      "node-fetch"
+    ]
   }
 }
