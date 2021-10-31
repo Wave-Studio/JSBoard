@@ -15,12 +15,14 @@ export default function DashButton(props) {
   return (
     <>
       <li>
-        <Link href={url}>
-          <button className="sidebar-btn">
-            {props.icon}
-            {props.name.substring(0, 1).toUpperCase() +
-              props.name.substring(1).toLowerCase()}
-          </button>
+        <Link href={url} > {/*scroll false doesn't work for some reason*/}
+          <a>
+            <button className="sidebar-btn">
+              {props.icon}
+              {props.name.substring(0, 1).toUpperCase() +
+                props.name.substring(1).toLowerCase()}
+            </button>
+          </a>
         </Link>
       </li>
     </>

@@ -9,35 +9,27 @@
     "update": "yarn yarn-upgrade-all"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.5",
-    "@tailwindcss/forms": "^0.3.4",
     "formik": "^2.2.9",
     "mongoose": "^6.0.12",
     "next": "^12.0.1",
-    "next-iron-session": "^4.2.0",
     "next-pwa": "^5.4.0",
     "nightwind": "^1.1.12",
-    "node-fetch": "^2.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-recaptcha": "^2.3.10",
     "socket.io": "^4.3.1",
-    "socket.io-client": "^4.3.2",
-    "swr": "^1.0.1"
+    "socket.io-client": "^4.3.2"
   },
   "author": "Blocks_n_more - Backend, quick007 - Frontend",
   "devDependencies": {
+    "@tailwindcss/forms": "^0.3.4",
     "@types/react": "^17.0.33",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.3.11",
-    "prettier": "^2.4.1",
     "tailwindcss": "^2.2.19",
     "typescript": "^4.4.4",
     "yarn-upgrade-all": "^0.5.4"
-  },
-  "yarn-upgrade-all": {
-    "ignore": [
-      "node-fetch"
-    ]
   }
 }

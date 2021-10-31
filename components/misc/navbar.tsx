@@ -20,8 +20,8 @@ export default function Navbar(props) {
     <>
       <Head>
         {/*Primary Meta Tags*/}
-        <title>{props.name + " | JSBoard"}</title>
-        <meta name="title" content={props.name + " | JSBoard"} />
+        <title>{(props.name ?? "JSBoard page") + " | JSBoard"}</title>
+        <meta name="title" content={(props.name ?? "JSBoard page") + " | JSBoard"} />
 
         <meta
           name="description"
@@ -31,7 +31,7 @@ export default function Navbar(props) {
         {/*Open Graph / Facebook*/}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://metatags.io/" />
-        <meta property="og:title" content={props.name + " | JSBoard"} />
+        <meta property="og:title" content={(props.name ?? "JSBoard page") + " | JSBoard"} />
         <meta
           property="og:description"
           content="Placeholder until we add moving saving descriptions"
@@ -43,7 +43,7 @@ export default function Navbar(props) {
 
         {/*Twitter*/}
         <meta property="twitter:url" content="https://metatags.io/" />
-        <meta property="twitter:title" content={props.name + " | JSBoard"} />
+        <meta property="twitter:title" content={(props.name ?? "JSBoard page") + " | JSBoard"} />
         <meta
           property="twitter:description"
           content="Placeholder until we add moving saving descriptions"
