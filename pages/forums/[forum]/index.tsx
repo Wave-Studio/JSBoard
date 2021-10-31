@@ -8,19 +8,25 @@ import fetcher from "../../../lib/fetcher";
 
 export default function ViewUserProfile() {
   const router = useRouter();
-  const { userID } = router.query;
+  const { forumID } = router.query;
 
   const { data, error } = useSWR(
-    "/api/user/data?id=" + (userID || "0").toString(),
+    "/api/user/data?id=" + (forumID || "0").toString(),
     fetcher
   );
+  console.log(forumID)
   return (
     <>
-      <div className="bg-coolGray-700 flex-grow">
-        <Navbar name="Loading..." />
-        <a>beans</a>
-        <Footer />
-      </div>
+      <div className="flex flex-col min-h-screen md:px-0">
+				<Navbar name="Loading..." />
+					<div className="flex-1">
+						<div className="max-w-screen-xl mx-auto pt-4">
+							{}
+						</div>
+						
+					</div>
+				<Footer />
+			</div>
     </>
   );
 }

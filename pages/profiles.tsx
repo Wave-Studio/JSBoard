@@ -133,14 +133,14 @@ export default function profiles(props) {
     const test = //if your wondering, this "works", sort of. (hint: spam click the two buttons until desired result) Accepting PRs to fix lmao
       menuSel == 1 ? data.users.sort().slice(0, 20) : data.users.slice(0, 20);
     return test.map((d: string) => {
-      const user = d.split(":").pop();
-      const userprofile = useSWR(`/api/user/data?id=${user}`, fetcher);
+      const userID = d.split(":").pop();
+      const userprofile = useSWR(`/api/user/data?id=${userID}`, fetcher);
       if (!userprofile.data) {
         return exProfile();
       }
       return (
         <>
-          <Link href={"/profile/" + user}>
+          <Link href={"/profile/" + d}>
             <a>
               <div className="bg-coolGray-800 px-5 py-3 mt-3 rounded-md flex hover:filter hover:brightness-90 transition cursor-pointer select-none">
                 <Image

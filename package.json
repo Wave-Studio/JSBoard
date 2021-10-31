@@ -28,10 +28,10 @@
   "author": "Blocks_n_more - Backend, quick007 - Frontend",
   "devDependencies": {
     "@types/react": "^17.0.33",
-    "autoprefixer": "^10.3.7",
+    "autoprefixer": "^10.4.0",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
-    "tailwindcss": "^2.2.17",
+    "tailwindcss": "^2.2.19",
     "typescript": "^4.4.4",
     "yarn-upgrade-all": "^0.5.4"
   },

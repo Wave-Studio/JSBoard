@@ -24,6 +24,8 @@ export const users = [
       phone: null, //returning null will allow you to add a phone later
       password: "red-sus!", //wont be stored in plaintext later, this is just for testing
       twofa: false, //for some reason it won't let my type "2fa", idk why
+      //nevermind, I'm dumb, see a comment I made elsewhere
+      //(not sure where I made it though so have fun)
     },
     activity: {
       seen: "10 mins ago",

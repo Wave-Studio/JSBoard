@@ -18,7 +18,9 @@ import Info from "../../../components/profile/info";
 export default function ViewUserProfile() {
   const currentUser = "2"; //set what user number you are
   const router = useRouter();
-  const { userID } = router.query;
+  var { userID } = router.query;
+  //This is an awful way to redefine types
+  userID = (""+userID).split(":").pop();
   const [menuSel, setMenuSel] = useState(1);
 
   const { data, error } = useSWR(
@@ -174,19 +176,6 @@ export default function ViewUserProfile() {
       />
     );
 
-  if (!data.configured)
-    return (
-      <>
-        <PageError
-          code={500}
-          text="JSBoard is not configured! Please configure it"
-          redirect="/setup"
-          redirectname="Configure JSBoard"
-          back={true}
-          home={true}
-        />
-      </>
-    );
   if (data.error === 404)
     return (
       <PageError code={404} text="User not found!" back={true} home={true} />

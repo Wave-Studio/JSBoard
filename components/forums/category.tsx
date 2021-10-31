@@ -35,9 +35,20 @@ export default function catagory(props) {
               | React.ReactChild
               | React.ReactFragment
               | React.ReactPortal;
+            redirect:
+              | string
+              | React.ReactChild
+              | React.ReactFragment
+              | React.ReactPortal;
+            id:
+              | number
+              | React.ReactChild
+              | React.ReactFragment
+              | React.ReactPortal;
           }) => (
             <div>
-              <Link href="#">
+              <Link href={"/forums/" + data.redirect + ":" + data.id}>
+                <a>
                 <div className="flex-grow flex flex-row rounded-md shadow-md hover:shadow-xl bg-coolGray-800 py-2 mb-5 items-center cursor-pointer transition">
                   <div className="grid place-items-center align-middle rounded-full p-2 md:p-3 bg-blue-600 mx-5">
                     <XIcon />
@@ -66,6 +77,7 @@ export default function catagory(props) {
                     </h4>
                   </div>
                 </div>
+                </a>
               </Link>
             </div>
           )

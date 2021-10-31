@@ -10,7 +10,6 @@ export default function handle(req: any, res: any) {
       configured: false,
     });
   return res.status(200).json({
-    configured: true,
     users: ["TestAccount:0", "Blocks:1", "Quick:2"],
   });
 }
