@@ -64,21 +64,21 @@ export default function ViewUserProfile() {
 							<div className="flex justify-between">
 								<h1 className="text-2xl font-medium">forum name</h1>
 								<div className="relative flex">
-                  <Transition className={open ? "space-x-3" : ""} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} show={open}>
+                  <div className={open ? "space-x-3" : ""} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
                     <button className={"btn btn-white nightwind-prevent hover:!bg-opacity-80 focus:!bg-opacity-80 bg-gray-100 !px-3 !text-black z-[39] " + (open ? "" : "absolute")}>
                       1
                     </button>
-                    <button className={"btn btn-white !px-2.5 bg-branding-900 z-[38] left-6 " + (open ? "" : "absolute opacity-50")}>
+                    <button className={"btn btn-white !pr-2.5  bg-branding-900 z-[38] left-6 " + (open ? "" : "absolute opacity-50")}>
                       2
                     </button>
-                    <button className={"btn btn-white !px-2.5 bg-branding-900 z-[37] left-9 " + (open ? "" : "absolute opacity-30")}>
+                    <button className={"btn btn-white !px-2.5 bg-branding-900 z-[37] left-10 " + (open ? "" : "absolute opacity-30")}>
                       3
                     </button>
-                    <button className={"btn btn-white !px-2.5 bg-branding-900 z-[36] left-12 " + (open ? "" : "absolute opacity-10")}>
+                    <button className={"btn btn-white !px-2.5 bg-branding-900 z-[36] left-14 " + (open ? "" : "absolute opacity-10")}>
                       4
                     </button>
                     <span className="ml-20">...</span>
-                  </Transition>
+                  </div>
                   <button className="btn btn-white !px-2.5 bg-branding-900 z-[39] ml-2">
 										900
 									</button>
