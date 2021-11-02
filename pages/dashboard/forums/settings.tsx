@@ -8,18 +8,39 @@ import {
   ExclamationCircleIcon,
 } from "@heroicons/react/outline";
 import { Formik, Form, ErrorMessage, Field } from "formik";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import io from "socket.io-client";
 
 import StaffCore from "../../../components/staff/core";
 import Notification from "../../../components/misc/notification";
 import Linkmaker from "../../../components/staff/linkmaker";
-import useSWR from "swr";
-import fetcher from "../../../lib/fetcher";
 
 
 
 export default function dashboard() {
-  const { data, error } = useSWR("/api/forums/homepage", fetcher);
+  const [data, setData] = useState({
+			configured: false,
+			websiteLink: null,
+			orgName: null,
+			website: null,
+			description: null,
+			store: null,
+			customLink: null,
+			custom: null,
+			storeLink: null,
+			customName: null,
+			forums: [],
+	});
+  //const { data, error } = useSWR("/api/forums/homepage", fetcher);
+  useEffect(() => {
+		fetch("/api/socket").finally(() => {
+			const socket = io();
+			socket.on("homepage", (data) => {
+				setData(data);
+			});
+			socket.emit("homepage");
+		});
+	}, []);
   if (!data) {
     return (
       <StaffCore page="Settings">
@@ -53,45 +74,6 @@ export default function dashboard() {
             Loading...
           </div>
         </Notification>
-      </StaffCore>
-    );
-  }
-  if (error) {
-    return (
-      <StaffCore page="Settings">
-        <h1 className="text-3xl font-bold text-gray-200 mb-1">Settings</h1>
-        <h2 className="text-xl font-medium text-gray-300 mb-2">
-          Configure the sidebar and main boxes
-        </h2>
-        <hr className="border-theme-primary border-t-2 bg-opacity-50 w-10" />
-        <Notification color="bg-red-500">
-          <div className=" inline-flex rounded-md font-medium items-center mr-auto text-white nightwind-prevent">
-            <ExclamationCircleIcon className="h-5 w-5 mr-2" />
-            Error...
-          </div>
-        </Notification>
-        <p className="mt-4 font-medium">
-          We ran into an error loading this page! Lets try a few things...
-          <ul className="list-decimal list-inside ml-2 font-normal">
-            <li>Reload the page</li>
-            <li>
-              Check the{" "}
-              <span className="px-1 rounded bg-gray-200 bg-opacity-10">
-                Network
-              </span>{" "}
-              tab in the browser console for any errors
-            </li>
-            <li>
-              Check the database itself and make sure everything is intact
-            </li>
-            <li>
-              Create an issue{" "}
-              <a href="https://github.com/wave-studio/JSBoard" className="link">
-                here
-              </a>
-            </li>
-          </ul>
-        </p>
       </StaffCore>
     );
   }

@@ -1,0 +1,141 @@
+                <div className="relative hidden">
+                  <div
+                    className={open ? "pl-16" : ""}
+                    onMouseEnter={() => (pages > 1 ? setOpen(true) : "")}
+                    onMouseLeave={() => setOpen(false)}
+                  >
+                    {pages == 1 ? (
+                      <button
+                        className={
+                          "btn btn-white nightwind-prevent hover:!bg-opacity-80 focus:!bg-opacity-80 bg-gray-100 !px-3 !text-black z-[39] transition absolute " +
+                          (open ? "transform -translate-x-20" : "")
+                        }
+                      >
+                        1
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                    {pages == 2 ? (
+                      <>
+                        <button
+                          className={
+                            "btn btn-white nightwind-prevent hover:!bg-opacity-80 focus:!bg-opacity-80 bg-gray-100 !px-3 !text-black z-[39] transition absolute " +
+                            (open ? "transform -translate-x-20" : "")
+                          }
+                        >
+                          1
+                        </button>
+                        <button
+                          className={
+                            "btn btn-white !pr-2.5  bg-branding-900 z-[38] absolute transform " +
+                            (open
+                              ? " -translate-x-10"
+                              : "translate-x-6 opacity-50")
+                          }
+                        >
+                          2
+                        </button>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                    {pages == 3 ? (
+                      <>
+                        <button
+                          className={
+                            "btn btn-white nightwind-prevent hover:!bg-opacity-80 focus:!bg-opacity-80 bg-gray-100 !px-3 !text-black z-[39] transition absolute " +
+                            (open ? "transform -translate-x-20" : "")
+                          }
+                        >
+                          1
+                        </button>
+                        <button
+                          className={
+                            "btn btn-white !pr-2.5  bg-branding-900 z-[38] absolute transform " +
+                            (open
+                              ? " -translate-x-10"
+                              : "translate-x-6 opacity-50")
+                          }
+                        >
+                          2
+                        </button>
+                        <button
+                          className={
+                            "btn btn-white !px-2.5 bg-branding-900 z-[37] absolute transform " +
+                            (open
+                              ? " translate-x-0"
+                              : "translate-x-9 opacity-30")
+                          }
+                        >
+                          3
+                        </button>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                    {pages == 4 ? (
+                      <>
+                        <button
+                          className={
+                            "btn btn-white nightwind-prevent hover:!bg-opacity-80 focus:!bg-opacity-80 bg-gray-100 !px-3 !text-black z-[39] transition absolute " +
+                            (open ? "transform -translate-x-20" : "")
+                          }
+                        >
+                          1
+                        </button>
+                        <button
+                          className={
+                            "btn btn-white !pr-2.5  bg-branding-900 z-[38] absolute transform " +
+                            (open
+                              ? " -translate-x-10"
+                              : "translate-x-6 opacity-50")
+                          }
+                        >
+                          2
+                        </button>
+                        <button
+                          className={
+                            "btn btn-white !px-2.5 bg-branding-900 z-[37] absolute transform " +
+                            (open
+                              ? " translate-x-0"
+                              : "translate-x-9 opacity-30")
+                          }
+                        >
+                          3
+                        </button>
+                        <button
+                          className={
+                            "btn btn-white !px-2.5 bg-branding-900 z-[36] absolute transform " +
+                            (open
+                              ? " translate-x-10"
+                              : "translate-x-12 opacity-10")
+                          }
+                        >
+                          4
+                        </button>
+                      </>
+                    ) : (
+                      ""
+                    )}
+
+                    {pages > 4 ? (
+                      <button
+                        className={
+                          "btn btn-white !px-2.5 bg-branding-900 z-[36] absolute transform " +
+                          (open
+                            ? " translate-x-10"
+                            : "translate-x-12 opacity-10")
+                        }
+                      >
+                        <ArrowRightIcon className="w-4 h-4 py-1" />
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                    <span className="ml-20">...</span>
+                  </div>
+                  <button className="btn btn-white !px-2.5 bg-branding-900 z-[39] ml-2">
+                    900
+                  </button>
+                </div>

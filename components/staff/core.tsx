@@ -15,7 +15,6 @@ import Sidebar from "./sidebar";
 import Switcher from "../misc/mode-switcher";
 
 import Shorten from "../../lib/shorten";
-import dashboard from "./../../pages/dashboard/forums/settings";
 
 export default function StaffCore(props) {
   const [profileOpen, setProfileOpen] = useState(false);
@@ -49,7 +48,7 @@ export default function StaffCore(props) {
                 className="h-6 w-6 ml-2 mr-4 mt-[0.20rem] md:hidden"
                 onClick={() => setSideBarOpen(!sideBarOpen)}
               />
-              <Link href="/dashboard/home">DashJSBoard</Link>
+              <Link href="/dashboard/home"><span>DashJSBoard</span></Link>
             </h2>
           </div>
           <hr className="mx-6 mb-4 bg-coolGray-800 border-none h-px flex-none" />

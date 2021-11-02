@@ -7,7 +7,6 @@ import Footer from "../components/misc/footer";
 import PageError from "../components/misc/error";
 import Forums from "../components/forums/category";
 import Sidebar from "../components/forums/sidebar";
-import fetcher from "../lib/fetcher";
 
 export default function Home() {
 	const [forums, setForums] = React.useState({

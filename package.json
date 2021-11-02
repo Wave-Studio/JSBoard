@@ -6,10 +6,10 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write . !.next",
-    "update": "yarn yarn-upgrade-all"
+    "update": "yarn yarn-upgrade-all",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.5",
     "formik": "^2.2.9",
     "mongoose": "^6.0.12",
@@ -20,13 +20,16 @@
     "react-dom": "^17.0.2",
     "react-recaptcha": "^2.3.10",
     "socket.io": "^4.3.1",
-    "socket.io-client": "^4.3.2"
+    "socket.io-client": "^4.3.2",
+    "zustand": "^3.6.2"
   },
   "author": "Blocks_n_more - Backend, quick007 - Frontend",
   "devDependencies": {
     "@tailwindcss/forms": "^0.3.4",
     "@types/react": "^17.0.33",
     "autoprefixer": "^10.4.0",
+    "eslint": "8.1.0",
+    "eslint-config-next": "12.0.2",
     "postcss": "^8.3.11",
     "tailwindcss": "^2.2.19",
     "typescript": "^4.4.4",
