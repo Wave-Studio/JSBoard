@@ -1,4 +1,4 @@
-export default function step3(props) {
+export default function step3(props: {page: number}) {
   if (props.page !== 3) {
     return null;
   }

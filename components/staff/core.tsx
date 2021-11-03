@@ -1,4 +1,4 @@
-import React, { Props, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import {
   XIcon,
@@ -16,19 +16,18 @@ import Switcher from "../misc/mode-switcher";
 
 import Shorten from "../../lib/shorten";
 
-export default function StaffCore(props) {
+export default function StaffCore(props: {children: React.ReactNode, admin?: boolean, page?: string}) {
   const [profileOpen, setProfileOpen] = useState(false);
   const [sideBarOpen, setSideBarOpen] = useState(false);
-  const userName = props.userName || "Guest";
-  const pfp = props.pfp || "/ProfilePicture.png";
-  const admin = props.admin || false;
-  const userID = props.userID || 0;
-
-  if (admin === true)
+  const userName = "Guest"
+  const pfp = "/ProfilePicture.png"
+  const admin = props.admin || false
+  const userID = 0
+  if (admin == true)
     //add a ! once we move to prod
     return (
       <>
-        <PageError code={401} text="User unathorized" back={true} home={true} />
+        <PageError code={401} text="User unathorized" back={true} home={true}  />
       </>
     );
 
@@ -48,7 +47,9 @@ export default function StaffCore(props) {
                 className="h-6 w-6 ml-2 mr-4 mt-[0.20rem] md:hidden"
                 onClick={() => setSideBarOpen(!sideBarOpen)}
               />
-              <Link href="/dashboard/home"><span>DashJSBoard</span></Link>
+              <Link href="/dashboard/home">
+                <span>DashJSBoard</span>
+              </Link>
             </h2>
           </div>
           <hr className="mx-6 mb-4 bg-coolGray-800 border-none h-px flex-none" />
@@ -123,7 +124,7 @@ export default function StaffCore(props) {
                 />
               </form>
               <div className="absolute right-16">
-                <Switcher darkTextOnLight={true} className="" />
+                <Switcher />
               </div>
             </nav>
             <div className="h-full">

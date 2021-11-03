@@ -1,7 +1,7 @@
 import checkConfig from "../../../../lib/checkConfig";
 import { forums } from "./forums";
 
-export default function handle(req, res) {
+export default function handle(req: any, res:{status(n: number):{json: (o: object) => any}}): void {
   const date = 1622832731224;
   if (!checkConfig())
     return res.status(500).json({

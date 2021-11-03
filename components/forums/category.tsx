@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { XIcon } from "@heroicons/react/outline";
 
-export default function catagory(props) {
-  if (props.loading == true) {
+export default function catagory(props: {categories?: Array<any>, loading?: boolean}) {
+  if (props.loading == true || props.categories == undefined) {
     return (
       <>
         {loadingElement()}

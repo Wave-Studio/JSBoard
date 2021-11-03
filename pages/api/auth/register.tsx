@@ -1,6 +1,6 @@
 import fs from "fs";
 
-export default async function (req, res) {
+export default async function (req: any, res: any) {
   if (!fs.existsSync("./.jsboard/config.json"))
     return res.status(500).json({
       error: 500,

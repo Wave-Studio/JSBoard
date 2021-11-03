@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-export default function Notification(props) {
+export default function Notification(props: {color?: string, msg: string, children?: any}) {
   return (
     <>
       <div

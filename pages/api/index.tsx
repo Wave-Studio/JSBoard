@@ -1,4 +1,4 @@
-export default (req, res) => {
+export default (req: any, res: any) => {
   res.status(404).json({
     error: 404,
     message:

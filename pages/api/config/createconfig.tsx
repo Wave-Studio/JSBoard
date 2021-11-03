@@ -1,8 +1,10 @@
+//we should probably remove this as its not being used anymore
+
 import { writeFileSync } from "fs";
 import checkConfig from "../../../lib/checkConfig";
 
-export default function (req, res) {
-  if (checkConfig())
+export default function (req: any, res: any) {
+  if (true)
     return res.status(404).json({
       error: 404,
       description: "JSBoard is already configured!",

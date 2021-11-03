@@ -1,4 +1,4 @@
-export default function Info(props) {
+export default function Info(props: {page: number, rank: string}) {
   if (props.page !== 3) {
     return null;
   } else {

@@ -1,11 +1,10 @@
 import React from "react";
 import Link from "next/link";
 
-export default class Loading extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
+//DO NOT USE THIS PAGE
+//This page is used to temprorarily add a loading component for a backend developer thats to lazy to do css and is not intended to be used in production.
+
+export default function Loading() {
     return (
       <>
         <div className="flex flex-col h-screen">
@@ -22,4 +21,3 @@ export default class Loading extends React.Component {
       </>
     );
   }
-}

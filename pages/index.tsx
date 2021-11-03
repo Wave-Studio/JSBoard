@@ -46,6 +46,9 @@ export default function Home() {
 		return (
 			<>
 				<PageError
+					redirect={undefined}
+					redirectName={null}
+					allowHome={undefined}
 					code={500}
 					text="An error occured while loading this!"
 					back={true}
@@ -97,8 +100,10 @@ export default function Home() {
 					code={500}
 					text="JSBoard is not configured! Please configure it"
 					redirect="/forums/setup"
-					redirectname="Configure JSBoard"
-					allowhome={false}
+					redirectName="Configure JSBoard"
+					allowHome={false}
+					back={false}
+					home={false}
 				/>
 			</>
 		);
@@ -124,7 +129,7 @@ export default function Home() {
 						</p>
 						{forums.data.store ? (
 							<a
-								href={forums.data.storeLink}
+								href={forums.data.storeLink || undefined}
 								className="text-gray-200 px-3 py-0.5 bg-red-500 inline-flex mt-3 items-center rounded-full font-medium"
 							>
 								<Heroicons.ShoppingCartIcon className="h-5 w-5 mr-1" />
@@ -135,7 +140,7 @@ export default function Home() {
 						)}
 						{forums.data.website ? (
 							<a
-								href={forums.data.websiteLink}
+								href={forums.data.websiteLink || undefined} 
 								className="text-gray-200 px-3 py-0.5 bg-theme-primary inline-flex mt-3 items-center rounded-full font-medium"
 							>
 								<Heroicons.GlobeAltIcon className="h-5 w-5 mr-1" />
@@ -146,7 +151,7 @@ export default function Home() {
 						)}
 						{forums.data.custom ? (
 							<a
-								href={forums.data.customLink}
+								href={forums.data.customLink || undefined}
 								className="text-gray-200 px-3 py-0.5 bg-green-700 inline-flex mt-3 items-center rounded-full font-medium"
 							>
 								<Heroicons.BeakerIcon className="h-5 w-5 mr-1" />

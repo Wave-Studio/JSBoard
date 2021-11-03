@@ -2,7 +2,7 @@ import { XIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-export default function Edit(props) {
+export default function Edit(props: any) {
   const [editName, setEditName] = useState(false);
   if (props.page !== 4) {
     return null;
@@ -135,7 +135,7 @@ export default function Edit(props) {
   }
 }
 
-const saveName = async (e) => {
+const saveName = async (e: any) => {
   const router = useRouter();
   const { userID } = router.query;
   e.preventDefault();
@@ -149,14 +149,14 @@ const saveName = async (e) => {
 };
 
 function phone(n: string) {
-  let first = phoneStr(n).split("P"); //gets ["+1", "(012)345-6789"]
-  let second = first.pop().split(")"); //gets ["(012", "345-6789"]
+  let first: any = phoneStr(n).split("P") || ["+1", "(012)345-6789"]; //gets ["+1", "(012)345-6789"]
+  let second: any = first.pop().split(")"); //gets ["(012", "345-6789"]
   let end = second.shift().replace(/\(/g, ""); //gets "012"
   return [first.shift(), end];
 }
 
 export function hideEmail(email: string) {
-  let e = email.split("@");
+  let e: any = email.split("@");
   let n = e.shift().length;
   let stars = "*".repeat(n).toString();
   let domain = e.pop();

@@ -20,7 +20,7 @@ export default function ViewUserProfile() {
 	var userID = router.query.userID;
 	//This is an awful way to redefine types
 	const [menuSel, setMenuSel] = useState(1);
-	const [user, setUser] = useState(null);
+	const [user, setUser]: any = useState(null);
   
   useEffect(() => {
 		fetch("/api/socket").finally(() => {
@@ -259,7 +259,7 @@ export default function ViewUserProfile() {
 									</div>
 									{/*Mapping*/}
 									<div className="grid grid-cols-3 gap-4">
-										{user.followers.slice(0, 9).map((d) => (
+										{user.followers.slice(0, 9).map((d: {id: number, image: string, username: string}) => (
 											<div className=" bg-gray-800 rounded-md px-2 pt-2 hover:ring-2 ring-theme-primary cursor-pointer transition">
 												<Link href={"/profile/" + d.id}>
 													<Image
@@ -289,7 +289,7 @@ export default function ViewUserProfile() {
 									</div>
 									{/*Mapping*/}
 									<div className="grid grid-cols-3 gap-4">
-										{user.following.slice(0, 9).map((d) => (
+										{user.following.slice(0, 9).map((d: any) => (
 											<div className=" bg-gray-800 rounded-md px-2 pt-2 hover:ring-2 ring-theme-primary cursor-pointer transition">
 												<Link href={"/profile/" + d.id}>
 													<Image

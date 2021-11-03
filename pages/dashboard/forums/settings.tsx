@@ -49,7 +49,7 @@ export default function dashboard() {
           Configure the sidebar and main boxes
         </h2>
         <hr className="border-theme-primary border-t-2 bg-opacity-50 w-10" />
-        <Notification color="bg-theme-primary">
+        <Notification color="bg-theme-primary" msg="somthing lmao">
           <div className=" inline-flex rounded-md font-medium items-center nightwind-prevent text-white">
             <svg
               className="animate-spin mr-2 h-5 w-5 text-white nightwind-prevent "

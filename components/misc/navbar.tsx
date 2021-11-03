@@ -2,18 +2,17 @@ import { useState } from "react";
 import Link from "next/link";
 import { XIcon, MenuAlt3Icon } from "@heroicons/react/outline";
 import Head from "next/head";
-import nightwind from "nightwind/helper";
 
 import Switcher from "./mode-switcher";
 
-export default function Navbar(props) {
+export default function Navbar(props: {name: string, className?: string}) {
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const loading = false;
   const [loadingProgress, setLoadingProgress] = useState(1);
-  const username = props.username || "Guest";
-  const loggedin = props.loggedin || false;
-  const admin = props.admin || false;
-  const sitename = props.sitename || "Azyn";
+  const username = "Guest";
+  const loggedin = false;
+  const admin = false;
+  const sitename = "Azyn";
 
   return (
     //need to add images later

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-export default function DashButton(props) {
+export default function DashButton(props: {section?: string, url?: string, name: string, icon: React.ReactNode}) {
   /*export default class DashButton extends React.Component {
   constructor(props) {
     super(props);

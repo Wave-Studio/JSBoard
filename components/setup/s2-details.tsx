@@ -1,7 +1,7 @@
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 
-export default function step2(props) {
+export default function step2(props: {page: number}) {
   const [storeOpen, setStoreOpen] = useState(false);
   const [store, setStore] = useState(false);
   const [websiteOpen, setWebsiteOpen] = useState(false);

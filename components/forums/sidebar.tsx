@@ -1,13 +1,13 @@
 import React from "react";
 import Link from "next/link";
 
-export default function sidebar(props) {
+export default function sidebar(props: {categories?: Array<any>, loading?: boolean}) {
 	/*export default class sidebar extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {*/
-	if (props.loading == true) {
+	if (props.loading == true || props.categories == undefined) {
 		return (
 			<>
 				<div>

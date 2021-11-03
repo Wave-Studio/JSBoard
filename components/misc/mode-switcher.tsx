@@ -2,7 +2,7 @@ import { SparklesIcon, SunIcon } from "@heroicons/react/outline";
 import nightwind from "nightwind/helper";
 import { useState, useEffect } from "react";
 
-export default function Switcher(props) {
+export default function Switcher(props: {className?: string}) {
   const [darkModeLoc, setDarkModeLoc] = useState(true);
 
   useEffect(function () {

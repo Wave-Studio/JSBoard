@@ -1,5 +1,7 @@
 import { Server } from "socket.io";
 
+
+
 export const Module = (io: Server) => {
 	io.on("connection", (socket) => {
 		socket.on("userInfo", (id) => {
@@ -9,7 +11,7 @@ export const Module = (io: Server) => {
 				});
 			} else {
 				const user = users.filter((u) => u.id.toString() === id)[0];
-				const loginFree = { ...user, unknown: false };
+				const loginFree: any = { ...user, unknown: false };
 				delete loginFree.account;
 				socket.emit("userInfo", loginFree);
 			}

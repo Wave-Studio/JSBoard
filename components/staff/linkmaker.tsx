@@ -1,7 +1,9 @@
+//I have litterally no idea why this file xists, but I'm keeping it for now becaus its late and I don't wanna break anything
+
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/outline";
 import React, { useState } from "react";
 
-export default function Linkmaker(props) {
+export default function Linkmaker(props: any) {
   const [open, setOpen] = useState(false);
   return (
     <>

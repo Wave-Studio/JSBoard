@@ -1,7 +1,7 @@
 import checkConfig from "../../../lib/checkConfig";
 import { FireIcon } from "@heroicons/react/outline";
 
-export default function handle(req, res) {
+export default function handle(req: any, res: any) {
   if (!checkConfig())
     return res.status(500).json({
       error: 500,

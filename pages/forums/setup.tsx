@@ -10,7 +10,7 @@ import Step2 from "../../components/setup/s2-details";
 import Step3 from "../../components/setup/s3-themeing";
 import Summary from "../../components/setup/summary";
 
-export default function setup(props) {
+export default function setup() {
   const [page, setPage] = useState(1);
   //const router = useRouter();
   const saveAnswers = async (e: any) => {

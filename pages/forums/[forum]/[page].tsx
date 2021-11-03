@@ -6,7 +6,7 @@ import Navbar from "../../../components/misc/navbar";
 
 export default function page() {
   const router = useRouter();
-  if (!router.query.page) return <><Navbar /></>;
+  if (!router.query.page) return <><Navbar name="am" /></>;
 
   // Annndddd ForumsIndex has no return code
   // because nobody could *ever* attempt to pass an invalid page

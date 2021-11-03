@@ -1,8 +1,9 @@
 import "../styles/global.css";
 import nightwind from "nightwind/helper";
 import Head from "next/head";
+import { FC } from "react";
 
-export default function JSboard({ Component, pageProps }) {
+export default function JSboard({ Component, pageProps }: any) {
   return (
     <>
       <Head>

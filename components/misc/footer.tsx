@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-export default function JSBoardFooter(props) {
+export default function JSBoardFooter() {
   return (
     <>
       <div className="w-full bg-coolGray-800">

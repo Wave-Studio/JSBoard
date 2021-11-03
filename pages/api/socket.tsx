@@ -1,7 +1,7 @@
 import { Server } from 'socket.io';
 import { readdir } from 'fs';
 
-export default async function handle(req, res) {
+export default async function handle(req: any, res: any) {
 	if (res.socket.server?.io == undefined) {
 		const io = new Server(res.socket.server);
 

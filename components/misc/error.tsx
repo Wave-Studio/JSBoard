@@ -2,23 +2,15 @@ import Link from "next/link";
 import Navbar from "./navbar";
 import Footer from "./footer";
 
-export default function PageError({
-  code,
-  text,
-  back = null,
-  home = null,
-  redirect = undefined,
-  redirectname = null,
-  allowhome = undefined,
-}) {
+export default function PageError( props: {code: number, text: string, back: boolean, home: boolean, redirect?: string | undefined, redirectName?: string | null, allowHome?: boolean | undefined}) {
   return (
     <>
       <div className="flex flex-col h-screen">
-        <Navbar name={code + " | " + text} />
+        <Navbar name={props.code + " | " + props.text} />
         <div className="flex flex-grow justify-center items-center">
           <div className="bg-coolGray-800 text-gray-100 rounded-md shadow-lg p-10">
             <h2 className="text-4xl font-semibold text-center mb-1">
-              {code + " " + text}
+              {props.code + " " + props.text}
             </h2>
             <div className="text-xl">
               <p className="mb-5">
@@ -27,12 +19,12 @@ export default function PageError({
 
               <div className="flex justify-center items-center space-x-4">
                 <div
-                  className={back ? "" : "hidden"}
+                  className={props.back ? "" : "hidden"}
                   onClick={() => history.back()}
                 >
                   <a className="btn btn-lg btn-white ">Go back</a>
                 </div>
-                <div className={home ? "" : "hidden"}>
+                <div className={props.home ? "" : "hidden"}>
                   <Link href="/">
                     <a className="btn btn-lg btn-blue">Home</a>
                   </Link>
@@ -40,11 +32,11 @@ export default function PageError({
 
                 <div
                   className={
-                    redirect || typeof allowhome !== "undefined" ? "" : "hidden"
+                    props.redirect || typeof props.allowHome !== "undefined" ? "" : "hidden"
                   }
                 >
-                  <Link href={redirect || ""}>
-                    <a className="btn btn-lg btn-blue ">{redirectname || ""}</a>
+                  <Link href={props.redirect || ""}>
+                    <a className="btn btn-lg btn-blue ">{props.redirectName || ""}</a>
                   </Link>
                 </div>
               </div>

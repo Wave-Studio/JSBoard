@@ -1,7 +1,7 @@
 import React from "react";
 import StaffCore from "../../../components/staff/core";
 
-export default function Dashboard({ children }) {
+export default function Dashboard() {
   return (
     <>
       <StaffCore page="Themes">
