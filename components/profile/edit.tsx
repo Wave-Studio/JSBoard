@@ -2,7 +2,7 @@ import { XIcon } from "@heroicons/react/outline";
 import { FormEventHandler, useState } from "react";
 import { useRouter } from "next/router";
 
-export default function Edit(props: { page?: number, email: string, user: string, phone: string}) {
+export default function Edit(props: { page?: number, email: string, user: string, phone: string, twofa: boolean }) {
   const [editName, setEditName] = useState(false);
   if (props.page !== 4) {
     return null;

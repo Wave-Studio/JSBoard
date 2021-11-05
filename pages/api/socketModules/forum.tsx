@@ -1,6 +1,6 @@
 import { Server } from "socket.io";
 
-export const Module = async (io: Server) => {
+export const Module = (io: Server) => {
 	io.on("connection", (socket) => {
 		socket.on("forum", (id) => {
 			socket.emit("forum", {

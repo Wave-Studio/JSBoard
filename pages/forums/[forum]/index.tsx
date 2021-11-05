@@ -33,7 +33,7 @@ export default function ViewUserProfile({
     ],
   });
   const [open, setOpen] = useState(true);
-  const pages: number = 15;
+  const pages = 15;
   const [page, setPage] = useState(
     ((isNaN(selectedPage) ? selectedPage : 1) ?? 1) > pages
       ? pages

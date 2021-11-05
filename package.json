@@ -7,10 +7,11 @@
     "start": "next start",
     "format": "prettier --write . !.next",
     "update": "yarn yarn-upgrade-all",
-    "lint": "deno lint --config=./tsconfig.json"
+    "lint": "deno lint components lib pages styles"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.5",
+    "@typegoose/typegoose": "^9.2.0",
     "bcrypt": "^5.0.1",
     "formik": "^2.2.9",
     "mongoose": "^6.0.12",
@@ -25,7 +26,7 @@
     "yup": "^0.32.11",
     "zustand": "^3.6.2"
   },
-  "author": "Blocks_n_more - Backend, quick007 - Frontend",
+  "author": "Blocks_n_more, quick007",
   "devDependencies": {
     "@tailwindcss/forms": "^0.3.4",
     "@types/bcrypt": "^5.0.0",

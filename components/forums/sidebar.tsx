@@ -1,7 +1,12 @@
 import React from "react";
 import Link from "next/link";
 
-export default function sidebar(props: {categories?: Array<any>, loading?: boolean}) {
+export default function sidebar(props: {categories?: Array<{
+	startColor: string,
+	endColor: string,
+	name: string,
+	content: string
+}>, loading?: boolean}) {
 	/*export default class sidebar extends React.Component {
   constructor(props) {
     super(props);

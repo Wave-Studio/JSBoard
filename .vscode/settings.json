@@ -10,5 +10,5 @@
     ".env.local": "env"
   },
   "deno.lint": true,
-  "deno.config": "./tsconfig.json"
+  "deno.config": "./tsconfig.json",
 }

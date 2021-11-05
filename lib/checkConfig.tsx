@@ -1,7 +1,7 @@
 //import { Database } from "quickmongo";
 //const db = new Database(process.env.DB_LINK);
 
-export default async function () {
+export default function () {
   /*if (!db.connection) {
     db.on("ready", () => {
       console.log("Database connected");

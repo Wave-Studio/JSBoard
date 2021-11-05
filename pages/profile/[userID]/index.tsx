@@ -17,10 +17,35 @@ import Info from "../../../components/profile/info";
 export default function ViewUserProfile() {
 	const currentUser = "2"; //set what user number you are
 	const router = useRouter();
-	var userID = router.query.userID;
+	let { userID } = router.query;
 	//This is an awful way to redefine types
 	const [menuSel, setMenuSel] = useState(1);
-	const [user, setUser]: any = useState(null);
+	const [user, setUser] = useState<{
+		unknown: boolean;
+		account: {
+			password: string;
+			email: string;
+			phone?: string;
+			twofa: boolean;
+		};
+		pfp: string;
+		username: string;
+		title: string;
+		activity: {
+			[key: string]: string;
+		};
+		followers: {
+			id: number;
+			image: string;
+			username: string;
+		}[];
+		following: {
+			id: number;
+			image: string;
+			username: string;
+		}[];
+		rank: string;
+	} | null>(null);
 
 	useEffect(() => {
 		fetch("/api/socket").finally(() => {
@@ -179,7 +204,7 @@ export default function ViewUserProfile() {
 
 	user.account = {
 		email: "dan-schofenhagor@gmail.com",
-		phone: null, //returning null will allow you to add a phone later
+		// no phone will allow you to add one later
 		password: "red-sus!", //wont be stored in plaintext later, this is just for testing
 		twofa: false, //for some reason it won't let my type "2fa", idk why
 		//nevermind, I'm dumb, see a comment I made elsewhere
@@ -259,20 +284,28 @@ export default function ViewUserProfile() {
 									</div>
 									{/*Mapping*/}
 									<div className="grid grid-cols-3 gap-4">
-										{user.followers.slice(0, 9).map((d: { id: number, image: string, username: string }) => (
-											<div className=" bg-gray-800 rounded-md px-2 pt-2 hover:ring-2 ring-theme-primary cursor-pointer transition">
-												<Link href={"/profile/" + d.id}>
-													<Image
-														src={d.image}
-														width="50"
-														height="50"
-														alt={d.username + "'s profile picture"}
-														className="rounded"
-														quality="50"
-													/>
-												</Link>
-											</div>
-										))}
+										{user.followers
+											.slice(0, 9)
+											.map(
+												(d: {
+													id: number;
+													image: string;
+													username: string;
+												}) => (
+													<div className=" bg-gray-800 rounded-md px-2 pt-2 hover:ring-2 ring-theme-primary cursor-pointer transition">
+														<Link href={"/profile/" + d.id}>
+															<Image
+																src={d.image}
+																width="50"
+																height="50"
+																alt={d.username + "'s profile picture"}
+																className="rounded"
+																quality="50"
+															/>
+														</Link>
+													</div>
+												)
+											)}
 										<div className={user.followers.length < 9 ? "hidden" : ""}>
 											<Link href={"/profile/" + userID + "/followers"}>
 												<a className="link">View all</a>
@@ -289,7 +322,7 @@ export default function ViewUserProfile() {
 									</div>
 									{/*Mapping*/}
 									<div className="grid grid-cols-3 gap-4">
-										{user.following.slice(0, 9).map((d: any) => (
+										{user.following.slice(0, 9).map((d) => (
 											<div className=" bg-gray-800 rounded-md px-2 pt-2 hover:ring-2 ring-theme-primary cursor-pointer transition">
 												<Link href={"/profile/" + d.id}>
 													<Image
@@ -361,8 +394,7 @@ export default function ViewUserProfile() {
 									page={menuSel}
 									user={user.username}
 									email={user.account.email}
-									phone={user.account.phone}
-									pass={user.account.password}
+									phone={user.account.phone ?? "No linked phone"}
 									twofa /*2fa*/={user.account.twofa}
 								/>
 							</div>

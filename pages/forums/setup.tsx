@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
 
@@ -14,7 +14,7 @@ import Summary from "../../components/setup/summary";
 export default function setup() {
   const [page, setPage] = useState(1);
   //const router = useRouter();
-  const saveAnswers = async (e: any) => {
+  const saveAnswers = (e: React.SyntheticEvent) => {
     e.preventDefault(); //NEEDED OR THE FORM BREAKS
     // TODO: Implement saving
     console.log(e.target);
