@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
+
 import Navbar from "../../components/misc/navbar";
 import Footer from "../../components/misc/footer";
 import PageError from "../../components/misc/error";
@@ -18,6 +19,8 @@ export default function setup() {
     // TODO: Implement saving
     console.log(e.target);
   };
+  
+
 
   if ([1, 2, 3, 4].includes(page)) {
     return (

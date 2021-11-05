@@ -21,6 +21,7 @@
     "react-recaptcha": "^2.3.10",
     "socket.io": "^4.3.1",
     "socket.io-client": "^4.3.2",
+    "yup": "^0.32.11",
     "zustand": "^3.6.2"
   },
   "author": "Blocks_n_more - Backend, quick007 - Frontend",

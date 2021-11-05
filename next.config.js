@@ -31,6 +31,16 @@ module.exports = withPWA({
         destination: "/profiles",
         permanent: false,
       },
+      {
+        source: "/signup",
+        destination: "/forums/login",
+        permanent: false,
+      },
+      {
+        source: "/login",
+        destination: "/forums/login",
+        permanent: false,
+      }
     ];
   },
 });

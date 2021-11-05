@@ -31,8 +31,8 @@ export default function step3(props: {page: number}) {
           />
         </div>
         <h3 className="text-gray-200 font-medium">
-          Choose a luxurious accent color from our expertly-crafted color
-          palette by the makers of TailwindCSS
+          Choose a luxurious accent color from an expertly-crafted color
+          palette
         </h3>
         <div className="flex py-4 space-x-4">
           <input
