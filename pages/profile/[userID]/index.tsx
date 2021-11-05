@@ -21,17 +21,17 @@ export default function ViewUserProfile() {
 	//This is an awful way to redefine types
 	const [menuSel, setMenuSel] = useState(1);
 	const [user, setUser]: any = useState(null);
-  
-  useEffect(() => {
+
+	useEffect(() => {
 		fetch("/api/socket").finally(() => {
-      if (userID != undefined){
-			const socket = io();
-			socket.on("userInfo", (data) => {
-				setUser(data);
-			});
-      userID = userID.toString().split(":").pop();
-			socket.emit("userInfo", userID);
-    }
+			if (userID != undefined) {
+				const socket = io();
+				socket.on("userInfo", (data) => {
+					setUser(data);
+				});
+				userID = userID.toString().split(":").pop();
+				socket.emit("userInfo", userID);
+			}
 		});
 	}, [userID]);
 
@@ -259,7 +259,7 @@ export default function ViewUserProfile() {
 									</div>
 									{/*Mapping*/}
 									<div className="grid grid-cols-3 gap-4">
-										{user.followers.slice(0, 9).map((d: {id: number, image: string, username: string}) => (
+										{user.followers.slice(0, 9).map((d: { id: number, image: string, username: string }) => (
 											<div className=" bg-gray-800 rounded-md px-2 pt-2 hover:ring-2 ring-theme-primary cursor-pointer transition">
 												<Link href={"/profile/" + d.id}>
 													<Image

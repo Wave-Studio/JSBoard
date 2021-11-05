@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.5",
+    "bcrypt": "^5.0.1",
     "formik": "^2.2.9",
     "mongoose": "^6.0.12",
     "next": "^12.0.1",
@@ -27,6 +28,7 @@
   "author": "Blocks_n_more - Backend, quick007 - Frontend",
   "devDependencies": {
     "@tailwindcss/forms": "^0.3.4",
+    "@types/bcrypt": "^5.0.0",
     "@types/react": "^17.0.33",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.3.11",
