@@ -1,8 +1,8 @@
 import { XIcon } from "@heroicons/react/outline";
-import { useState } from "react";
+import { FormEventHandler, useState } from "react";
 import { useRouter } from "next/router";
 
-export default function Edit(props: any) {
+export default function Edit(props: { page?: number, email: string, user: string, phone: string}) {
   const [editName, setEditName] = useState(false);
   if (props.page !== 4) {
     return null;
@@ -135,7 +135,7 @@ export default function Edit(props: any) {
   }
 }
 
-const saveName = async (e: any) => {
+const saveName = async (e: React.SyntheticEvent) => {
   const router = useRouter();
   const { userID } = router.query;
   e.preventDefault();
@@ -143,23 +143,24 @@ const saveName = async (e: any) => {
   const res = await fetch("/api/user/data?id=" + (userID || "0").toString(), {
     method: "POST",
     body: JSON.stringify({
+      // @ts-ignore It *should* work
       name: e.target.username.value,
     }),
   });
 };
 
 function phone(n: string) {
-  let first: any = phoneStr(n).split("P") || ["+1", "(012)345-6789"]; //gets ["+1", "(012)345-6789"]
-  let second: any = first.pop().split(")"); //gets ["(012", "345-6789"]
-  let end = second.shift().replace(/\(/g, ""); //gets "012"
+  const first: string[] = phoneStr(n).split("P") ?? ["+1", "(012)345-6789"];  //gets ["+1", "(012)345-6789"]
+  const second: string[] = first.pop()!.split(")"); //gets ["(012", "345-6789"]
+  const end = second.shift()!.replace(/\(/g, ""); //gets "012"
   return [first.shift(), end];
 }
 
 export function hideEmail(email: string) {
-  let e: any = email.split("@");
-  let n = e.shift().length;
-  let stars = "*".repeat(n).toString();
-  let domain = e.pop();
+  const e: string[] = email.split("@");
+  const n = e.shift()!.length;
+  const stars = "*".repeat(n).toString();
+  const domain = e.pop();
   return stars + "@" + domain;
 }
 

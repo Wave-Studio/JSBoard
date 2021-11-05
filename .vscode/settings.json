@@ -8,5 +8,7 @@
   //for the ENV plugin by Jakka Prihatna
   "files.associations": {
     ".env.local": "env"
-  }
+  },
+  "deno.lint": true,
+  "deno.config": "./tsconfig.json"
 }

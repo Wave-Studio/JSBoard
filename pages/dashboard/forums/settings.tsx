@@ -111,7 +111,7 @@ export default function dashboard() {
               <div className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 text-gray-200">
                 {/*Section 1*/}
                 <h2 className="text-lg font-semibold text-gray-300 mb-8">
-                  Let's learn some more about you
+                  Let{"'"}s learn some more about you
                   {/*<hr className="border-t-2 border-gray-200 border-opacity-50 " />*/}
                 </h2>
                 <div className="flex flex-col max-w-xl space-y-3 font-medium">
@@ -355,7 +355,7 @@ export default function dashboard() {
               />
             </fieldset>
           </div>
-          //color picker here?
+          {"//"}color picker here?
         </div>
         {/*Possible Footer/navbar area*/}
         <div className="p-4 rounded-lg shadow w-full bg-coolGray-800">

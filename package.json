@@ -7,7 +7,7 @@
     "start": "next start",
     "format": "prettier --write . !.next",
     "update": "yarn yarn-upgrade-all",
-    "lint": "next lint"
+    "lint": "deno lint --config=./tsconfig.json"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.5",
@@ -29,8 +29,6 @@
     "@tailwindcss/forms": "^0.3.4",
     "@types/react": "^17.0.33",
     "autoprefixer": "^10.4.0",
-    "eslint": "8.1.0",
-    "eslint-config-next": "12.0.2",
     "postcss": "^8.3.11",
     "tailwindcss": "^2.2.19",
     "typescript": "^4.4.4",

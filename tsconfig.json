@@ -31,5 +31,10 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "lint": {
+    "files": {
+      "exclude": ["./.next/", "./node_modules/"]
+    },
+  }
 }
