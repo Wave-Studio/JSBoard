@@ -3,8 +3,11 @@ import { Formik, Field, Form } from "formik";
 import { useRouter } from "next/router";
 import * as Yup from "yup";
 
+
 import Navbar from "../../components/misc/navbar";
 import Footer from "../../components/misc/footer";
+import hashPassword from "../../lib/hashpass";
+import { SaveAsIcon } from "@heroicons/react/outline";
 
 const names = [
   "sampletext",
@@ -28,6 +31,8 @@ const names = [
   "howard",
   "chad",
 ];
+
+const saltRounds = 10;
 
 export default function signup() {
   const router = useRouter();
@@ -99,7 +104,9 @@ function Log() {
         acceptedTerms: false,
       }}
       onSubmit={(values) => {
-        alert(JSON.stringify(values, null, 2));
+        saveUser(values);
+        
+        
       }}
     >
       <Form className="flex flex-col space-y-3 bg-coolGray-800 max-w-2xl mx-auto p-4 rounded-md text-gray-200 font-medium">
