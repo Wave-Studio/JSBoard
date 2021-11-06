@@ -124,7 +124,7 @@ export function Log({ socket }: { socket: Socket }) {
 				acceptedTerms: false,
 			}}
 			onSubmit={(values) => {
-				socket.emit("login", {
+				socket.emit("signIn", {
 					username: values.username,
 					// Not sure why we're hashing passwords on the client and not the server.
 					password: values.password,
@@ -198,7 +198,10 @@ export function Sign({ socket }: { socket: Socket }) {
 				password: "",
 			}}
 			onSubmit={(values) => {
-				alert(JSON.stringify(values, null, 2));
+        socket.emit("login", {
+					username: values.email,
+					password: values.password,
+				})
 			}}
 		>
 			<Form

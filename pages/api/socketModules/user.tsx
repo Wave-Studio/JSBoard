@@ -1,5 +1,8 @@
 import { Server } from "socket.io";
 import mongoose from "mongoose";
+import { getModelForClass, prop } from "@typegoose/typegoose";
+import connect from "../../../lib/db";
+import { hashPassword } from "../../../lib/hashpass";
 
 export const Module = (io: Server) => {
 	io.on("connection", (socket) => {
@@ -27,37 +30,30 @@ export const Module = (io: Server) => {
 };
 
 function formatDate(date: number) {
-	let fullstring = "";
 	const data = new Date(date);
-	fullstring += data.toDateString();
-	return fullstring;
+	return data.toDateString();
 }
 
 export interface UserAccount {
+	username: string;
 	email: string;
 	password: string;
+	twoFactorAuth?: boolean;
 	phone?: string;
-	twofa: boolean;
+	userImage: string;
 }
 
 export interface User {
-	account: {
-		username: string;
-		id: number;
-		auth: UserAccount;
-		twoFactorAuth?: boolean;
-		phone?: string;
-	};
+	account: UserAccount;
 	//Additional data
 	titles: {
-		userImage: string;
 		status: string;
 		bio: string;
 	};
 	activity: {
 		joined: Date;
 		rank: number[]; // Array of numbers, corresponds to the rank of the user
-		level: number;
+		exp: number;
 		seen: Date;
 	};
 	// Friends
@@ -67,8 +63,96 @@ export interface User {
 		friendRequestsSent: number[];
 	};
 	// API
-	apiReqs: number; // Total number of api requests
+	apiReqs?: number; // Total number of api requests
 	imageApiReqs: number; // Number of image requests in the last hour
+}
+
+const UserSchema = new mongoose.Schema({
+	account: {
+		username: String,
+		email: String,
+		password: String,
+		twoFactorAuth: Boolean,
+		phone: String,
+		userImage: String
+	},
+	titles: {
+		status: String,
+		bio: String
+	},
+	activity: {
+		joined: Date,
+		rank: [Number],
+		exp: Number,
+		seen: Date,
+
+	},
+	friends: {
+		friendList: [Number],
+		friendRequests: [Number],
+		friendRequestsSent: [Number]
+	},
+	apiReqs: Number,
+	imageApiReqs: Number
+});
+
+const User = mongoose.models.user || mongoose.model("user", UserSchema);
+
+export async function registerUser(username: string, email: string, password: string) {
+	const cryptedPassword = hashPassword(password);
+	const d = new Date();
+	const time = d.getTime();
+	await connect();
+	
+	//delete mongoose.connection.models['user'];
+	//used to debug when testing new schemas, don't leave above uncommented in production
+
+	const account = new User({
+		account: {
+			username: username,
+			email: email,
+			password: cryptedPassword,
+			twoFactorAuth: false,
+			phone: undefined,
+			userImage: undefined
+		},
+		titles: {
+			status: "Say hi! I'm new!",
+			bio: undefined
+		},
+		activity: {
+			joined: time,
+			rank: [1],
+			exp: 0,
+			seen: time,
+		},
+		friends: {
+			friendList: [],
+			friendRequests: [],
+			friendRequestsSent: []
+		},
+		apiReqs: 0,
+		imageApiReqs: 0
+	})
+	await account.save();
+
+}
+
+export async function loginUser(email: string, password: string) {
+	const cryptedPassword = await hashPassword(password);
+	const d = new Date();
+	const time = d.getTime();
+
+	const filter = { email: email, password: cryptedPassword };
+	const update = { activity: { seen: time } };
+	if (await User.findOne(filter)) {
+		await User.findOneAndUpdate(filter, update);
+		return true;
+
+	} else {
+		return false;
+	}
+
 }
 
 export const users = [
