@@ -3,10 +3,10 @@ import { Field, Form, Formik } from "formik";
 import { useRouter } from "next/router";
 import io, { Socket } from "socket.io-client";
 import * as Yup from "yup";
+import Link from "next/link";
 
 import Navbar from "../../components/misc/navbar";
 import Footer from "../../components/misc/footer";
-import { SaveAsIcon } from "@heroicons/react/outline";
 
 const names = [
 	"sampletext",
@@ -31,17 +31,21 @@ const names = [
 	"chad",
 ];
 
-const saltRounds = 10;
-
 export default function signup() {
 	const router = useRouter();
-	const [signUp, setSignUp] = useState(true);
+	const [signUp, setSignUp] = useState(1);
 	const [socket, setSocket] = useState<Socket>();
+
+	let response: { success: boolean, token?: string, message: string };
 
 	useEffect(() => {
 		fetch("/api/socket").finally(() => {
 			setSocket(io());
-			// Do something with the socket
+			socket.on("signUpRes", (data) => {
+				setSignUp(2)
+				response = data;
+				//I should set cookies here
+			})
 		});
 	}, []);
 
@@ -86,13 +90,13 @@ export default function signup() {
 								</div>
 								<div
 									className="z-10 cursor-pointer"
-									onClick={() => setSignUp(true)}
+									onClick={() => setSignUp(1)}
 								>
 									Sign Up
 								</div>
 								<div
 									className="z-10 cursor-pointer"
-									onClick={() => setSignUp(false)}
+									onClick={() => setSignUp(0)}
 								>
 									Login
 								</div>
@@ -103,136 +107,170 @@ export default function signup() {
 					{socket != undefined
 						? (
 							//I would love to not have repated code here, but its just esier to create diff components for each because of stupid schemas and react being dumb
-							signUp ? <Log socket={socket} />
-							: <Sign socket={socket} />
+							signUp == 0 ? <Log socket={socket} />
+							: ""
 						)
-						: <></>}
+						: ""}
+					{socket != undefined
+						? (
+							//I would love to not have repated code here, but its just esier to create diff components for each because of stupid schemas and react being dumb
+							signUp == 1 ? <Sign socket={socket} />
+							: ""
+						)
+						: ""}
+					{socket != undefined
+						? (
+							//I would love to not have repated code here, but its just esier to create diff components for each because of stupid schemas and react being dumb
+							signUp == 1 ? <Res />
+							: ""
+						)
+						: ""}
 				</div>
 			</div>
 			<Footer />
 		</div>
 	);
-}
-
-export function Log({ socket }: { socket: Socket }) {
-	return (
-		<Formik
-			initialValues={{
-				username: "",
-				email: "",
-				password: "",
-				acceptedTerms: false,
-			}}
-			onSubmit={(values) => {
-				socket.emit("signIn", {
-					username: values.username,
-					// Not sure why we're hashing passwords on the client and not the server.
-					password: values.password,
-				});
-			}}
-		>
-			<Form
-				className="flex flex-col space-y-3 bg-coolGray-800 max-w-2xl mx-auto p-4 rounded-md text-gray-200 font-medium"
+	function Res() {
+		return (
+			<div
+				className={"space-y-3 max-w-2xl mx-auto p-4 rounded-md text-gray-200 font-medium grid place-items-center " + (response.success ? "bg-green-500" : "bg-red-500")}
 			>
-				<label htmlFor="username">
-					Username
-					<Field
-						type="text"
-						className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
-						placeholder={names[
-							Math.floor(Math.random() * names.length)
-						]}
-						autoComplete="username"
-						name="username"
-						required
-					/>
-				</label>
-				<label htmlFor="email">
-					Email
-					<Field
-						type="text"
-						className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
-						placeholder="wireframes@mspaint.aol"
-						autoComplete="email"
-						name="email"
-						required
-					/>
-				</label>
-				<label htmlFor="password">
-					Password
-					<Field
-						type="text"
-						className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
-						placeholder="Pass123"
-						autoComplete="password"
-						name="password"
-						required
-					/>
-				</label>
-				<label
-					htmlFor="acceptedTerms"
-					className="flex items-center py-2"
+				<h3 className="nightwind-prevent tracking-wide text-2xl" >{response.message}</h3>
+				<div>
+					<Link href="/">
+						<a>
+							<button className="btn btn-blue font-medium">To Home!</button>
+						</a>
+					</Link>
+					<button className="btn btn-blue ml-3 font-medium" onClick={() => history.back()}>Back</button>
+				</div>
+			</div>
+		)
+	}
+
+	function Log({ socket }: { socket: Socket }) {
+		return (
+			<Formik
+				initialValues={{
+					email: "",
+					password: "",
+				}}
+				onSubmit={(values) => {
+					socket.emit("login", {
+						username: values.email,
+						password: values.password,
+					})
+				}}
+			>
+				<Form
+					className="flex flex-col space-y-3 bg-coolGray-800 max-w-2xl mx-auto p-4 rounded-md text-gray-200 font-medium"
 				>
-					<Field
-						type="checkbox"
-						className="appearance-none transition bg-theme-primary text-theme-primary p-2.5 border-none focus:border-none hover:ring checked:ring cursor-pointer ring-theme-primary focus:checked:border-none focus:checked:ring-offset-coolGray-800  focus:checked:ring-theme-primary focus:checked:ring-opacity-50 ring-opacity-50 rounded-full mr-3"
-						autoComplete="none"
-						name="acceptedTerms"
-						required
-					/>
-					I accept the terms and conditions
-				</label>
-				<button type="submit" className="btn btn-blue mt-4 font-medium">
-					Join Up!
-				</button>
-			</Form>
-		</Formik>
-	);
+					<label htmlFor="email">
+						Email
+						<Field
+							type="text"
+							className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
+							placeholder="wireframes@mspaint.aol"
+							autoComplete="email"
+							name="email"
+							required
+						/>
+					</label>
+					<label htmlFor="password">
+						Password
+						<Field
+							type="text"
+							className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
+							placeholder="Pass123"
+							autoComplete="password"
+							name="password"
+							required
+						/>
+					</label>
+					<button type="submit" className="btn btn-blue mt-4 font-medium">
+						Login
+					</button>
+				</Form>
+			</Formik>
+		);
+	}
+	
+	function Sign({ socket }: { socket: Socket }) {
+		return (
+			<Formik
+				initialValues={{
+					username: "",
+					email: "",
+					password: "",
+					acceptedTerms: false,
+				}}
+				onSubmit={(values) => {
+					socket.emit("signIn", {
+						username: values.username,
+						email: values.email,
+						password: values.password,
+						acceptedTerms: values.acceptedTerms,
+					});
+				}}
+			>
+				<Form
+					className="flex flex-col space-y-3 bg-coolGray-800 max-w-2xl mx-auto p-4 rounded-md text-gray-200 font-medium"
+				>
+					<label htmlFor="username">
+						Username
+						<Field
+							type="text"
+							className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
+							placeholder={names[
+								Math.floor(Math.random() * names.length)
+							]}
+							autoComplete="username"
+							name="username"
+							required
+						/>
+					</label>
+					<label htmlFor="email">
+						Email
+						<Field
+							type="text"
+							className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
+							placeholder="wireframes@mspaint.aol"
+							autoComplete="email"
+							name="email"
+							required
+						/>
+					</label>
+					<label htmlFor="password">
+						Password
+						<Field
+							type="text"
+							className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
+							placeholder="Pass123"
+							autoComplete="password"
+							name="password"
+							required
+						/>
+					</label>
+					<label
+						htmlFor="acceptedTerms"
+						className="flex items-center py-2"
+					>
+						<Field
+							type="checkbox"
+							className="appearance-none transition bg-theme-primary text-theme-primary p-2.5 border-none focus:border-none hover:ring checked:ring cursor-pointer ring-theme-primary focus:checked:border-none focus:checked:ring-offset-coolGray-800  focus:checked:ring-theme-primary focus:checked:ring-opacity-50 ring-opacity-50 rounded-full mr-3"
+							autoComplete="none"
+							name="acceptedTerms"
+							required
+						/>
+						I accept the terms and conditions
+					</label>
+					<button type="submit" className="btn btn-blue mt-4 font-medium">
+						Join Up!
+					</button>
+				</Form>
+			</Formik>
+		);
+	}
+	
 }
 
-export function Sign({ socket }: { socket: Socket }) {
-	return (
-		<Formik
-			initialValues={{
-				email: "",
-				password: "",
-			}}
-			onSubmit={(values) => {
-        socket.emit("login", {
-					username: values.email,
-					password: values.password,
-				})
-			}}
-		>
-			<Form
-				className="flex flex-col space-y-3 bg-coolGray-800 max-w-2xl mx-auto p-4 rounded-md text-gray-200 font-medium"
-			>
-				<label htmlFor="email">
-					Email
-					<Field
-						type="text"
-						className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
-						placeholder="wireframes@mspaint.aol"
-						autoComplete="email"
-						name="email"
-						required
-					/>
-				</label>
-				<label htmlFor="password">
-					Password
-					<Field
-						type="text"
-						className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
-						placeholder="Pass123"
-						autoComplete="password"
-						name="password"
-						required
-					/>
-				</label>
-				<button type="submit" className="btn btn-blue mt-4 font-medium">
-					Login
-				</button>
-			</Form>
-		</Formik>
-	);
-}
