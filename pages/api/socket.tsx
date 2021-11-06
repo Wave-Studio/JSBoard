@@ -11,7 +11,7 @@ export default function handle(
 		};
 		status: (arg0: number) => { json: (arg0: unknown) => void };
 		end: () => void;
-	}
+	},
 ) {
 	if (res.socket.server?.io == undefined) {
 		// @ts-ignore typings mayhem

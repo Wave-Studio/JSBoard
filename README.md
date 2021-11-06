@@ -1,5 +1,3 @@
-
-
 <p align="center">
   <a href="https://wave-studios.netlify.app/jsboard">
     <img src="https://wave-studios.netlify.app/logos/jsboard-small.png" height="96" class="rounded">

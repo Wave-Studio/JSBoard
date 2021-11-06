@@ -1,14 +1,14 @@
 {
-  //for the tailwind intelisense plugin
-  "css.validate": false,
-  "css.lint.unknownAtRules": "ignore",
-  "editor.quickSuggestions": {
-    "strings": true
-  },
-  //for the ENV plugin by Jakka Prihatna
-  "files.associations": {
-    ".env.local": "env"
-  },
-  "deno.lint": true,
-  "deno.config": "./tsconfig.json",
+	//for the tailwind intelisense plugin
+	"css.validate": false,
+	"css.lint.unknownAtRules": "ignore",
+	"editor.quickSuggestions": {
+		"strings": true
+	},
+	//for the ENV plugin by Jakka Prihatna
+	"files.associations": {
+		".env.local": "env"
+	},
+	"deno.lint": true,
+	"deno.config": "./deno.jsonc"
 }

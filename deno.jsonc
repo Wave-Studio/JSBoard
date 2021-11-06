@@ -1,0 +1,24 @@
+{
+	"lint": {
+		"files": {
+			"exclude": ["./node_modules/", "./.next/"]
+		}
+	},
+	"fmt": {
+		"files": {
+			"exclude": [
+				"./node_modules/",
+				"./.next/",
+				"./public/sw.js",
+				"./public/workbox-4a677df8.js"
+			]
+		},
+		"options": {
+			"useTabs": true,
+			"lineWidth": 80,
+			"indentWidth": 4,
+			"singleQuote": false,
+			"proseWrap": "preserve"
+		}
+	}
+}

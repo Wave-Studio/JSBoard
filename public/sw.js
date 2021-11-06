@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 if (!self.define) {
   const e = (e) => {
       "require" !== e && (e += ".js");

@@ -14,7 +14,7 @@
 		"jsx": "preserve",
 		"incremental": true,
 		"strict": true,
-    "noImplicitAny": false,
+		"noImplicitAny": false
 	},
 	"include": [
 		"next-env.d.ts",
@@ -26,5 +26,5 @@
 		"components/staff/core.tsx",
 		"pages/api/forums/homepage.js"
 	],
-	"exclude": ["node_modules"],
+	"exclude": ["node_modules"]
 }

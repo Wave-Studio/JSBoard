@@ -1,40 +1,40 @@
 {
-  "name": "jsboard",
-  "version": "0.1.2",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "format": "prettier --write . !.next",
-    "update": "yarn yarn-upgrade-all",
-    "lint": "deno lint components lib pages styles"
-  },
-  "dependencies": {
-    "@heroicons/react": "^1.0.5",
-    "@typegoose/typegoose": "^9.2.0",
-    "bcrypt": "^5.0.1",
-    "formik": "^2.2.9",
-    "mongoose": "^6.0.12",
-    "next": "^12.0.1",
-    "next-pwa": "^5.4.0",
-    "nightwind": "^1.1.12",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-recaptcha": "^2.3.10",
-    "socket.io": "^4.3.1",
-    "socket.io-client": "^4.3.2",
-    "yup": "^0.32.11",
-    "zustand": "^3.6.2"
-  },
-  "author": "Blocks_n_more, quick007",
-  "devDependencies": {
-    "@tailwindcss/forms": "^0.3.4",
-    "@types/bcrypt": "^5.0.0",
-    "@types/react": "^17.0.33",
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.3.11",
-    "tailwindcss": "^2.2.19",
-    "typescript": "^4.4.4",
-    "yarn-upgrade-all": "^0.5.4"
-  }
+	"name": "jsboard",
+	"version": "0.1.2",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"format": "deno fmt --config=deno.jsonc",
+		"update": "yarn yarn-upgrade-all",
+		"lint": "deno lint --config=deno.jsonc"
+	},
+	"dependencies": {
+		"@heroicons/react": "^1.0.5",
+		"@typegoose/typegoose": "^9.2.0",
+		"bcrypt": "^5.0.1",
+		"formik": "^2.2.9",
+		"mongoose": "^6.0.12",
+		"next": "^12.0.1",
+		"next-pwa": "^5.4.0",
+		"nightwind": "^1.1.12",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-recaptcha": "^2.3.10",
+		"socket.io": "^4.3.1",
+		"socket.io-client": "^4.3.2",
+		"yup": "^0.32.11",
+		"zustand": "^3.6.2"
+	},
+	"author": "Blocks_n_more, quick007",
+	"devDependencies": {
+		"@tailwindcss/forms": "^0.3.4",
+		"@types/bcrypt": "^5.0.0",
+		"@types/react": "^17.0.33",
+		"autoprefixer": "^10.4.0",
+		"postcss": "^8.3.11",
+		"tailwindcss": "^2.2.19",
+		"typescript": "^4.4.4",
+		"yarn-upgrade-all": "^0.5.4"
+	}
 }

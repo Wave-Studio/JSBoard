@@ -69,8 +69,8 @@ export const Module = async (io: Server) => {
 	await connect();
 	io.on("connection", (socket) => {
 		socket.on("homepage", async () => {
-			const Homepage =
-				mongoose.models.homepage || mongoose.model("homepage", homepageSchema);
+			const Homepage = mongoose.models.homepage ||
+				mongoose.model("homepage", homepageSchema);
 			if ((await Homepage.find().count()) == 0) {
 				const pageData = new Homepage(defaultHomepage);
 				await pageData.save();

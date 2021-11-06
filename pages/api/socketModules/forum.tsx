@@ -5,15 +5,15 @@ export const Module = (io: Server) => {
 		socket.on("forum", (id) => {
 			socket.emit("forum", {
 				name: "Example forum",
-                description: "Beans",
-                posts: [
-                    {
-                        id,
-                        title: "Example post",
-                        author: "Blox",
-                        content: "This is an example post.",
-                    }
-                ]
+				description: "Beans",
+				posts: [
+					{
+						id,
+						title: "Example post",
+						author: "Blox",
+						content: "This is an example post.",
+					},
+				],
 			});
 		});
 	});

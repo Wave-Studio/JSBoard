@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 define("./workbox-4a677df8.js", ["exports"], function (t) {
   "use strict";
   try {

@@ -1,1 +1,1 @@
-declare module 'nightwind/helper';
+declare module "nightwind/helper";

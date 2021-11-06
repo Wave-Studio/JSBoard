@@ -41,10 +41,10 @@ export interface User {
 	account: {
 		username: string;
 		id: number;
-		account: UserAccount;
+		auth: UserAccount;
 		twoFactorAuth?: boolean;
 		phone?: string;
-	}
+	};
 	//Additional data
 	titles: {
 		userImage: string;
@@ -56,18 +56,17 @@ export interface User {
 		rank: number[]; // Array of numbers, corresponds to the rank of the user
 		level: number;
 		seen: Date;
-	},
+	};
 	// Friends
 	friends: {
 		friendList: number[];
 		friendRequests: number[];
 		friendRequestsSent: number[];
-	},
+	};
 	// API
 	apiReqs: number; // Total number of api requests
 	imageApiReqs: number; // Number of image requests in the last hour
 }
-
 
 export const users = [
 	{
