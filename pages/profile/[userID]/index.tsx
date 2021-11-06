@@ -57,7 +57,9 @@ export default function ViewUserProfile() {
 					setUser(data);
 				});
 				userID = userID.toString().split(":").pop();
-				socket.emit("userInfo", userID);
+				socket.on("connect", () => {
+					socket.emit("userInfo", userID);
+				});
 			}
 		});
 	}, [userID]);

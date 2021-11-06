@@ -38,8 +38,11 @@ export default function Home() {
 			socket.on("sidebar", (data) => {
 				setSidebar({ data, error: null });
 			});
-			socket.emit("sidebar");
-			socket.emit("homepage");
+			socket.on("connect", () => {
+				console.log("Connected to websocket");
+				socket.emit("sidebar");
+				socket.emit("homepage");
+			});
 		});
 	}, []);
 	if (forums.error || sidebar.error) {

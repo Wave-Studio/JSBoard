@@ -13,5 +13,5 @@
 	"deno.config": "./deno.jsonc",
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "denoland.vscode-deno"
-	},
+	}
 }

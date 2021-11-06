@@ -20,6 +20,9 @@ export const Module = (io: Server) => {
 				socket.emit("userInfo", loginFree);
 			}
 		});
+		socket.on("userList", () => {
+			socket.emit("userList", ["TestAccount:0", "Blocks:1", "Quick:2"]);
+		});
 	});
 };
 
