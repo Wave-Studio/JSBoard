@@ -10,5 +10,8 @@
 		".env.local": "env"
 	},
 	"deno.lint": true,
-	"deno.config": "./deno.jsonc"
+	"deno.config": "./deno.jsonc",
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "denoland.vscode-deno"
+	},
 }

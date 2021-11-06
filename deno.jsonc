@@ -1,7 +1,12 @@
 {
 	"lint": {
 		"files": {
-			"exclude": ["./node_modules/", "./.next/"]
+			"exclude": [
+				"./node_modules/",
+				"./.next/",
+				"./public/sw.js",
+				"./public/workbox-4a677df8.js"
+			]
 		}
 	},
 	"fmt": {
