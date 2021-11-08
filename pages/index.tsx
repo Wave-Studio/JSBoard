@@ -60,7 +60,7 @@ export default function Home() {
 			</>
 		);
 	}
-	if (!sidebar.data || !forums.data || !forums.data.configured)
+	if (!sidebar.data || !forums.data || !forums.data.configured) {
 		return (
 			<>
 				<div className="bg-coolGray-700 flex-grow">
@@ -123,6 +123,7 @@ export default function Home() {
 				<Footer />
 			</>
 		);
+	}
 	if (!forums.data.configured) {
 		return (
 			<>

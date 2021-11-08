@@ -26,10 +26,18 @@ export const Module = (io: Server) => {
 		socket.on("userList", () => {
 			socket.emit("userList", ["TestAccount:0", "Blocks:1", "Quick:2"]);
 		});
-		socket.on("signUp", (data: UserAccount) => {
-			const r = registerUser(data.username, data.email, data.password);
+		socket.on("signUp", async (data: UserAccount) => {
+			const r = await registerUser(
+				data.username,
+				data.email,
+				data.password,
+			);
+			console.log(r);
 			socket.emit("signUpRes", r);
 		});
+		socket.on("login", (data)=>{
+			// Todo
+		})
 	});
 };
 

@@ -12,7 +12,7 @@ const names = [
 	"sampletext",
 	"imposter21",
 	"boomer",
-	"surge-from-ltt",
+	"searge-from-ltt",
 	"shortstack",
 	"felisha",
 	"anthony",
@@ -35,17 +35,19 @@ export default function signup() {
 	const router = useRouter();
 	const [signUp, setSignUp] = useState(1);
 	const [socket, setSocket] = useState<Socket>();
-
-	let response: { success: boolean, token?: string, message: string };
+	const [response, setResponse] = useState<
+		{ success: boolean; token?: string; message: string }
+	>();
 
 	useEffect(() => {
 		fetch("/api/socket").finally(() => {
-			setSocket(io());
+			const socket = io();
+			setSocket(socket);
 			socket.on("signUpRes", (data) => {
-				setSignUp(2)
-				response = data;
+				setSignUp(2);
+				setResponse(data);
 				//I should set cookies here
-			})
+			});
 		});
 	}, []);
 
@@ -106,25 +108,21 @@ export default function signup() {
 					{/*Second Box*/}
 					{socket != undefined
 						? (
-							//I would love to not have repated code here, but its just esier to create diff components for each because of stupid schemas and react being dumb
-							signUp == 0 ? <Log socket={socket} />
-							: ""
+							signUp == 0
+								? (
+									<>
+										<Log />
+									</>
+								)
+								: signUp == 1
+								? (
+									<>
+										<Sign />
+									</>
+								)
+								: <></>
 						)
-						: ""}
-					{socket != undefined
-						? (
-							//I would love to not have repated code here, but its just esier to create diff components for each because of stupid schemas and react being dumb
-							signUp == 1 ? <Sign socket={socket} />
-							: ""
-						)
-						: ""}
-					{socket != undefined
-						? (
-							//I would love to not have repated code here, but its just esier to create diff components for each because of stupid schemas and react being dumb
-							signUp == 1 ? <Res />
-							: ""
-						)
-						: ""}
+						: <></>}
 				</div>
 			</div>
 			<Footer />
@@ -133,22 +131,32 @@ export default function signup() {
 	function Res() {
 		return (
 			<div
-				className={"space-y-3 max-w-2xl mx-auto p-4 rounded-md text-gray-200 font-medium grid place-items-center " + (response.success ? "bg-green-500" : "bg-red-500")}
+				className={"space-y-3 max-w-2xl mx-auto p-4 rounded-md text-gray-200 font-medium grid place-items-center " +
+					(response?.success ? "bg-green-500" : "bg-red-500")}
 			>
-				<h3 className="nightwind-prevent tracking-wide text-2xl" >{response.message}</h3>
+				<h3 className="nightwind-prevent tracking-wide text-2xl">
+					{response?.message}
+				</h3>
 				<div>
 					<Link href="/">
 						<a>
-							<button className="btn btn-blue font-medium">To Home!</button>
+							<button className="btn btn-blue font-medium">
+								To Home!
+							</button>
 						</a>
 					</Link>
-					<button className="btn btn-blue ml-3 font-medium" onClick={() => history.back()}>Back</button>
+					<button
+						className="btn btn-blue ml-3 font-medium"
+						onClick={() => history.back()}
+					>
+						Back
+					</button>
 				</div>
 			</div>
-		)
+		);
 	}
 
-	function Log({ socket }: { socket: Socket }) {
+	function Log() {
 		return (
 			<Formik
 				initialValues={{
@@ -156,10 +164,10 @@ export default function signup() {
 					password: "",
 				}}
 				onSubmit={(values) => {
-					socket.emit("login", {
+					socket!.emit("login", {
 						username: values.email,
 						password: values.password,
-					})
+					});
 				}}
 			>
 				<Form
@@ -187,15 +195,18 @@ export default function signup() {
 							required
 						/>
 					</label>
-					<button type="submit" className="btn btn-blue mt-4 font-medium">
+					<button
+						type="submit"
+						className="btn btn-blue mt-4 font-medium"
+					>
 						Login
 					</button>
 				</Form>
 			</Formik>
 		);
 	}
-	
-	function Sign({ socket }: { socket: Socket }) {
+
+	function Sign() {
 		return (
 			<Formik
 				initialValues={{
@@ -205,7 +216,7 @@ export default function signup() {
 					acceptedTerms: false,
 				}}
 				onSubmit={(values) => {
-					socket.emit("signIn", {
+					socket!.emit("signUp", {
 						username: values.username,
 						email: values.email,
 						password: values.password,
@@ -264,13 +275,14 @@ export default function signup() {
 						/>
 						I accept the terms and conditions
 					</label>
-					<button type="submit" className="btn btn-blue mt-4 font-medium">
+					<button
+						type="submit"
+						className="btn btn-blue mt-4 font-medium"
+					>
 						Join Up!
 					</button>
 				</Form>
 			</Formik>
 		);
 	}
-	
 }
-
