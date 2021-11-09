@@ -120,7 +120,10 @@ export default function signup() {
 										<Sign />
 									</>
 								)
-								: <></>
+								: signUp == 2 
+							? (
+								<Res />
+							) : ""
 						)
 						: <></>}
 				</div>

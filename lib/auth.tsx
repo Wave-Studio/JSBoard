@@ -2,14 +2,17 @@ import bcrypt from "bcrypt";
 
 const saltRounds = 14;
 
-export function hashPassword(password: string) {
-	bcrypt.hash(password, saltRounds, function (err, hash) {
+export async function hashPassword(plaintextPassword: string) {
+	let encryptedPassword = "error";
+	bcrypt.hash(plaintextPassword, saltRounds, function (err, hash) {
 		if (err) {
-			return "error";
+			encryptedPassword = "error";
 		} else {
-			return hash;
+			encryptedPassword = hash;
 		}
 	});
+	return encryptedPassword;
+
 }
 
 export function newToken(tokens: string[] = []) {

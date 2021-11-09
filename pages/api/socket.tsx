@@ -1,7 +1,7 @@
 import { Server } from "socket.io";
 import { readdir } from "fs";
 
-export default async function handle(
+export default async function handle (
 	_req: unknown,
 	res: {
 		socket: {
@@ -13,7 +13,7 @@ export default async function handle(
 		end: () => void;
 	},
 ) {
-	if (res.socket.server?.io == undefined) {
+	if (res.socket.server?.io == undefined || process.env.NODE_ENV == "development") {
 		// @ts-ignore typings mayhem
 		const io = new Server(res.socket.server);
 

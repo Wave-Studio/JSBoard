@@ -67,7 +67,7 @@ export interface User {
 		rank: number[]; // Array of numbers, corresponds to the rank of the user
 		exp: number;
 		seen: Date;
-		token: number;
+		token: string;
 		lastLogin: Date;
 	};
 	// Friends
@@ -100,7 +100,7 @@ const UserSchema = new mongoose.Schema({
 		rank: [Number],
 		exp: Number,
 		seen: Date,
-		token: Number,
+		token: String,
 		lastLogin: Date,
 	},
 	friends: {
@@ -120,14 +120,15 @@ export async function registerUser(
 	email: string,
 	password: string,
 ): Promise<{ success: boolean; token?: string; message: string }> {
-	try {
+	// try {
+		console.log(await User.findOne({account: { username: "aaa" }}))
 		if (await User.findOne({ username: username })) {
 			return {
 				success: false,
 				message: "Username already taken",
 			};
 		}
-		const cryptedPassword = hashPassword(password);
+		const cryptedPassword = await hashPassword(password);
 		const d = new Date();
 		const time = d.getTime();
 		const token = newToken();
@@ -164,7 +165,7 @@ export async function registerUser(
 			},
 			apiReqs: 0,
 			imageApiReqs: 0,
-			id: await User.find().count() + 1,
+			id: await User.countDocuments() + 1,
 		});
 		await account.save();
 		return {
@@ -172,12 +173,12 @@ export async function registerUser(
 			token: token,
 			message: "Successfully registered",
 		};
-	} catch (err) {
-		return {
-			success: false,
-			message: "An unknown error occured",
-		};
-	}
+	// } catch (err) {
+	// 	return {
+	// 		success: false,
+	// 		message: "An unknown error occured",
+	// 	};
+	//}
 }
 
 export async function loginUser(
