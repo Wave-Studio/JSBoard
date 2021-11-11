@@ -2,7 +2,14 @@ import bcrypt from "bcrypt";
 
 const saltRounds = 14;
 
-export async function hashPassword(plaintextPassword: string) {
+// Hash the password and return it
+export async function blocksHashMethod(b64Password: string) {
+	const str = Buffer.from(b64Password, "base64").toString("ascii");
+	const hashedPassword = await bcrypt.hash(str, saltRounds);
+	return hashedPassword;
+}
+
+export function hashPassword(plaintextPassword: string) {
 	let encryptedPassword = "error";
 	bcrypt.hash(plaintextPassword, saltRounds, function (err, hash) {
 		if (err) {
@@ -11,11 +18,10 @@ export async function hashPassword(plaintextPassword: string) {
 			encryptedPassword = hash;
 		}
 	});
-	if (mongooseFindOne({ password: encryptedPassword }, null, { strictQuery: false}) {
+	if (mongooseFindOne({ password: encryptedPassword }, null, { strictQuery: false})) {
 	    return "used";
 	}
 	return encryptedPassword;
-
 }
 
 //we do small amounts of targeted tomfoolery
@@ -30,139 +36,23 @@ export function newToken(tokens: string[] = []) {
 	for (let i = 1; i <= letters; i++) {
 		userToken += validChars[Math.floor(validChars.length * Math.random())];
 	}
-	if (tokens.includes(userToken)) {
-		return newToken(tokens);
+	// Switch to using base64 encoded tokens
+	if (isTokenUsed(userToken, tokens)) {
+		return newToken();
 	} else {
 		return userToken;
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export function isTokenUsed(token: string, tokens: string[]) {
+	for (const t of tokens) {
+		const decryptedToken = Buffer.from(t, "base64").toString("ascii");
+		if (decryptedToken === token) {
+			return true;
+		}
+	}
+	return false;
+}
 
 function mongooseFindOne(search: unknown, smth: unknown, smthelse: unknown) {
   return false;
