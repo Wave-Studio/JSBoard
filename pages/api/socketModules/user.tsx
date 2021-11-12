@@ -121,34 +121,52 @@ export async function registerUser(
 	password: string,
 ): Promise<{ success: boolean; token?: string; message: string }> {
 	// try {
-		console.log(await User.findOne({account: { username: "aaa" }}))
-		if (await User.findOne({ username: username })) {
+		let cryptedPassword: string;
+		const time = new Date();
+		const token = newToken();
+		//Check to make sure its not a dupe username/email
+		//TODO: Add a setting to allow multiple of the same name
+		if (await User.findOne({ "account.username": username })) {
 			return {
 				success: false,
 				message: "Username already taken",
 			};
 		}
-		const cryptedPassword = await hashPassword(password);
-		const d = new Date();
-		const time = d.getTime();
-		const token = newToken();
+		if (await User.findOne({ "account.email": email })) {
+			return {
+				success: false,
+				message: "Email already taken",
+			};
+		}
+		//hash password
+		const hash = await hashPassword(password);
+		/*if (!hash.success) {
+			return {
+				success: false,
+				message: "An error occured whilst hashing your password"
+			}
+		}
+		cryptedPassword = hash.hashedPassword;*/
+
+		
+		
 		await connect();
 
 		//delete mongoose.connection.models['user'];
 		//used to debug when testing new schemas, don't leave above uncommented in production
 
-		const account = new User({
+		const newAccount = new User({
 			account: {
 				username: username,
 				email: email,
-				password: cryptedPassword,
+				password: hash,
 				twoFactorAuth: false,
-				phone: undefined,
-				userImage: undefined,
+				phone: "",
+				userImage: ""
 			},
 			titles: {
 				status: "👋 I'm new!",
-				bio: undefined,
+				bio: ""
 			},
 			activity: {
 				joined: time,
@@ -156,7 +174,7 @@ export async function registerUser(
 				exp: 0,
 				seen: time,
 				token: token,
-				lastLogin: time,
+				lastLogin: time
 			},
 			friends: {
 				friendList: [],
@@ -167,11 +185,11 @@ export async function registerUser(
 			imageApiReqs: 0,
 			id: await User.countDocuments() + 1,
 		});
-		await account.save();
+		await newAccount.save();
 		return {
 			success: true,
 			token: token,
-			message: "Successfully registered",
+			message: "Successfully registered! ",
 		};
 	// } catch (err) {
 	// 	return {

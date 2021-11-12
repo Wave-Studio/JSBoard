@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, ErrorMessage } from "formik";
 import { useRouter } from "next/router";
 import io, { Socket } from "socket.io-client";
 import * as Yup from "yup";
@@ -34,6 +34,7 @@ const names = [
 export default function signup() {
 	const router = useRouter();
 	const [signUp, setSignUp] = useState(1);
+	const [disabled, setDisabled] = useState(false);
 	const [socket, setSocket] = useState<Socket>();
 	const [response, setResponse] = useState<
 		{ success: boolean; token?: string; message: string }
@@ -73,7 +74,7 @@ export default function signup() {
 							// I just wanted to see if it was possible, and heres what I ended up with)
 						}
 						<div
-							className="rounded-md py-1.5 pr-2 pl-3 bg-coolGray-700 font-semibold select-none "
+							className="rounded-md py-1.5 pr-2 pl-3 bg-coolGray-700 dark:bg-blue-100 font-semibold select-none "
 						>
 							<div
 								className="grid grid-cols-2 gap-2 place-items-center relative"
@@ -180,7 +181,7 @@ export default function signup() {
 						Email
 						<Field
 							type="text"
-							className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
+							className="rounded border-none shadow w-full placeholder"
 							placeholder="wireframes@mspaint.aol"
 							autoComplete="email"
 							name="email"
@@ -191,7 +192,7 @@ export default function signup() {
 						Password
 						<Field
 							type="text"
-							className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
+							className="rounded border-none shadow w-full placeholder"
 							placeholder="Pass123"
 							autoComplete="password"
 							name="password"
@@ -218,7 +219,24 @@ export default function signup() {
 					password: "",
 					acceptedTerms: false,
 				}}
+				validationSchema={Yup.object({
+					username: Yup.string()
+						.max(16, "Must be 16 characters or less")
+						.min(3, "Must be 3 characters or more")
+						.required("Required"),
+					email: Yup.string()
+						.email("Invalid email address")
+						.required("Required"),
+					password: Yup.string()
+						.max(72, "Must be 72 characters or less")
+						.min(8, "Must be 8 characters or more")
+						.required("Required"),
+					acceptedTerms: Yup.boolean()
+						.oneOf([true], "You must accept the terms and conditions")
+						.required("Required"),
+				})}
 				onSubmit={(values) => {
+					setDisabled(true);
 					socket!.emit("signUp", {
 						username: values.username,
 						email: values.email,
@@ -234,53 +252,64 @@ export default function signup() {
 						Username
 						<Field
 							type="text"
-							className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
+							className="rounded border-none shadow w-full placeholder"
 							placeholder={names[
 								Math.floor(Math.random() * names.length)
 							]}
 							autoComplete="username"
 							name="username"
-							required
 						/>
+						<div className="text-red-600 font-normal font-sm">
+							<ErrorMessage name="username" />
+						</div>
 					</label>
 					<label htmlFor="email">
 						Email
 						<Field
 							type="text"
-							className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
+							className="rounded border-none shadow w-full placeholder"
 							placeholder="wireframes@mspaint.aol"
 							autoComplete="email"
 							name="email"
-							required
 						/>
+						<div className="text-red-600 font-normal font-sm">
+							<ErrorMessage name="email" />
+						</div>
 					</label>
 					<label htmlFor="password">
 						Password
 						<Field
 							type="text"
-							className="rounded border-none shadow w-full placeholder-white placeholder-opacity-50"
+							className="rounded border-none shadow w-full placeholder"
 							placeholder="Pass123"
 							autoComplete="password"
 							name="password"
-							required
 						/>
+						<div className="text-red-600 font-normal font-sm">
+							<ErrorMessage name="password" />
+						</div>
 					</label>
-					<label
-						htmlFor="acceptedTerms"
-						className="flex items-center py-2"
-					>
-						<Field
-							type="checkbox"
-							className="appearance-none transition bg-theme-primary text-theme-primary p-2.5 border-none focus:border-none hover:ring checked:ring cursor-pointer ring-theme-primary focus:checked:border-none focus:checked:ring-offset-coolGray-800  focus:checked:ring-theme-primary focus:checked:ring-opacity-50 ring-opacity-50 rounded-full mr-3"
-							autoComplete="none"
-							name="acceptedTerms"
-							required
-						/>
-						I accept the terms and conditions
-					</label>
+					<div>
+						<label
+							htmlFor="acceptedTerms"
+							className="flex items-center py-2"
+						>
+							<Field
+								type="checkbox"
+								className="appearance-none transition bg-theme-primary dark:checked:bg-theme-primary text-theme-primary p-2.5 border-none focus:border-none hover:ring checked:ring cursor-pointer ring-theme-primary focus:checked:border-none   focus:checked:ring-theme-primary focus:checked:ring-opacity-50 ring-opacity-50 rounded-full mr-3"
+								autoComplete="none"
+								name="acceptedTerms"
+							/>
+							I accept the terms and conditions
+						</label>
+						<div className="text-red-600 font-normal font-sm">
+								<ErrorMessage name="acceptedTerms" />
+						</div>
+					</div>
 					<button
 						type="submit"
-						className="btn btn-blue mt-4 font-medium"
+						className={"btn btn-blue mt-4 font-medium " + (disabled ? "opacity-70 !cursor-not-allowed" : "")}
+						disabled={disabled}
 					>
 						Join Up!
 					</button>

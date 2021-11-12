@@ -13,7 +13,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
+along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap");
@@ -69,6 +69,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 .expand {
   @apply transition duration-200 ease-in-out transform hover:scale-105;
+}
+
+.placeholder {
+  @apply placeholder-white dark:placeholder-coolGray-700 placeholder-opacity-50 dark:placeholder-opacity-70;
 }
 
 /*progressbar*/
