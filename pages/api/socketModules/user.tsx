@@ -2,7 +2,7 @@ import { Server } from "socket.io";
 import mongoose from "mongoose";
 import { getModelForClass, prop } from "@typegoose/typegoose";
 import connect from "../../../lib/db";
-import { hashPassword, newToken } from "../../../lib/auth";
+import { hashPassword, newToken, comparePassword } from "../../../lib/auth";
 
 export const Module = (io: Server) => {
 	io.on("connection", (socket) => {
@@ -35,8 +35,10 @@ export const Module = (io: Server) => {
 			console.log(r);
 			socket.emit("signUpRes", r);
 		});
-		socket.on("login", (data)=>{
-			// Todo
+		socket.on("login", async (data)=>{
+			const r = await loginUser(data.username, data.password);
+			console.log(r);
+			socket.emit("loginRes", r);
 		})
 	});
 };
@@ -122,10 +124,12 @@ export async function registerUser(
 ): Promise<{ success: boolean; token?: string; message: string }> {
 	// try {
 		let cryptedPassword: string;
-		const time = new Date();
+		const d = new Date();
+		const time = d.getTime();
 		const token = newToken();
-		//Check to make sure its not a dupe username/email
+		
 		//TODO: Add a setting to allow multiple of the same name
+		//Revalidate credentials on server to make sure they didn't override client side validation
 		if (await User.findOne({ "account.username": username })) {
 			return {
 				success: false,
@@ -136,6 +140,30 @@ export async function registerUser(
 			return {
 				success: false,
 				message: "Email already taken",
+			};
+		}
+		if (username.length < 3) {
+			return {
+				success: false,
+				message: "Username must be at least 3 characters",
+			};
+		}
+		if (username.length > 16) { 
+			return {
+				success: false,
+				message: "Username must be less than 16 characters",
+			};
+		}
+		if (password.length < 8) {
+			return {
+				success: false,
+				message: "Password must be at least 8 characters",
+			};
+		}
+		if (password.length > 72) {
+			return {
+				success: false,
+				message: "Password must be less than 72 characters",
 			};
 		}
 		//hash password
@@ -202,26 +230,50 @@ export async function registerUser(
 export async function loginUser(
 	email: string,
 	password: string,
-): Promise<{ success: boolean; token?: string }> {
-	const cryptedPassword = await hashPassword(password);
+): Promise<{ success: boolean; token?: string; message: string }> {
+	if (!email || !password) {
+		return {
+			success: false,
+			message: "Missing email and/or password",
+		};
+	};
+	if (password.length < 8) {
+		return {
+			success: false,
+			message: "Password must be at least 8 characters",
+		};
+	};
+	if (password.length > 72) {
+		return {
+			success: false,
+			message: "Password must be less than 72 characters",
+		};
+	};
+	const user = await User.findOne({ "account.email": email });
+	if (!user) {
+		return {
+			success: false,
+			message: "Invalid email or password",
+		};
+	};
+	if (!await comparePassword(password, user.account.password)) {
+		return {
+			success: false,
+			message: "Invalid email or password",
+		};
+	};
 	const d = new Date();
 	const time = d.getTime();
 	const token = newToken();
-
-	const filter = { email: email, password: cryptedPassword };
-	const update = { activity: { seen: time, token: token } };
-	const result = await User.findOne(filter);
-	if (result) {
-		await User.findOneAndUpdate(filter, update);
-		return ({
-			success: true,
-			token: token,
-		});
-	} else {
-		return ({
-			success: false,
-		});
-	}
+	const filter = { "account.email": email };
+	const update = { "activity.seen": time, "activity.token": token, "activity.lastLogin": time };
+	
+	await User.findOneAndUpdate(filter, update);
+	return ({
+		success: true,
+		token: token,
+		message: "Successfully logged in!",
+	});
 }
 
 export const users = [

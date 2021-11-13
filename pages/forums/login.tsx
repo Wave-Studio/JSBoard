@@ -33,7 +33,7 @@ const names = [
 
 export default function signup() {
 	const router = useRouter();
-	const [signUp, setSignUp] = useState(1);
+	const [signUp, setSignUp] = useState(0);
 	const [disabled, setDisabled] = useState(false);
 	const [socket, setSocket] = useState<Socket>();
 	const [response, setResponse] = useState<
@@ -48,6 +48,12 @@ export default function signup() {
 				setSignUp(2);
 				setResponse(data);
 				//I should set cookies here
+			});
+			socket.on("loginRes", (data) => {
+				setSignUp(2);
+				setResponse(data);
+				//I should set cookies here too
+				//@blocksnmore pls add react-cookie
 			});
 		});
 	}, []);
@@ -132,6 +138,7 @@ export default function signup() {
 			<Footer />
 		</div>
 	);
+	{/*this looks really ugly. this is also really bad with UX because the maker of it has trouble using it, and also probably has no idea how it works. */}
 	function Res() {
 		return (
 			<div
@@ -167,6 +174,15 @@ export default function signup() {
 					email: "",
 					password: "",
 				}}
+				validationSchema={Yup.object({
+					email: Yup.string()
+						.email("Invalid email address")
+						.required("Required"),
+					password: Yup.string()
+						.max(72, "Must be 72 characters or less")
+						.min(8, "Must be 8 characters or more")
+						.required("Required"),
+				})}
 				onSubmit={(values) => {
 					socket!.emit("login", {
 						username: values.email,
@@ -187,6 +203,9 @@ export default function signup() {
 							name="email"
 							required
 						/>
+						<div className="text-red-600 font-normal font-sm">
+							<ErrorMessage name="email" />
+						</div>
 					</label>
 					<label htmlFor="password">
 						Password
@@ -198,10 +217,14 @@ export default function signup() {
 							name="password"
 							required
 						/>
+						<div className="text-red-600 font-normal font-sm">
+							<ErrorMessage name="password" />
+						</div>
 					</label>
 					<button
 						type="submit"
-						className="btn btn-blue mt-4 font-medium"
+						className={"btn btn-blue mt-4 font-medium " + (disabled ? "opacity-70 !cursor-not-allowed" : "")}
+						disabled={disabled}
 					>
 						Login
 					</button>

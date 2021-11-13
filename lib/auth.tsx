@@ -32,6 +32,12 @@ export async function hashPassword(b64Password: string) {
 	return hashedPassword;
 }
 
+export async function comparePassword(plaintextPassword: string, hashedPassword: string) {
+	const str = Buffer.from(plaintextPassword, "base64").toString("ascii");
+	const result = await bcrypt.compare(str, hashedPassword);
+	return result;
+}
+
 
 export function newToken(tokens: string[] = []) {
 	const validChars =
