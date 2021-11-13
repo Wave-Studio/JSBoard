@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import io, { Socket } from "socket.io-client";
 import * as Yup from "yup";
 import Link from "next/link";
+import { useCookies } from 'react-cookie';
 
 import Navbar from "../../components/misc/navbar";
 import Footer from "../../components/misc/footer";
@@ -32,6 +33,7 @@ const names = [
 ];
 
 export default function signup() {
+	const [cookies, setCookie] = useCookies(['token']);
 	const router = useRouter();
 	const [signUp, setSignUp] = useState(0);
 	const [disabled, setDisabled] = useState(false);
@@ -47,11 +49,17 @@ export default function signup() {
 			socket.on("signUpRes", (data) => {
 				setSignUp(2);
 				setResponse(data);
+				if (data.token) {
+					setCookie('token', data.token);
+				}
 				//I should set cookies here
 			});
 			socket.on("loginRes", (data) => {
 				setSignUp(2);
 				setResponse(data);
+				if (data.token) {
+					setCookie('token', data.token);
+				}
 				//I should set cookies here too
 				//@blocksnmore pls add react-cookie
 			});
