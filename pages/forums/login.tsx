@@ -32,10 +32,10 @@ const names = [
 	"chad",
 ];
 
-export default function signup() {
+export default function signup({ signup }: { signup?: number}) {
 	const [cookies, setCookie] = useCookies(['token']);
 	const router = useRouter();
-	const [signUp, setSignUp] = useState(0);
+	const [signUp, setSignUp] = useState(signup ?? 0);
 	const [disabled, setDisabled] = useState(false);
 	const [socket, setSocket] = useState<Socket>();
 	const [response, setResponse] = useState<

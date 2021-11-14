@@ -33,7 +33,7 @@ module.exports = withPWA({
 			},
 			{
 				source: "/signup",
-				destination: "/forums/login",
+				destination: "/forums/signup",
 				permanent: false,
 			},
 			{

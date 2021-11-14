@@ -1,7 +1,7 @@
 import { Server } from "socket.io";
 import { readdir } from "fs";
 
-export default async function handle (
+export default async function handle(
 	_req: unknown,
 	res: {
 		socket: {
@@ -13,10 +13,23 @@ export default async function handle (
 		end: () => void;
 	},
 ) {
-	 //This causes a memory leak
-	if (res.socket.server?.io == undefined || process.env.NODE_ENV == "development") {
+	//This causes a memory leak. Too bad!
+	if (
+		res.socket.server?.io == undefined || process.env.NODE_ENV == "development"
+	) {
 		// @ts-ignore typings mayhem
 		const io = new Server(res.socket.server);
+
+		// Attempt to reduce the memory leak
+		// Doesn't seem to work
+		if (process.env.NODE_ENV == "development") {
+			io.on("connection", (socket) => {
+				io.on("disconnect", () => {
+					io.close();
+					delete res.socket.server.io;
+				});
+			});
+		}
 
 		await readdir("./pages/api/socketModules", async (err, files) => {
 			for (const file of files) {
