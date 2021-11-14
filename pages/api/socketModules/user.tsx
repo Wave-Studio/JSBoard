@@ -1,6 +1,5 @@
 import { Server } from "socket.io";
 import mongoose from "mongoose";
-import { getModelForClass, prop } from "@typegoose/typegoose";
 import connect from "../../../lib/db";
 import { hashPassword, newToken, comparePassword } from "../../../lib/auth";
 
@@ -33,12 +32,12 @@ export const Module = (io: Server) => {
 				data.password,
 			);
 			console.log(r);
-			socket.emit("signUpRes", r);
+			socket.emit("signUp", r);
 		});
 		socket.on("login", async (data)=>{
 			const r = await loginUser(data.username, data.password);
 			console.log(r);
-			socket.emit("loginRes", r);
+			socket.emit("login", r);
 		})
 	});
 };
@@ -84,7 +83,7 @@ export interface User {
 	id: number; //This is just the number of ducuments there are. We'll delete contents of the ducment when we remove a user verses removing the whole thing.
 }
 
-const UserSchema = new mongoose.Schema({
+export const UserSchema = new mongoose.Schema({
 	account: {
 		username: String,
 		email: String,

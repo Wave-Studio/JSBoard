@@ -46,7 +46,7 @@ export default function signup() {
 		fetch("/api/socket").finally(() => {
 			const socket = io();
 			setSocket(socket);
-			socket.on("signUpRes", (data) => {
+			socket.on("signUp", (data) => {
 				setSignUp(2);
 				setResponse(data);
 				if (data.token) {
@@ -54,7 +54,7 @@ export default function signup() {
 				}
 				//I should set cookies here
 			});
-			socket.on("loginRes", (data) => {
+			socket.on("login", (data) => {
 				setSignUp(2);
 				setResponse(data);
 				if (data.token) {
