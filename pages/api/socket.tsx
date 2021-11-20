@@ -15,21 +15,21 @@ export default async function handle(
 ) {
 	//This causes a memory leak. Too bad!
 	if (
-		res.socket.server?.io == undefined || process.env.NODE_ENV == "development"
+		res.socket.server?.io == undefined //|| process.env.NODE_ENV == "development"
 	) {
 		// @ts-ignore typings mayhem
 		const io = new Server(res.socket.server);
 
 		// Attempt to reduce the memory leak
 		// Doesn't seem to work
-		if (process.env.NODE_ENV == "development") {
+		/*if (process.env.NODE_ENV == "development") {
 			io.on("connection", (socket) => {
 				io.on("disconnect", () => {
 					io.close();
 					delete res.socket.server.io;
 				});
 			});
-		}
+		}*/
 
 		await readdir("./pages/api/socketModules", async (err, files) => {
 			for (const file of files) {
