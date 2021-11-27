@@ -3,15 +3,22 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
+  ChatAlt2Icon,
+  ChevronDownIcon,
   ChevronLeftIcon,
-	ColorSwatchIcon
+  ChevronUpIcon,
+  ColorSwatchIcon,
+  EyeIcon,
+  LockClosedIcon,
+  PencilIcon,
 } from "@heroicons/react/outline";
+import { Form, Field, Formik, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import Image from "next/image";
 
 import Navbar from "../../../components/misc/navbar";
 import Footer from "../../../components/misc/footer";
-import PageError from "../../../components/misc/error";
+import Error from "../../../components/misc/notification";
 
 export default function ViewUserProfile({
   selectedPage = 1,
@@ -25,12 +32,17 @@ export default function ViewUserProfile({
     name: "Example forum",
     description: "Beans",
     tags: ["The", "Best", "Forum"],
+    page: 1,
+    search: null,
     posts: [
       {
         post: {
           title: "Example post",
+          sampleContent:
+            "I was wondeirng how linus makes so many vides and why they are all sooo cool :flushed:",
           author: "Blox",
           authorID: 1,
+          authorPFPFormat: "jpg", //jpg or gif
           formattedDate: "2020-01-01",
           //content: "This is an example post.", We only care about featching surface level details here
           locked: true,
@@ -92,20 +104,117 @@ export default function ViewUserProfile({
               </a>
             </Link>
             <div className="bg-coolGray-800 rounded-md p-5 text-gray-200">
-              <div className="flex justify-between">
+              <div className="flex flex-col md:flex-row justify-between">
                 <div>
-									<div className="flex space-x-2 items-center ">
-										<div className="bg-coolGray-900 bg-opacity-25 p-1 rounded-lg ">
-										<ColorSwatchIcon className="w-6 text-transparent bg-gradient-to-br from-theme-primary to-green-500 bg-clip-text overflow-hidden" />
-										</div>
-                  	{tags(forum.tags)}
-									</div>
+                  <div className="flex space-x-2 items-center ">
+                    <div className="bg-coolGray-900 bg-opacity-25 p-1 rounded-lg ">
+                      <ColorSwatchIcon className="w-6 text-gray-300" />
+                    </div>
+                    {tags(forum.tags)}
+                  </div>
                   <h1 className="text-2xl font-medium mt-3 ">{forum.name}</h1>
+                  <hr className="border-theme-primary border-t-2 bg-opacity-50 w-10 my-2" />
                   <h2 className="text-sm font-light text-gray-400">
                     {forum.description}
                   </h2>
                 </div>
+                <div className="justify-between flex flex-col mt-4 md:mt-0">
+                  <button className="btn btn-blue font-semibold hidden md:block">
+                    Create a Post
+                  </button>
+                  <Formik
+                    initialValues={{ search: forum.search }}
+                    validationSchema={Yup.object({
+                      search: Yup.string()
+                        .max(50, "Search is too long")
+                        .required("You can't search for nothing!")
+                        .min(2, "Search is too short"),
+                    })}
+                    onSubmit={(values, { setSubmitting }) => {
+                      alert(JSON.stringify(values, null, 2));
+                    }}
+                  >
+                    {({ errors, touched }) => (
+                      <Form className="flex items-center">
+                        <Field
+                          name="search"
+                          type="search"
+                          className="form-input w-full"
+                          placeholder="Search"
+                        />
+                        {errors.search && touched.search ? (
+                          <Error
+                            msg={errors.search}
+                            color="bg-red-500"
+                            mdleft={true}
+                          />
+                        ) : null}
+                      </Form>
+                    )}
+                  </Formik>
+                </div>
               </div>
+            </div>
+            <div className="space-y-3 my-10">
+              <section className="bg-coolGray-800 px-5 py-3 mt-3 rounded-md flex hover:filter hover:brightness-90 transition cursor-pointer select-none text-gray-200 font-medium tracking-wide">
+                <div className=" mr-4 flex flex-col items-center">
+                  <button className=" text-gray-300 hover:bg-coolGray-900 hover:opacity-75 hover:text-green-200 focus:hover:opacity-95 rounded-full transition duration-300">
+                    <ChevronUpIcon className="w-7 p-0.5 " />
+                  </button>
+                  <span className="text-sm">1</span>
+                  <button className=" text-gray-300 hover:bg-coolGray-900 hover:opacity-75 hover:text-red-200 focus:hover:opacity-95 rounded-full transition duration-300">
+                    <ChevronDownIcon className="w-7 p-0.5 " />
+                  </button>
+                </div>
+                <div className=" w-[0.1rem] bg-theme-secondary mr-4 rounded my-2 " />
+                <div>
+                  <div>
+                    <div className="flex items-center">
+                      <figure>
+                        <Image
+                          width={28}
+                          height={28}
+                          src={"/pfps/" + "3" + ".jpg"}
+                          className="rounded-full"
+                          alt="User Icon"
+                        />
+                      </figure>
+                      <figcaption className="ml-2">Name</figcaption>
+                    </div>
+                    <div className="my-3">
+                      <h3 className="text-lg">Title</h3>
+                      <p className="max-w-2xl truncate text-sm font-normal text-gray-300">
+                        This is some content about the bost thats cool and I
+                        needd more contentttthg bc I need it and I want it so i
+                        can test this stuff
+                      </p>
+                    </div>
+                    <div className="space-x-3">
+                      <div className="inline-flex items-center space-x-2 rounded-full px-2 py-1 text-gray-300 text-sm bg-coolGray-700 bg-opacity-50">
+                        <EyeIcon className="w-5 text-gray-300" />
+                        <span>1</span>
+                      </div>
+                      <div className="inline-flex items-center space-x-2 rounded-full px-2 py-1 text-gray-300 text-sm bg-coolGray-700 bg-opacity-50">
+                        <ChatAlt2Icon className="w-5 text-gray-300" />
+                        <span>1</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="ml-auto space-y-2">
+                  <div className="inline-flex space-x-2 ">
+                    <div className=" bg-coolGray-900 bg-opacity-70 rounded-md px-2 py-1">
+                      <LockClosedIcon className="w-5 text-gray-300 " />
+                    </div>
+                    <div className=" bg-coolGray-900 bg-opacity-70 rounded-md px-2 py-1">
+                      <PencilIcon className="w-5 text-gray-300" />
+                    </div>
+                  </div>
+                  <div className=" bg-coolGray-900 bg-opacity-70 rounded-md px-4 py-3 text-xs">
+                    <time>Posted: time here</time>
+                  </div>
+                </div>
+              </section>
             </div>
           </div>
         </div>
@@ -115,14 +224,14 @@ export default function ViewUserProfile({
   );
 }
 
-//This is really bad practice and I', actually using a workaround because React doesn't like it
+//This is really bad practice and I'm, actually using a workaround because React doesn't like it
 
 function tags(tags: Array<string>) {
-  console.log(tags);
+  //console.log(tags);
   var r: Array<unknown> = [];
   tags.forEach((tag) => {
     r.push(
-      <div className="rounded-r border-l-2 border-theme-primary dark:border-blue-400 px-3 py-1 font-medium text-gray-300 text-sm bg-coolGray-900 bg-opacity-40">
+      <div className="rounded-full px-3 py-1 font-medium text-gray-300 text-sm bg-coolGray-700 bg-opacity-50">
         {tag}
       </div>
     );

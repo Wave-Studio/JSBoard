@@ -22,7 +22,8 @@ module.exports = {
 					900: "#121314",
 				},
 				theme: {
-					primary: "#1757e3",
+					primary: "#1757e3", //Windy Blue
+					secondary: "#259c7c", //Flax Blue
 				},
 				branding: {
 					50: "#baf5eb", //for light theme

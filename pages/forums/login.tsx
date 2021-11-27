@@ -146,7 +146,7 @@ export default function signup({ signup }: { signup?: number}) {
 			<Footer />
 		</div>
 	);
-	{/*this looks really ugly. this is also really bad with UX because the maker of it has trouble using it, and also probably has no idea how it works. */}
+	/*this looks really ugly. this is also really bad with UX because the maker of it has trouble using it, and also probably has no idea how it works. */
 	function Res() {
 		return (
 			<div
@@ -205,11 +205,11 @@ export default function signup({ signup }: { signup?: number}) {
 						Email
 						<Field
 							type="text"
-							className="rounded border-none shadow w-full placeholder"
+							className=" w-full"
 							placeholder="wireframes@mspaint.aol"
 							autoComplete="email"
 							name="email"
-							required
+							
 						/>
 						<div className="text-red-600 font-normal font-sm">
 							<ErrorMessage name="email" />
@@ -219,11 +219,11 @@ export default function signup({ signup }: { signup?: number}) {
 						Password
 						<Field
 							type="text"
-							className="rounded border-none shadow w-full placeholder"
+							className="w-full"
 							placeholder="Pass123"
 							autoComplete="password"
 							name="password"
-							required
+							
 						/>
 						<div className="text-red-600 font-normal font-sm">
 							<ErrorMessage name="password" />
@@ -283,7 +283,7 @@ export default function signup({ signup }: { signup?: number}) {
 						Username
 						<Field
 							type="text"
-							className="rounded border-none shadow w-full placeholder"
+							className=" w-full placeholder"
 							placeholder={names[
 								Math.floor(Math.random() * names.length)
 							]}
@@ -298,7 +298,7 @@ export default function signup({ signup }: { signup?: number}) {
 						Email
 						<Field
 							type="text"
-							className="rounded border-none shadow w-full placeholder"
+							className=" w-full placeholder"
 							placeholder="wireframes@mspaint.aol"
 							autoComplete="email"
 							name="email"
@@ -311,7 +311,7 @@ export default function signup({ signup }: { signup?: number}) {
 						Password
 						<Field
 							type="text"
-							className="rounded border-none shadow w-full placeholder"
+							className=" w-full placeholder"
 							placeholder="Pass123"
 							autoComplete="password"
 							name="password"

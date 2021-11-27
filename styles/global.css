@@ -55,6 +55,8 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
   @apply px-2 py-1 rounded-md select-none cursor-pointer focus:outline-none text-gray-100 transition;
 }
 
+
+
 .btn-lg {
   @apply py-2 px-5;
 }
@@ -107,9 +109,10 @@ progress[value] {
 
 input[type="text"],
 input[type="checkbox"],
+input[type="search"],
 textarea,
 .text-box-form {
-  @apply bg-coolGray-900 bg-opacity-50 shadow placeholder-gray-200 placeholder-opacity-50;
+  @apply bg-coolGray-900 bg-opacity-50 placeholder-gray-200 placeholder-opacity-50 rounded border-none shadow;
 }
 
 input[type="checkbox"] {
