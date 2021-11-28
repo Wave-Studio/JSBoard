@@ -14,9 +14,7 @@ export default function step2(props: { page: number }) {
 	}
 	return (
 		<>
-			<div
-				className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 my-10 text-gray-200"
-			>
+			<div className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 my-10 text-gray-200">
 				{/*Section 1*/}
 				<h2 className="text-lg font-semibold text-gray-300 mb-8">
 					Let's learn some more about you
@@ -48,8 +46,7 @@ export default function step2(props: { page: number }) {
 					{/*Links*/}
 					<div className="flex w-full select-none ">
 						<label
-							onChange={() => (setStore(!store),
-								setStoreOpen(false))}
+							onChange={() => (setStore(!store), setStoreOpen(false))}
 						>
 							Store
 							<input
@@ -89,8 +86,7 @@ export default function step2(props: { page: number }) {
 
 					<div className="flex w-full select-none ">
 						<label
-							onChange={() => (setWebsite(!website),
-								setWebsiteOpen(false))}
+							onChange={() => (setWebsite(!website), setWebsiteOpen(false))}
 						>
 							Website
 							<input
@@ -129,8 +125,7 @@ export default function step2(props: { page: number }) {
 
 					<div className="flex w-full select-none ">
 						<label
-							onChange={() => (setLink(!link),
-								setLinkOpen(false))}
+							onChange={() => (setLink(!link), setLinkOpen(false))}
 						>
 							Custom Link
 							<input
@@ -177,9 +172,7 @@ export default function step2(props: { page: number }) {
 					</label>
 				</div>
 			</div>
-			<div
-				className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 my-10 text-gray-200"
-			>
+			<div className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 my-10 text-gray-200">
 				{/*Section 2*/}
 				<h2 className="text-lg font-medium text-gray-300 mb-8">
 					Now for the important bits
@@ -187,12 +180,8 @@ export default function step2(props: { page: number }) {
 				</h2>
 				<div className="flex flex-col max-w-xl space-y-3 font-medium">
 					<h3>Select a database</h3>
-					<div
-						className="flex flex-wrap space-y-3 xs:space-x-3 xs:space-y-0 justify-center sm:justify-start"
-					>
-						<label
-							className="expand relative select-none bg-gradient-to-br from-[#28b362] to-[#12924f] hover:from-[#10aa50] rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90"
-						>
+					<div className="flex flex-wrap space-y-3 xs:space-x-3 xs:space-y-0 justify-center sm:justify-start">
+						<label className="expand relative select-none bg-gradient-to-br from-[#28b362] to-[#12924f] hover:from-[#10aa50] rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
 							MongoDB
 							<input
 								type="radio"
@@ -201,9 +190,7 @@ export default function step2(props: { page: number }) {
 							/>
 						</label>
 
-						<label
-							className="expand relative select-none bg-gradient-to-br from-[#eba73d] to-[#007a9e] hover:from-[#e99d27] rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90"
-						>
+						<label className="expand relative select-none bg-gradient-to-br from-[#eba73d] to-[#007a9e] hover:from-[#e99d27] rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
 							MySQL
 							<input
 								type="radio"

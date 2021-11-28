@@ -18,9 +18,7 @@ export default function PageError(
 			<div className="flex flex-col h-screen">
 				<Navbar name={props.code + " | " + props.text} />
 				<div className="flex flex-grow justify-center items-center">
-					<div
-						className="bg-coolGray-800 text-gray-100 rounded-md shadow-lg p-10"
-					>
+					<div className="bg-coolGray-800 text-gray-100 rounded-md shadow-lg p-10">
 						<h2 className="text-4xl font-semibold text-center mb-1">
 							{props.code + " " + props.text}
 						</h2>
@@ -29,9 +27,7 @@ export default function PageError(
 								An error occured while preforming that action!
 							</p>
 
-							<div
-								className="flex justify-center items-center space-x-4"
-							>
+							<div className="flex justify-center items-center space-x-4">
 								<div
 									className={props.back ? "" : "hidden"}
 									onClick={() => history.back()}

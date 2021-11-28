@@ -13,7 +13,7 @@ const homepageSchema = new mongoose.Schema({
 			color: String, //won't work, purgecss needs to see full names
 			topics: Number,
 			posts: Number,
-			id: Number, 
+			id: Number,
 		},
 	],
 	description: String,

@@ -4,9 +4,7 @@ export default function step3(props: { page: number }) {
 	}
 	return (
 		<>
-			<div
-				className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 my-10 text-gray-200"
-			>
+			<div className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 my-10 text-gray-200">
 				<h2 className="text-lg font-semibold text-gray-300 mb-4">
 					Create a theme for your forums
 					<br />
@@ -16,8 +14,7 @@ export default function step3(props: { page: number }) {
 					{/*<hr className="border-t-2 border-gray-200 border-opacity-50 " />*/}
 				</h2>
 				<h3 className="text-gray-200 font-medium">
-					Select one of our beautifuly handcrafted default user themes
-					{" "}
+					Select one of our beautifuly handcrafted default user themes{" "}
 					<span className="font-extralight">
 						(we reccomend dark!)
 					</span>
@@ -36,8 +33,7 @@ export default function step3(props: { page: number }) {
 					/>
 				</div>
 				<h3 className="text-gray-200 font-medium">
-					Choose a luxurious accent color from an expertly-crafted
-					color palette
+					Choose a luxurious accent color from an expertly-crafted color palette
 				</h3>
 				<div className="flex py-4 space-x-4">
 					<input
@@ -68,24 +64,15 @@ export default function step3(props: { page: number }) {
 					/>
 				</div>
 				<h3 className="text-gray-200 font-medium">
-					Pick an image or color gradient that represents your
-					community
+					Pick an image or color gradient that represents your community
 				</h3>
-				<div
-					className="border-2 border-gray-300 border-opacity-25 rounded-lg max-w-xl mt-3 p-4"
-				>
-					<div
-						className="bg-gradient-to-r from-green-400 to-blue-600 h-12 rounded-lg relative"
-					>
-						<span
-							className="absolute bottom-0 right-2 text-gray-400 italic flex"
-						>
+				<div className="border-2 border-gray-300 border-opacity-25 rounded-lg max-w-xl mt-3 p-4">
+					<div className="bg-gradient-to-r from-green-400 to-blue-600 h-12 rounded-lg relative">
+						<span className="absolute bottom-0 right-2 text-gray-400 italic flex">
 							Preview
 						</span>
 					</div>
-					<fieldset
-						className="border-2 border-gray-300 border-opacity-25 rounded-lg mt-3 flex justify-center"
-					>
+					<fieldset className="border-2 border-gray-300 border-opacity-25 rounded-lg mt-3 flex justify-center">
 						<legend className="text-center px-1 font-medium">
 							Starting Gradient
 						</legend>
@@ -96,9 +83,7 @@ export default function step3(props: { page: number }) {
 							maxLength={7}
 						/>
 					</fieldset>
-					<fieldset
-						className="border-2 border-gray-300 border-opacity-25 rounded-lg mt-3 flex justify-center"
-					>
+					<fieldset className="border-2 border-gray-300 border-opacity-25 rounded-lg mt-3 flex justify-center">
 						<legend className="text-center px-1 font-medium">
 							Ending Gradient
 						</legend>

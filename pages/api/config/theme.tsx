@@ -10,9 +10,8 @@ export default function (
 	} else {
 		return res.status(200).json({
 			configured: true,
-			theme:
-				JSON.parse(fs.readFileSync("./.jsboard/config.json", "utf-8"))
-					.theme,
+			theme: JSON.parse(fs.readFileSync("./.jsboard/config.json", "utf-8"))
+				.theme,
 		});
 	}
 }

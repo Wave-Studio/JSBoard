@@ -12,7 +12,6 @@
 	"dependencies": {
 		"@heroicons/react": "^1.0.5",
 		"@typegoose/typegoose": "^9.2.0",
-		"@types/yup": "^0.29.13",
 		"bcrypt": "^5.0.1",
 		"formik": "^2.2.9",
 		"mongoose": "^6.0.13",
@@ -34,6 +33,7 @@
 		"@types/bcrypt": "^5.0.0",
 		"@types/cookie": "^0.4.1",
 		"@types/react": "^17.0.37",
+		"@types/yup": "^0.29.13",
 		"autoprefixer": "^10.4.0",
 		"postcss": "^8.4.4",
 		"tailwindcss": "^2.2.19",

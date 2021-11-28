@@ -48,13 +48,9 @@ export default function dashboard() {
 				<h2 className="text-xl font-medium text-gray-300 mb-2">
 					Configure the sidebar and main boxes
 				</h2>
-				<hr
-					className="border-theme-primary border-t-2 bg-opacity-50 w-10"
-				/>
+				<hr className="border-theme-primary border-t-2 bg-opacity-50 w-10" />
 				<Notification color="bg-theme-primary" msg="somthing lmao">
-					<div
-						className=" inline-flex rounded-md font-medium items-center nightwind-prevent text-white"
-					>
+					<div className=" inline-flex rounded-md font-medium items-center nightwind-prevent text-white">
 						<svg
 							className="animate-spin mr-2 h-5 w-5 text-white nightwind-prevent "
 							xmlns="http://www.w3.org/2000/svg"
@@ -92,9 +88,7 @@ export default function dashboard() {
 				<h2 className="text-xl font-medium text-gray-300 mb-2">
 					Configure the sidebar and main boxes
 				</h2>
-				<hr
-					className="border-theme-primary border-t-2 bg-opacity-50 w-10"
-				/>
+				<hr className="border-theme-primary border-t-2 bg-opacity-50 w-10" />
 				<div className="space-y-8 mt-10">
 					<Formik
 						initialValues={{
@@ -118,19 +112,13 @@ export default function dashboard() {
 						}}
 					>
 						<Form>
-							<div
-								className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 text-gray-200"
-							>
+							<div className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 text-gray-200">
 								{/*Section 1*/}
-								<h2
-									className="text-lg font-semibold text-gray-300 mb-8"
-								>
+								<h2 className="text-lg font-semibold text-gray-300 mb-8">
 									Let{"'"}s learn some more about you
 									{/*<hr className="border-t-2 border-gray-200 border-opacity-50 " />*/}
 								</h2>
-								<div
-									className="flex flex-col max-w-xl space-y-3 font-medium"
-								>
+								<div className="flex flex-col max-w-xl space-y-3 font-medium">
 									{/*Make basic info adrea for main page*/}
 									<div>
 										<label htmlFor="orgName">Name</label>
@@ -162,13 +150,13 @@ export default function dashboard() {
 									{/*Links*/}
 									<Linkmaker
 										name="Store"
-										input={(
+										input={
 											<Field
 												type="checkbox"
 												className="rounded-full ml-2 nightwind-prevent"
 												name="store"
 											/>
-										)}
+										}
 									>
 										<label>
 											Link
@@ -184,13 +172,13 @@ export default function dashboard() {
 									</Linkmaker>
 									<Linkmaker
 										name="Website"
-										input={(
+										input={
 											<Field
 												type="checkbox"
 												className="rounded-full ml-2 nightwind-prevent"
 												name="website"
 											/>
-										)}
+										}
 									>
 										<label>
 											Link
@@ -205,13 +193,13 @@ export default function dashboard() {
 									</Linkmaker>
 									<Linkmaker
 										name="Custom Link"
-										input={(
+										input={
 											<Field
 												type="checkbox"
 												className="rounded-full ml-2 nightwind-prevent"
 												name="custom"
 											/>
-										)}
+										}
 									>
 										<label>
 											Link
@@ -246,23 +234,17 @@ export default function dashboard() {
 						</Form>
 					</Formik>
 					{/*Sidebar Options*/}
-					<div
-						className="p-4 rounded-lg shadow w-full bg-coolGray-800"
-					>
+					<div className="p-4 rounded-lg shadow w-full bg-coolGray-800">
 						<h1 className="text-2xl font-semibold text-gray-200">
 							Sidebar
 						</h1>
 						<h2 className="text-lg font-medium text-gray-300 mb-2">
-							Configure whats on the sidebar, or even create your
-							own cutom sidebar boxes
+							Configure whats on the sidebar, or even create your own cutom
+							sidebar boxes
 						</h2>
-						<form
-							className="flex flex-wrap max-w-xl justify-center sm:justify-start items-center gap-10"
-						>
+						<form className="flex flex-wrap max-w-xl justify-center sm:justify-start items-center gap-10">
 							{/*Sidebar Things to click*/}
-							<label
-								className="expand relative select-none bg-gradient-to-br from-blue-500 to-green-600 hover:from-blue-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90"
-							>
+							<label className="expand relative select-none bg-gradient-to-br from-blue-500 to-green-600 hover:from-blue-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
 								<StatusOnlineIcon className="w-10" />
 								Online Users
 								<input
@@ -271,9 +253,7 @@ export default function dashboard() {
 								/>
 							</label>
 
-							<label
-								className="expand relative select-none bg-gradient-to-br from-red-500 to-yellow-600 hover:from-red-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90"
-							>
+							<label className="expand relative select-none bg-gradient-to-br from-red-500 to-yellow-600 hover:from-red-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
 								<FireIcon className="w-10" />
 								Hot Posts
 								<input
@@ -281,9 +261,7 @@ export default function dashboard() {
 									className="rounded-full absolute bottom-[5px] right-[5px] border-none bg-gray-200 bg-opacity-50"
 								/>
 							</label>
-							<label
-								className="expand relative select-none bg-gradient-to-br from-indigo-500 to-pink-600 hover:from-indigo-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90"
-							>
+							<label className="expand relative select-none bg-gradient-to-br from-indigo-500 to-pink-600 hover:from-indigo-600 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
 								<DocumentDuplicateIcon className="w-10" />
 								New Posts
 								<input
@@ -292,25 +270,20 @@ export default function dashboard() {
 								/>
 							</label>
 
-							<label
-								className="expand relative select-none bg-coolGray-700 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90"
-							>
+							<label className="expand relative select-none bg-coolGray-700 rounded-lg h-40 w-40 flex flex-col justify-center items-center font-medium text-gray-300 cursor-pointer opacity-70 hover:opacity-90">
 								<PlusSmIcon className="w-10" />
 								Create a Tab
 							</label>
 						</form>
 					</div>
 				</div>
-				<div
-					className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 my-10 text-gray-200"
-				>
+				<div className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 my-10 text-gray-200">
 					<h2 className="text-lg font-semibold text-gray-300 mb-4">
 						Create a theme for your forums
 						{/*<hr className="border-t-2 border-gray-200 border-opacity-50 " />*/}
 					</h2>
 					<h3 className="text-gray-200 font-medium">
-						Select one of our beautifuly handcrafted default user
-						themes{" "}
+						Select one of our beautifuly handcrafted default user themes{" "}
 						<span className="font-extralight">
 							(we reccomend dark!)
 						</span>
@@ -329,9 +302,8 @@ export default function dashboard() {
 						/>
 					</div>
 					<h3 className="text-gray-200 font-medium">
-						Choose a luxurious accent color from our
-						expertly-crafted color palette by the makers of
-						TailwindCSS
+						Choose a luxurious accent color from our expertly-crafted color
+						palette by the makers of TailwindCSS
 					</h3>
 					<div className="flex py-4 space-x-4">
 						<input
@@ -362,24 +334,15 @@ export default function dashboard() {
 						/>
 					</div>
 					<h3 className="text-gray-200 font-medium">
-						Pick an image or color gradient that represents your
-						community
+						Pick an image or color gradient that represents your community
 					</h3>
-					<div
-						className="border-2 border-gray-300 border-opacity-25 rounded-lg max-w-xl mt-3 p-4"
-					>
-						<div
-							className="bg-gradient-to-r from-green-400 to-blue-600 h-12 rounded-lg relative"
-						>
-							<span
-								className="absolute bottom-0 right-1 text-gray-400 italic flex"
-							>
+					<div className="border-2 border-gray-300 border-opacity-25 rounded-lg max-w-xl mt-3 p-4">
+						<div className="bg-gradient-to-r from-green-400 to-blue-600 h-12 rounded-lg relative">
+							<span className="absolute bottom-0 right-1 text-gray-400 italic flex">
 								Preview
 							</span>
 						</div>
-						<fieldset
-							className="border-2 border-gray-300 border-opacity-25 rounded-lg mt-3 flex justify-center"
-						>
+						<fieldset className="border-2 border-gray-300 border-opacity-25 rounded-lg mt-3 flex justify-center">
 							<legend className="text-center px-1 font-medium">
 								Starting Gradient
 							</legend>
@@ -390,9 +353,7 @@ export default function dashboard() {
 								maxLength={7}
 							/>
 						</fieldset>
-						<fieldset
-							className="border-2 border-gray-300 border-opacity-25 rounded-lg mt-3 flex justify-center"
-						>
+						<fieldset className="border-2 border-gray-300 border-opacity-25 rounded-lg mt-3 flex justify-center">
 							<legend className="text-center px-1 font-medium">
 								Ending Gradient
 							</legend>
@@ -412,8 +373,8 @@ export default function dashboard() {
 						Something else
 					</h1>
 					<h2 className="text-lg font-medium text-gray-300 mb-2">
-						TBH idk what to put here, maybe like some sort of
-						navbar/footer thing?
+						TBH idk what to put here, maybe like some sort of navbar/footer
+						thing?
 					</h2>
 				</div>
 			</StaffCore>

@@ -65,49 +65,23 @@ export default function Home() {
 			<>
 				<div className="bg-coolGray-700 flex-grow">
 					<Navbar name="Loading..." />
-					<div
-						className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans"
-					>
-						<h1
-							className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20"
-						>
-							<div
-								className="animate-pulse mx-4 bg-blue-500 h-12 w-2/5 rounded"
-							/>
+					<div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
+						<h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
+							<div className="animate-pulse mx-4 bg-blue-500 h-12 w-2/5 rounded" />
 						</h1>
 						{/*add smth to look at the background and see what color it is*/}
 					</div>
-					<div
-						className="container max-w-screen-xl px-6 mx-auto text-gray-200 md:px-8 lg:px-10"
-					>
-						<div
-							className="flex-grow rounded-md shadow-md bg-coolGray-800 py-5 my-10"
-						>
+					<div className="container max-w-screen-xl px-6 mx-auto text-gray-200 md:px-8 lg:px-10">
+						<div className="flex-grow rounded-md shadow-md bg-coolGray-800 py-5 my-10">
 							<div className="space-y-2">
-								<div
-									className="animate-pulse mx-4 bg-blue-500 h-10 w-2/5 rounded mb-4"
-								/>
-								<div
-									className="animate-pulse mx-4 bg-blue-500 h-4 rounded"
-								/>
-								<div
-									className="animate-pulse mx-4 bg-blue-500 h-4 rounded"
-								/>
-								<div
-									className="animate-pulse mx-4 bg-blue-500 h-4 rounded"
-								/>
-								<div
-									className="animate-pulse mx-4 bg-blue-500 h-4 rounded"
-								/>
-								<div
-									className="animate-pulse mx-4 bg-blue-500 h-4 rounded"
-								/>
-								<div
-									className="animate-pulse mx-4 bg-blue-500 h-4 rounded"
-								/>
-								<div
-									className="animate-pulse mx-4 bg-blue-500 h-4 w-3/5 rounded"
-								/>
+								<div className="animate-pulse mx-4 bg-blue-500 h-10 w-2/5 rounded mb-4" />
+								<div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
+								<div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
+								<div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
+								<div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
+								<div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
+								<div className="animate-pulse mx-4 bg-blue-500 h-4 rounded" />
+								<div className="animate-pulse mx-4 bg-blue-500 h-4 w-3/5 rounded" />
 							</div>
 						</div>
 						<div className="lg:flex w-full lg:flex-row">
@@ -143,26 +117,18 @@ export default function Home() {
 		<>
 			<div className="bg-coolGray-700 flex-grow">
 				<Navbar name="Home" />
-				<div
-					className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans"
-				>
-					<h1
-						className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20"
-					>
+				<div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
+					<h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
 						{forums.data.orgName}
 					</h1>
 					{/*add smth to look at the background and see what color it is*/}
 				</div>
-				<div
-					className="container max-w-screen-xl px-6 mx-auto text-gray-200 md:px-8 lg:px-10"
-				>
-					<div
-						className="rounded-md shadow-md bg-coolGray-800 p-5 my-10 space-x-3"
-					>
+				<div className="container max-w-screen-xl px-6 mx-auto text-gray-200 md:px-8 lg:px-10">
+					<div className="rounded-md shadow-md bg-coolGray-800 p-5 my-10 space-x-3">
 						<p>
 							<span className="font-bold">
-								this would be replaced with markdown for
-								whatever the server wanted here{" "}
+								this would be replaced with markdown for whatever the server
+								wanted here{" "}
 							</span>
 							{forums.data.description}
 						</p>
@@ -172,9 +138,7 @@ export default function Home() {
 									href={forums.data.storeLink || undefined}
 									className="text-gray-200 px-3 py-0.5 bg-red-500 inline-flex mt-3 items-center rounded-full font-medium"
 								>
-									<Heroicons.ShoppingCartIcon
-										className="h-5 w-5 mr-1"
-									/>
+									<Heroicons.ShoppingCartIcon className="h-5 w-5 mr-1" />
 									Store
 								</a>
 							)
@@ -187,9 +151,7 @@ export default function Home() {
 									href={forums.data.websiteLink || undefined}
 									className="text-gray-200 px-3 py-0.5 bg-theme-primary inline-flex mt-3 items-center rounded-full font-medium"
 								>
-									<Heroicons.GlobeAltIcon
-										className="h-5 w-5 mr-1"
-									/>
+									<Heroicons.GlobeAltIcon className="h-5 w-5 mr-1" />
 									Website
 								</a>
 							)
@@ -202,9 +164,7 @@ export default function Home() {
 									href={forums.data.customLink || undefined}
 									className="text-gray-200 px-3 py-0.5 bg-green-700 inline-flex mt-3 items-center rounded-full font-medium"
 								>
-									<Heroicons.BeakerIcon
-										className="h-5 w-5 mr-1"
-									/>
+									<Heroicons.BeakerIcon className="h-5 w-5 mr-1" />
 									{forums.data.customName}
 								</a>
 							)

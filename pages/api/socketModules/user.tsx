@@ -1,7 +1,7 @@
 import { Server } from "socket.io";
 import mongoose from "mongoose";
 import connect from "../../../lib/db";
-import { hashPassword, newToken, comparePassword } from "../../../lib/auth";
+import { comparePassword, hashPassword, newToken } from "../../../lib/auth";
 
 export const Module = (io: Server) => {
 	io.on("connection", (socket) => {
@@ -34,11 +34,11 @@ export const Module = (io: Server) => {
 			console.log(r);
 			socket.emit("signUp", r);
 		});
-		socket.on("login", async (data)=>{
+		socket.on("login", async (data) => {
 			const r = await loginUser(data.username, data.password);
 			console.log(r);
 			socket.emit("login", r);
-		})
+		});
 	});
 };
 
@@ -122,52 +122,52 @@ export async function registerUser(
 	password: string,
 ): Promise<{ success: boolean; token?: string; message: string }> {
 	// try {
-		let cryptedPassword: string;
-		const d = new Date();
-		const time = d.getTime();
-		const token = newToken();
-		
-		//TODO: Add a setting to allow multiple of the same name
-		//Revalidate credentials on server to make sure they didn't override client side validation
-		if (await User.findOne({ "account.username": username })) {
-			return {
-				success: false,
-				message: "Username already taken",
-			};
-		}
-		if (await User.findOne({ "account.email": email })) {
-			return {
-				success: false,
-				message: "Email already taken",
-			};
-		}
-		if (username.length < 3) {
-			return {
-				success: false,
-				message: "Username must be at least 3 characters",
-			};
-		}
-		if (username.length > 16) { 
-			return {
-				success: false,
-				message: "Username must be less than 16 characters",
-			};
-		}
-		if (password.length < 8) {
-			return {
-				success: false,
-				message: "Password must be at least 8 characters",
-			};
-		}
-		if (password.length > 72) {
-			return {
-				success: false,
-				message: "Password must be less than 72 characters",
-			};
-		}
-		//hash password
-		const hash = await hashPassword(password);
-		/*if (!hash.success) {
+	let cryptedPassword: string;
+	const d = new Date();
+	const time = d.getTime();
+	const token = newToken();
+
+	//TODO: Add a setting to allow multiple of the same name
+	//Revalidate credentials on server to make sure they didn't override client side validation
+	if (await User.findOne({ "account.username": username })) {
+		return {
+			success: false,
+			message: "Username already taken",
+		};
+	}
+	if (await User.findOne({ "account.email": email })) {
+		return {
+			success: false,
+			message: "Email already taken",
+		};
+	}
+	if (username.length < 3) {
+		return {
+			success: false,
+			message: "Username must be at least 3 characters",
+		};
+	}
+	if (username.length > 16) {
+		return {
+			success: false,
+			message: "Username must be less than 16 characters",
+		};
+	}
+	if (password.length < 8) {
+		return {
+			success: false,
+			message: "Password must be at least 8 characters",
+		};
+	}
+	if (password.length > 72) {
+		return {
+			success: false,
+			message: "Password must be less than 72 characters",
+		};
+	}
+	//hash password
+	const hash = await hashPassword(password);
+	/*if (!hash.success) {
 			return {
 				success: false,
 				message: "An error occured whilst hashing your password"
@@ -175,49 +175,47 @@ export async function registerUser(
 		}
 		cryptedPassword = hash.hashedPassword;*/
 
-		
-		
-		await connect();
+	await connect();
 
-		//delete mongoose.connection.models['user'];
-		//used to debug when testing new schemas, don't leave above uncommented in production
+	//delete mongoose.connection.models['user'];
+	//used to debug when testing new schemas, don't leave above uncommented in production
 
-		const newAccount = new User({
-			account: {
-				username: username,
-				email: email,
-				password: hash,
-				twoFactorAuth: false,
-				phone: "",
-				userImage: ""
-			},
-			titles: {
-				status: "👋 I'm new!",
-				bio: ""
-			},
-			activity: {
-				joined: time,
-				rank: [1],
-				exp: 0,
-				seen: time,
-				token: token,
-				lastLogin: time
-			},
-			friends: {
-				friendList: [],
-				friendRequests: [],
-				friendRequestsSent: [],
-			},
-			apiReqs: 0,
-			imageApiReqs: 0,
-			id: await User.countDocuments() + 1,
-		});
-		await newAccount.save();
-		return {
-			success: true,
+	const newAccount = new User({
+		account: {
+			username: username,
+			email: email,
+			password: hash,
+			twoFactorAuth: false,
+			phone: "",
+			userImage: "",
+		},
+		titles: {
+			status: "👋 I'm new!",
+			bio: "",
+		},
+		activity: {
+			joined: time,
+			rank: [1],
+			exp: 0,
+			seen: time,
 			token: token,
-			message: "Successfully registered! ",
-		};
+			lastLogin: time,
+		},
+		friends: {
+			friendList: [],
+			friendRequests: [],
+			friendRequestsSent: [],
+		},
+		apiReqs: 0,
+		imageApiReqs: 0,
+		id: await User.countDocuments() + 1,
+	});
+	await newAccount.save();
+	return {
+		success: true,
+		token: token,
+		message: "Successfully registered! ",
+	};
 	// } catch (err) {
 	// 	return {
 	// 		success: false,
@@ -235,38 +233,42 @@ export async function loginUser(
 			success: false,
 			message: "Missing email and/or password",
 		};
-	};
+	}
 	if (password.length < 8) {
 		return {
 			success: false,
 			message: "Password must be at least 8 characters",
 		};
-	};
+	}
 	if (password.length > 72) {
 		return {
 			success: false,
 			message: "Password must be less than 72 characters",
 		};
-	};
+	}
 	const user = await User.findOne({ "account.email": email });
 	if (!user) {
 		return {
 			success: false,
 			message: "Invalid email or password",
 		};
-	};
+	}
 	if (!await comparePassword(password, user.account.password)) {
 		return {
 			success: false,
 			message: "Invalid email or password",
 		};
-	};
+	}
 	const d = new Date();
 	const time = d.getTime();
 	const token = newToken();
 	const filter = { "account.email": email };
-	const update = { "activity.seen": time, "activity.token": token, "activity.lastLogin": time };
-	
+	const update = {
+		"activity.seen": time,
+		"activity.token": token,
+		"activity.lastLogin": time,
+	};
+
 	await User.findOneAndUpdate(filter, update);
 	return ({
 		success: true,

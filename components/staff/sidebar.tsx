@@ -107,9 +107,7 @@ export default function StaffSidebar() {
 				{sidebar.map((data) => (
 					<>
 						<li className="mb-6">
-							<h2
-								className="uppercase my-2 tracking-wide font-semibold text-gray-200"
-							>
+							<h2 className="uppercase my-2 tracking-wide font-semibold text-gray-200">
 								{data.category}
 							</h2>
 							<ul className="ml-2">

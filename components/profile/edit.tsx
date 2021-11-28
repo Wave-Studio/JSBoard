@@ -21,9 +21,7 @@ export default function Edit(
 				<div className="space-y-8">
 					<div className="justify-between flex flex-grow">
 						<div>
-							<h2
-								className="text-xs tracking-tight font-medium uppercase text-gray-500"
-							>
+							<h2 className="text-xs tracking-tight font-medium uppercase text-gray-500">
 								Username
 							</h2>
 							<p className="text-gray-200 text-sm">
@@ -39,9 +37,7 @@ export default function Edit(
 					</div>
 					<div className="justify-between flex flex-grow">
 						<div>
-							<h2
-								className="text-xs tracking-tight font-medium uppercase text-gray-500"
-							>
+							<h2 className="text-xs tracking-tight font-medium uppercase text-gray-500">
 								Email
 							</h2>
 							<p className="text-gray-200 text-sm">
@@ -52,23 +48,18 @@ export default function Edit(
 					</div>
 					<div className="justify-between flex flex-grow">
 						<div>
-							<h2
-								className="text-xs tracking-tight font-medium uppercase text-gray-500"
-							>
+							<h2 className="text-xs tracking-tight font-medium uppercase text-gray-500">
 								Phone Number
 							</h2>
 							<p className="text-gray-200 text-sm">
 								{props.phone
 									? (
 										<>
-											<span
-												className="bg-coolGray-700 rounded px-1"
-											>
+											<span className="bg-coolGray-700 rounded px-1">
 												{phone(props.phone).shift()}
 											</span>
 											<span>
-												({phone(props.phone).pop()})
-												*******
+												({phone(props.phone).pop()}) *******
 											</span>
 										</>
 									)
@@ -80,38 +71,25 @@ export default function Edit(
 						<button className="btn btn-white">Edit</button>
 					</div>
 				</div>
-				<hr
-					className="border-t-2 border-gray-300 border-opacity-25 my-4"
-				/>
+				<hr className="border-t-2 border-gray-300 border-opacity-25 my-4" />
 				<div className="">
-					<h2
-						className="text-xs tracking-tight font-medium uppercase text-gray-500"
-					>
+					<h2 className="text-xs tracking-tight font-medium uppercase text-gray-500">
 						Password
 					</h2>
-					<p
-						className="text-gray-200 text-sm flex lg:max-w-screen-sm xl:max-w-screen-md"
-					>
-						Change your password to something new. Changing your
-						password will log you out of all devices your currently
-						logged in on.
+					<p className="text-gray-200 text-sm flex lg:max-w-screen-sm xl:max-w-screen-md">
+						Change your password to something new. Changing your password will
+						log you out of all devices your currently logged in on.
 					</p>
-					<button
-						className="btn btn-blue !px-6 mt-4 mb-8 font-semibold"
-					>
+					<button className="btn btn-blue !px-6 mt-4 mb-8 font-semibold">
 						Change your password
 					</button>
-					<h2
-						className="text-xs tracking-tight font-medium uppercase text-gray-500"
-					>
+					<h2 className="text-xs tracking-tight font-medium uppercase text-gray-500">
 						Two-Factor Authentication
 					</h2>
-					<p
-						className="text-gray-200 text-sm flex lg:max-w-screen-sm xl:max-w-screen-md"
-					>
-						Protect your account with an extra layer of security.
-						Once configured on your account, you'll need to enter
-						your password and a code from your phone to sign in.
+					<p className="text-gray-200 text-sm flex lg:max-w-screen-sm xl:max-w-screen-md">
+						Protect your account with an extra layer of security. Once
+						configured on your account, you'll need to enter your password and a
+						code from your phone to sign in.
 					</p>
 					<button
 						type="button"
@@ -130,15 +108,9 @@ export default function Edit(
 			return null;
 		} else {
 			return (
-				<div
-					className="z-40 inset-0 fixed backdrop-filter backdrop-blur-3xl backdrop-saturate-150 bg-black bg-opacity-40"
-				>
-					<div
-						className="h-screen flex flex-grow justify-center items-center"
-					>
-						<div
-							className="bg-coolGray-700 rounded-md px-8 py-5 relative"
-						>
+				<div className="z-40 inset-0 fixed backdrop-filter backdrop-blur-3xl backdrop-saturate-150 bg-black bg-opacity-40">
+					<div className="h-screen flex flex-grow justify-center items-center">
+						<div className="bg-coolGray-700 rounded-md px-8 py-5 relative">
 							<XIcon
 								className="absolute right-2 top-3 w-8 h-8 p-1 hover:bg-coolGray-800 hover:bg-opacity-40 rounded cursor-pointer"
 								onClick={() => setEditName(false)}
@@ -146,9 +118,7 @@ export default function Edit(
 							<h1 className="text-2xl font-medium text-center">
 								Change Your Username
 							</h1>
-							<h2
-								className="text-sm text-gray-400 text-center mb-6"
-							>
+							<h2 className="text-sm text-gray-400 text-center mb-6">
 								Choose a brand new username for your account!
 							</h2>
 							<form
@@ -156,9 +126,7 @@ export default function Edit(
 								onSubmit={saveName}
 							>
 								<label className="flex flex-col">
-									<span
-										className="text-xs tracking-tight font-medium uppercase text-gray-500 mb-1"
-									>
+									<span className="text-xs tracking-tight font-medium uppercase text-gray-500 mb-1">
 										New Username
 									</span>
 									<input

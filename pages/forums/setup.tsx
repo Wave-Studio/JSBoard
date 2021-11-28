@@ -26,61 +26,40 @@ export default function setup() {
 					<Navbar name="Setup" />
 
 					<div className="max-w-screen-xl mx-auto">
-						<div
-							className="flex-grow rounded-md p-5 my-10 text-gray-200 relative"
-						>
+						<div className="flex-grow rounded-md p-5 my-10 text-gray-200 relative">
 							<div className="flex flex-grow flex-col">
-								<h1
-									className="text-3xl font-bold text-gray-200 mb-1"
-								>
+								<h1 className="text-3xl font-bold text-gray-200 mb-1">
 									JSBoard Setup
 								</h1>
-								<h2
-									className="text-xl font-medium text-gray-300 mb-2"
-								>
-									Configure our forums software to work
-									perfectly with your community.
+								<h2 className="text-xl font-medium text-gray-300 mb-2">
+									Configure our forums software to work perfectly with your
+									community.
 								</h2>
-								<hr
-									className="border-blue-600 border-t-2 bg-opacity-50 w-10"
-								/>
-								<div
-									className="inline-flex items-center lg:absolute right-5 bottom-5 ml-auto"
-								>
-									<div
-										className="rounded-full bg-gray-400 h-3 w-44  flex flex-row"
-									>
+								<hr className="border-blue-600 border-t-2 bg-opacity-50 w-10" />
+								<div className="inline-flex items-center lg:absolute right-5 bottom-5 ml-auto">
+									<div className="rounded-full bg-gray-400 h-3 w-44  flex flex-row">
 										<div
 											className={"bg-green-500 w-1/3 h-3 rounded-full shadow-green " +
-												([2, 3, 4].includes(page)
-													? "hidden"
-													: "")}
+												([2, 3, 4].includes(page) ? "hidden" : "")}
 										/>
 										<div
 											className={"bg-green-500 w-2/3 h-3 rounded-full shadow-green " +
-												([1, 3, 4].includes(page)
-													? "hidden "
-													: "")}
+												([1, 3, 4].includes(page) ? "hidden " : "")}
 										/>
 										<div
 											className={"bg-green-500 w-full h-3 rounded-full shadow-green " +
-												([3, 4].includes(page)
-													? ""
-													: "hidden")}
+												([3, 4].includes(page) ? "" : "hidden")}
 										/>
 									</div>
 									<span
 										className={"ml-3 select-none " +
-											([4].includes(page)
-												? ""
-												: "hidden")}
+											([4].includes(page) ? "" : "hidden")}
 									>
 										Summary
 									</span>
 									<span
 										className={"ml-3 select-none " +
-											([4].includes(page) ? "hidden"
-											: "")}
+											([4].includes(page) ? "hidden" : "")}
 									>
 										{page + "/3"}
 									</span>

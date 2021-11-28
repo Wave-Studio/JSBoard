@@ -13,9 +13,7 @@ export default function summery(
 	}
 	return (
 		<>
-			<div
-				className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 my-10 text-gray-200 space-y-3"
-			>
+			<div className="flex-grow rounded-md shadow-md bg-coolGray-800 p-5 my-10 text-gray-200 space-y-3">
 				<h2 className="text-lg font-semibold text-gray-300 mb-4">
 					Make sure everything is perfect!
 					{/*<hr className="border-t-2 border-gray-200 border-opacity-50 " />*/}
