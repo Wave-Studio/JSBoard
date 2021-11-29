@@ -1,5 +1,5 @@
 import {
-	DocumentDuplicateIcon, 
+	DocumentDuplicateIcon,
 	FireIcon,
 	PlusSmIcon,
 	StatusOnlineIcon,
@@ -41,15 +41,12 @@ export default function dashboard() {
 			socket.on("homepage", (data) => {
 				setForums({ data, error: null });
 			});
-			
 		});
 	}, []);
 	if (!forums.data || !forums.data.configured) {
 		return (
 			<StaffCore page="Settings">
-				<h1 className="text-3xl font-bold text-gray-200 mb-1">
-					Settings
-				</h1>
+				<h1 className="text-3xl font-bold text-gray-200 mb-1">Settings</h1>
 				<h2 className="text-xl font-medium text-gray-300 mb-2">
 					Configure the sidebar and main boxes
 				</h2>
@@ -69,14 +66,12 @@ export default function dashboard() {
 								r="10"
 								stroke="currentColor"
 								strokeWidth="4"
-							>
-							</circle>
+							></circle>
 							<path
 								className="opacity-75"
 								fill="currentColor"
 								d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-							>
-							</path>
+							></path>
 						</svg>
 						Loading...
 					</div>
@@ -87,9 +82,7 @@ export default function dashboard() {
 	return (
 		<>
 			<StaffCore page="Settings">
-				<h1 className="text-3xl font-bold text-gray-200 mb-1">
-					Settings
-				</h1>
+				<h1 className="text-3xl font-bold text-gray-200 mb-1">Settings</h1>
 				<h2 className="text-xl font-medium text-gray-300 mb-2">
 					Configure the sidebar and main boxes
 				</h2>
@@ -134,9 +127,7 @@ export default function dashboard() {
 										<ErrorMessage name="name" />
 									</div>
 									<div>
-										<label htmlFor="description">
-											Description
-										</label>
+										<label htmlFor="description">Description</label>
 										<Field
 											component="textarea"
 											className="shadow rounded border-none w-full h-36 placeholder-gray-200 placeholder-opacity-50"
@@ -235,9 +226,7 @@ export default function dashboard() {
 					</Formik>
 					{/*Sidebar Options*/}
 					<div className="p-4 rounded-lg shadow w-full bg-coolGray-800">
-						<h1 className="text-2xl font-semibold text-gray-200">
-							Sidebar
-						</h1>
+						<h1 className="text-2xl font-semibold text-gray-200">Sidebar</h1>
 						<h2 className="text-lg font-medium text-gray-300 mb-2">
 							Configure whats on the sidebar, or even create your own cutom
 							sidebar boxes
@@ -284,9 +273,7 @@ export default function dashboard() {
 					</h2>
 					<h3 className="text-gray-200 font-medium">
 						Select one of our beautifuly handcrafted default user themes{" "}
-						<span className="font-extralight">
-							(we reccomend dark!)
-						</span>
+						<span className="font-extralight">(we reccomend dark!)</span>
 					</h3>
 					<div className="flex py-4 space-x-4">
 						<input
