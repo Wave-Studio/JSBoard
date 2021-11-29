@@ -1,45 +1,50 @@
 import {
-	ChevronDownIcon,
-	ChevronRightIcon,
-	DocumentDuplicateIcon,
-	ExclamationCircleIcon,
+	DocumentDuplicateIcon, 
 	FireIcon,
 	PlusSmIcon,
 	StatusOnlineIcon,
 } from "@heroicons/react/outline";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useEffect, useState } from "react";
-import io from "socket.io-client";
+import { useEffect, useState } from "react";
+import io, { Socket } from "socket.io-client";
 
 import StaffCore from "../../../components/staff/core";
 import Notification from "../../../components/misc/notification";
 import Linkmaker from "../../../components/staff/linkmaker";
 
 export default function dashboard() {
-	const [data, setData] = useState({
-		configured: false,
-		websiteLink: null,
-		orgName: null,
-		website: null,
-		description: null,
-		store: null,
-		customLink: null,
-		custom: null,
-		storeLink: null,
-		customName: null,
-		forums: [],
+	const [socket, setSocket] = useState<Socket>();
+	const [forums, setForums] = useState({
+		error: null,
+		data: {
+			configured: false,
+			websiteLink: null,
+			orgName: null,
+			website: null,
+			description: null,
+			store: null,
+			customLink: null,
+			custom: null,
+			storeLink: null,
+			customName: null,
+			forums: [],
+		},
 	});
 	//const { data, error } = useSWR("/api/forums/homepage", fetcher);
 	useEffect(() => {
 		fetch("/api/socket").finally(() => {
 			const socket = io();
-			socket.on("homepage", (data) => {
-				setData(data);
+			setSocket(socket);
+			socket.on("connect", () => {
+				socket.emit("homepage");
 			});
-			socket.emit("homepage");
+			socket.on("homepage", (data) => {
+				setForums({ data, error: null });
+			});
+			
 		});
 	}, []);
-	if (!data) {
+	if (!forums.data || !forums.data.configured) {
 		return (
 			<StaffCore page="Settings">
 				<h1 className="text-3xl font-bold text-gray-200 mb-1">
@@ -49,7 +54,7 @@ export default function dashboard() {
 					Configure the sidebar and main boxes
 				</h2>
 				<hr className="border-theme-primary border-t-2 bg-opacity-50 w-10" />
-				<Notification color="bg-theme-primary" msg="somthing lmao">
+				<Notification color="bg-theme-primary" msg="">
 					<div className=" inline-flex rounded-md font-medium items-center nightwind-prevent text-white">
 						<svg
 							className="animate-spin mr-2 h-5 w-5 text-white nightwind-prevent "
@@ -92,23 +97,18 @@ export default function dashboard() {
 				<div className="space-y-8 mt-10">
 					<Formik
 						initialValues={{
-							orgName: data.orgName,
-							description: data.description,
-							store: data.store,
-							storeLink: data.storeLink,
-							website: data.website,
-							websiteLink: data.websiteLink,
-							custom: data.custom,
-							customName: data.customName,
-							customLink: data.customLink,
+							orgName: forums.data.orgName,
+							description: forums.data.description,
+							store: forums.data.store,
+							storeLink: forums.data.storeLink,
+							website: forums.data.website,
+							websiteLink: forums.data.websiteLink,
+							custom: forums.data.custom,
+							customName: forums.data.customName,
+							customLink: forums.data.customLink,
 						}}
-						onSubmit={(values, { setSubmitting }) => {
-							setTimeout(() => {
-								//update(values);
-								//console.log(values);
-								alert(JSON.stringify(values, null, 2));
-								setSubmitting(false);
-							}, 400);
+						onSubmit={(values) => {
+							socket!.emit("homepage", values);
 						}}
 					>
 						<Form>
