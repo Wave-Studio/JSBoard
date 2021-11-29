@@ -111,6 +111,11 @@ export default function dashboard() {
 							customLink: forums.data.customLink,
 						}}
 						onSubmit={(values) => {
+							const updatedStuff = { ... forums };
+							updatedStuff.data.store = values.store;
+							updatedStuff.data.website = values.website;
+							updatedStuff.data.custom = values.custom;
+							setForums(updatedStuff);
 							socket!.emit("homepage", values);
 							setShowSaved(true);
 							setTimeout(() => {
@@ -154,7 +159,7 @@ export default function dashboard() {
 									</div>
 									{/*Links*/}
 									<Linkmaker
-										name="Store"
+										name={`Store - ${forums.data.store ? "Enabled" : "Disabled"}`}
 										input={
 											<Field
 												type="checkbox"
@@ -176,7 +181,7 @@ export default function dashboard() {
 										</label>
 									</Linkmaker>
 									<Linkmaker
-										name="Website"
+										name={`Website - ${forums.data.website ? "Enabled" : "Disabled"}`}
 										input={
 											<Field
 												type="checkbox"
@@ -197,7 +202,7 @@ export default function dashboard() {
 										</label>
 									</Linkmaker>
 									<Linkmaker
-										name="Custom Link"
+										name={`Custom Link - ${forums.data.custom ? "Enabled" : "Disabled"}`}
 										input={
 											<Field
 												type="checkbox"
