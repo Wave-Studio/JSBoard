@@ -30,6 +30,7 @@ export default function dashboard() {
 			forums: [],
 		},
 	});
+	const [showSaved, setShowSaved] = useState(false);
 	//const { data, error } = useSWR("/api/forums/homepage", fetcher);
 	useEffect(() => {
 		fetch("/api/socket").finally(() => {
@@ -87,6 +88,15 @@ export default function dashboard() {
 					Configure the sidebar and main boxes
 				</h2>
 				<hr className="border-theme-primary border-t-2 bg-opacity-50 w-10" />
+				{showSaved ? (
+					<Notification color="bg-green-700" msg="">
+						<div className=" inline-flex rounded-md font-medium items-center nightwind-prevent text-white">
+							Saved!
+						</div>
+					</Notification>
+				) : (
+					<></>
+				)}
 				<div className="space-y-8 mt-10">
 					<Formik
 						initialValues={{
@@ -102,6 +112,10 @@ export default function dashboard() {
 						}}
 						onSubmit={(values) => {
 							socket!.emit("homepage", values);
+							setShowSaved(true);
+							setTimeout(() => {
+								setShowSaved(false);
+							}, 3000);
 						}}
 					>
 						<Form>
