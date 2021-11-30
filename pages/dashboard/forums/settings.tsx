@@ -1,4 +1,5 @@
 import {
+	CheckCircleIcon,
 	DocumentDuplicateIcon,
 	FireIcon,
 	PlusSmIcon,
@@ -159,7 +160,11 @@ export default function dashboard() {
 									</div>
 									{/*Links*/}
 									<Linkmaker
-										name={`Store - ${forums.data.store ? "Enabled" : "Disabled"}`}
+										name={`Store`}
+										enabled={
+											<> - <span className={"self-center text-sm font-light " + (forums.data.store ? "text-green-200" : "text-red-200")}>{forums.data.store ? "Enabled" : "Disabled"}</span>
+											</>
+										}
 										input={
 											<Field
 												type="checkbox"
@@ -182,6 +187,10 @@ export default function dashboard() {
 									</Linkmaker>
 									<Linkmaker
 										name={`Website - ${forums.data.website ? "Enabled" : "Disabled"}`}
+										enabled={
+											<> - <span className={"self-center text-sm font-light " + (forums.data.website ? "text-green-200" : "text-red-200")}>{forums.data.website ? "Enabled" : "Disabled"}</span>
+											</>
+										}
 										input={
 											<Field
 												type="checkbox"
@@ -203,6 +212,10 @@ export default function dashboard() {
 									</Linkmaker>
 									<Linkmaker
 										name={`Custom Link - ${forums.data.custom ? "Enabled" : "Disabled"}`}
+										enabled={
+											<> - <span className={"self-center text-sm font-light " + (forums.data.custom ? "text-green-200" : "text-red-200")}>{forums.data.custom ? "Enabled" : "Disabled"}</span>
+											</>
+										}
 										input={
 											<Field
 												type="checkbox"

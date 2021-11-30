@@ -6,13 +6,14 @@ import React, { useState } from "react";
 export default function Linkmaker(props: {
 	name: string;
 	input: unknown;
+	enabled?: unknown;
 	children;
 }) {
 	const [open, setOpen] = useState(false);
 	return (
 		<>
 			<div className="flex w-full select-none">
-				<label>{props.name}</label>
+				<label className="flex">{props.name}{props.enabled}</label>
 				<div className="flex flex-grow"></div>
 				<span onClick={() => setOpen(!open)}>
 					<ChevronRightIcon
