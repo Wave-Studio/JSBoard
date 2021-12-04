@@ -4,8 +4,7 @@
 			"exclude": [
 				"./node_modules/",
 				"./.next/",
-				"./public/sw.js",
-				"./public/workbox-4a677df8.js"
+				"./public/"
 			]
 		}
 	},
@@ -14,8 +13,7 @@
 			"exclude": [
 				"./node_modules/",
 				"./.next/",
-				"./public/sw.js",
-				"./public/workbox-4a677df8.js"
+				"./public/"
 			]
 		},
 		"options": {
