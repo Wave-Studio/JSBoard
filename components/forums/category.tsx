@@ -13,7 +13,7 @@ export default function catagory(props: {
 	}>;
 	loading?: boolean;
 }) {
-	if (props.loading == true || props.categories == undefined) {
+	if (props.loading || props.categories == undefined) {
 		return (
 			<>
 				{loadingElement()}
