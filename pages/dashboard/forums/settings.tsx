@@ -68,12 +68,14 @@ export default function dashboard() {
 								r="10"
 								stroke="currentColor"
 								strokeWidth="4"
-							></circle>
+							>
+							</circle>
 							<path
 								className="opacity-75"
 								fill="currentColor"
 								d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-							></path>
+							>
+							</path>
 						</svg>
 						Loading...
 					</div>
@@ -89,15 +91,15 @@ export default function dashboard() {
 					Configure the sidebar and main boxes
 				</h2>
 				<hr className="border-theme-primary border-t-2 bg-opacity-50 w-10" />
-				{showSaved ? (
-					<Notification color="bg-green-700" msg="">
-						<div className=" inline-flex rounded-md font-medium items-center nightwind-prevent text-white">
-							Saved!
-						</div>
-					</Notification>
-				) : (
-					<></>
-				)}
+				{showSaved
+					? (
+						<Notification color="bg-green-700" msg="">
+							<div className=" inline-flex rounded-md font-medium items-center nightwind-prevent text-white">
+								Saved!
+							</div>
+						</Notification>
+					)
+					: <></>}
 				<div className="space-y-8 mt-10">
 					<Formik
 						initialValues={{
@@ -112,7 +114,7 @@ export default function dashboard() {
 							customLink: forums.data.customLink,
 						}}
 						onSubmit={(values) => {
-							const updatedStuff = { ... forums };
+							const updatedStuff = { ...forums };
 							updatedStuff.data.store = values.store;
 							updatedStuff.data.website = values.website;
 							updatedStuff.data.custom = values.custom;
@@ -162,7 +164,15 @@ export default function dashboard() {
 									<Linkmaker
 										name={`Store`}
 										enabled={
-											<> - <span className={"self-center text-sm font-light " + (forums.data.store ? "text-green-200" : "text-red-200")}>{forums.data.store ? "Enabled" : "Disabled"}</span>
+											<>
+												-<span
+													className={"self-center text-sm font-light " +
+														(forums.data.store
+															? "text-green-200"
+															: "text-red-200")}
+												>
+													{forums.data.store ? "Enabled" : "Disabled"}
+												</span>
 											</>
 										}
 										input={
@@ -186,9 +196,19 @@ export default function dashboard() {
 										</label>
 									</Linkmaker>
 									<Linkmaker
-										name={`Website - ${forums.data.website ? "Enabled" : "Disabled"}`}
+										name={`Website - ${
+											forums.data.website ? "Enabled" : "Disabled"
+										}`}
 										enabled={
-											<> - <span className={"self-center text-sm font-light " + (forums.data.website ? "text-green-200" : "text-red-200")}>{forums.data.website ? "Enabled" : "Disabled"}</span>
+											<>
+												-<span
+													className={"self-center text-sm font-light " +
+														(forums.data.website
+															? "text-green-200"
+															: "text-red-200")}
+												>
+													{forums.data.website ? "Enabled" : "Disabled"}
+												</span>
 											</>
 										}
 										input={
@@ -211,9 +231,19 @@ export default function dashboard() {
 										</label>
 									</Linkmaker>
 									<Linkmaker
-										name={`Custom Link - ${forums.data.custom ? "Enabled" : "Disabled"}`}
+										name={`Custom Link - ${
+											forums.data.custom ? "Enabled" : "Disabled"
+										}`}
 										enabled={
-											<> - <span className={"self-center text-sm font-light " + (forums.data.custom ? "text-green-200" : "text-red-200")}>{forums.data.custom ? "Enabled" : "Disabled"}</span>
+											<>
+												-<span
+													className={"self-center text-sm font-light " +
+														(forums.data.custom
+															? "text-green-200"
+															: "text-red-200")}
+												>
+													{forums.data.custom ? "Enabled" : "Disabled"}
+												</span>
 											</>
 										}
 										input={

@@ -17,16 +17,12 @@ export default function Linkmaker(props: {
 				<div className="flex flex-grow"></div>
 				<span onClick={() => setOpen(!open)}>
 					<ChevronRightIcon
-						className={
-							"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
-							(open ? "hidden" : "")
-						}
+						className={"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
+							(open ? "hidden" : "")}
 					/>
 					<ChevronDownIcon
-						className={
-							"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
-							(open ? "" : "hidden")
-						}
+						className={"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
+							(open ? "" : "hidden")}
 					/>
 				</span>
 			</div>
