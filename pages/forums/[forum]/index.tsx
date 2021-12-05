@@ -122,7 +122,7 @@ export default function ViewUserProfile({
 									<button className="btn btn-blue font-semibold hidden md:block">
 										Create a Thread
 									</button>
-									<button className="btn-base rounded-full bg-theme-primary p-4 font-semibold md:hidden fixed bottom-3 right-3 z-50">
+									<button className="btn-base rounded-full bg-theme-primary p-4 font-semibold md:hidden fixed bottom-3 right-3 z-50 shadow-md shadow-blue-500/20">
 										<PlusIcon className="w-7 h-7" />
 									</button>
 									<Formik
