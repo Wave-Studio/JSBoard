@@ -87,7 +87,7 @@ function loadingElement() {
 				<div className="grid place-items-center align-middle rounded-full w-11 animate-pulse h-11 md:p-3 bg-blue-500 mx-5" />
 				<div className="flex-grow">
 					<div className="bg-blue-500 mb-2 animate-pulse rounded h-5 w-1/2" />
-					<div className="bg-blue-500 animate-pulse rounded h-4" />
+					<div className="bg-blue-500 animate-pulse rounded h-4 mr-2" />
 				</div>
 				<div className="hidden lg:block">
 					<div className="animate-pulse mx-4 border border-blue-500 h-12" />

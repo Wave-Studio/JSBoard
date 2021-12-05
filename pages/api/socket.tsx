@@ -15,7 +15,7 @@ export default async function handle(
 ) {
 	//This causes a memory leak. Too bad!
 	if (
-		res.socket.server?.io == undefined || process.env.NODE_ENV == "development"
+		res.socket.server?.io == undefined //|| process.env.NODE_ENV == "development"
 	) {
 		// @ts-ignore typings mayhem
 		const io = new Server(res.socket.server);

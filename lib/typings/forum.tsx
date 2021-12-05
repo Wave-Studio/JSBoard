@@ -27,7 +27,7 @@
 
 export interface OutputForumTypings {
 	title: string;
-	sampleContent: string;
+	content: string;
 	author: string;
 	authorID: number;
 	votes: number;

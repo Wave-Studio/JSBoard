@@ -11,6 +11,7 @@ import {
 	EyeIcon,
 	LockClosedIcon,
 	PencilIcon,
+	PlusIcon,
 } from "@heroicons/react/outline";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
@@ -83,7 +84,7 @@ export default function ViewUserProfile({
 
 	return (
 		<>
-			<div className="flex flex-col min-h-screen md:px-0">
+			<div className="flex flex-col min-h-screen px-0">
 				{/* typing mayhem */}
 				<Navbar name={forum.data.name as string} />
 				<div className="flex-1">
@@ -97,7 +98,7 @@ export default function ViewUserProfile({
 								</button>
 							</a>
 						</Link>
-						<div className="bg-coolGray-800 rounded-md p-5 text-gray-200">
+						<div className="bg-coolGray-800 rounded-md p-5 text-gray-200 mx-1">
 							<div className="flex flex-col md:flex-row justify-between">
 								<div>
 									<div className="flex space-x-2 items-center ">
@@ -119,7 +120,10 @@ export default function ViewUserProfile({
 								</div>
 								<div className="justify-between flex flex-col mt-4 md:mt-0">
 									<button className="btn btn-blue font-semibold hidden md:block">
-										Create a Post
+										Create a Thread
+									</button>
+									<button className="btn-base rounded-full bg-theme-primary p-4 font-semibold md:hidden fixed bottom-3 right-3 z-50">
+										<PlusIcon className="w-7 h-7" />
 									</button>
 									<Formik
 										initialValues={{ search: forum.data.search }}
@@ -156,7 +160,7 @@ export default function ViewUserProfile({
 								</div>
 							</div>
 						</div>
-						<div className="space-y-3 my-10">
+						<div className="space-y-3 my-10 mx-1">
 							{forum.data.posts?.map((post: OutputForumTypings) => (
 								<Link
 									href={`/post/${
@@ -166,7 +170,8 @@ export default function ViewUserProfile({
 									}:${post.id}`}
 								>
 									<a>
-										<section className="bg-coolGray-800 px-5 py-3 mt-3 rounded-md flex hover:filter hover:brightness-90 transition cursor-pointer select-none text-gray-200 font-medium tracking-wide">
+										<section className="bg-coolGray-800 px-5
+										 py-3 mt-3 rounded-md flex hover:filter hover:brightness-90 transition cursor-pointer select-none text-gray-200 font-medium tracking-wide">
 											<div className=" mr-4 flex flex-col items-center">
 												<button className=" text-gray-300 hover:bg-coolGray-900 hover:opacity-75 hover:text-green-200 focus:hover:opacity-95 rounded-full transition duration-300">
 													<ChevronUpIcon className="w-7 p-0.5 " />
@@ -197,8 +202,8 @@ export default function ViewUserProfile({
 													</div>
 													<article className="my-3">
 														<h3 className="text-lg">{post.title}</h3>
-														<p className="max-w-2xl truncate text-sm font-normal text-gray-300">
-															{post.sampleContent}
+														<p className="max-w-2xl leading-snug md:truncate text-sm font-normal text-gray-300 break-text">
+															{post.content}
 														</p>
 														<div className="text-xs font-thin mt-2">
 															Posted <time>{post.postDate}</time>{" "}
@@ -218,7 +223,8 @@ export default function ViewUserProfile({
 													</div>
 												</div>
 											</div>
-											<div className="ml-auto space-y-2">
+											
+											<div className="absolute lg:static right-5 ml-auto mr-2">
 												<div className="inline-flex space-x-2 ">
 													<div
 														className={" bg-coolGray-900 bg-opacity-70 rounded-md px-2 py-1 has-tooltip " +

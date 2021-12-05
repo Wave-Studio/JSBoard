@@ -13,7 +13,7 @@ export const Module = (io: Server) => {
 				posts: [
 					{
 						title: "Hi my name is bob and I want to be welcomed into pokemon",
-						sampleContent:
+						content:
 							"I was wondeirng how linus makes so many vides and why they are all sooo cool :flushed:",
 						author: "Blox",
 						authorID: 1,

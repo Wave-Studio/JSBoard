@@ -46,7 +46,7 @@ export default function dashboard() {
 		});
 	}, []);
 	if (!forums.data || !forums.data.configured) {
-		return (
+		return ( 
 			<StaffCore page="Settings">
 				<h1 className="text-3xl font-bold text-gray-200 mb-1">Settings</h1>
 				<h2 className="text-xl font-medium text-gray-300 mb-2">
@@ -119,7 +119,7 @@ export default function dashboard() {
 							updatedStuff.data.website = values.website;
 							updatedStuff.data.custom = values.custom;
 							setForums(updatedStuff);
-							socket!.emit("homepage", values);
+							socket!.emit("homepage", {data: values});
 							setShowSaved(true);
 							setTimeout(() => {
 								setShowSaved(false);
@@ -162,16 +162,16 @@ export default function dashboard() {
 									</div>
 									{/*Links*/}
 									<Linkmaker
-										name={`Store`}
+										name="Store "
 										enabled={
 											<>
 												-<span
 													className={"self-center text-sm font-light " +
 														(forums.data.store
 															? "text-green-200"
-															: "text-red-200")}
+															: "text-red-300")}
 												>
-													{forums.data.store ? "Enabled" : "Disabled"}
+													{forums.data.store ? " Enabled" : " Disabled"}
 												</span>
 											</>
 										}
@@ -196,18 +196,17 @@ export default function dashboard() {
 										</label>
 									</Linkmaker>
 									<Linkmaker
-										name={`Website - ${
-											forums.data.website ? "Enabled" : "Disabled"
-										}`}
+										name="
+										Website "
 										enabled={
 											<>
 												-<span
 													className={"self-center text-sm font-light " +
 														(forums.data.website
 															? "text-green-200"
-															: "text-red-200")}
+															: "text-red-300")}
 												>
-													{forums.data.website ? "Enabled" : "Disabled"}
+													{forums.data.website ? " Enabled" : " Disabled"}
 												</span>
 											</>
 										}
@@ -231,18 +230,16 @@ export default function dashboard() {
 										</label>
 									</Linkmaker>
 									<Linkmaker
-										name={`Custom Link - ${
-											forums.data.custom ? "Enabled" : "Disabled"
-										}`}
+										name="Custom Link "
 										enabled={
 											<>
 												-<span
 													className={"self-center text-sm font-light " +
 														(forums.data.custom
 															? "text-green-200"
-															: "text-red-200")}
+															: "text-red-300")}
 												>
-													{forums.data.custom ? "Enabled" : "Disabled"}
+													{forums.data.custom ? " Enabled" : " Disabled"}
 												</span>
 											</>
 										}

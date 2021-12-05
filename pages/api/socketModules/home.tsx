@@ -11,7 +11,7 @@ const homepageSchema = new mongoose.Schema({
 			description: String,
 			redirect: String,
 			color: String, //won't work, purgecss needs to see full names
-			topics: Number,
+			topics: Number, 
 			posts: Number,
 			id: Number,
 		},
@@ -71,9 +71,11 @@ export const Module = async (io: Server) => {
 		socket.on(
 			"homepage",
 			async (
-				data?:
+				data?: {
+					data: 
 					| mongoose.UpdateWithAggregationPipeline
 					| mongoose.UpdateQuery<unknown>,
+				}
 			) => {
 				const Homepage = mongoose.models.homepage ||
 					mongoose.model("homepage", homepageSchema);
@@ -84,7 +86,8 @@ export const Module = async (io: Server) => {
 					}
 					socket.emit("homepage", await Homepage.findOne());
 				} else {
-					await Homepage.updateOne({}, data);
+					//need to auth token here
+					await Homepage.updateOne({}, data.data);
 				}
 			},
 		);
