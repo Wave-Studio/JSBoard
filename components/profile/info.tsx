@@ -23,9 +23,7 @@ export default function Info(props: { page: number; rank: string }) {
 				</div>
 
 				<fieldset className="border-2 border-gray-300 border-opacity-25 rounded-lg mt-3 flex justify-center">
-					<legend className="text-center px-1 font-medium">
-						Signature
-					</legend>
+					<legend className="text-center px-1 font-medium">Signature</legend>
 				</fieldset>
 
 				{/*Section 2 - Report*/}

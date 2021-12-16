@@ -15,9 +15,7 @@ export default function step3(props: { page: number }) {
 				</h2>
 				<h3 className="text-gray-200 font-medium">
 					Select one of our beautifuly handcrafted default user themes{" "}
-					<span className="font-extralight">
-						(we reccomend dark!)
-					</span>
+					<span className="font-extralight">(we reccomend dark!)</span>
 				</h3>
 				<div className="flex py-4 space-x-4">
 					<input

@@ -26,11 +26,7 @@ export const Module = (io: Server) => {
 			socket.emit("userList", ["TestAccount:0", "Blocks:1", "Quick:2"]);
 		});
 		socket.on("signUp", async (data: UserAccount) => {
-			const r = await registerUser(
-				data.username,
-				data.email,
-				data.password,
-			);
+			const r = await registerUser(data.username, data.email, data.password);
 			console.log(r);
 			socket.emit("signUp", r);
 		});
@@ -119,7 +115,7 @@ const User = mongoose.models.user || mongoose.model("user", UserSchema);
 export async function registerUser(
 	username: string,
 	email: string,
-	password: string,
+	password: string
 ): Promise<{ success: boolean; token?: string; message: string }> {
 	// try {
 	let cryptedPassword: string;
@@ -208,7 +204,7 @@ export async function registerUser(
 		},
 		apiReqs: 0,
 		imageApiReqs: 0,
-		id: await User.countDocuments() + 1,
+		id: (await User.countDocuments()) + 1,
 	});
 	await newAccount.save();
 	return {
@@ -226,7 +222,7 @@ export async function registerUser(
 
 export async function loginUser(
 	email: string,
-	password: string,
+	password: string
 ): Promise<{ success: boolean; token?: string; message: string }> {
 	if (!email || !password) {
 		return {
@@ -253,7 +249,7 @@ export async function loginUser(
 			message: "Invalid email or password",
 		};
 	}
-	if (!await comparePassword(password, user.account.password)) {
+	if (!(await comparePassword(password, user.account.password))) {
 		return {
 			success: false,
 			message: "Invalid email or password",
@@ -270,11 +266,11 @@ export async function loginUser(
 	};
 
 	await User.findOneAndUpdate(filter, update);
-	return ({
+	return {
 		success: true,
 		token: token,
 		message: "Successfully logged in!",
-	});
+	};
 }
 
 export const users = [

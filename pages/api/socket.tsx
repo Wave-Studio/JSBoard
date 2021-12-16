@@ -11,7 +11,7 @@ export default async function handle(
 		};
 		status: (arg0: number) => { json: (arg0: unknown) => void };
 		end: () => void;
-	},
+	}
 ) {
 	//This causes a memory leak. Too bad!
 	if (

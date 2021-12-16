@@ -26,89 +26,87 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 /* Scrollbar */
 
 @media (min-width: 768px) {
-  /* width */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
+	/* width */
+	::-webkit-scrollbar {
+		width: 10px;
+	}
 
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #424242;
-  }
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: #424242;
+	}
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgb(85, 85, 85);
-  }
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: rgb(85, 85, 85);
+	}
 
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #555;
+	}
 }
 
 .sidebar-btn {
-  @apply flex flex-row w-full py-1 text-gray-300 text-lg rounded hover:bg-gray-800 hover:bg-opacity-60 text-left focus:outline-none;
+	@apply flex flex-row w-full py-1 text-gray-300 text-lg rounded hover:bg-gray-800 hover:bg-opacity-60 text-left focus:outline-none;
 }
 
 .btn {
-  @apply px-2 py-1 rounded-md select-none cursor-pointer focus:outline-none text-gray-100 transition;
+	@apply px-2 py-1 rounded-md select-none cursor-pointer focus:outline-none text-gray-100 transition;
 }
 
 .btn-base {
-  @apply select-none cursor-pointer focus:outline-none;
+	@apply select-none cursor-pointer focus:outline-none;
 }
-
-
 
 .btn-lg {
-  @apply py-2 px-5;
+	@apply py-2 px-5;
 }
 
-.btn-blue || .btn-base {
-  @apply bg-blue-600 hover:opacity-70;
+.btn-blue {
+	@apply bg-blue-600 hover:opacity-70;
 }
 
 .btn-white {
-  @apply text-gray-200 font-semibold hover:bg-gray-100 focus:bg-opacity-50 hover:text-black;
+	@apply text-gray-200 font-semibold hover:bg-gray-100 focus:bg-opacity-50 hover:text-black;
 }
 
 .expand {
-  @apply transition duration-200 ease-in-out transform hover:scale-105;
+	@apply transition duration-200 ease-in-out transform hover:scale-105;
 }
 
 .placeholder {
-  @apply placeholder-white dark:placeholder-coolGray-700 placeholder-opacity-50 dark:placeholder-opacity-70;
+	@apply placeholder-white dark:placeholder-coolGray-700 placeholder-opacity-50 dark:placeholder-opacity-70;
 }
 
 /*progressbar*/
 
 progress[value]::-webkit-progress-bar {
-  background-color: rgb(40, 42, 46);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-  margin: 0px;
-  height: 0.25rem;
+	background-color: rgb(40, 42, 46);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	margin: 0px;
+	height: 0.25rem;
 }
 
 progress[value]::-webkit-progress-value {
-  background-image: -webkit-linear-gradient(cyan, green, blue);
-  background-size: 35px 20px, 100% 100%, 100% 100%;
+	background-image: -webkit-linear-gradient(cyan, green, blue);
+	background-size: 35px 20px, 100% 100%, 100% 100%;
 }
 
 progress[value]::-moz-progress-bar {
-  background-image: -moz-linear-gradient(cyan, green, blue);
+	background-image: -moz-linear-gradient(cyan, green, blue);
 
-  background-size: 35px 20px, 100% 100%, 100% 100%;
+	background-size: 35px 20px, 100% 100%, 100% 100%;
 }
 
 progress[value] {
-  /* Reset the default appearance */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+	/* Reset the default appearance */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 
-  /* Get rid of default border in Firefox. */
-  border: none;
+	/* Get rid of default border in Firefox. */
+	border: none;
 }
 
 input[type="text"],
@@ -116,29 +114,29 @@ input[type="checkbox"],
 input[type="search"],
 textarea,
 .text-box-form {
-  @apply bg-coolGray-900 bg-opacity-50 placeholder-gray-200 placeholder-opacity-50 rounded border-none shadow;
+	@apply bg-coolGray-900 bg-opacity-50 placeholder-gray-200 placeholder-opacity-50 rounded border-none shadow;
 }
 
 input[type="checkbox"] {
-  @apply border-gray-200 border-opacity-30;
+	@apply border-gray-200 border-opacity-30;
 }
 
 .shadow-green {
-  box-shadow: rgb(0 0 0 / 20%) 0px 0px 0px 1px;
+	box-shadow: rgb(0 0 0 / 20%) 0px 0px 0px 1px;
 }
 
 input[type="radio"].fill-black-yes {
-  background: #121314;
+	background: #121314;
 }
 
 .link {
-  @apply text-blue-500 hover:underline;
+	@apply text-blue-500 hover:underline;
 }
 
 .tooltip {
-  @apply invisible absolute;
+	@apply invisible absolute;
 }
 
 .has-tooltip:hover .tooltip {
-  @apply visible z-50;
+	@apply visible z-50;
 }

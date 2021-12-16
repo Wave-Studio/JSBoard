@@ -33,22 +33,15 @@ export default function catagory(props: {
 						posts: string;
 					}) => (
 						<div>
-							<Link
-								href={"/forums/" + data.redirect + ":" +
-									data.id}
-							>
+							<Link href={"/forums/" + data.redirect + ":" + data.id}>
 								<a>
 									<div className="flex-grow flex flex-row rounded-md shadow-md hover:shadow-xl bg-coolGray-800 py-2 mb-5 items-center cursor-pointer transition">
 										<div className="grid place-items-center align-middle rounded-full p-2 md:p-3 bg-blue-600 mx-5">
 											<XIcon />
 										</div>
 										<div className="flex-grow">
-											<h2 className="text-2xl text-gray-100">
-												{data.name}
-											</h2>
-											<p className="text-gray-300 ">
-												{data.description}
-											</p>
+											<h2 className="text-2xl text-gray-100">{data.name}</h2>
+											<p className="text-gray-300 ">{data.description}</p>
 										</div>
 										<div className="hidden lg:block">
 											<div className="mx-4 border border-blue-600 h-12" />
@@ -73,7 +66,7 @@ export default function catagory(props: {
 								</a>
 							</Link>
 						</div>
-					),
+					)
 				)}
 			</div>
 		);
@@ -100,9 +93,7 @@ function loadingElement() {
 				</div>
 				<div className="hidden lg:block ml-4 mr-12">
 					<div className="bg-blue-500 mb-2 animate-pulse rounded h-4" />
-					<h4 className="text-gray-400 text-sm uppercase font-roboto">
-						Posts
-					</h4>
+					<h4 className="text-gray-400 text-sm uppercase font-roboto">Posts</h4>
 				</div>
 			</div>
 		</div>

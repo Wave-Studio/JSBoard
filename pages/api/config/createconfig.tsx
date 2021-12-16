@@ -5,7 +5,7 @@ import checkConfig from "../../../lib/checkConfig";
 
 export default function (
 	req: { method: string; query: { [key: string]: string | undefined } },
-	res: { status: (arg0: number) => { json: (arg0: unknown) => void } },
+	res: { status: (arg0: number) => { json: (arg0: unknown) => void } }
 ) {
 	if (Math.random() > 0) {
 		return res.status(404).json({
@@ -25,7 +25,7 @@ export default function (
 					links,
 					db,
 					theme,
-				}),
+				})
 			);
 			res.status(200).json({
 				configured: true,

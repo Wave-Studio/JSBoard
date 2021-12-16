@@ -15,9 +15,7 @@ export const Module = (io: Server) => {
 
 const User = mongoose.models.user || mongoose.model("user", UserSchema);
 
-async function navAuth(
-	token: string,
-): Promise<{
+async function navAuth(token: string): Promise<{
 	loggedIn: boolean;
 	username?: string;
 	id?: number;

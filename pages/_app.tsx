@@ -29,22 +29,14 @@ export default function JSboard({
 						}`,
 					}}
 				/>
-				<script
-					dangerouslySetInnerHTML={{ __html: nightwind.init() }}
-				/>
+				<script dangerouslySetInnerHTML={{ __html: nightwind.init() }} />
 				<meta name="application-name" content="JSBoard" />
 				<meta name="apple-mobile-web-app-capable" content="yes" />
-				<meta
-					name="apple-mobile-web-app-status-bar-style"
-					content="default"
-				/>
+				<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 				<meta name="apple-mobile-web-app-title" content="JSBoard" />
 				<meta name="format-detection" content="telephone=no" />
 				<meta name="mobile-web-app-capable" content="yes" />
-				<meta
-					name="msapplication-config"
-					content="/ProfilePicture.png"
-				/>
+				<meta name="msapplication-config" content="/ProfilePicture.png" />
 				<meta name="msapplication-TileColor" content="#2B5797" />
 				<meta name="msapplication-tap-highlight" content="no" />
 
@@ -78,19 +70,14 @@ export default function JSboard({
 					href="/ProfilePicture.png"
 				/>
 				<link rel="manifest" href="/manifest.json" />
-				<link
-					rel="mask-icon"
-					href="/ProfilePicture.png"
-					color="#5bbad5"
-				/>
+				<link rel="mask-icon" href="/ProfilePicture.png" color="#5bbad5" />
 				<link rel="shortcut icon" href="/favicon.ico" />
 				<link
 					rel="stylesheet"
 					href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
 				/>
 
-				{
-					/*} apple splash screen images
+				{/*} apple splash screen images
 
 <link rel='apple-touch-startup-image' href='/images/apple_splash_2048.png' sizes='2048x2732' />
 <link rel='apple-touch-startup-image' href='/images/apple_splash_1668.png' sizes='1668x2224' />
@@ -99,8 +86,7 @@ export default function JSboard({
 <link rel='apple-touch-startup-image' href='/images/apple_splash_1242.png' sizes='1242x2208' />
 <link rel='apple-touch-startup-image' href='/images/apple_splash_750.png' sizes='750x1334' />
 <link rel='apple-touch-startup-image' href='/images/apple_splash_640.png' sizes='640x1136' />
-        */
-				}
+        */}
 			</Head>
 			<div className="flex flex-col min-h-screen bg-coolGray-700">
 				<Component {...pageProps} />

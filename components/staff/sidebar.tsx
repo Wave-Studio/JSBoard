@@ -22,10 +22,7 @@ export default function StaffSidebar() {
 		{
 			category: "Main",
 			items: [
-				<DashButton
-					icon={<HomeIcon className="h-6 w-6 mx-2" />}
-					name="Home"
-				/>,
+				<DashButton icon={<HomeIcon className="h-6 w-6 mx-2" />} name="Home" />,
 				<DashButton
 					icon={<CogIcon className="h-6 w-6 mx-2" />}
 					name="Settings"
@@ -111,7 +108,9 @@ export default function StaffSidebar() {
 								{data.category}
 							</h2>
 							<ul className="ml-2">
-								{data.items.map((item) => <>{item}</>)}
+								{data.items.map((item) => (
+									<>{item}</>
+								))}
 							</ul>
 						</li>
 					</>

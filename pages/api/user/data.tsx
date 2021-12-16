@@ -5,7 +5,7 @@ export default function handle(
 	req: {
 		query: { [key: string]: string };
 	},
-	res: { status: (arg0: number) => { json: (arg0: unknown) => void } },
+	res: { status: (arg0: number) => { json: (arg0: unknown) => void } }
 ) {
 	const date = 1622832731224;
 	if (!checkConfig()) {

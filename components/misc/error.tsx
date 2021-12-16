@@ -2,17 +2,15 @@ import Link from "next/link";
 import Navbar from "./navbar";
 import Footer from "./footer";
 
-export default function PageError(
-	props: {
-		code: number;
-		text: string;
-		back: boolean;
-		home: boolean;
-		redirect?: string | undefined;
-		redirectName?: string | null;
-		allowHome?: boolean | undefined;
-	},
-) {
+export default function PageError(props: {
+	code: number;
+	text: string;
+	back: boolean;
+	home: boolean;
+	redirect?: string | undefined;
+	redirectName?: string | null;
+	allowHome?: boolean | undefined;
+}) {
 	return (
 		<>
 			<div className="flex flex-col h-screen">
@@ -32,24 +30,20 @@ export default function PageError(
 									className={props.back ? "" : "hidden"}
 									onClick={() => history.back()}
 								>
-									<a className="btn btn-lg btn-white ">
-										Go back
-									</a>
+									<a className="btn btn-lg btn-white ">Go back</a>
 								</div>
 								<div className={props.home ? "" : "hidden"}>
 									<Link href="/">
-										<a className="btn btn-lg btn-blue">
-											Home
-										</a>
+										<a className="btn btn-lg btn-blue">Home</a>
 									</Link>
 								</div>
 
 								<div
-									className={props.redirect ||
-											typeof props.allowHome !==
-												"undefined"
-										? ""
-										: "hidden"}
+									className={
+										props.redirect || typeof props.allowHome !== "undefined"
+											? ""
+											: "hidden"
+									}
 								>
 									<Link href={props.redirect || ""}>
 										<a className="btn btn-lg btn-blue ">

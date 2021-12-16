@@ -20,34 +20,32 @@ export default function ViewUserProfile() {
 	let { userID } = router.query;
 	//This is an awful way to redefine types
 	const [menuSel, setMenuSel] = useState(1);
-	const [user, setUser] = useState<
-		{
-			unknown: boolean;
-			account: {
-				password: string;
-				email: string;
-				phone?: string;
-				twofa: boolean;
-			};
-			pfp: string;
+	const [user, setUser] = useState<{
+		unknown: boolean;
+		account: {
+			password: string;
+			email: string;
+			phone?: string;
+			twofa: boolean;
+		};
+		pfp: string;
+		username: string;
+		title: string;
+		activity: {
+			[key: string]: string;
+		};
+		followers: {
+			id: number;
+			image: string;
 			username: string;
-			title: string;
-			activity: {
-				[key: string]: string;
-			};
-			followers: {
-				id: number;
-				image: string;
-				username: string;
-			}[];
-			following: {
-				id: number;
-				image: string;
-				username: string;
-			}[];
-			rank: string;
-		} | null
-	>(null);
+		}[];
+		following: {
+			id: number;
+			image: string;
+			username: string;
+		}[];
+		rank: string;
+	} | null>(null);
 
 	useEffect(() => {
 		fetch("/api/socket").finally(() => {
@@ -155,29 +153,34 @@ export default function ViewUserProfile() {
 								{/*selector */}
 								<div className="rounded-md flex flex-wrap p-1.5 bg-coolGray-800 gap-2 font-semibold">
 									<h1
-										className={"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
-											([1].includes(menuSel) ? "bg-coolGray-900" : "")}
+										className={
+											"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+											([1].includes(menuSel) ? "bg-coolGray-900" : "")
+										}
 										onClick={() => setMenuSel(1)}
 									>
 										Profile Posts
 									</h1>
 									<h1
-										className={"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
-											([2].includes(menuSel) ? "bg-coolGray-900" : "")}
+										className={
+											"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+											([2].includes(menuSel) ? "bg-coolGray-900" : "")
+										}
 										onClick={() => setMenuSel(2)}
 									>
 										Activity
 									</h1>
 									<h1
-										className={"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
-											([3].includes(menuSel) ? "bg-coolGray-900" : "")}
+										className={
+											"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+											([3].includes(menuSel) ? "bg-coolGray-900" : "")
+										}
 										onClick={() => setMenuSel(3)}
 									>
 										Information
 									</h1>
 								</div>
-								<div className="flex w-full rounded-md bg-coolGray-800 mt-2">
-								</div>
+								<div className="flex w-full rounded-md bg-coolGray-800 mt-2"></div>
 							</div>
 						</div>
 					</div>
@@ -200,12 +203,7 @@ export default function ViewUserProfile() {
 
 	if (user.unknown === true) {
 		return (
-			<PageError
-				code={404}
-				text="User not found!"
-				back={true}
-				home={true}
-			/>
+			<PageError code={404} text="User not found!" back={true} home={true} />
 		);
 	}
 
@@ -226,8 +224,7 @@ export default function ViewUserProfile() {
 					<Link href="/profiles">
 						<a>
 							<button className="btn btn-white mb-2 mt-10 group flex items-center">
-								<ChevronLeftIcon className="scale-0 text-gray-200 group-hover:text-gray-800 group-hover:scale-100 w-4 h-4 transition duration-500" />
-								{" "}
+								<ChevronLeftIcon className="scale-0 text-gray-200 group-hover:text-gray-800 group-hover:scale-100 w-4 h-4 transition duration-500" />{" "}
 								Back to Profiles
 							</button>
 						</a>
@@ -244,9 +241,7 @@ export default function ViewUserProfile() {
 								className="rounded-full"
 							/>
 							<div className="text-center">
-								<h2 className="text-2xl font-medium">
-									{user.username}
-								</h2>
+								<h2 className="text-2xl font-medium">{user.username}</h2>
 								<p className="text-sm font-light">{user.title}</p>
 							</div>
 							{/*Boxes*/}
@@ -259,41 +254,29 @@ export default function ViewUserProfile() {
 										</h2>
 									</div>
 									<p className="text-sm font-semibold">
-										<span className="text-gray-400">
-											Messages Sent:
-										</span>
+										<span className="text-gray-400">Messages Sent:</span>
 										{user.activity.msgs ?? 0}
 									</p>
 									<p className="text-sm font-semibold">
-										<span className="text-gray-400">
-											Posts Created:
-										</span>
+										<span className="text-gray-400">Posts Created:</span>
 										{user.activity.posts}
 									</p>
 									<p className="text-sm font-semibold">
-										<span className="text-gray-400">
-											Likes Recived:
-										</span>
+										<span className="text-gray-400">Likes Recived:</span>
 										{user.activity.likes}
 									</p>
 								</div>
 								{/*About*/}
 								<div className="flex-none rounded-md shadow-md bg-coolGray-800 p-3 text-center">
 									<div className="from-blue-500 to-blue-600 mb-4 rounded py-2 bg-gradient-to-r opacity-90">
-										<h2 className="text-2xl opacity-100 break-words">
-											About
-										</h2>
+										<h2 className="text-2xl opacity-100 break-words">About</h2>
 									</div>
 									<p className="text-sm font-semibold">
-										<span className="text-gray-400">
-											Last Seen:
-										</span>
+										<span className="text-gray-400">Last Seen:</span>
 										{user.activity.seen}
 									</p>
 									<p className="text-sm font-semibold">
-										<span className="text-gray-400">
-											Joined:
-										</span>
+										<span className="text-gray-400">Joined:</span>
 										{user.activity.joined}
 									</p>
 								</div>
@@ -315,31 +298,21 @@ export default function ViewUserProfile() {
 													username: string;
 												}) => (
 													<div className=" bg-gray-800 rounded-md px-2 pt-2 hover:ring-2 ring-theme-primary cursor-pointer transition">
-														<Link
-															href={"/profile/" +
-																d.id}
-														>
+														<Link href={"/profile/" + d.id}>
 															<Image
 																src={d.image}
 																width="50"
 																height="50"
-																alt={d
-																	.username +
-																	"'s profile picture"}
+																alt={d.username + "'s profile picture"}
 																className="rounded"
 																quality="50"
 															/>
 														</Link>
 													</div>
-												),
+												)
 											)}
-										<div
-											className={user.followers.length < 9 ? "hidden" : ""}
-										>
-											<Link
-												href={"/profile/" + userID +
-													"/followers"}
-											>
+										<div className={user.followers.length < 9 ? "hidden" : ""}>
+											<Link href={"/profile/" + userID + "/followers"}>
 												<a className="link">View all</a>
 											</Link>
 										</div>
@@ -354,30 +327,22 @@ export default function ViewUserProfile() {
 									</div>
 									{/*Mapping*/}
 									<div className="grid grid-cols-3 gap-4">
-										{user.following.slice(0, 9).map((
-											d,
-										) => (
+										{user.following.slice(0, 9).map((d) => (
 											<div className=" bg-gray-800 rounded-md px-2 pt-2 hover:ring-2 ring-theme-primary cursor-pointer transition">
 												<Link href={"/profile/" + d.id}>
 													<Image
 														src={d.image}
 														width="50"
 														height="50"
-														alt={d.username +
-															"'s profile picture"}
+														alt={d.username + "'s profile picture"}
 														className="rounded"
 														quality="50"
 													/>
 												</Link>
 											</div>
 										))}
-										<div
-											className={user.following.length < 9 ? "hidden" : ""}
-										>
-											<Link
-												href={"/profile/" + userID +
-													"/following"}
-											>
+										<div className={user.following.length < 9 ? "hidden" : ""}>
+											<Link href={"/profile/" + userID + "/following"}>
 												<a className="link">View all</a>
 											</Link>
 										</div>
@@ -388,30 +353,38 @@ export default function ViewUserProfile() {
 						{/*Right Colloum */}
 						<div className="flex flex-col items-center flex-grow space-y-4 bg-coolGray-900 transition p-4 rounded-md shadow md:hover:shadow-xl bg-opacity-70">
 							<div
-								className={"w-full rounded-md h-48 bg-gradient-to-br from-theme-primary to-green-500 relative " +
-									(userID == currentUser ? "group" : "")}
+								className={
+									"w-full rounded-md h-48 bg-gradient-to-br from-theme-primary to-green-500 relative " +
+									(userID == currentUser ? "group" : "")
+								}
 							>
 								<CameraIcon className="z-10 w-10 h-10 absolute bottom-2 right-3 p-2 hidden group-hover:block rounded cursor-pointer backdrop-filter backdrop-blur-3xl backdrop-saturate-150 bg-black bg-opacity-40" />
 							</div>
 							{/*selector */}
 							<div className="rounded-md flex flex-wrap p-1.5 bg-coolGray-800 gap-2 font-semibold">
 								<h1
-									className={"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
-										([1].includes(menuSel) ? "bg-coolGray-900" : "")}
+									className={
+										"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+										([1].includes(menuSel) ? "bg-coolGray-900" : "")
+									}
 									onClick={() => setMenuSel(1)}
 								>
 									Profile Posts
 								</h1>
 								<h1
-									className={"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
-										([2].includes(menuSel) ? "bg-coolGray-900" : "")}
+									className={
+										"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+										([2].includes(menuSel) ? "bg-coolGray-900" : "")
+									}
 									onClick={() => setMenuSel(2)}
 								>
 									Activity
 								</h1>
 								<h1
-									className={"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
-										([3].includes(menuSel) ? "bg-coolGray-900" : "")}
+									className={
+										"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+										([3].includes(menuSel) ? "bg-coolGray-900" : "")
+									}
 									onClick={() => setMenuSel(3)}
 								>
 									Information
@@ -426,8 +399,7 @@ export default function ViewUserProfile() {
 									page={menuSel}
 									user={user.username}
 									email={user.account.email}
-									phone={user.account.phone ??
-										"No linked phone"}
+									phone={user.account.phone ?? "No linked phone"}
 									twofa /*2fa*/={user.account.twofa}
 								/>
 							</div>
@@ -445,8 +417,10 @@ export default function ViewUserProfile() {
 		} else {
 			return (
 				<h1
-					className={"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
-						([4].includes(menuSel) ? "bg-coolGray-900 " : "")}
+					className={
+						"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+						([4].includes(menuSel) ? "bg-coolGray-900 " : "")
+					}
 					onClick={() => setMenuSel(4)}
 				>
 					Edit Profile

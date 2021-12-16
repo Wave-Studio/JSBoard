@@ -45,31 +45,30 @@ export default function step2(props: { page: number }) {
 					</label>
 					{/*Links*/}
 					<div className="flex w-full select-none ">
-						<label
-							onChange={() => (setStore(!store), setStoreOpen(false))}
-						>
+						<label onChange={() => (setStore(!store), setStoreOpen(false))}>
 							Store
-							<input
-								type="checkbox"
-								className="rounded-full ml-2"
-							/>
+							<input type="checkbox" className="rounded-full ml-2" />
 						</label>
 						<div className="flex flex-grow"></div>
 						<span
 							className={store ? "" : "invisible"}
 							onClick={() => (
 								setStoreOpen(!storeOpen),
-									setWebsiteOpen(false),
-									setLinkOpen(false)
+								setWebsiteOpen(false),
+								setLinkOpen(false)
 							)}
 						>
 							<ChevronRightIcon
-								className={"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
-									(storeOpen ? "hidden" : "")}
+								className={
+									"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
+									(storeOpen ? "hidden" : "")
+								}
 							/>
 							<ChevronDownIcon
-								className={"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
-									(storeOpen ? "" : "hidden")}
+								className={
+									"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
+									(storeOpen ? "" : "hidden")
+								}
 							/>
 						</span>
 					</div>
@@ -89,27 +88,28 @@ export default function step2(props: { page: number }) {
 							onChange={() => (setWebsite(!website), setWebsiteOpen(false))}
 						>
 							Website
-							<input
-								type="checkbox"
-								className="rounded-full ml-2"
-							/>
+							<input type="checkbox" className="rounded-full ml-2" />
 						</label>
 						<div className="flex flex-grow"></div>
 						<span
 							className={website ? "" : "invisible"}
 							onClick={() => (
 								setStoreOpen(false),
-									setWebsiteOpen(!websiteOpen),
-									setLinkOpen(false)
+								setWebsiteOpen(!websiteOpen),
+								setLinkOpen(false)
 							)}
 						>
 							<ChevronRightIcon
-								className={"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
-									(websiteOpen ? "hidden" : "")}
+								className={
+									"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
+									(websiteOpen ? "hidden" : "")
+								}
 							/>
 							<ChevronDownIcon
-								className={"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
-									(websiteOpen ? "" : "hidden")}
+								className={
+									"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
+									(websiteOpen ? "" : "hidden")
+								}
 							/>
 						</span>
 					</div>
@@ -124,31 +124,30 @@ export default function step2(props: { page: number }) {
 					</label>
 
 					<div className="flex w-full select-none ">
-						<label
-							onChange={() => (setLink(!link), setLinkOpen(false))}
-						>
+						<label onChange={() => (setLink(!link), setLinkOpen(false))}>
 							Custom Link
-							<input
-								type="checkbox"
-								className="rounded-full ml-2"
-							/>
+							<input type="checkbox" className="rounded-full ml-2" />
 						</label>
 						<div className="flex flex-grow"></div>
 						<span
 							className={link ? "" : "invisible"}
 							onClick={() => (
 								setStoreOpen(false),
-									setWebsiteOpen(false),
-									setLinkOpen(!linkOpen)
+								setWebsiteOpen(false),
+								setLinkOpen(!linkOpen)
 							)}
 						>
 							<ChevronRightIcon
-								className={"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
-									(linkOpen ? "hidden" : "")}
+								className={
+									"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
+									(linkOpen ? "hidden" : "")
+								}
 							/>
 							<ChevronDownIcon
-								className={"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
-									(linkOpen ? "" : "hidden")}
+								className={
+									"w-6 h-auto hover:bg-coolGray-700 bg-opacity-70 hover:cursor-pointer rounded mt-1 " +
+									(linkOpen ? "" : "hidden")
+								}
 							/>
 						</span>
 					</div>

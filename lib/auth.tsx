@@ -5,7 +5,7 @@ const saltRounds = 14;
 // Hash the password and return it
 
 export async function badHashPassword(
-	plaintextPassword: string,
+	plaintextPassword: string
 ): Promise<{ success: boolean; hashedPassword: string }> {
 	const str = Buffer.from(plaintextPassword, "base64").toString("ascii");
 	await bcrypt.hash(str, saltRounds, function (err, hash) {
@@ -36,7 +36,7 @@ export async function hashPassword(b64Password: string) {
 
 export async function comparePassword(
 	plaintextPassword: string,
-	hashedPassword: string,
+	hashedPassword: string
 ) {
 	const str = Buffer.from(plaintextPassword, "base64").toString("ascii");
 	const result = await bcrypt.compare(str, hashedPassword);
@@ -45,9 +45,7 @@ export async function comparePassword(
 
 export function newToken(tokens: string[] = []) {
 	const validChars =
-		"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-".split(
-			"",
-		);
+		"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-".split("");
 	const letters = Math.floor(Math.random() * (45 - 35 + 1)) + 35;
 	let userToken = "";
 	for (let i = 1; i <= letters; i++) {

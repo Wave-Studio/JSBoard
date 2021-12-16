@@ -1,13 +1,11 @@
-export default function summery(
-	props: {
-		page: number;
-		name: string;
-		forumType: string;
-		db: string;
-		theme: string;
-		accentColor: string;
-	},
-) {
+export default function summery(props: {
+	page: number;
+	name: string;
+	forumType: string;
+	db: string;
+	theme: string;
+	accentColor: string;
+}) {
 	if (props.page !== 4) {
 		return null;
 	}

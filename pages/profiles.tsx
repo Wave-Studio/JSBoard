@@ -32,9 +32,7 @@ export default function profiles(props) {
 					<div className="flex-1 p-2">
 						<div className="max-w-screen-xl mx-auto text-gray-200 bg-coolGray-800 p-5 my-10 rounded-md flex flex-col md:flex-row justify-between">
 							<div>
-								<h2 className="text-2xl font-medium">
-									Forum Members
-								</h2>
+								<h2 className="text-2xl font-medium">Forum Members</h2>
 								<form className="flex flex-grow sm:w-96">
 									<input
 										type="search"
@@ -47,19 +45,23 @@ export default function profiles(props) {
 								<h2 className="text-2xl font-medium">Sort</h2>
 								<div className="rounded-md flex flex-wrap p-1.5 dark:bg-coolGray-75 bg-coolGray-850 gap-2 font-semibold mt-4">
 									<h1
-										className={"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+										className={
+											"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
 											([1].includes(menuSel)
 												? "bg-black dark:bg-opacity-50 backdrop-filter backdrop-blur-3xl backdrop-saturate-150"
-												: "")}
+												: "")
+										}
 										onClick={() => setMenuSel(1)}
 									>
 										A - Z
 									</h1>
 									<h1
-										className={"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+										className={
+											"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
 											([2].includes(menuSel)
 												? "bg-black dark:bg-opacity-50 backdrop-filter backdrop-blur-3xl backdrop-saturate-150"
-												: "")}
+												: "")
+										}
 										onClick={() => setMenuSel(2)}
 									>
 										User ID
@@ -82,9 +84,7 @@ export default function profiles(props) {
 				<div className="flex-1 p-2 px-36 gf:px-2">
 					<div className="max-w-screen-xl mx-auto text-gray-200 bg-coolGray-800 p-5 my-10 rounded-md flex flex-col md:flex-row justify-between">
 						<div>
-							<h2 className="text-2xl font-medium">
-								Forum Members
-							</h2>
+							<h2 className="text-2xl font-medium">Forum Members</h2>
 							<form className="flex flex-grow sm:w-96">
 								<input
 									type="search"
@@ -97,19 +97,23 @@ export default function profiles(props) {
 							<h2 className="text-2xl font-medium">Sort</h2>
 							<div className="rounded-md flex flex-wrap p-1.5 dark:bg-coolGray-75 bg-coolGray-850 gap-2 font-semibold mt-4">
 								<h1
-									className={"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+									className={
+										"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
 										([1].includes(menuSel)
 											? "bg-black dark:bg-opacity-50 backdrop-filter backdrop-blur-3xl backdrop-saturate-150"
-											: "")}
+											: "")
+									}
 									onClick={() => setMenuSel(1)}
 								>
 									A - Z
 								</h1>
 								<h1
-									className={"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
+									className={
+										"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
 										([2].includes(menuSel)
 											? "bg-black dark:bg-opacity-50 backdrop-filter backdrop-blur-3xl backdrop-saturate-150"
-											: "")}
+											: "")
+									}
 									onClick={() => setMenuSel(2)}
 								>
 									User ID
@@ -177,9 +181,7 @@ export default function profiles(props) {
 													{user.rank}
 												</div>
 											</h2>
-											<p className="font-extralight">
-												"{user.title}"
-											</p>
+											<p className="font-extralight">"{user.title}"</p>
 										</div>
 										<div className="ml-auto flex items-center ">
 											<ChevronRightIcon className="w-6 h-6" />
@@ -209,8 +211,7 @@ function exProfile() {
 				<div className="ml-5">
 					<h2 className="font-medium flex">
 						<div className="animate-pulse mb-3 bg-blue-500 w-36 h-6 rounded" />
-						<div className="rounded-sm bg-blue-600 px-1 font-semibold text-sm ml-3 mb-auto">
-						</div>
+						<div className="rounded-sm bg-blue-600 px-1 font-semibold text-sm ml-3 mb-auto"></div>
 					</h2>
 					<p className="font-extralight">
 						<div className="animate-pulse bg-blue-500 h-4 rounded" />

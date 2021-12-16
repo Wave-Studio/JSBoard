@@ -51,8 +51,9 @@ export default function Navbar(props: { name: string; className?: string }) {
 					property="og:description"
 					content="Placeholder until we add moving saving descriptions"
 				/>
-				<meta property="og:image" //content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png"
-				 />
+				<meta
+					property="og:image" //content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png"
+				/>
 
 				{/*Twitter*/}
 				<meta property="twitter:url" content="https://metatags.io/" />
@@ -64,16 +65,16 @@ export default function Navbar(props: { name: string; className?: string }) {
 					property="twitter:description"
 					content="Placeholder until we add moving saving descriptions"
 				/>
-				<meta property="twitter:image" //content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png"
-				 />
+				<meta
+					property="twitter:image" //content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png"
+				/>
 			</Head>
 			{
 				// I don't know why, I don't what to know why, I shouldn't
 				// have to wonder why, but for whatever reason this stupid
 				// progressbar doesn't layout out correctly unless we do this terribleness
 			}
-			{
-				/*<div className="h-1 bg-coolGray-800">
+			{/*<div className="h-1 bg-coolGray-800">
         <progress
           id="file"
           max="1000"
@@ -81,13 +82,14 @@ export default function Navbar(props: { name: string; className?: string }) {
           //onLoad={animateBar()}
           className={"w-full m-0 " + (props.loading ? "" : "hidden")}
         />
-      </div>*/
-			}
+      </div>*/}
 			{/*Actual Navbar starts here */}
 
 			<div
-				className={"w-full h-16 flex items-center text-gray-100 bg-coolGray-800 bg-opacity-70 backdrop-filter backdrop-blur-3xl backdrop-saturate-150 shadow-lg sticky top-0 z-40 " +
-					props.className}
+				className={
+					"w-full h-16 flex items-center text-gray-100 bg-coolGray-800 bg-opacity-70 backdrop-filter backdrop-blur-3xl backdrop-saturate-150 shadow-lg sticky top-0 z-40 " +
+					props.className
+				}
 			>
 				<div className="mx-auto max-w-screen-xl px-10 font-semibold flex flex-grow">
 					<Link href="/">
@@ -108,39 +110,34 @@ export default function Navbar(props: { name: string; className?: string }) {
 							</span>
 						</div>
 
-						{socket != undefined && response != undefined
-							? (
-								<div className="btn btn-white hidden md:block">
-									{response.loggedIn
-										? (
-											<>
-												<Link
-													href={"/profiles/" + response.username + ":" +
-														response.id}
-												>
-													<a>Profile</a>
-												</Link>
-												{response.dash
-													? (
-														<Link href="/staff/dashboard">
-															<a>Dashboard</a>
-														</Link>
-													)
-													: (
-														""
-													)}
-											</>
-										)
-										: (
-											<Link href="/signup">
-												<a>Sign Up</a>
+						{socket != undefined && response != undefined ? (
+							<div className="btn btn-white hidden md:block">
+								{response.loggedIn ? (
+									<>
+										<Link
+											href={
+												"/profiles/" + response.username + ":" + response.id
+											}
+										>
+											<a>Profile</a>
+										</Link>
+										{response.dash ? (
+											<Link href="/staff/dashboard">
+												<a>Dashboard</a>
 											</Link>
+										) : (
+											""
 										)}
-								</div>
-							)
-							: (
-								""
-							)}
+									</>
+								) : (
+									<Link href="/signup">
+										<a>Sign Up</a>
+									</Link>
+								)}
+							</div>
+						) : (
+							""
+						)}
 					</div>
 
 					<div className="hidden lg:block">

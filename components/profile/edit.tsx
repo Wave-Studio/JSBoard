@@ -2,15 +2,13 @@ import { XIcon } from "@heroicons/react/outline";
 import { FormEventHandler, useState } from "react";
 import { useRouter } from "next/router";
 
-export default function Edit(
-	props: {
-		page?: number;
-		email: string;
-		user: string;
-		phone: string;
-		twofa: boolean;
-	},
-) {
+export default function Edit(props: {
+	page?: number;
+	email: string;
+	user: string;
+	phone: string;
+	twofa: boolean;
+}) {
 	const [editName, setEditName] = useState(false);
 	if (props.page !== 4) {
 		return null;
@@ -24,14 +22,9 @@ export default function Edit(
 							<h2 className="text-xs tracking-tight font-medium uppercase text-gray-500">
 								Username
 							</h2>
-							<p className="text-gray-200 text-sm">
-								{props.user}
-							</p>
+							<p className="text-gray-200 text-sm">{props.user}</p>
 						</div>
-						<button
-							className="btn btn-white"
-							onClick={() => setEditName(true)}
-						>
+						<button className="btn btn-white" onClick={() => setEditName(true)}>
 							Edit
 						</button>
 					</div>
@@ -40,9 +33,7 @@ export default function Edit(
 							<h2 className="text-xs tracking-tight font-medium uppercase text-gray-500">
 								Email
 							</h2>
-							<p className="text-gray-200 text-sm">
-								{hideEmail(props.email)}
-							</p>
+							<p className="text-gray-200 text-sm">{hideEmail(props.email)}</p>
 						</div>
 						<button className="btn btn-white">Edit</button>
 					</div>
@@ -52,20 +43,16 @@ export default function Edit(
 								Phone Number
 							</h2>
 							<p className="text-gray-200 text-sm">
-								{props.phone
-									? (
-										<>
-											<span className="bg-coolGray-700 rounded px-1">
-												{phone(props.phone).shift()}
-											</span>
-											<span>
-												({phone(props.phone).pop()}) *******
-											</span>
-										</>
-									)
-									: (
-										"There is no phone number attached to this account"
-									)}
+								{props.phone ? (
+									<>
+										<span className="bg-coolGray-700 rounded px-1">
+											{phone(props.phone).shift()}
+										</span>
+										<span>({phone(props.phone).pop()}) *******</span>
+									</>
+								) : (
+									"There is no phone number attached to this account"
+								)}
 							</p>
 						</div>
 						<button className="btn btn-white">Edit</button>
@@ -121,10 +108,7 @@ export default function Edit(
 							<h2 className="text-sm text-gray-400 text-center mb-6">
 								Choose a brand new username for your account!
 							</h2>
-							<form
-								className="flex flex-col w-full"
-								onSubmit={saveName}
-							>
+							<form className="flex flex-col w-full" onSubmit={saveName}>
 								<label className="flex flex-col">
 									<span className="text-xs tracking-tight font-medium uppercase text-gray-500 mb-1">
 										New Username

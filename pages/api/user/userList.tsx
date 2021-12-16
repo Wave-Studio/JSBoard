@@ -4,7 +4,7 @@ import checkConfig from "../../../lib/checkConfig";
 
 export default function handle(
 	req: unknown,
-	res: { status: (arg0: number) => { json: (arg0: unknown) => void } },
+	res: { status: (arg0: number) => { json: (arg0: unknown) => void } }
 ) {
 	if (!checkConfig()) {
 		return res.status(500).json({

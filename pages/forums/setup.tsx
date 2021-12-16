@@ -39,27 +39,35 @@ export default function setup() {
 								<div className="inline-flex items-center lg:absolute right-5 bottom-5 ml-auto">
 									<div className="rounded-full bg-gray-400 h-3 w-44  flex flex-row">
 										<div
-											className={"bg-green-500 w-1/3 h-3 rounded-full shadow-green " +
-												([2, 3, 4].includes(page) ? "hidden" : "")}
+											className={
+												"bg-green-500 w-1/3 h-3 rounded-full shadow-green " +
+												([2, 3, 4].includes(page) ? "hidden" : "")
+											}
 										/>
 										<div
-											className={"bg-green-500 w-2/3 h-3 rounded-full shadow-green " +
-												([1, 3, 4].includes(page) ? "hidden " : "")}
+											className={
+												"bg-green-500 w-2/3 h-3 rounded-full shadow-green " +
+												([1, 3, 4].includes(page) ? "hidden " : "")
+											}
 										/>
 										<div
-											className={"bg-green-500 w-full h-3 rounded-full shadow-green " +
-												([3, 4].includes(page) ? "" : "hidden")}
+											className={
+												"bg-green-500 w-full h-3 rounded-full shadow-green " +
+												([3, 4].includes(page) ? "" : "hidden")
+											}
 										/>
 									</div>
 									<span
-										className={"ml-3 select-none " +
-											([4].includes(page) ? "" : "hidden")}
+										className={
+											"ml-3 select-none " + ([4].includes(page) ? "" : "hidden")
+										}
 									>
 										Summary
 									</span>
 									<span
-										className={"ml-3 select-none " +
-											([4].includes(page) ? "hidden" : "")}
+										className={
+											"ml-3 select-none " + ([4].includes(page) ? "hidden" : "")
+										}
 									>
 										{page + "/3"}
 									</span>
@@ -85,22 +93,28 @@ export default function setup() {
 							<input
 								type="button"
 								value="Previous Page"
-								className={"!bg-coolGray-700 !hover:bg-gray-100 btn-white btn btn-lg mr-4 mb-10 " +
-									([1].includes(page) ? "hidden" : "")}
+								className={
+									"!bg-coolGray-700 !hover:bg-gray-100 btn-white btn btn-lg mr-4 mb-10 " +
+									([1].includes(page) ? "hidden" : "")
+								}
 								onClick={() => setPage(page - 1)}
 							/>
 							<input
 								type="button"
 								value="Next Page"
-								className={"bg-green-600 btn btn-lg mr-4 hover:opacity-70 font-semibold mb-10 " +
-									([4].includes(page) ? "hidden" : "")}
+								className={
+									"bg-green-600 btn btn-lg mr-4 hover:opacity-70 font-semibold mb-10 " +
+									([4].includes(page) ? "hidden" : "")
+								}
 								onClick={() => setPage(page + 1)}
 							/>
 							<input
 								type="submit"
 								value="Submit"
-								className={"btn btn-lg btn-blue mr-4 font-semibold mb-10 " +
-									([4].includes(page) ? "" : "hidden")}
+								className={
+									"btn btn-lg btn-blue mr-4 font-semibold mb-10 " +
+									([4].includes(page) ? "" : "hidden")
+								}
 								onClick={() => saveAnswers}
 							/>
 						</form>

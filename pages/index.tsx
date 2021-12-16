@@ -132,45 +132,39 @@ export default function Home() {
 							</span>
 							{forums.data.description}
 						</p>
-						{forums.data.store
-							? (
-								<a
-									href={forums.data.storeLink || undefined}
-									className="text-gray-200 px-3 py-0.5 bg-red-500 inline-flex mt-3 items-center rounded-full font-medium"
-								>
-									<Heroicons.ShoppingCartIcon className="h-5 w-5 mr-1" />
-									Store
-								</a>
-							)
-							: (
-								""
-							)}
-						{forums.data.website
-							? (
-								<a
-									href={forums.data.websiteLink || undefined}
-									className="text-gray-200 px-3 py-0.5 bg-theme-primary inline-flex mt-3 items-center rounded-full font-medium"
-								>
-									<Heroicons.GlobeAltIcon className="h-5 w-5 mr-1" />
-									Website
-								</a>
-							)
-							: (
-								""
-							)}
-						{forums.data.custom
-							? (
-								<a
-									href={forums.data.customLink || undefined}
-									className="text-gray-200 px-3 py-0.5 bg-green-700 inline-flex mt-3 items-center rounded-full font-medium"
-								>
-									<Heroicons.BeakerIcon className="h-5 w-5 mr-1" />
-									{forums.data.customName}
-								</a>
-							)
-							: (
-								""
-							)}
+						{forums.data.store ? (
+							<a
+								href={forums.data.storeLink || undefined}
+								className="text-gray-200 px-3 py-0.5 bg-red-500 inline-flex mt-3 items-center rounded-full font-medium"
+							>
+								<Heroicons.ShoppingCartIcon className="h-5 w-5 mr-1" />
+								Store
+							</a>
+						) : (
+							""
+						)}
+						{forums.data.website ? (
+							<a
+								href={forums.data.websiteLink || undefined}
+								className="text-gray-200 px-3 py-0.5 bg-theme-primary inline-flex mt-3 items-center rounded-full font-medium"
+							>
+								<Heroicons.GlobeAltIcon className="h-5 w-5 mr-1" />
+								Website
+							</a>
+						) : (
+							""
+						)}
+						{forums.data.custom ? (
+							<a
+								href={forums.data.customLink || undefined}
+								className="text-gray-200 px-3 py-0.5 bg-green-700 inline-flex mt-3 items-center rounded-full font-medium"
+							>
+								<Heroicons.BeakerIcon className="h-5 w-5 mr-1" />
+								{forums.data.customName}
+							</a>
+						) : (
+							""
+						)}
 					</div>
 					<div className="lg:flex w-full lg:flex-row">
 						<div className="lg:w-full">

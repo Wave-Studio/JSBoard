@@ -16,9 +16,11 @@ import Switcher from "../misc/mode-switcher";
 
 import Shorten from "../../lib/shorten";
 
-export default function StaffCore(
-	props: { children: React.ReactNode; admin?: boolean; page?: string },
-) {
+export default function StaffCore(props: {
+	children: React.ReactNode;
+	admin?: boolean;
+	page?: string;
+}) {
 	const [profileOpen, setProfileOpen] = useState(false);
 	const [sideBarOpen, setSideBarOpen] = useState(false);
 	const userName = "Guest";
@@ -29,12 +31,7 @@ export default function StaffCore(
 		//add a ! once we move to prod
 		return (
 			<>
-				<PageError
-					code={401}
-					text="User unathorized"
-					back={true}
-					home={true}
-				/>
+				<PageError code={401} text="User unathorized" back={true} home={true} />
 			</>
 		);
 	}
@@ -44,8 +41,10 @@ export default function StaffCore(
 			<div className="overflow-hidden flex bg-coolGray-700 text-gray-200 h-screen">
 				{/*Side panel*/}
 				<div
-					className={"max-h-screen shadow-2xl md:shadow-sm bg-coolGray-900 flex-none z-40 absolute bottom-0 top-0 md:z-0 md:static w-11/12 md:w-60 lg:w-72 xl:w-80 flex-col min-h-0 select-none " +
-						(sideBarOpen ? "flex" : "hidden md:flex")}
+					className={
+						"max-h-screen shadow-2xl md:shadow-sm bg-coolGray-900 flex-none z-40 absolute bottom-0 top-0 md:z-0 md:static w-11/12 md:w-60 lg:w-72 xl:w-80 flex-col min-h-0 select-none " +
+						(sideBarOpen ? "flex" : "hidden md:flex")
+					}
 				>
 					<div className="py-4">
 						<h2 className="text-xl font-semibold text-center flex md:block">
@@ -92,8 +91,7 @@ export default function StaffCore(
 									src={pfp}
 									className="mx-3 rounded-full h-12 w-12"
 									alt="User profile picture"
-								>
-								</img>
+								></img>
 							</div>
 							<div>
 								<h2 className="font-semibold text-lg">
@@ -107,9 +105,7 @@ export default function StaffCore(
 										{Shorten(userName, 10)}
 									</span>
 								</h2>
-								<p className="text-sm text-gray-300">
-									View Options
-								</p>
+								<p className="text-sm text-gray-300">View Options</p>
 							</div>
 						</div>
 					</div>
@@ -121,8 +117,7 @@ export default function StaffCore(
 						{/*Navbar*/}
 						<nav className="h-16 bg-coolGray-900 shadow flex flex-none sticky top-0 z-30 items-center px-4">
 							<div
-								className={"md:hidden " +
-									(sideBarOpen ? "hidden" : "")}
+								className={"md:hidden " + (sideBarOpen ? "hidden" : "")}
 								onClick={() => setSideBarOpen(!sideBarOpen)}
 							>
 								<MenuAlt2Icon className="h-6 w-6 mx-2 text-gray-200 hover:text-gray-400" />

@@ -1,20 +1,12 @@
 {
 	"lint": {
 		"files": {
-			"exclude": [
-				"./node_modules/",
-				"./.next/",
-				"./public/"
-			]
+			"exclude": ["./node_modules/", "./.next/", "./public/"]
 		}
 	},
 	"fmt": {
 		"files": {
-			"exclude": [
-				"./node_modules/",
-				"./.next/",
-				"./public/"
-			]
+			"exclude": ["./node_modules/", "./.next/", "./public/"]
 		},
 		"options": {
 			"useTabs": true,

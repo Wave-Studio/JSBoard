@@ -38,8 +38,7 @@ export default function JSBoardFooter() {
 									Rules
 								</a>
 							</Link>
-							<a className="ml-1 prose-sm text-gray-300 hover:underline">
-							</a>
+							<a className="ml-1 prose-sm text-gray-300 hover:underline"></a>
 						</div>
 						<div className="flex flex-col md:mx-10">
 							<h2 className="tracking-wider text-lg font-semibold uppercase text-gray-200">

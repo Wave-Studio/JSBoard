@@ -55,7 +55,7 @@ export default function ViewUserProfile({
 	const [page, setPage] = useState(
 		((isNaN(selectedPage) ? selectedPage : 1) ?? 1) > pages
 			? pages
-			: (isNaN(selectedPage) ? selectedPage : 1) ?? 1,
+			: (isNaN(selectedPage) ? selectedPage : 1) ?? 1
 	);
 	//we'll show a maximum of 15 posts per page
 
@@ -92,8 +92,7 @@ export default function ViewUserProfile({
 						<Link href="/">
 							<a>
 								<button className="btn btn-white mb-2 mt-10 group flex items-center">
-									<ChevronLeftIcon className="scale-0 text-gray-200 group-hover:text-gray-800 group-hover:scale-100 w-4 h-4 transition duration-500 mt-0.5" />
-									{" "}
+									<ChevronLeftIcon className="scale-0 text-gray-200 group-hover:text-gray-800 group-hover:scale-100 w-4 h-4 transition duration-500 mt-0.5" />{" "}
 									Back to Home
 								</button>
 							</a>
@@ -119,9 +118,11 @@ export default function ViewUserProfile({
 									</h2>
 								</div>
 								<div className="justify-between flex flex-col mt-4 md:mt-0">
-									<button className="btn btn-blue font-semibold hidden md:block">
-										Create a Thread
-									</button>
+									<Link href="./create">
+										<button className="btn btn-blue font-semibold hidden md:block">
+											Create a Thread
+										</button>
+									</Link>
 									<button className="btn-base rounded-full bg-theme-primary p-4 font-semibold md:hidden fixed bottom-3 right-3 z-50 shadow-md shadow-blue-500/20">
 										<PlusIcon className="w-7 h-7" />
 									</button>
@@ -145,15 +146,13 @@ export default function ViewUserProfile({
 													className="form-input w-full"
 													placeholder="Search"
 												/>
-												{errors.search && touched.search
-													? (
-														<Error
-															msg={errors.search}
-															color="bg-red-500"
-															mdleft={true}
-														/>
-													)
-													: null}
+												{errors.search && touched.search ? (
+													<Error
+														msg={errors.search}
+														color="bg-red-500"
+														mdleft={true}
+													/>
+												) : null}
 											</Form>
 										)}
 									</Formik>
@@ -163,15 +162,15 @@ export default function ViewUserProfile({
 						<div className="space-y-3 my-10 mx-1">
 							{forum.data.posts?.map((post: OutputForumTypings) => (
 								<Link
-									href={`/post/${
-										post.title
-											.replaceAll(" ", "-")
-											.substring(0, 42)
-									}:${post.id}`}
+									href={`/post/${post.title
+										.replaceAll(" ", "-")
+										.substring(0, 42)}:${post.id}`}
 								>
 									<a>
-										<section className="bg-coolGray-800 px-5
-										 py-3 mt-3 rounded-md flex hover:filter hover:brightness-90 transition cursor-pointer select-none text-gray-200 font-medium tracking-wide">
+										<section
+											className="bg-coolGray-800 px-5
+										 py-3 mt-3 rounded-md flex hover:filter hover:brightness-90 transition cursor-pointer select-none text-gray-200 font-medium tracking-wide"
+										>
 											<div className=" mr-4 flex flex-col items-center">
 												<button className=" text-gray-300 hover:bg-coolGray-900 hover:opacity-75 hover:text-green-200 focus:hover:opacity-95 rounded-full transition duration-300">
 													<ChevronUpIcon className="w-7 p-0.5 " />
@@ -189,9 +188,11 @@ export default function ViewUserProfile({
 															<Image
 																width={28}
 																height={28}
-																src={"/pfps/" +
+																src={
+																	"/pfps/" +
 																	post.authorID +
-																	post.authorPFPFormat}
+																	post.authorPFPFormat
+																}
 																className="rounded-full"
 																alt="User Icon"
 															/>
@@ -206,8 +207,8 @@ export default function ViewUserProfile({
 															{post.content}
 														</p>
 														<div className="text-xs font-thin mt-2">
-															Posted <time>{post.postDate}</time>{" "}
-															&#8226; Updated <time>{post.updatedDate}</time>
+															Posted <time>{post.postDate}</time> &#8226;
+															Updated <time>{post.updatedDate}</time>
 														</div>
 													</article>
 
@@ -223,12 +224,14 @@ export default function ViewUserProfile({
 													</div>
 												</div>
 											</div>
-											
+
 											<div className="absolute lg:static right-5 ml-auto mr-2">
 												<div className="inline-flex space-x-2 ">
 													<div
-														className={" bg-coolGray-900 bg-opacity-70 rounded-md px-2 py-1 has-tooltip " +
-															post.locked}
+														className={
+															" bg-coolGray-900 bg-opacity-70 rounded-md px-2 py-1 has-tooltip " +
+															post.locked
+														}
 													>
 														<LockClosedIcon className="w-5 text-gray-300 " />
 														<span className="tooltip bg-gray-300 bg-opacity-20 rounded px-2 mt-2 -ml-2 text-sm">
@@ -236,8 +239,10 @@ export default function ViewUserProfile({
 														</span>
 													</div>
 													<div
-														className={" bg-coolGray-900 bg-opacity-70 rounded-md px-2 py-1 has-tooltip " +
-															post.pinned}
+														className={
+															" bg-coolGray-900 bg-opacity-70 rounded-md px-2 py-1 has-tooltip " +
+															post.pinned
+														}
 													>
 														<PencilIcon className="w-5 text-gray-300" />
 														<span className="tooltip bg-gray-300 bg-opacity-20 rounded px-2 mt-2 -ml-2 text-sm">
@@ -268,7 +273,7 @@ function tags(tags: Array<string>) {
 		r.push(
 			<div className="rounded-full px-3 py-1 font-medium text-gray-300 text-sm bg-coolGray-700 bg-opacity-50">
 				{tag}
-			</div>,
+			</div>
 		);
 	});
 	return r;

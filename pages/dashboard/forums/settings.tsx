@@ -46,7 +46,7 @@ export default function dashboard() {
 		});
 	}, []);
 	if (!forums.data || !forums.data.configured) {
-		return ( 
+		return (
 			<StaffCore page="Settings">
 				<h1 className="text-3xl font-bold text-gray-200 mb-1">Settings</h1>
 				<h2 className="text-xl font-medium text-gray-300 mb-2">
@@ -68,14 +68,12 @@ export default function dashboard() {
 								r="10"
 								stroke="currentColor"
 								strokeWidth="4"
-							>
-							</circle>
+							></circle>
 							<path
 								className="opacity-75"
 								fill="currentColor"
 								d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-							>
-							</path>
+							></path>
 						</svg>
 						Loading...
 					</div>
@@ -91,15 +89,15 @@ export default function dashboard() {
 					Configure the sidebar and main boxes
 				</h2>
 				<hr className="border-theme-primary border-t-2 bg-opacity-50 w-10" />
-				{showSaved
-					? (
-						<Notification color="bg-green-700" msg="">
-							<div className=" inline-flex rounded-md font-medium items-center nightwind-prevent text-white">
-								Saved!
-							</div>
-						</Notification>
-					)
-					: <></>}
+				{showSaved ? (
+					<Notification color="bg-green-700" msg="">
+						<div className=" inline-flex rounded-md font-medium items-center nightwind-prevent text-white">
+							Saved!
+						</div>
+					</Notification>
+				) : (
+					<></>
+				)}
 				<div className="space-y-8 mt-10">
 					<Formik
 						initialValues={{
@@ -119,7 +117,7 @@ export default function dashboard() {
 							updatedStuff.data.website = values.website;
 							updatedStuff.data.custom = values.custom;
 							setForums(updatedStuff);
-							socket!.emit("homepage", {data: values});
+							socket!.emit("homepage", { data: values });
 							setShowSaved(true);
 							setTimeout(() => {
 								setShowSaved(false);
@@ -165,11 +163,14 @@ export default function dashboard() {
 										name="Store "
 										enabled={
 											<>
-												-<span
-													className={"self-center text-sm font-light " +
+												-
+												<span
+													className={
+														"self-center text-sm font-light " +
 														(forums.data.store
 															? "text-green-200"
-															: "text-red-300")}
+															: "text-red-300")
+													}
 												>
 													{forums.data.store ? " Enabled" : " Disabled"}
 												</span>
@@ -200,11 +201,14 @@ export default function dashboard() {
 										Website "
 										enabled={
 											<>
-												-<span
-													className={"self-center text-sm font-light " +
+												-
+												<span
+													className={
+														"self-center text-sm font-light " +
 														(forums.data.website
 															? "text-green-200"
-															: "text-red-300")}
+															: "text-red-300")
+													}
 												>
 													{forums.data.website ? " Enabled" : " Disabled"}
 												</span>
@@ -233,11 +237,14 @@ export default function dashboard() {
 										name="Custom Link "
 										enabled={
 											<>
-												-<span
-													className={"self-center text-sm font-light " +
+												-
+												<span
+													className={
+														"self-center text-sm font-light " +
 														(forums.data.custom
 															? "text-green-200"
-															: "text-red-300")}
+															: "text-red-300")
+													}
 												>
 													{forums.data.custom ? " Enabled" : " Disabled"}
 												</span>

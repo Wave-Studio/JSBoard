@@ -38,9 +38,8 @@ export default function signup({ signup }: { signup?: number }) {
 	const [signUp, setSignUp] = useState(signup ?? 0);
 	const [disabled, setDisabled] = useState(false);
 	const [socket, setSocket] = useState<Socket>();
-	const [response, setResponse] = useState<
-		{ success: boolean; token?: string; message: string }
-	>();
+	const [response, setResponse] =
+		useState<{ success: boolean; token?: string; message: string }>();
 
 	useEffect(() => {
 		fetch("/api/socket").finally(() => {
@@ -86,8 +85,10 @@ export default function signup({ signup }: { signup?: number }) {
 						<div className="rounded-md py-1.5 pr-2 pl-3 bg-coolGray-700 dark:bg-blue-100 font-semibold select-none ">
 							<div className="grid grid-cols-2 gap-2 place-items-center relative">
 								<div
-									className={"absolute bg-coolGray-900 rounded-md transform transition bg-opacity-75 " +
-										(signUp ? "-translate-x-8" : "translate-x-8")}
+									className={
+										"absolute bg-coolGray-900 rounded-md transform transition bg-opacity-75 " +
+										(signUp ? "-translate-x-8" : "translate-x-8")
+									}
 								>
 									<div className="invisible py-0.5 px-1.5 transition">
 										{signUp ? "Sign Up" : "Login"}
@@ -109,25 +110,23 @@ export default function signup({ signup }: { signup?: number }) {
 						</div>
 					</div>
 					{/*Second Box*/}
-					{socket != undefined
-						? (
-							signUp == 0
-								? (
-									<>
-										<Log />
-									</>
-								)
-								: signUp == 1
-								? (
-									<>
-										<Sign />
-									</>
-								)
-								: signUp == 2
-								? <Res />
-								: ""
+					{socket != undefined ? (
+						signUp == 0 ? (
+							<>
+								<Log />
+							</>
+						) : signUp == 1 ? (
+							<>
+								<Sign />
+							</>
+						) : signUp == 2 ? (
+							<Res />
+						) : (
+							""
 						)
-						: <></>}
+					) : (
+						<></>
+					)}
 				</div>
 			</div>
 			<Footer />
@@ -137,8 +136,10 @@ export default function signup({ signup }: { signup?: number }) {
 	function Res() {
 		return (
 			<div
-				className={"space-y-3 max-w-2xl mx-auto p-4 rounded-md text-gray-200 font-medium grid place-items-center " +
-					(response?.success ? "bg-green-500" : "bg-red-500")}
+				className={
+					"space-y-3 max-w-2xl mx-auto p-4 rounded-md text-gray-200 font-medium grid place-items-center " +
+					(response?.success ? "bg-green-500" : "bg-red-500")
+				}
 			>
 				<h3 className="nightwind-prevent tracking-wide text-2xl">
 					{response?.message}
@@ -146,9 +147,7 @@ export default function signup({ signup }: { signup?: number }) {
 				<div>
 					<Link href="/">
 						<a>
-							<button className="btn btn-blue font-medium">
-								To Home!
-							</button>
+							<button className="btn btn-blue font-medium">To Home!</button>
 						</a>
 					</Link>
 					<button
@@ -214,8 +213,10 @@ export default function signup({ signup }: { signup?: number }) {
 					</label>
 					<button
 						type="submit"
-						className={"btn btn-blue mt-4 font-medium " +
-							(disabled ? "opacity-70 !cursor-not-allowed" : "")}
+						className={
+							"btn btn-blue mt-4 font-medium " +
+							(disabled ? "opacity-70 !cursor-not-allowed" : "")
+						}
 						disabled={disabled}
 					>
 						Login
@@ -266,9 +267,7 @@ export default function signup({ signup }: { signup?: number }) {
 						<Field
 							type="text"
 							className=" w-full placeholder"
-							placeholder={names[
-								Math.floor(Math.random() * names.length)
-							]}
+							placeholder={names[Math.floor(Math.random() * names.length)]}
 							autoComplete="username"
 							name="username"
 						/>
@@ -303,10 +302,7 @@ export default function signup({ signup }: { signup?: number }) {
 						</div>
 					</label>
 					<div>
-						<label
-							htmlFor="acceptedTerms"
-							className="flex items-center py-2"
-						>
+						<label htmlFor="acceptedTerms" className="flex items-center py-2">
 							<Field
 								type="checkbox"
 								className="appearance-none transition bg-theme-primary dark:checked:bg-theme-primary text-theme-primary p-2.5 border-none focus:border-none hover:ring checked:ring cursor-pointer ring-theme-primary focus:checked:border-none   focus:checked:ring-theme-primary focus:checked:ring-opacity-50 ring-opacity-50 rounded-full mr-3"
@@ -321,8 +317,10 @@ export default function signup({ signup }: { signup?: number }) {
 					</div>
 					<button
 						type="submit"
-						className={"btn btn-blue mt-4 font-medium " +
-							(disabled ? "opacity-70 !cursor-not-allowed" : "")}
+						className={
+							"btn btn-blue mt-4 font-medium " +
+							(disabled ? "opacity-70 !cursor-not-allowed" : "")
+						}
 						disabled={disabled}
 					>
 						Join Up!

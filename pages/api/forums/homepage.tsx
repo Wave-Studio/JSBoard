@@ -19,11 +19,11 @@ export default async function handle(
 			new (): unknown;
 			json: { (arg0: unknown): unknown; new (): unknown };
 		};
-	},
+	}
 ) {
 	await connect();
-	const Homepage = mongoose.models.homepage ||
-		mongoose.model("homepage", homepageSchema);
+	const Homepage =
+		mongoose.models.homepage || mongoose.model("homepage", homepageSchema);
 	//delete mongoose.connection.models['homepage'];
 
 	if ((await Homepage.find().count()) == 0) {
