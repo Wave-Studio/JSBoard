@@ -198,6 +198,7 @@ export default function profiles(props) {
 }
 
 function exProfile() {
+	//loading thing
 	return (
 		<div className="max-w-screen-xl mx-auto text-gray-200 mb-10">
 			<div className="bg-coolGray-800 px-5 py-3 mt-3 rounded-md flex hover:filter hover:brightness-90 transition cursor-pointer select-none">
