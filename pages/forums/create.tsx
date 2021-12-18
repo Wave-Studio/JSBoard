@@ -26,18 +26,25 @@ export default function createPost() {
 	const forumID = query.id;
 	const router = useRouter();
 	const [socket, setSocket] = useState<Socket>();
-	const [res, setRes] =  useState<{ success: boolean; message?: string; redirect?: string }>({ success: false });
+	const [res, setRes] = useState<{
+		success: boolean;
+		message?: string;
+		redirect?: string;
+	}>({ success: false });
 	const [disabled, setDisabled] = useState(false);
 	useEffect(() => {
 		fetch("/api/socket").finally(() => {
 			const socket = io();
 			setSocket(socket);
-			socket.on("newPost", (data: { success: boolean; message?: string; redirect?: string }) => {
-				setRes(data)
-			});
+			socket.on(
+				"newPost",
+				(data: { success: boolean; message?: string; redirect?: string }) => {
+					setRes(data);
+				}
+			);
 		});
-		}, []);
-	
+	}, []);
+
 	if (!forumID) {
 		return <PageError code={423} text="Error" back={true} home={true} />;
 	} else if (!res.success && !res.message) {
@@ -68,8 +75,8 @@ export default function createPost() {
 												forumID: forumID,
 												title: values.title,
 												content: values.content,
-												token: cookies.token
-											})
+												token: cookies.token,
+											});
 											setSubmitting(false);
 										}, 400);
 										setDisabled(false);
@@ -150,16 +157,12 @@ export default function createPost() {
 				</div>
 			</>
 		);
-									}
-	else if (!res.success) {
+	} else if (!res.success) {
 		return (
 			//TODO: Make this look nice
-			<>
-				didn't work
-			</>
-		)
-	}
-	else {
+			<>didn't work</>
+		);
+	} else {
 		router.push(res.redirect as string);
 	}
 }

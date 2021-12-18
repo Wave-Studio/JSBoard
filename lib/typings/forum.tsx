@@ -44,5 +44,8 @@ export interface OutputForumTypings {
 }
 
 export interface newPostTypings {
-  forumID: number; title: string; content: string; token: string;
+	forumID: number;
+	title: string;
+	content: string;
+	token: string;
 }

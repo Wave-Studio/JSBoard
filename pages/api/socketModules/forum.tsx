@@ -43,6 +43,4 @@ export const Module = (io: Server) => {
 
 async function newPost(data: newPostTypings) {
 	await connect();
-
 }
-
