@@ -163,14 +163,6 @@ export async function registerUser(
 	}
 	//hash password
 	const hash = await hashPassword(password);
-	/*if (!hash.success) {
-			return {
-				success: false,
-				message: "An error occured whilst hashing your password"
-			}
-		}
-		cryptedPassword = hash.hashedPassword;*/
-
 	await connect();
 
 	//delete mongoose.connection.models['user'];
@@ -212,12 +204,6 @@ export async function registerUser(
 		token: token,
 		message: "Successfully registered! ",
 	};
-	// } catch (err) {
-	// 	return {
-	// 		success: false,
-	// 		message: "An unknown error occured",
-	// 	};
-	//}
 }
 
 export async function loginUser(

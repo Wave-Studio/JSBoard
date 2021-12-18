@@ -71,7 +71,7 @@ export default function createPost() {
 											//TODO: Need to make it save in session storage
 											setDisabled(true);
 											alert(JSON.stringify(values, null, 2));
-											socket!.emit("newPost", {
+											socket!.emit("newThread", {
 												forumID: forumID,
 												title: values.title,
 												content: values.content,

@@ -1,6 +1,6 @@
 import connect from "../../../lib/db";
 import { Server } from "socket.io";
-import { newPostTypings } from "../../../lib/typings/forum";
+import { newThreadTypings } from "../../../lib/typings/forum";
 import mongoose from "mongoose";
 
 export const Module = (io: Server) => {
@@ -35,12 +35,20 @@ export const Module = (io: Server) => {
 				],
 			});
 		});
-		socket.on("newPost", (data: newPostTypings) => {
-			socket.emit("newPost", newPost(data));
+		socket.on("newThread", (data: newThreadTypings) => {
+			socket.emit("newThread", newThread(data));
 		});
 	});
 };
 
-async function newPost(data: newPostTypings) {
+async function newThread(data: newThreadTypings) {
 	await connect();
+
+	//const Thread =
+	//mongoose.models[""] || mongoose.model("", threadSchema);
 }
+
+const threadSchema = new mongoose.Schema({
+	title: String,
+	content: String,
+});

@@ -43,7 +43,7 @@ export interface OutputForumTypings {
 	id: number;
 }
 
-export interface newPostTypings {
+export interface newThreadTypings {
 	forumID: number;
 	title: string;
 	content: string;

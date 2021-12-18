@@ -12,16 +12,18 @@ export default function Home() {
 	const [forums, setForums] = React.useState({
 		error: null,
 		data: {
-			configured: false,
-			websiteLink: null,
-			orgName: null,
-			website: null,
-			description: null,
-			store: null,
-			customLink: null,
-			custom: null,
-			storeLink: null,
-			customName: null,
+			main: {
+				configured: false,
+				websiteLink: null,
+				orgName: null,
+				website: null,
+				description: null,
+				store: null,
+				customLink: null,
+				custom: null,
+				storeLink: null,
+				customName: null,
+			},
 			forums: [],
 		},
 	});
@@ -34,6 +36,7 @@ export default function Home() {
 			const socket = io();
 			socket.on("homepage", (data) => {
 				setForums({ data, error: null });
+				console.log(data)
 			});
 			socket.on("sidebar", (data) => {
 				setSidebar({ data, error: null });
@@ -60,7 +63,7 @@ export default function Home() {
 			</>
 		);
 	}
-	if (!sidebar.data || !forums.data || !forums.data.configured) {
+	if (!sidebar.data || !forums.data.main || !forums.data.main.configured) {
 		return (
 			<>
 				<div className="bg-coolGray-700 flex-grow">
@@ -98,7 +101,7 @@ export default function Home() {
 			</>
 		);
 	}
-	if (!forums.data.configured) {
+	if (!forums.data.main.configured) {
 		return (
 			<>
 				<PageError
@@ -119,7 +122,7 @@ export default function Home() {
 				<Navbar name="Home" />
 				<div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
 					<h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
-						{forums.data.orgName}
+						{forums.data.main.orgName}
 					</h1>
 					{/*add smth to look at the background and see what color it is*/}
 				</div>
@@ -130,11 +133,11 @@ export default function Home() {
 								this would be replaced with markdown for whatever the server
 								wanted here{" "}
 							</span>
-							{forums.data.description}
+							{forums.data.main.description}
 						</p>
-						{forums.data.store ? (
+						{forums.data.main.store ? (
 							<a
-								href={forums.data.storeLink || undefined}
+								href={forums.data.main.storeLink || undefined}
 								className="text-gray-200 px-3 py-0.5 bg-red-500 inline-flex mt-3 items-center rounded-full font-medium"
 							>
 								<Heroicons.ShoppingCartIcon className="h-5 w-5 mr-1" />
@@ -143,9 +146,9 @@ export default function Home() {
 						) : (
 							""
 						)}
-						{forums.data.website ? (
+						{forums.data.main.website ? (
 							<a
-								href={forums.data.websiteLink || undefined}
+								href={forums.data.main.websiteLink || undefined}
 								className="text-gray-200 px-3 py-0.5 bg-theme-primary inline-flex mt-3 items-center rounded-full font-medium"
 							>
 								<Heroicons.GlobeAltIcon className="h-5 w-5 mr-1" />
@@ -154,13 +157,13 @@ export default function Home() {
 						) : (
 							""
 						)}
-						{forums.data.custom ? (
+						{forums.data.main.custom ? (
 							<a
-								href={forums.data.customLink || undefined}
+								href={forums.data.main.customLink || undefined}
 								className="text-gray-200 px-3 py-0.5 bg-green-700 inline-flex mt-3 items-center rounded-full font-medium"
 							>
 								<Heroicons.BeakerIcon className="h-5 w-5 mr-1" />
-								{forums.data.customName}
+								{forums.data.main.customName}
 							</a>
 						) : (
 							""
