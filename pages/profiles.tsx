@@ -29,7 +29,7 @@ export default function profiles(props) {
 			<>
 				<div className="flex flex-col min-h-screen bg-coolGray-700">
 					<Navbar name="Profiles List" />
-					<div className="flex-1 p-2">
+					<div className="flex-1 p-2 ">
 						<div className="max-w-screen-xl mx-auto text-gray-200 bg-coolGray-800 p-5 my-10 rounded-md flex flex-col md:flex-row justify-between">
 							<div>
 								<h2 className="text-2xl font-medium">Forum Members</h2>
@@ -81,7 +81,7 @@ export default function profiles(props) {
 		<>
 			<div className="flex flex-col min-h-screen bg-coolGray-700">
 				<Navbar name="Profiles List" />
-				<div className="flex-1 p-2 px-36 gf:px-2">
+				<div className="flex-1 p-2 px-4">
 					<div className="max-w-screen-xl mx-auto text-gray-200 bg-coolGray-800 p-5 my-10 rounded-md flex flex-col md:flex-row justify-between">
 						<div>
 							<h2 className="text-2xl font-medium">Forum Members</h2>
@@ -94,8 +94,8 @@ export default function profiles(props) {
 							</form>
 						</div>
 						<div>
-							<h2 className="text-2xl font-medium">Sort</h2>
-							<div className="rounded-md flex flex-wrap p-1.5 dark:bg-coolGray-75 bg-coolGray-850 gap-2 font-semibold mt-4">
+							<h2 className="text-2xl font-medium mt-4 md:mt-0">Sort</h2>
+							<div className="rounded-md flex-wrap p-1.5 dark:bg-coolGray-75 bg-coolGray-850 gap-2 font-semibold mt-4 inline-flex">
 								<h1
 									className={
 										"cursor-pointer px-2 py-1 rounded hover:ring-2 ring-theme-primary select-none transition " +
@@ -166,7 +166,7 @@ export default function profiles(props) {
 						<>
 							<Link href={"/profile/" + d}>
 								<a>
-									<div className="bg-coolGray-800 px-5 py-3 mt-3 rounded-md flex hover:filter hover:brightness-90 transition cursor-pointer select-none">
+									<div className="bg-coolGray-800 px-5 py-4 mt-3 rounded-md flex hover:filter hover:brightness-90 transition cursor-pointer select-none">
 										<Image
 											src={user.pfp}
 											width={50}
@@ -183,7 +183,7 @@ export default function profiles(props) {
 											</h2>
 											<p className="font-extralight">"{user.title}"</p>
 										</div>
-										<div className="ml-auto flex items-center ">
+										<div className="ml-auto flex items-center">
 											<ChevronRightIcon className="w-6 h-6" />
 										</div>
 									</div>
@@ -201,7 +201,7 @@ function exProfile() {
 	//loading thing
 	return (
 		<div className="max-w-screen-xl mx-auto text-gray-200 mb-10">
-			<div className="bg-coolGray-800 px-5 py-3 mt-3 rounded-md flex hover:filter hover:brightness-90 transition cursor-pointer select-none">
+			<div className="bg-coolGray-800 px-5 py-4 mt-3 rounded-md flex hover:filter hover:brightness-90 transition cursor-pointer select-none">
 				<Image
 					src="/ProfilePicture.png"
 					width={50}
@@ -218,7 +218,7 @@ function exProfile() {
 						<div className="animate-pulse bg-blue-500 h-4 rounded" />
 					</p>
 				</div>
-				<div className="ml-auto flex items-center ">
+				<div className="ml-auto hidden xs:block">
 					<ChevronRightIcon className="w-6 h-6" />
 				</div>
 			</div>

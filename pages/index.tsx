@@ -65,13 +65,13 @@ export default function Home() {
 			<>
 				<div className="bg-coolGray-700 flex-grow">
 					<Navbar name="Loading..." />
-					<div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20 min-w-screen font-sans">
+					<div className="bg-gradient-to-r from-green-400 to-blue-600 py-14 lg:py-20  min-w-screen font-sans">
 						<h1 className="text-gray-100 text-4xl lg:text-5xl max-w-screen-xl mx-auto px-10 md:px-16 lg:px-20">
 							<div className="animate-pulse mx-4 bg-blue-500 h-12 w-2/5 rounded" />
 						</h1>
 						{/*add smth to look at the background and see what color it is*/}
 					</div>
-					<div className="container max-w-screen-xl px-6 mx-auto text-gray-200 md:px-8 lg:px-10">
+					<div className="container max-w-screen-xl px-4 mx-auto text-gray-200 ">
 						<div className="flex-grow rounded-md shadow-md bg-coolGray-800 py-5 my-10">
 							<div className="space-y-2">
 								<div className="animate-pulse mx-4 bg-blue-500 h-10 w-2/5 rounded mb-4" />
@@ -123,7 +123,7 @@ export default function Home() {
 					</h1>
 					{/*add smth to look at the background and see what color it is*/}
 				</div>
-				<div className="container max-w-screen-xl px-6 mx-auto text-gray-200 md:px-8 lg:px-10">
+				<div className="container max-w-screen-xl mx-auto text-gray-200 px-4">
 					<div className="rounded-md shadow-md bg-coolGray-800 p-5 my-10 space-x-3">
 						<p>
 							<span className="font-bold">

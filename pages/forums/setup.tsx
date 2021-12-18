@@ -25,7 +25,7 @@ export default function setup() {
 				<div className="flex-grow bg-coolGray-700">
 					<Navbar name="Setup" />
 
-					<div className="max-w-screen-xl mx-auto">
+					<div className="max-w-screen-xl mx-auto px-4">
 						<div className="flex-grow rounded-md p-5 my-10 text-gray-200 relative">
 							<div className="flex flex-grow flex-col">
 								<h1 className="text-3xl font-bold text-gray-200 mb-1">

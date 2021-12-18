@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
-export default function JSBoardFooter() {
+export default function Footer() {
 	return (
 		<>
 			<div className="w-full bg-coolGray-800">
-				<div className="flex flex-col md:flex-row mx-auto max-w-screen-xl px-10 py-6">
+				<div className="flex flex-col md:flex-row mx-auto max-w-screen-xl px-4 py-6">
 					{/*Title bit*/}
 					<div>
 						<div className="flex flex-col bg-black p-2 border-l-2 border-theme-primary rounded-r-md bg-opacity-30 backdrop-filter backdrop-blur-3xl backdrop-saturate-150">

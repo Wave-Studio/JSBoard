@@ -1,4 +1,7 @@
+import connect from "../../../lib/db";
 import { Server } from "socket.io";
+import { newPostTypings } from "../../../lib/typings/forum";
+import mongoose from "mongoose";
 
 export const Module = (io: Server) => {
 	io.on("connection", (socket) => {
@@ -32,5 +35,14 @@ export const Module = (io: Server) => {
 				],
 			});
 		});
+		socket.on("newPost", (data: newPostTypings) => {
+			socket.emit("newPost", newPost(data));
+		});
 	});
 };
+
+async function newPost(data: newPostTypings) {
+	await connect();
+
+}
+

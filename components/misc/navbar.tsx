@@ -91,7 +91,7 @@ export default function Navbar(props: { name: string; className?: string }) {
 					props.className
 				}
 			>
-				<div className="mx-auto max-w-screen-xl px-10 font-semibold flex flex-grow">
+				<div className="mx-auto max-w-screen-xl px-4 font-semibold flex flex-grow">
 					<Link href="/">
 						<a className="my-auto">JSBoard</a>
 					</Link>

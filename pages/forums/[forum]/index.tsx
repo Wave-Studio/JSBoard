@@ -65,11 +65,11 @@ export default function Forum() {
 		return (
 			//I can do the css for this later when I get a chance, also in theory the user will never see it
 			<>
-				<div className="flex flex-col h-screen px-0">
+				<div className="flex flex-col h-screen">
 					{/* typing mayhem */}
 					<Navbar name="Loading..." />
 					<div className="flex-1 overflow-y-hidden relative">
-						<div className="z-10 inset-0 bg-gradient-to-b from-transparent via-transparent to-coolGray-800 absolute" />
+						<div className="z-10 inset-0 bg-gradient-to-b from-transparent via-transparent to-coolGray-800 opacity-70 absolute" />
 						<div className="max-w-screen-xl mx-auto py-4">
 							<Link href="/">
 								<a>
@@ -79,7 +79,7 @@ export default function Forum() {
 									</button>
 								</a>
 							</Link>
-							<div className="bg-coolGray-800 rounded-md p-5 text-gray-200 mx-1 shadow-md">
+							<div className="bg-coolGray-800 rounded-md p-5 text-gray-200 mx-4 shadow-md">
 								<div className="flex flex-col md:flex-row justify-between">
 									<div>
 										<div className="flex space-x-2 items-center ">
@@ -91,9 +91,9 @@ export default function Forum() {
 												tags([])
 											}
 										</div>
-										
-											<div className="animate-pulse my-4 bg-blue-500 h-8 w-48 rounded" />
-										
+
+										<div className="animate-pulse my-4 bg-blue-500 h-8 w-48 rounded" />
+
 										<hr className="border-theme-primary border-t-2 bg-opacity-50 w-10 my-2" />
 										<h2 className="text-sm font-light text-gray-400">
 											{forum.data.description as string}
@@ -110,9 +110,7 @@ export default function Forum() {
 									</div>
 								</div>
 							</div>
-							<div className="space-y-3 my-10 mx-1">
-								{loadingAnimation()}
-							</div>
+							<div className="space-y-3 my-10 mx-4">{loadingAnimation()}</div>
 						</div>
 					</div>
 					<Footer />
@@ -123,20 +121,20 @@ export default function Forum() {
 
 	return (
 		<>
-			<div className="flex flex-col min-h-screen px-0">
+			<div className="flex flex-col min-h-screen">
 				{/* typing mayhem */}
 				<Navbar name={forum.data.name as string} />
 				<div className="flex-1">
 					<div className="max-w-screen-xl mx-auto py-4">
 						<Link href="/">
-							<a>
+							<a className="inline-flex">
 								<button className="btn btn-white mb-2 mt-10 group flex items-center">
 									<ChevronLeftIcon className="scale-0 text-gray-200 group-hover:text-gray-800 group-hover:scale-100 w-4 h-4 transition duration-500 mt-0.5" />{" "}
 									Back to Home
 								</button>
 							</a>
 						</Link>
-						<div className="bg-coolGray-800 rounded-md p-5 text-gray-200 mx-1 shadow-md">
+						<div className="bg-coolGray-800 rounded-md p-5 text-gray-200 mx-4 shadow-md">
 							<div className="flex flex-col md:flex-row justify-between">
 								<div>
 									<div className="flex space-x-2 items-center ">
@@ -157,21 +155,27 @@ export default function Forum() {
 									</h2>
 								</div>
 								<div className="justify-between flex flex-col mt-4 md:mt-0">
-									<Link href="./create">
-										<button className="btn btn-blue font-semibold hidden md:block">
-											Create a Thread
-										</button>
+									<Link href={"/forums/create?id=" + forumID}>
+										<a className="">
+											<button className="btn btn-blue font-semibold hidden md:block w-full">
+												Create a Thread
+											</button>
+										</a>
 									</Link>
-									<button className="btn-base rounded-full bg-theme-primary p-4 font-semibold md:hidden fixed bottom-3 right-3 z-50 shadow-md shadow-blue-500/20">
-										<PlusIcon className="w-7 h-7" />
-									</button>
+									<Link href={"/forums/create?id=" + forumID}>
+										<a>
+											<button className="btn-base rounded-full bg-theme-primary p-4 font-semibold md:hidden fixed bottom-3 right-3 z-50 shadow-md shadow-blue-500/20">
+												<PlusIcon className="w-7 h-7" />
+											</button>
+										</a>
+									</Link>
 									<Formik
 										initialValues={{ search: forum.data.search }}
 										validationSchema={Yup.object({
 											search: Yup.string()
 												.max(50, "Search is too long")
-												.required("You can't search for nothing!")
-												.min(2, "Search is too short"),
+												.min(2, "Search is too short")
+												.nullable(),
 										})}
 										onSubmit={(values, { setSubmitting }) => {
 											alert(JSON.stringify(values, null, 2));
@@ -198,7 +202,7 @@ export default function Forum() {
 								</div>
 							</div>
 						</div>
-						<div className="space-y-3 my-10 mx-1">
+						<div className="space-y-3 my-10 mx-4">
 							{forum.data.posts?.map((post: OutputForumTypings) => (
 								<Link
 									href={`/threads/${post.title
@@ -330,65 +334,66 @@ function loadingAnimation() {
 
 	for (let i = 0; i < 3; i++) {
 		r.push(
-		<a>
-			<section
-				className="bg-coolGray-800 px-5
+			<a>
+				<section
+					className="bg-coolGray-800 px-5
 		 py-3 mt-3 rounded-md flex hover:filter hover:brightness-90 transition cursor-pointer select-none text-gray-200 font-medium tracking-wide shadow-md"
-			>
-				<div className=" mr-4 flex flex-col items-center">
-					<button className=" text-gray-300 hover:bg-coolGray-900 hover:opacity-75 hover:text-green-200 focus:hover:opacity-95 rounded-full transition duration-300">
-						<ChevronUpIcon className="w-7 p-0.5 " />
-					</button>
-					<span className="text-sm"><div className="animate-pulse bg-blue-500 h-4 rounded w-4" /></span>
-					<button className=" text-gray-300 hover:bg-coolGray-900 hover:opacity-75 hover:text-red-200 focus:hover:opacity-95 rounded-full transition duration-300">
-						<ChevronDownIcon className="w-7 p-0.5 " />
-					</button>
-				</div>
-				<div className=" w-[0.1rem] bg-theme-secondary mr-4 rounded my-2 " />
-				<div>
+				>
+					<div className=" mr-4 flex flex-col items-center">
+						<button className=" text-gray-300 hover:bg-coolGray-900 hover:opacity-75 hover:text-green-200 focus:hover:opacity-95 rounded-full transition duration-300">
+							<ChevronUpIcon className="w-7 p-0.5 " />
+						</button>
+						<span className="text-sm">
+							<div className="animate-pulse bg-blue-500 h-4 rounded w-4" />
+						</span>
+						<button className=" text-gray-300 hover:bg-coolGray-900 hover:opacity-75 hover:text-red-200 focus:hover:opacity-95 rounded-full transition duration-300">
+							<ChevronDownIcon className="w-7 p-0.5 " />
+						</button>
+					</div>
+					<div className=" w-[0.1rem] bg-theme-secondary mr-4 rounded my-2 " />
 					<div>
-						<div className="flex items-center">
-							<figure>
-								<Image
-									width={28}
-									height={28}
-									src="/assets/example-pfp.png"
-									className="rounded-full"
-									quality={100}
-									alt="User Icon"
-								/>
-							</figure>
-							<figcaption className="ml-2">
-								<div className="animate-pulse bg-blue-500 h-4 rounded w-24" />
-							</figcaption>
-						</div>
-						<article className="my-3">
-							<div className="animate-pulse bg-blue-500 h-4 rounded w-36 mb-2" />
-							
-							<div className="animate-pulse bg-blue-500 h-4 rounded w-[30rem]" />
-							<div className="text-xs font-thin mt-2 flex space-x-2">
-								 <div className="animate-pulse bg-blue-500 h-4 rounded w-12 mr-2" /> &#8226;
-								 <div className="animate-pulse bg-blue-500 h-4 rounded w-12" />
+						<div>
+							<div className="flex items-center">
+								<figure>
+									<Image
+										width={28}
+										height={28}
+										src="/assets/example-pfp.png"
+										className="rounded-full"
+										quality={100}
+										alt="User Icon"
+									/>
+								</figure>
+								<figcaption className="ml-2">
+									<div className="animate-pulse bg-blue-500 h-4 rounded w-24" />
+								</figcaption>
 							</div>
-						</article>
+							<article className="my-3">
+								<div className="animate-pulse bg-blue-500 h-4 rounded w-36 mb-2" />
 
-						<div className="space-x-3">
-							<div className="inline-flex items-center space-x-2 rounded-full px-2 py-1 text-gray-300 text-sm bg-coolGray-700 bg-opacity-50">
-								<EyeIcon className="w-5 text-gray-300" />
-								<div className="animate-pulse bg-blue-500 h-4 rounded w-6 brightness-90 filter" />
-							</div>
-							<div className="inline-flex items-center space-x-2 rounded-full px-2 py-1 text-gray-300 text-sm bg-coolGray-700 bg-opacity-50">
-								<ChatAlt2Icon className="w-5 text-gray-300" />
-								<div className="animate-pulse bg-blue-500 h-4 rounded w-6 brightness-90 filter" />
+								<div className="animate-pulse bg-blue-500 h-4 rounded w-[30rem]" />
+								<div className="text-xs font-thin mt-2 flex space-x-2">
+									<div className="animate-pulse bg-blue-500 h-4 rounded w-12 mr-2" />{" "}
+									&#8226;
+									<div className="animate-pulse bg-blue-500 h-4 rounded w-12" />
+								</div>
+							</article>
+
+							<div className="space-x-3">
+								<div className="inline-flex items-center space-x-2 rounded-full px-2 py-1 text-gray-300 text-sm bg-coolGray-700 bg-opacity-50">
+									<EyeIcon className="w-5 text-gray-300" />
+									<div className="animate-pulse bg-blue-500 h-4 rounded w-6 brightness-90 filter" />
+								</div>
+								<div className="inline-flex items-center space-x-2 rounded-full px-2 py-1 text-gray-300 text-sm bg-coolGray-700 bg-opacity-50">
+									<ChatAlt2Icon className="w-5 text-gray-300" />
+									<div className="animate-pulse bg-blue-500 h-4 rounded w-6 brightness-90 filter" />
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-				
-			</section>
-		</a>
-		)
+				</section>
+			</a>
+		);
 	}
-	return r
+	return r;
 }

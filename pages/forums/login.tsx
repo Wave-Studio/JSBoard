@@ -59,8 +59,6 @@ export default function signup({ signup }: { signup?: number }) {
 				if (data.token) {
 					setCookie("token", data.token);
 				}
-				//I should set cookies here too
-				//@blocksnmore pls add react-cookie
 			});
 		});
 	}, []);
@@ -70,7 +68,7 @@ export default function signup({ signup }: { signup?: number }) {
 		<div className="flex flex-col min-h-screen md:px-0">
 			<Navbar name="Signup" />
 			<div className="flex-1">
-				<div className="max-w-screen-xl mx-auto text-gray-200 py-12 px-6 md:px-8 lg:px-10 space-y-5">
+				<div className="max-w-screen-xl mx-auto text-gray-200 py-12 px-4 space-y-5">
 					{
 						//it works. no touch.
 					}

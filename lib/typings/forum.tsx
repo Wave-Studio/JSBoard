@@ -42,3 +42,7 @@ export interface OutputForumTypings {
 	replies: number;
 	id: number;
 }
+
+export interface newPostTypings {
+  forumID: number; title: string; content: string; token: string;
+}
