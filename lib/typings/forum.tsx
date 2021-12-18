@@ -43,9 +43,17 @@ export interface OutputForumTypings {
 	id: number;
 }
 
-export interface newThreadTypings {
+export interface NewThreadTypings {
 	forumID: number;
 	title: string;
 	content: string;
 	token: string;
+	locked: boolean;
+	pinned: boolean;
+}
+
+export interface OutputThreadTypings {
+	success: boolean;
+	message?: string;
+	redirect?: string;
 }

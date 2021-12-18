@@ -36,7 +36,7 @@ export default function Home() {
 			const socket = io();
 			socket.on("homepage", (data) => {
 				setForums({ data, error: null });
-				console.log(data)
+				console.log(data);
 			});
 			socket.on("sidebar", (data) => {
 				setSidebar({ data, error: null });

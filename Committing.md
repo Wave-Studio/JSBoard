@@ -1,15 +1,10 @@
 # Commiting to JSBoard
 
-## Formats:
+## Quirks
 
-````Please select one of the following formats when creating an issue
-- New feature [Tested]
-- Bug fix - New feature [Untested]```
+### License
 
-Please run your code under [Prettier](https://prettier.io) or use the github action before creating a PR.
-Your commit will require a code review before being pushed to the main branch.
-
-Make sure to add the following to any new files
+Please add this to the beginning of any new files you create
 
 ```js
 /*
@@ -29,6 +24,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
-````
+```
 
-this is so scuffed I need to redo this
+### Naming
+
+We use some very _wierd_ naming schemas compared to the norm.
+
+- We use camelCase unless said here otherwise
+- Interfaces should end in Typings and be capitolized like this: `OutputTypings`
+- When defining a model the definition word should be capitolized and not be plural. You should use the same word when defining the schema for the model (shown below)
+- Schemas should end in Schema and start wityh the model name in lowercase, like so: `forumSchema`
+
+### Other
+
+- Typings that appear in multiple files should be defined in the `lib/typings` folder and imported
+- Use import over require whenever possible

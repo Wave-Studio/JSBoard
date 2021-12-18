@@ -19,6 +19,7 @@ import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import PageError from "../../components/misc/error";
+import { OutputThreadTypings } from "../../lib/typings/forum";
 
 export default function createPost() {
 	const [cookies, setCookie] = useCookies(["token"]);
@@ -26,22 +27,16 @@ export default function createPost() {
 	const forumID = query.id;
 	const router = useRouter();
 	const [socket, setSocket] = useState<Socket>();
-	const [res, setRes] = useState<{
-		success: boolean;
-		message?: string;
-		redirect?: string;
-	}>({ success: false });
+	const [res, setRes] = useState<OutputThreadTypings>({ success: false });
 	const [disabled, setDisabled] = useState(false);
 	useEffect(() => {
 		fetch("/api/socket").finally(() => {
 			const socket = io();
 			setSocket(socket);
-			socket.on(
-				"newPost",
-				(data: { success: boolean; message?: string; redirect?: string }) => {
-					setRes(data);
-				}
-			);
+			socket.on("newThread", (data: OutputThreadTypings) => {
+				setRes(data);
+				console.log(data)
+			});
 		});
 	}, []);
 
@@ -76,6 +71,8 @@ export default function createPost() {
 												title: values.title,
 												content: values.content,
 												token: cookies.token,
+												pinned: false,
+												locked: false,
 											});
 											setSubmitting(false);
 										}, 400);

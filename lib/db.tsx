@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 
 export default async function connect() {
-	if (mongoose.connection.readyState !== 1) {
+	if (
+		mongoose.connection.readyState == 0 ||
+		mongoose.connection.readyState == 3
+	) {
 		await mongoose.connect(process.env.DB_LINK as string, {
 			//VScode says process.env.DB_LINK is undefined, but it works
 			serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds

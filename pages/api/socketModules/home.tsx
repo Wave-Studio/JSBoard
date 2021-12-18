@@ -95,7 +95,7 @@ const defaultHomepage = {
 	orgName: "Insert indelible name here",
 };
 
-const forumSchema = new mongoose.Schema({
+export const forumSchema = new mongoose.Schema({
 	icon: String,
 	name: String,
 	description: String,

@@ -1,7 +1,12 @@
 import connect from "../../../lib/db";
 import { Server } from "socket.io";
-import { newThreadTypings } from "../../../lib/typings/forum";
+import {
+	NewThreadTypings,
+	OutputThreadTypings,
+} from "../../../lib/typings/forum";
 import mongoose from "mongoose";
+import { UserSchema } from "./user";
+import { forumSchema } from "./home";
 
 export const Module = (io: Server) => {
 	io.on("connection", (socket) => {
@@ -35,20 +40,67 @@ export const Module = (io: Server) => {
 				],
 			});
 		});
-		socket.on("newThread", (data: newThreadTypings) => {
+		socket.on("newThread", (data: NewThreadTypings) => {
 			socket.emit("newThread", newThread(data));
 		});
 	});
 };
 
-async function newThread(data: newThreadTypings) {
+async function newThread(data: NewThreadTypings): Promise<OutputThreadTypings> {
 	await connect();
+	if (!data.token) return { success: false, message: "User not logged in!" };
 
-	//const Thread =
-	//mongoose.models[""] || mongoose.model("", threadSchema);
+	const User = mongoose.models.user || mongoose.model("user", UserSchema);
+	const user = await User.findOne({ "activity.token": data.token });
+	if (!user)
+		return { success: false, message: "Couldn't validate user credentials!" };
+
+	const Forum = mongoose.models.forum || mongoose.model("forum", forumSchema);
+	const forum = await Forum.findOne({ id: data.forumID });
+	if (!forum) return { success: false, message: "Couldn't find forum!" };
+
+	const Thread =
+		mongoose.models[forum.name] || mongoose.model(forum.name, threadSchema);
+	const pageData = new Thread({
+		title: data.title,
+		content: data.content,
+		authorID: user.id,
+		votes: [],
+		postDate: { type: Date, default: Date.now },
+		updatedDate: { type: Date, default: Date.now },
+		locked: data.locked,
+		pinned: data.pinned,
+		views: 1,
+		tags: [],
+		repliesNumber: 0,
+		id: (await Thread.find().count()) + 1,
+		replies: [],
+	});
+	return { success: true };
 }
 
 const threadSchema = new mongoose.Schema({
 	title: String,
 	content: String,
+	authorID: Number,
+	votes: [Number], //array of user ID's
+	postDate: { type: Date, default: Date.now },
+	updatedDate: { type: Date, default: Date.now },
+	locked: Boolean,
+	pinned: Boolean,
+	views: Number,
+	tags: [String],
+	repliesNumber: Number,
+	id: Number,
+	replies: [
+		{
+			title: String,
+			content: String,
+			authorID: Number,
+			votes: Number,
+			postDate: Date,
+			updatedDate: Date,
+			id: Number,
+		},
+	],
 });
