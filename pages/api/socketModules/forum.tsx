@@ -40,8 +40,8 @@ export const Module = (io: Server) => {
 				],
 			});
 		});
-		socket.on("newThread", (data: NewThreadTypings) => {
-			socket.emit("newThread", newThread(data));
+		socket.on("newThread", async (data: NewThreadTypings) => {
+			socket.emit("newThread", await newThread(data));
 		});
 	});
 };

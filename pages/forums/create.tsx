@@ -61,11 +61,11 @@ export default function createPost() {
 										title: "",
 										content: "",
 									}}
-									onSubmit={(values, { setSubmitting }) => {
-										setTimeout(() => {
+									onSubmit={(values) => {
+										
 											//TODO: Need to make it save in session storage
 											setDisabled(true);
-											alert(JSON.stringify(values, null, 2));
+											//alert(JSON.stringify(values, null, 2));
 											socket!.emit("newThread", {
 												forumID: forumID,
 												title: values.title,
@@ -73,10 +73,8 @@ export default function createPost() {
 												token: cookies.token,
 												pinned: false,
 												locked: false,
+											
 											});
-											setSubmitting(false);
-										}, 400);
-										setDisabled(false);
 									}}
 									validationSchema={Yup.object({
 										title: Yup.string()
@@ -157,7 +155,7 @@ export default function createPost() {
 	} else if (!res.success) {
 		return (
 			//TODO: Make this look nice
-			<>didn't work</>
+			<>{res.message}</>
 		);
 	} else {
 		router.push(res.redirect as string);
