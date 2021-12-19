@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 export default async function connect() {
 	if (
-		mongoose.connection.readyState == 0 ||
-		mongoose.connection.readyState == 3
+		mongoose.connection.readyState !== 1
 	) {
 		await mongoose.connect(process.env.DB_LINK as string, {
 			//VScode says process.env.DB_LINK is undefined, but it works

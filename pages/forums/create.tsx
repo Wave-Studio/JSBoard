@@ -159,5 +159,7 @@ export default function createPost() {
 		);
 	} else {
 		router.push(res.redirect as string);
+		return <>Loading...</>;
+		
 	}
 }

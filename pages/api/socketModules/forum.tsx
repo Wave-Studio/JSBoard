@@ -30,6 +30,7 @@ export const Module = (io: Server) => {
 						postDate: "2020-01-01",
 						updatedDate: "2020-01-01",
 						//content: "This is an example post.", We only care about featching surface level details here
+						//also don't look 8 lines above pls
 						locked: true,
 						pinned: true,
 						views: 0,
@@ -66,8 +67,6 @@ async function newThread(data: NewThreadTypings): Promise<OutputThreadTypings> {
 		content: data.content,
 		authorID: user.id,
 		votes: [],
-		postDate: { type: Date, default: Date.now },
-		updatedDate: { type: Date, default: Date.now },
 		locked: data.locked,
 		pinned: data.pinned,
 		views: 1,
@@ -76,7 +75,8 @@ async function newThread(data: NewThreadTypings): Promise<OutputThreadTypings> {
 		id: (await Thread.find().count()) + 1,
 		replies: [],
 	});
-	return { success: true };
+	await pageData.save();
+	return { success: true, redirect: `/thread/${(forum.name).toLowerCase().replaceAll(" ", "-").replaceAll(":", "")}:${data.forumID}/${(data.title).toLowerCase().replaceAll(" ", "-").replaceAll(":", "").substring(0, 50)}:${pageData.id}` };
 }
 
 const threadSchema = new mongoose.Schema({

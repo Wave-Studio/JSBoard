@@ -33,7 +33,7 @@ export default function catagory(props: {
 						posts: string;
 					}) => (
 						<div>
-							<Link href={"/forums/" + data.redirect + ":" + data.id}>
+							<Link href={"/forums/" + data.name.toLowerCase().replaceAll(" ", "-").replaceAll(":", "") + ":" + data.id}>
 								<a>
 									<div className="flex-grow flex flex-row rounded-md shadow-md hover:shadow-xl bg-coolGray-800 py-2 mb-5 items-center cursor-pointer transition">
 										<div className="grid place-items-center align-middle rounded-full p-2 md:p-3 bg-blue-600 mx-5">
