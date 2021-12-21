@@ -24,34 +24,40 @@ import { OutputForumTypings } from "../../../lib/typings/forum";
 
 export default function Forum() {
 	const router = useRouter();
-	const forumNameUnFiltered = `${router.query.forum}`;
-	const forumID = forumNameUnFiltered.split(":").reverse().slice(0, 1).join("");
+	const forumNameUnFiltered = router.query.forum as string;
+	const forumID = 1 || forumNameUnFiltered.split(":")[1];
 	const [forum, setForum] = useState<{
 		error: unknown;
 		data: {
-			[key: string]: unknown | string;
 			foundForum: boolean;
+			pageData: {
+			[key: string]: unknown | string;
 			tags: string[];
 			posts: OutputForumTypings[];
+			}
 		};
 	}>({
 		error: null,
 		data: {
 			foundForum: false,
-			name: null,
-			description: null,
-			tags: [],
-			page: null,
-			search: null,
-			posts: [],
+			pageData: {
+				name: null,
+				description: null,
+				tags: [],
+				page: null,
+				search: null,
+				posts: [],
+			}
 		},
 	});
-	const [open, setOpen] = useState(true);
+	//const [open, setOpen] = useState(true);
 	useEffect(() => {
 		fetch("/api/socket").finally(() => {
 			const socket = io();
 			socket.on("connect", () => {
-				socket.emit("forum", forumID); //use the ID here, forumName (should) return "name:id"
+				console.log(forumNameUnFiltered)
+				console.log("Forum id:" + forumID)
+				socket.emit("forum", {forumID: forumID as number}); //use the ID here, forumName (should) return "name:id"
 			});
 			socket.on("forum", (data) => {
 				setForum({ data, error: null });
@@ -60,7 +66,7 @@ export default function Forum() {
 		});
 	}, []);
 
-	if (!forum.data || !forum.data.name) {
+	if (!forum.data || !forum.data.pageData.name) {
 		//if you generally use "forum" it
 		return (
 			//I can do the css for this later when I get a chance, also in theory the user will never see it
@@ -96,7 +102,7 @@ export default function Forum() {
 
 										<hr className="border-theme-primary border-t-2 bg-opacity-50 w-10 my-2" />
 										<h2 className="text-sm font-light text-gray-400">
-											{forum.data.description as string}
+											{forum.data.pageData.description as string}
 										</h2>
 									</div>
 									<div className="justify-between flex flex-col mt-4 md:mt-0">
@@ -123,7 +129,7 @@ export default function Forum() {
 		<>
 			<div className="flex flex-col min-h-screen">
 				{/* typing mayhem */}
-				<Navbar name={forum.data.name as string} />
+				<Navbar name={forum.data.pageData.name as string} />
 				<div className="flex-1">
 					<div className="max-w-screen-xl mx-auto py-4">
 						<Link href="/">
@@ -143,15 +149,15 @@ export default function Forum() {
 										</div>
 										{
 											//@ts-ignore this will be defined, the system is just dumb
-											tags(forum.data.tags)
+											tags(forum.data.pageData.tags)
 										}
 									</div>
 									<h1 className="text-2xl font-medium mt-3 ">
-										{forum.data.name as string}
+										{forum.data.pageData.name as string}
 									</h1>
 									<hr className="border-theme-primary border-t-2 bg-opacity-50 w-10 my-2" />
 									<h2 className="text-sm font-light text-gray-400">
-										{forum.data.description as string}
+										{forum.data.pageData.description as string}
 									</h2>
 								</div>
 								<div className="justify-between flex flex-col mt-4 md:mt-0">
@@ -170,7 +176,7 @@ export default function Forum() {
 										</a>
 									</Link>
 									<Formik
-										initialValues={{ search: forum.data.search }}
+										initialValues={{ search: forum.data.pageData.search }}
 										validationSchema={Yup.object({
 											search: Yup.string()
 												.max(50, "Search is too long")
@@ -203,11 +209,11 @@ export default function Forum() {
 							</div>
 						</div>
 						<div className="space-y-3 my-10 mx-4">
-							{forum.data.posts?.map((post: OutputForumTypings) => (
+							{forum.data.pageData.posts?.map((post: OutputForumTypings) => (
 								<Link
 									href={`/threads/${post.title
 										.replaceAll(" ", "-")
-										.substring(0, 42)}:${post.id}`}
+									.substring(0, 42)}:${post.id}`}
 								>
 									<a>
 										<section
@@ -232,9 +238,7 @@ export default function Forum() {
 																width={28}
 																height={28}
 																src={
-																	"/pfps/" +
-																	post.authorID +
-																	post.authorPFPFormat
+																	post.avatar
 																}
 																className="rounded-full"
 																alt="User Icon"

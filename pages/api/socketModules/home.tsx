@@ -100,6 +100,7 @@ export const forumSchema = new mongoose.Schema({
 	name: String,
 	description: String,
 	redirect: String,
+	tags: [String],
 	color: String, //should probably be a hex code rather than a tw style like `bg-red-600`
 	topics: Number,
 	posts: Number,

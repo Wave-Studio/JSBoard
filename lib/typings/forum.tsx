@@ -29,14 +29,14 @@ export interface OutputForumTypings {
 	title: string;
 	content: string;
 	author: string;
-	authorID: number;
+	//authorID: number;
 	votes: number;
-	authorPFPFormat: string; //jpg or gif
+	avatar: string; //jpg or gif
 	postDate: string;
 	updatedDate: string;
 	//content: "This is an example post.", We only care about featching surface level details here
-	locked: true;
-	pinned: true;
+	locked: boolean;
+	pinned: boolean;
 	views: number;
 	tags: string[];
 	replies: number;

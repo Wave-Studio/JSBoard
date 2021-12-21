@@ -86,7 +86,7 @@ export const UserSchema = new mongoose.Schema({
 		password: String,
 		twoFactorAuth: Boolean,
 		phone: String,
-		userImage: String,
+		avatar: { type: String, default: "/assets/example-pfp.png"},
 	},
 	titles: {
 		status: String,
