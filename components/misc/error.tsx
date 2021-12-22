@@ -16,12 +16,12 @@ export default function PageError(props: {
 			<div className="flex flex-col h-screen">
 				<Navbar name={props.code + " | " + props.text} />
 				<div className="flex flex-grow justify-center items-center">
-					<div className="bg-coolGray-800 text-gray-100 rounded-md shadow-lg p-10">
+					<div className="bg-coolGray-800 text-gray-100 rounded-md shadow-lg p-10 mx-4">
 						<h2 className="text-4xl font-semibold text-center mb-1">
 							{props.code + " " + props.text}
 						</h2>
 						<div className="text-xl">
-							<p className="mb-5">
+							<p className="mb-8 mt-2 md:mt-0 md:mb-5 text-center">
 								An error occured while preforming that action!
 							</p>
 

@@ -20,6 +20,7 @@ import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import PageError from "../../components/misc/error";
 import { OutputThreadTypings } from "../../lib/typings/forum";
+import Loading from "../../components/misc/loading";
 
 export default function createPost() {
 	const [cookies, setCookie] = useCookies(["token"]);
@@ -35,7 +36,7 @@ export default function createPost() {
 			setSocket(socket);
 			socket.on("newThread", (data: OutputThreadTypings) => {
 				setRes(data);
-				console.log(data)
+				console.log(data);
 			});
 		});
 	}, []);
@@ -62,19 +63,17 @@ export default function createPost() {
 										content: "",
 									}}
 									onSubmit={(values) => {
-										
-											//TODO: Need to make it save in session storage
-											setDisabled(true);
-											//alert(JSON.stringify(values, null, 2));
-											socket!.emit("newThread", {
-												forumID: forumID,
-												title: values.title,
-												content: values.content,
-												token: cookies.token,
-												pinned: false,
-												locked: false,
-											
-											});
+										//TODO: Need to make it save in session storage
+										setDisabled(true);
+										//alert(JSON.stringify(values, null, 2));
+										socket!.emit("newThread", {
+											forumID: forumID,
+											title: values.title,
+											content: values.content,
+											token: cookies.token,
+											pinned: false,
+											locked: false,
+										});
 									}}
 									validationSchema={Yup.object({
 										title: Yup.string()
@@ -159,7 +158,6 @@ export default function createPost() {
 		);
 	} else {
 		router.push(res.redirect as string);
-		return <>Loading...</>;
-		
+		return <Loading />;
 	}
 }

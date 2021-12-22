@@ -41,7 +41,7 @@ export default function Switcher(props: { className?: string }) {
 				</button>
 				<span
 					className={
-						"tooltip nightwind-prevent rounded font-medium shadow-lg p-1 bg-opacity-30 backdrop-filter backdrop-blur-3xl backdrop-saturate-150  mt-14 whitespace-nowrap -left-24 2xl:-left-14 " +
+						"tooltip nightwind-prevent rounded font-medium shadow-lg p-1 bg-opacity-30 backdrop-filter backdrop-blur-3xl backdrop-saturate-150  mt-14 whitespace-nowrap -left-28 2xl:-left-14 " +
 						(darkModeLoc
 							? "text-gray-100 bg-gray-200"
 							: "text-gray-900 bg-gray-300")

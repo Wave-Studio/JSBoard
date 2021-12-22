@@ -224,8 +224,8 @@ export default function ViewUserProfile() {
 					<Link href="/profiles">
 						<a>
 							<button className="btn btn-white mb-2 mt-10 group flex items-center">
-								<ChevronLeftIcon className="scale-0 text-gray-200 group-hover:text-gray-800 group-hover:scale-100 w-4 h-4 transition duration-500" />{" "}
-								Back to Profiles
+								<ChevronLeftIcon className="scale-0 text-gray-200 group-hover:text-gray-800 group-hover:scale-100 w-4 h-4 duration-500 mt-0.5 absolute group-hover:static" />{" "}
+								<span className="group-hover:translate-x-4 transition duration-[500ms] group-hover:mr-4 group-hover:-ml-3">Back to Profiles</span>
 							</button>
 						</a>
 					</Link>

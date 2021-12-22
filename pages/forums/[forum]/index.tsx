@@ -31,23 +31,27 @@ export default function Forum() {
 		data: {
 			foundForum: boolean;
 			pageData: {
-			[key: string]: unknown | string;
-			tags: string[];
-			posts: OutputForumTypings[];
-			}
+				name?: string;
+				description?: string;
+				[key: string]: unknown | string;
+				tags: string[];
+				page?: number;
+				search?: string;
+				posts: OutputForumTypings[];
+			};
 		};
 	}>({
-		error: null,
+		error: undefined,
 		data: {
 			foundForum: false,
 			pageData: {
-				name: null,
-				description: null,
+				name: undefined,
+				description: undefined,
 				tags: [],
-				page: null,
-				search: null,
+				page: undefined,
+				search: undefined,
 				posts: [],
-			}
+			},
 		},
 	});
 	//const [open, setOpen] = useState(true);
@@ -55,9 +59,7 @@ export default function Forum() {
 		fetch("/api/socket").finally(() => {
 			const socket = io();
 			socket.on("connect", () => {
-				console.log(forumNameUnFiltered)
-				console.log("Forum id:" + forumID)
-				socket.emit("forum", {forumID: forumID as number}); //use the ID here, forumName (should) return "name:id"
+				socket.emit("forum", { forumID: forumID as number }); //use the ID here, forumName (should) return "name:id"
 			});
 			socket.on("forum", (data) => {
 				setForum({ data, error: null });
@@ -94,12 +96,10 @@ export default function Forum() {
 											</div>
 											{
 												//@ts-ignore this will be defined, the system is just dumb
-												tags([])
+												tags()
 											}
 										</div>
-
 										<div className="animate-pulse my-4 bg-blue-500 h-8 w-48 rounded" />
-
 										<hr className="border-theme-primary border-t-2 bg-opacity-50 w-10 my-2" />
 										<h2 className="text-sm font-light text-gray-400">
 											{forum.data.pageData.description as string}
@@ -128,15 +128,14 @@ export default function Forum() {
 	return (
 		<>
 			<div className="flex flex-col min-h-screen">
-				{/* typing mayhem */}
-				<Navbar name={forum.data.pageData.name as string} />
-				<div className="flex-1">
+				<Navbar name={forum.data.pageData.name} />
+				<div className="flex-1 overflow-x-hidden">
 					<div className="max-w-screen-xl mx-auto py-4">
 						<Link href="/">
-							<a className="inline-flex">
+							<a className="inline-flex transition relative ml-4">
 								<button className="btn btn-white mb-2 mt-10 group flex items-center">
-									<ChevronLeftIcon className="scale-0 text-gray-200 group-hover:text-gray-800 group-hover:scale-100 w-4 h-4 transition duration-500 mt-0.5" />{" "}
-									Back to Home
+									<ChevronLeftIcon className="scale-0 text-gray-200 group-hover:text-gray-800 group-hover:scale-100 w-4 h-4 duration-500 mt-0.5 absolute group-hover:static" />{" "}
+									<span className="group-hover:translate-x-4 transition duration-[500ms] group-hover:mr-4 group-hover:-ml-3">Back to Home</span>
 								</button>
 							</a>
 						</Link>
@@ -144,26 +143,25 @@ export default function Forum() {
 							<div className="flex flex-col md:flex-row justify-between">
 								<div>
 									<div className="flex space-x-2 items-center ">
-										<div className="bg-coolGray-900 bg-opacity-25 p-1 rounded-lg ">
+										<div className={`bg-coolGray-900 bg-opacity-25 p-1 rounded-lg mb-3 ${!forum.data.pageData.tags.length ? "hidden" : ""}`}>
 											<ColorSwatchIcon className="w-6 text-gray-300" />
 										</div>
 										{
-											//@ts-ignore this will be defined, the system is just dumb
 											tags(forum.data.pageData.tags)
 										}
 									</div>
-									<h1 className="text-2xl font-medium mt-3 ">
-										{forum.data.pageData.name as string}
+									<h1 className="text-2xl font-medium ">
+										{forum.data.pageData.name}
 									</h1>
 									<hr className="border-theme-primary border-t-2 bg-opacity-50 w-10 my-2" />
 									<h2 className="text-sm font-light text-gray-400">
-										{forum.data.pageData.description as string}
+										{forum.data.pageData.description}
 									</h2>
 								</div>
 								<div className="justify-between flex flex-col mt-4 md:mt-0">
 									<Link href={"/forums/create?id=" + forumID}>
-										<a className="">
-											<button className="btn btn-blue font-semibold hidden md:block w-full">
+										<a>
+											<button className="btn btn-blue font-semibold hidden md:block w-full mb-3">
 												Create a Thread
 											</button>
 										</a>
@@ -208,12 +206,13 @@ export default function Forum() {
 								</div>
 							</div>
 						</div>
+						{/*Threads*/}
 						<div className="space-y-3 my-10 mx-4">
 							{forum.data.pageData.posts?.map((post: OutputForumTypings) => (
 								<Link
 									href={`/threads/${post.title
 										.replaceAll(" ", "-")
-									.substring(0, 42)}:${post.id}`}
+										.substring(0, 42)}:${post.id}`}
 								>
 									<a>
 										<section
@@ -229,7 +228,7 @@ export default function Forum() {
 													<ChevronDownIcon className="w-7 p-0.5 " />
 												</button>
 											</div>
-											<div className=" w-[0.1rem] bg-theme-secondary mr-4 rounded my-2 " />
+											<div className="min-w-[0.15rem] bg-theme-secondary mr-4 rounded-full my-2 " />
 											<div>
 												<div>
 													<div className="flex items-center">
@@ -237,9 +236,7 @@ export default function Forum() {
 															<Image
 																width={28}
 																height={28}
-																src={
-																	post.avatar
-																}
+																src={post.avatar}
 																className="rounded-full"
 																alt="User Icon"
 															/>
@@ -248,12 +245,12 @@ export default function Forum() {
 															{post.author}
 														</figcaption>
 													</div>
-													<article className="my-3">
+													<article className="my-2">
 														<h3 className="text-lg">{post.title}</h3>
 														<p className="max-w-2xl leading-snug md:truncate text-sm font-normal text-gray-300 break-text">
 															{post.content}
 														</p>
-														<div className="text-xs font-thin mt-2">
+														<div className="text-xs font-thin mt-4">
 															Posted <time>{post.postDate}</time> &#8226;
 															Updated <time>{post.updatedDate}</time>
 														</div>
@@ -277,7 +274,7 @@ export default function Forum() {
 													<div
 														className={
 															" bg-coolGray-900 bg-opacity-70 rounded-md px-2 py-1 has-tooltip " +
-															post.locked
+															post.locked ? "hidden" : " "
 														}
 													>
 														<LockClosedIcon className="w-5 text-gray-300 " />
@@ -288,7 +285,7 @@ export default function Forum() {
 													<div
 														className={
 															" bg-coolGray-900 bg-opacity-70 rounded-md px-2 py-1 has-tooltip " +
-															post.pinned
+															post.pinned ? "hidden" : ""
 														}
 													>
 														<PencilIcon className="w-5 text-gray-300" />
@@ -313,15 +310,19 @@ export default function Forum() {
 
 //This is really bad practice and I'm actually using a workaround because React doesn't like it
 
-function tags(tags: Array<string>) {
+function tags(tags?: Array<string>) {
 	//Send `[]` as the array if you want a loading animation
 	const r: Array<unknown> = [];
-	if (!tags.length) {
+	if (tags == undefined) {
 		for (let i = 0; i < 2; i++) {
 			r.push(
 				<div className="rounded-full px-3 py-1 bg-blue-500 bg-opacity-50 w-10 h-4 animate-pulse"></div>
 			);
 		}
+		return r;
+	}
+	if (!tags.length) {
+		return null;
 	}
 	tags.forEach((tag) => {
 		r.push(
@@ -354,7 +355,7 @@ function loadingAnimation() {
 							<ChevronDownIcon className="w-7 p-0.5 " />
 						</button>
 					</div>
-					<div className=" w-[0.1rem] bg-theme-secondary mr-4 rounded my-2 " />
+					<div className=" min-w-[0.15rem] bg-theme-secondary mr-4 rounded my-2 " />
 					<div>
 						<div>
 							<div className="flex items-center">

@@ -11,7 +11,7 @@ import { forumSchema } from "./home";
 
 export const Module = (io: Server) => {
 	io.on("connection", (socket) => {
-		socket.on("forum", async (data: {forumID: number; search?: string}) => {
+		socket.on("forum", async (data: { forumID: number; search?: string }) => {
 			socket.emit("forum", await loadForum(data));
 		});
 		socket.on("newThread", async (data: NewThreadTypings) => {
@@ -25,7 +25,7 @@ async function newThread(data: NewThreadTypings): Promise<OutputThreadTypings> {
 	if (!data.token) return { success: false, message: "User not logged in!" };
 
 	const User = mongoose.models.user || mongoose.model("user", UserSchema);
-	const user = await User.findOne({ "activity.token": data.token});
+	const user = await User.findOne({ "activity.token": data.token });
 	if (!user)
 		return { success: false, message: "Couldn't validate user credentials!" };
 
@@ -37,7 +37,7 @@ async function newThread(data: NewThreadTypings): Promise<OutputThreadTypings> {
 		mongoose.models[forum.name] || mongoose.model(forum.name, threadSchema);
 	const pageData = new Category({
 		title: data.title,
-		content: data.content, 
+		content: data.content,
 		authorID: user.id,
 		votes: [],
 		locked: data.locked,
@@ -49,27 +49,42 @@ async function newThread(data: NewThreadTypings): Promise<OutputThreadTypings> {
 		replies: [],
 	});
 	await pageData.save();
-	return { success: true, redirect: `/thread/${(forum.name).toLowerCase().replaceAll(" ", "-").replaceAll(":", "")}:${data.forumID}/${(data.title).toLowerCase().replaceAll(" ", "-").replaceAll(":", "").substring(0, 50)}:${pageData.id}` };
+	return {
+		success: true,
+		redirect: `/thread/${forum.name
+			.toLowerCase()
+			.replaceAll(" ", "-")
+			.replaceAll(":", "")}:${data.forumID}/${data.title
+			.toLowerCase()
+			.replaceAll(" ", "-")
+			.replaceAll(":", "")
+			.substring(0, 50)}:${pageData.id}`,
+	};
 }
 
-async function loadForum(data: {forumID: number; search?: string; page?: number}): Promise<{success: boolean; message?: string; pageData?: any}> {
+async function loadForum(data: {
+	forumID: number;
+	search?: string;
+	page?: number;
+}): Promise<{ success: boolean; message?: string; pageData?: any }> {
 	await connect();
 	const Forum = mongoose.models.forum || mongoose.model("forum", forumSchema);
 	const forum = await Forum.findOne({ id: data.forumID });
-	if (!forum) 
-	return { success: false, message: "Couldn't find forum!" };
+	if (!forum) return { success: false, message: "Couldn't find forum!" };
 	const Category =
 		mongoose.models[forum.name] || mongoose.model(forum.name, threadSchema);
 	const User = mongoose.models.user || mongoose.model("user", UserSchema);
-	const pageData = await Category.find().sort({ pinned: -1, updatedDate: -1 }).limit(20);
+	const pageData = await Category.find()
+		.sort({ pinned: -1, updatedDate: -1 })
+		.limit(20);
 	var posts: any = [];
 	for (let i = 0; i < pageData.length; i++) {
-		const author = await User.findOne({ id: (pageData[i]).authorID})
+		const author = await User.findOne({ id: pageData[i].authorID });
 		posts.push({
 			title: pageData[i].title,
 			content: pageData[i].content,
 			author: author.account.username,
-			votes: (pageData[i].votes).length,
+			votes: pageData[i].votes.length,
 			//seems like id is uneeded
 			avatar: author.account.avatar,
 			postDate: pageData[i].postDate,
@@ -78,7 +93,7 @@ async function loadForum(data: {forumID: number; search?: string; page?: number}
 			pinned: pageData[i].pinned,
 			views: pageData[i].views,
 			tags: pageData[i].tags,
-			replies: (pageData[i].replies).length,
+			replies: pageData[i].replies.length,
 			id: pageData[i].id,
 		});
 	}
@@ -92,8 +107,7 @@ async function loadForum(data: {forumID: number; search?: string; page?: number}
 			page: data.page || 0, //used not for pagination, but for scroll loading
 			search: data.search || null,
 			posts: posts,
-
-		} 
+		},
 	};
 }
 

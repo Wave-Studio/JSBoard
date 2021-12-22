@@ -9,7 +9,7 @@ Please add this to the beginning of any new files you create
 ```js
 /*
 JSBoard (also JS Board) is a freemium open source forums software.
-Copyright (C) 2021 - Present  JS Services
+Copyright (C) 2020 - Present  JS Services
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

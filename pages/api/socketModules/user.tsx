@@ -30,8 +30,8 @@ export const Module = (io: Server) => {
 			console.log(r);
 			socket.emit("signUp", r);
 		});
-		socket.on("login", async (data) => {
-			const r = await loginUser(data.username, data.password);
+		socket.on("login", async (data: { email: string; password: string }) => {
+			const r = await loginUser(data.email, data.password);
 			console.log(r);
 			socket.emit("login", r);
 		});
@@ -86,7 +86,7 @@ export const UserSchema = new mongoose.Schema({
 		password: String,
 		twoFactorAuth: Boolean,
 		phone: String,
-		avatar: { type: String, default: "/assets/example-pfp.png"},
+		avatar: { type: String, default: "/assets/example-pfp.png" },
 	},
 	titles: {
 		status: String,
@@ -206,7 +206,7 @@ export async function registerUser(
 	};
 }
 
-export async function loginUser(
+async function loginUser(
 	email: string,
 	password: string
 ): Promise<{ success: boolean; token?: string; message: string }> {

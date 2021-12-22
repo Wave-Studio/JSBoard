@@ -49,7 +49,7 @@ export default function signup({ signup }: { signup?: number }) {
 				setSignUp(2);
 				setResponse(data);
 				if (data.token) {
-					setCookie("token", data.token);
+					setCookie("token", data.token, {path: '/'});
 				}
 				//I should set cookies here
 			});
@@ -57,7 +57,7 @@ export default function signup({ signup }: { signup?: number }) {
 				setSignUp(2);
 				setResponse(data);
 				if (data.token) {
-					setCookie("token", data.token);
+					setCookie("token", data.token, {path: '/'});
 				}
 			});
 		});
@@ -150,7 +150,7 @@ export default function signup({ signup }: { signup?: number }) {
 					</Link>
 					<button
 						className="btn btn-blue ml-3 font-medium"
-						onClick={() => history.back()}
+						onClick={() => {setSignUp(0); setDisabled(false)}}
 					>
 						Back
 					</button>
@@ -177,7 +177,7 @@ export default function signup({ signup }: { signup?: number }) {
 				})}
 				onSubmit={(values) => {
 					socket!.emit("login", {
-						username: values.email,
+						email: values.email,
 						password: values.password,
 					});
 				}}

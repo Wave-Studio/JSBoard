@@ -83,6 +83,7 @@ export default function Navbar(props: { name: string; className?: string }) {
           className={"w-full m-0 " + (props.loading ? "" : "hidden")}
         />
       </div>*/}
+
 			{/*Actual Navbar starts here */}
 
 			<div
