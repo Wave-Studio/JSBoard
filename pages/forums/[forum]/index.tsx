@@ -23,9 +23,11 @@ import Error from "../../../components/misc/notification";
 import { OutputForumTypings } from "../../../lib/typings/forum";
 
 export default function Forum() {
+	
 	const router = useRouter();
 	const forumNameUnFiltered = router.query.forum as string;
-	const forumID = 1 || forumNameUnFiltered.split(":")[1];
+	if (forumNameUnFiltered == undefined) return <></>
+	const forumID = forumNameUnFiltered.split(":")[1];
 	const [forum, setForum] = useState<{
 		error: unknown;
 		data: {
@@ -59,7 +61,7 @@ export default function Forum() {
 		fetch("/api/socket").finally(() => {
 			const socket = io();
 			socket.on("connect", () => {
-				socket.emit("forum", { forumID: forumID as number }); //use the ID here, forumName (should) return "name:id"
+				socket.emit("forum", { forumID: forumID as unknown as number }); //use the ID here, forumName (should) return "name:id"
 			});
 			socket.on("forum", (data) => {
 				setForum({ data, error: null });
