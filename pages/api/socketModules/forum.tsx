@@ -66,7 +66,7 @@ async function loadForum(data: {
 	forumID: number;
 	search?: string;
 	page?: number;
-}): Promise<{ success: boolean; message?: string; pageData?: any }> {
+}) {
 	await connect();
 	const Forum = mongoose.models.forum || mongoose.model("forum", forumSchema);
 	const forum = await Forum.findOne({ id: data.forumID });
@@ -77,7 +77,21 @@ async function loadForum(data: {
 	const pageData = await Category.find()
 		.sort({ pinned: -1, updatedDate: -1 })
 		.limit(20);
-	var posts: any = [];
+	const posts: {
+		title: string;
+		content: string;
+		author: string;
+		votes: number;
+		avatar: string;
+		postDate: string;
+		updatedDate: string;
+		locked: boolean;
+		pinned: boolean;
+		views: number;
+		tags: string[];
+		replies: number;
+		id: number;
+	}[] = [];
 	for (let i = 0; i < pageData.length; i++) {
 		const author = await User.findOne({ id: pageData[i].authorID });
 		posts.push({

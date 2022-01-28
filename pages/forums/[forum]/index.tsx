@@ -23,10 +23,9 @@ import Error from "../../../components/misc/notification";
 import { OutputForumTypings } from "../../../lib/typings/forum";
 
 export default function Forum() {
-	
 	const router = useRouter();
 	const forumNameUnFiltered = router.query.forum as string;
-	if (forumNameUnFiltered == undefined) return <></>
+	if (forumNameUnFiltered == undefined) return <></>;
 	const forumID = forumNameUnFiltered.split(":")[1];
 	const [forum, setForum] = useState<{
 		error: unknown;
@@ -137,7 +136,9 @@ export default function Forum() {
 							<a className="inline-flex transition relative ml-4">
 								<button className="btn btn-white mb-2 mt-10 group flex items-center">
 									<ChevronLeftIcon className="scale-0 text-gray-200 group-hover:text-gray-800 group-hover:scale-100 w-4 h-4 duration-500 mt-0.5 absolute group-hover:static" />{" "}
-									<span className="group-hover:translate-x-4 transition duration-[500ms] group-hover:mr-4 group-hover:-ml-3">Back to Home</span>
+									<span className="group-hover:translate-x-4 transition duration-[500ms] group-hover:mr-4 group-hover:-ml-3">
+										Back to Home
+									</span>
 								</button>
 							</a>
 						</Link>
@@ -145,12 +146,14 @@ export default function Forum() {
 							<div className="flex flex-col md:flex-row justify-between">
 								<div>
 									<div className="flex space-x-2 items-center ">
-										<div className={`bg-coolGray-900 bg-opacity-25 p-1 rounded-lg mb-3 ${!forum.data.pageData.tags.length ? "hidden" : ""}`}>
+										<div
+											className={`bg-coolGray-900 bg-opacity-25 p-1 rounded-lg mb-3 ${
+												!forum.data.pageData.tags.length ? "hidden" : ""
+											}`}
+										>
 											<ColorSwatchIcon className="w-6 text-gray-300" />
 										</div>
-										{
-											tags(forum.data.pageData.tags)
-										}
+										{tags(forum.data.pageData.tags)}
 									</div>
 									<h1 className="text-2xl font-medium ">
 										{forum.data.pageData.name}
@@ -276,7 +279,9 @@ export default function Forum() {
 													<div
 														className={
 															" bg-coolGray-900 bg-opacity-70 rounded-md px-2 py-1 has-tooltip " +
-															post.locked ? "hidden" : " "
+															post.locked
+																? "hidden"
+																: " "
 														}
 													>
 														<LockClosedIcon className="w-5 text-gray-300 " />
@@ -287,7 +292,9 @@ export default function Forum() {
 													<div
 														className={
 															" bg-coolGray-900 bg-opacity-70 rounded-md px-2 py-1 has-tooltip " +
-															post.pinned ? "hidden" : ""
+															post.pinned
+																? "hidden"
+																: ""
 														}
 													>
 														<PencilIcon className="w-5 text-gray-300" />
