@@ -9,7 +9,7 @@ module.exports = withPWA({
 		dest: "public",
 		disable: process.env.NODE_ENV === "development",
 	},
-	redirects() {
+	async redirects() {
 		return [
 			{
 				source: "/dashboard",
@@ -34,12 +34,12 @@ module.exports = withPWA({
 			{
 				source: "/signup",
 				destination: "/forums/signup",
-				permanent: false,
+				permanent: true,
 			},
 			{
 				source: "/login",
 				destination: "/forums/login",
-				permanent: false,
+				permanent: true,
 			},
 		];
 	},

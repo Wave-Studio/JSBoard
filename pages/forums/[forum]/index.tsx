@@ -134,7 +134,7 @@ export default function Forum() {
 					<div className="max-w-screen-xl mx-auto py-4">
 						<Link href="/">
 							<a className="inline-flex transition relative ml-4">
-								<button className="btn btn-white mb-2 mt-10 group flex items-center">
+								<button className="btn btn-white mb-2 mt-10 group flex items-center"> 
 									<ChevronLeftIcon className="scale-0 text-gray-200 group-hover:text-gray-800 group-hover:scale-100 w-4 h-4 duration-500 mt-0.5 absolute group-hover:static" />{" "}
 									<span className="group-hover:translate-x-4 transition duration-[500ms] group-hover:mr-4 group-hover:-ml-3">
 										Back to Home
