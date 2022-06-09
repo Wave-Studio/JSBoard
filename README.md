@@ -27,6 +27,7 @@ JSBoard is a next-generation, community-first forum software written using Nextj
 - [Contributing](#contributing)
 - [Bugs](#bugs)
 - [Feature Requests](#feature-requests)
+- [Background](#background)
 - [Install](#install)
 - [Addon API](#addon-api)
 
@@ -48,9 +49,29 @@ Create a feature request [here](https://github.com/wave-studio/JSBoard/issues/ne
 
 ## Install
 
-Installing is pretty simple, just conle the github repo and use the examples thing. You can also use `yarn add sorse` or `npm i sorse`.
+Installing is pretty simple, all you need to do is download the ZIP and open it inside your preferred terminal, make sure you have Node.js and Yarn, then run `yarn`, `yarn build`, and `yarn start` in that order. We'll have more information when we release our first MVP.
+
+## Background
+
+JSBoard wasn't always this clean and polished. Its first version looked a little something like this:
+
+[![image](https://user-images.githubusercontent.com/69743171/130735959-dbd19c99-a094-43bc-ac6e-5d19be90212e.png)](https://jsboard.blocksnmore.repl.co/forums/)
+
+We also had this as well:
+
+![image](https://user-images.githubusercontent.com/69743171/137646351-fbc09cd0-d33d-4699-9744-852885748ad5.png)
+
+Yea, those were some dark days...
+
+Next up, we have the "jsboard-frontend" written in plain html with ejs (which is not a framework, by the way, it's sort of like a budget components implementation. I'm sad to say I (quick007) was impressed when I first saw this...). It also has express and tailwind, which I used their [components page](https://tailwindcomponents.com) and some "css action" to create this absolute masterpiece:
+
+[![image](https://user-images.githubusercontent.com/69743171/130737889-efe5db5d-60b2-4039-b801-fa450b73d860.png)](https://jsboard-test.luseufert5.repl.co)
+
+Today of course we have the look of today's JSBoard. Honestly, there's a lot of new design stuff I'd (quick007) love to throw at it someday, but for now, you're going to have to like the playful stacked boxes theme I've created.
 
 ## Addon-API
+
+Learn how to create an addon [here](https://github.com/wave-studio/JSBoard/wiki/Creating-an-Addon)
 
 PRs accepted (read the [contributing section](#contributing)!1!1)
 
