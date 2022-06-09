@@ -48,7 +48,7 @@ Create a feature request [here](https://github.com/wave-studio/JSBoard/issues/ne
 
 ## Install
 
-Installing is pretty simple, just conle the github repo and use the examples thing. You can also use `yarn add sorse` or `npm i sorse`.
+Installing is pretty simple, just clone the github repo and use the examples. You can also use `yarn add source` or `npm i source`.
 
 ## Addon-API
 
